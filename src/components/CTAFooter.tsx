@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Apple, Play, Moon } from "lucide-react";
+import { Apple, Play, Moon, Mail, Instagram, MessageCircle } from "lucide-react";
 
 const CTAFooter = () => {
   return (
@@ -49,6 +49,33 @@ const CTAFooter = () => {
         </div>
       </section>
 
+      {/* Contact Section */}
+      <section className="py-16 border-t border-border/50">
+        <div className="container">
+          <div className="glass-card p-8 md:p-10 max-w-2xl mx-auto text-center">
+            <h3 className="text-2xl font-extrabold mb-2">Fragen? Schreib uns!</h3>
+            <p className="text-muted-foreground mb-6">
+              Wir freuen uns über dein Feedback und helfen dir gerne weiter.
+            </p>
+            <a
+              href="mailto:hello@moonli.app"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all shadow-soft"
+            >
+              <Mail className="w-5 h-5" />
+              hello@moonli.app
+            </a>
+            <div className="flex items-center justify-center gap-4 mt-6">
+              <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 transition-colors">
+                <Instagram className="w-5 h-5 text-muted-foreground" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 transition-colors">
+                <MessageCircle className="w-5 h-5 text-muted-foreground" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-border/50 py-8">
         <div className="container">
@@ -61,7 +88,7 @@ const CTAFooter = () => {
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <a href="#" className="hover:text-foreground transition-colors">Datenschutz</a>
               <a href="#" className="hover:text-foreground transition-colors">Impressum</a>
-              <a href="#" className="hover:text-foreground transition-colors">Kontakt</a>
+              <a href="mailto:hello@moonli.app" className="hover:text-foreground transition-colors">Kontakt</a>
             </div>
           </div>
         </div>

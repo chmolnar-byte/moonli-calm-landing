@@ -4,7 +4,7 @@ import { Star, Zap, Crown } from "lucide-react";
 const levels = [
   { label: "Müder Zombie", emoji: "🧟", progress: 0 },
   { label: "Kaffee-Held", emoji: "☕", progress: 25 },
-  { label: "Routine-Ninja", emoji: "🥷", progress: 50 },
+  { label: "Routine-Ninja", emoji: "⚡", progress: 50 },
   { label: "Zen-Meister", emoji: "🧘", progress: 75 },
   { label: "Moonli Gott", emoji: "👑", progress: 100 },
 ];
