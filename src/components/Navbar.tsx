@@ -1,4 +1,5 @@
-import { Moon, Apple, Play } from "lucide-react";
+import { Apple, Play } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Navbar = () => {
   return (
@@ -6,9 +7,7 @@ const Navbar = () => {
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <div className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center">
-            <Moon className="w-5 h-5 text-primary" />
-          </div>
+          <img src={logo} alt="Moonli Logo" className="w-9 h-9 rounded-full object-cover" />
           <span className="text-lg font-extrabold tracking-tight text-foreground">
             MOONLI
           </span>
