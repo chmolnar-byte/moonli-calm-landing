@@ -1,6 +1,34 @@
 import { motion } from "framer-motion";
 import { Apple, Play } from "lucide-react";
-import heroMoon from "@/assets/hero-3d-moon.png";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Float, MeshDistortMaterial } from "@react-three/drei";
+import { useRef, Suspense } from "react";
+import * as THREE from "three";
+import logo from "@/assets/logo.png";
+
+const HeroMoon = () => {
+  const ref = useRef<THREE.Mesh>(null);
+  useFrame((state) => {
+    if (ref.current) {
+      ref.current.rotation.y = state.clock.elapsedTime * 0.12;
+    }
+  });
+  return (
+    <Float speed={2} rotationIntensity={0.2} floatIntensity={1.2}>
+      <mesh ref={ref}>
+        <sphereGeometry args={[1.6, 64, 64]} />
+        <MeshDistortMaterial
+          color="#f5e6b8"
+          emissive="#f5d990"
+          emissiveIntensity={0.7}
+          roughness={0.4}
+          distort={0.12}
+          speed={2}
+        />
+      </mesh>
+    </Float>
+  );
+};
 
 const HeroSection = () => {
   return (
@@ -61,20 +89,36 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 3D Hero Image */}
+          {/* 3D Moon + Capybara */}
           <motion.div
             initial={{ opacity: 0, scale: 0.85 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
             className="flex justify-center"
           >
-            <div className="float-animation relative">
-              <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl scale-75" />
-              <img
-                src={heroMoon}
-                alt="Moonli - Schlafendes Capybara auf dem Mond"
-                className="relative w-full max-w-lg drop-shadow-2xl"
-              />
+            <div className="relative w-full max-w-lg aspect-square">
+              {/* 3D Canvas */}
+              <Suspense fallback={<div className="w-full h-full" />}>
+                <Canvas
+                  camera={{ position: [0, 0, 4.5], fov: 45 }}
+                  gl={{ alpha: true, antialias: true }}
+                  style={{ background: "transparent" }}
+                  className="!absolute inset-0"
+                >
+                  <ambientLight intensity={0.9} />
+                  <directionalLight position={[5, 5, 5]} intensity={0.6} color="#fef3c7" />
+                  <pointLight position={[-3, 2, 2]} intensity={0.4} color="#fbcfe8" />
+                  <HeroMoon />
+                </Canvas>
+              </Suspense>
+              {/* Capybara overlay */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <img
+                  src={logo}
+                  alt="Moonli Capybara auf dem Mond"
+                  className="w-3/5 drop-shadow-2xl float-animation"
+                />
+              </div>
             </div>
           </motion.div>
         </div>
