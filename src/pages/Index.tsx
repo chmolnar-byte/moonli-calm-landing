@@ -8,7 +8,7 @@ import CTAFooter from "@/components/CTAFooter";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-page overflow-x-hidden">
       <Navbar />
       <HeroSection />
 

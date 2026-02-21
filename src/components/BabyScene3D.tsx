@@ -33,15 +33,15 @@ const BabyCloud = ({ position, scale = 1 }: { position: [number, number, number]
       <group position={position} scale={scale}>
         <mesh>
           <sphereGeometry args={[0.4, 32, 32]} />
-          <meshStandardMaterial color="#ffffff" roughness={1} opacity={0.85} transparent />
+          <meshPhysicalMaterial color="#ffffff" roughness={0.8} opacity={0.7} transparent transmission={0.3} />
         </mesh>
         <mesh position={[0.35, 0.05, 0]}>
           <sphereGeometry args={[0.3, 32, 32]} />
-          <meshStandardMaterial color="#ffffff" roughness={1} opacity={0.85} transparent />
+          <meshPhysicalMaterial color="#ffffff" roughness={0.8} opacity={0.7} transparent transmission={0.3} />
         </mesh>
         <mesh position={[-0.3, 0.08, 0]}>
           <sphereGeometry args={[0.28, 32, 32]} />
-          <meshStandardMaterial color="#ffffff" roughness={1} opacity={0.85} transparent />
+          <meshPhysicalMaterial color="#ffffff" roughness={0.8} opacity={0.7} transparent transmission={0.3} />
         </mesh>
       </group>
     </Float>
@@ -69,7 +69,10 @@ const TinyStar = ({ position }: { position: [number, number, number] }) => {
 const BabyScene3D = () => {
   return (
     <div className="w-full h-[420px] md:h-[500px] relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-pastel-blue/20 to-transparent rounded-3xl pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: 'radial-gradient(ellipse at center, hsl(210 50% 92% / 0.2) 0%, transparent 70%)',
+        borderRadius: '1.5rem'
+      }} />
       <Canvas
         camera={{ position: [0, 0, 5], fov: 45 }}
         gl={{ alpha: true, antialias: true }}
@@ -84,7 +87,6 @@ const BabyScene3D = () => {
         <BabyCloud position={[2.5, 0.8, -1.5]} scale={0.7} />
         <BabyCloud position={[-1.5, -1.3, -0.5]} scale={0.6} />
 
-        {/* Twinkling stars */}
         <TinyStar position={[-1.8, 1.8, 0]} />
         <TinyStar position={[2.0, 1.5, -0.5]} />
         <TinyStar position={[1.2, -1.0, 0.5]} />
