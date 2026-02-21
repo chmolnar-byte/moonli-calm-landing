@@ -1,15 +1,24 @@
 import { motion } from "framer-motion";
 import { Star, Zap, Crown } from "lucide-react";
-
-const levels = [
-  { label: "Müder Zombie", emoji: "🧟", progress: 0 },
-  { label: "Kaffee-Held", emoji: "☕", progress: 25 },
-  { label: "Routine-Ninja", emoji: "⚡", progress: 50 },
-  { label: "Zen-Meister", emoji: "🧘", progress: 75 },
-  { label: "Moonli Gott", emoji: "👑", progress: 100 },
-];
+import { useLanguage } from "@/i18n/LanguageContext";
 
 const GamificationSection = () => {
+  const { t } = useLanguage();
+
+  const levels = [
+    { label: t("gamification.level1"), emoji: "🧟", progress: 0 },
+    { label: t("gamification.level2"), emoji: "☕", progress: 25 },
+    { label: t("gamification.level3"), emoji: "⚡", progress: 50 },
+    { label: t("gamification.level4"), emoji: "🧘", progress: 75 },
+    { label: t("gamification.level5"), emoji: "👑", progress: 100 },
+  ];
+
+  const stats = [
+    { icon: Star, label: t("gamification.xp"), value: "2,450", color: "text-pastel-yellow-strong" },
+    { icon: Zap, label: t("gamification.streak"), value: "12", color: "text-pastel-orange-strong" },
+    { icon: Crown, label: t("gamification.currentLevel"), value: "Level 3", color: "text-primary" },
+  ];
+
   return (
     <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
@@ -27,17 +36,16 @@ const GamificationSection = () => {
         >
           <div className="text-center mb-10">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-button text-pastel-orange-strong text-sm font-semibold mb-4">
-              <Zap className="w-4 h-4" /> Level Up!
+              <Zap className="w-4 h-4" /> {t("gamification.badge")}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold mb-3 text-glow">
-              Werde zur Eltern-Legende
+              {t("gamification.title")}
             </h2>
             <p className="text-muted-foreground max-w-lg mx-auto">
-              Erledige tägliche Routinen, sammle XP und steige vom müden Zombie zum Moonli Gott auf.
+              {t("gamification.subtitle")}
             </p>
           </div>
 
-          {/* Progress Bar */}
           <div className="max-w-3xl mx-auto">
             <div className="relative">
               <div className="h-4 rounded-full bg-muted/60 overflow-hidden" style={{ boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.04)' }}>
@@ -70,13 +78,8 @@ const GamificationSection = () => {
               </div>
             </div>
 
-            {/* Stats row */}
             <div className="grid grid-cols-3 gap-4 mt-10">
-              {[
-                { icon: Star, label: "XP gesammelt", value: "2,450", color: "text-pastel-yellow-strong" },
-                { icon: Zap, label: "Tage-Streak", value: "12", color: "text-pastel-orange-strong" },
-                { icon: Crown, label: "Aktuelles Level", value: "Level 3", color: "text-primary" },
-              ].map((stat) => (
+              {stats.map((stat) => (
                 <div key={stat.label} className="text-center p-4 rounded-2xl glass-button">
                   <stat.icon className={`w-5 h-5 mx-auto mb-2 ${stat.color}`} />
                   <div className="text-xl font-extrabold">{stat.value}</div>

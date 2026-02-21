@@ -1,10 +1,10 @@
-import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { Apple, Play } from "lucide-react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, MeshTransmissionMaterial } from "@react-three/drei";
-import { useRef, Suspense, useEffect, useState, useCallback } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Float, MeshDistortMaterial } from "@react-three/drei";
+import { useRef, Suspense, useState, useCallback } from "react";
 import * as THREE from "three";
-import logo from "@/assets/logo.png";
+import { useLanguage } from "@/i18n/LanguageContext";
 
 /* ─── Crescent Moon (frosted glass look) ─── */
 const CrescentMoon = () => {
@@ -175,6 +175,7 @@ const SceneContent = ({ mouse }: { mouse: { x: number; y: number } }) => {
 
 const HeroSection = () => {
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
+  const { t } = useLanguage();
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -211,19 +212,18 @@ const HeroSection = () => {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-button text-pastel-green-strong text-sm font-semibold mb-6"
             >
-              🌙 Dein smarter Eltern-Begleiter
+              {t("hero.badge")}
             </motion.div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-6 text-glow">
-              Echtes Leben.{" "}
-              <span className="text-gradient">Echte Hilfe.</span>{" "}
+              {t("hero.headline1")}{" "}
+              <span className="text-gradient">{t("hero.headline2")}</span>{" "}
               <br className="hidden sm:block" />
-              Entspannte Eltern.
+              {t("hero.headline3")}
             </h1>
 
             <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
-              Der smarte Begleiter für deinen Familienalltag. Lade deinen eigenen
-              Akku auf, während dein Kind entspannt einschläft.
+              {t("hero.subheadline")}
             </p>
 
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
@@ -273,15 +273,6 @@ const HeroSection = () => {
                 </Canvas>
               </Suspense>
 
-              {/* Capybara overlay */}
-              <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ transform: `translate(${mouse.x * -8}px, ${mouse.y * -5}px)` }}>
-                <img
-                  src={logo}
-                  alt="Moonli Capybara auf dem Mond"
-                  className="w-2/5 drop-shadow-2xl float-animation"
-                  style={{ filter: 'drop-shadow(0 8px 24px rgba(0,0,0,0.15))' }}
-                />
-              </div>
             </div>
           </motion.div>
         </div>

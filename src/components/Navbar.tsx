@@ -1,7 +1,26 @@
-import { Apple, Play } from "lucide-react";
+import { Apple, Play, Globe } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { languageFlags, languageLabels, type Language } from "@/i18n/translations";
+import { useState, useRef, useEffect } from "react";
+
+const languages: Language[] = ["de", "en", "es", "fr", "ru"];
 
 const Navbar = () => {
+  const { language, setLanguage, t } = useLanguage();
+  const [open, setOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container flex items-center justify-between h-16 md:h-20">
@@ -13,21 +32,46 @@ const Navbar = () => {
           </span>
         </div>
 
-        {/* CTA Buttons */}
+        {/* Right side */}
         <div className="flex items-center gap-2">
+          {/* Language Switcher */}
+          <div className="relative" ref={dropdownRef}>
+            <button
+              onClick={() => setOpen(!open)}
+              className="flex items-center gap-1.5 px-3 py-2 rounded-full glass-button text-sm font-semibold hover:scale-[1.03] transition-all duration-200"
+            >
+              <span>{languageFlags[language]}</span>
+              <Globe className="w-3.5 h-3.5 text-muted-foreground" />
+            </button>
+            {open && (
+              <div className="absolute right-0 top-full mt-2 py-1 rounded-2xl glass-card-premium shadow-soft-xl min-w-[140px] z-50">
+                {languages.map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => { setLanguage(lang); setOpen(false); }}
+                    className={`w-full flex items-center gap-2.5 px-4 py-2 text-sm hover:bg-muted/50 transition-colors ${lang === language ? "font-bold" : ""}`}
+                  >
+                    <span>{languageFlags[lang]}</span>
+                    <span>{languageLabels[lang]}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
           <a
             href="#"
             className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
           >
             <Apple className="w-4 h-4" />
-            App Store
+            {t("nav.appStore")}
           </a>
           <a
             href="#"
             className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
           >
             <Play className="w-4 h-4" />
-            Google Play
+            {t("nav.googlePlay")}
           </a>
         </div>
       </div>
