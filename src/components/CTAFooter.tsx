@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Apple, Play, Moon, Mail, Instagram, MessageCircle } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const CTAFooter = () => {
   return (
@@ -7,8 +8,8 @@ const CTAFooter = () => {
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-pastel-green/30 blur-3xl" />
-          <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-pastel-pink/20 blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-pastel-green/25 blur-[100px]" />
+          <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-pastel-peach/20 blur-[80px]" />
         </div>
 
         <div className="container relative z-10">
@@ -19,10 +20,10 @@ const CTAFooter = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-2xl mx-auto"
           >
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-              <Moon className="w-8 h-8 text-primary" />
+            <div className="w-16 h-16 rounded-full glass-button flex items-center justify-center mx-auto mb-6">
+              <img src={logo} alt="Moonli" className="w-10 h-10 rounded-full object-cover" />
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
+            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-glow">
               Bereit für einen entspannteren Familienalltag?
             </h2>
             <p className="text-muted-foreground mb-8 text-lg">
@@ -50,25 +51,25 @@ const CTAFooter = () => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 border-t border-border/50">
+      <section className="py-16 border-t border-border/30">
         <div className="container">
-          <div className="glass-card p-8 md:p-10 max-w-2xl mx-auto text-center">
+          <div className="glass-card-premium p-8 md:p-10 max-w-2xl mx-auto text-center">
             <h3 className="text-2xl font-extrabold mb-2">Fragen? Schreib uns!</h3>
             <p className="text-muted-foreground mb-6">
               Wir freuen uns über dein Feedback und helfen dir gerne weiter.
             </p>
             <a
               href="mailto:hello@moonli.app"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all shadow-soft"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all shadow-soft hover:scale-[1.03] duration-200"
             >
               <Mail className="w-5 h-5" />
               hello@moonli.app
             </a>
             <div className="flex items-center justify-center gap-4 mt-6">
-              <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full glass-button flex items-center justify-center hover:scale-110 transition-transform duration-200">
                 <Instagram className="w-5 h-5 text-muted-foreground" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 transition-colors">
+              <a href="#" className="w-10 h-10 rounded-full glass-button flex items-center justify-center hover:scale-110 transition-transform duration-200">
                 <MessageCircle className="w-5 h-5 text-muted-foreground" />
               </a>
             </div>
@@ -77,11 +78,11 @@ const CTAFooter = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border/50 py-8">
+      <footer className="border-t border-border/30 py-8">
         <div className="container">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Moon className="w-4 h-4 text-primary" />
+              <img src={logo} alt="Moonli" className="w-5 h-5 rounded-full object-cover" />
               <span className="font-semibold text-foreground">MOONLI</span>
               <span>© {new Date().getFullYear()}</span>
             </div>

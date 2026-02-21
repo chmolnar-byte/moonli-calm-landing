@@ -6,8 +6,8 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <div className="flex items-center gap-2">
-          <img src={logo} alt="Moonli Logo" className="w-9 h-9 rounded-full object-cover" />
+        <div className="flex items-center gap-2.5">
+          <img src={logo} alt="Moonli Logo" className="w-9 h-9 rounded-full object-cover shadow-soft" />
           <span className="text-lg font-extrabold tracking-tight text-foreground">
             MOONLI
           </span>
@@ -17,14 +17,14 @@ const Navbar = () => {
         <div className="flex items-center gap-2">
           <a
             href="#"
-            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-sm font-semibold hover:opacity-90 transition-opacity"
+            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
           >
             <Apple className="w-4 h-4" />
             App Store
           </a>
           <a
             href="#"
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-opacity"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
           >
             <Play className="w-4 h-4" />
             Google Play
