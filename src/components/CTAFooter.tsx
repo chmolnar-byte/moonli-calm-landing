@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Apple, Play, Mail, Instagram, MessageCircle } from "lucide-react";
+import { Apple, Play } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -50,33 +50,6 @@ const CTAFooter = () => {
               </a>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="py-16 border-t border-border/30">
-        <div className="container">
-          <div className="glass-card-premium p-8 md:p-10 max-w-2xl mx-auto text-center">
-            <h3 className="text-2xl font-extrabold mb-2">{t("contact.title")}</h3>
-            <p className="text-muted-foreground mb-6">
-              {t("contact.subtitle")}
-            </p>
-            <a
-              href="mailto:hello@moonli.app"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all shadow-soft hover:scale-[1.03] duration-200"
-            >
-              <Mail className="w-5 h-5" />
-              hello@moonli.app
-            </a>
-            <div className="flex items-center justify-center gap-4 mt-6">
-              <a href="#" className="w-10 h-10 rounded-full glass-button flex items-center justify-center hover:scale-110 transition-transform duration-200">
-                <Instagram className="w-5 h-5 text-muted-foreground" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full glass-button flex items-center justify-center hover:scale-110 transition-transform duration-200">
-                <MessageCircle className="w-5 h-5 text-muted-foreground" />
-              </a>
-            </div>
-          </div>
         </div>
       </section>
 

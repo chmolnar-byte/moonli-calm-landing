@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, BatteryCharging, Moon, Sparkles, BookOpen, Trophy } from "lucide-react";
+import { Baby, Activity, Heart, Sparkles, BookOpen, Trophy } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -15,6 +15,24 @@ interface Feature {
 
 const features: Feature[] = [
   {
+    icon: Baby,
+    titleKey: "features.tracking.title",
+    descKey: "features.tracking.desc",
+    badgeKey: "features.tracking.badge",
+    bgColor: "bg-pastel-blue/60",
+    iconColor: "text-pastel-blue-strong",
+    badgeColor: "bg-pastel-blue/80 text-pastel-blue-strong",
+  },
+  {
+    icon: Activity,
+    titleKey: "features.health.title",
+    descKey: "features.health.desc",
+    badgeKey: "features.health.badge",
+    bgColor: "bg-pastel-green/60",
+    iconColor: "text-pastel-green-strong",
+    badgeColor: "bg-pastel-green/80 text-pastel-green-strong",
+  },
+  {
     icon: Heart,
     titleKey: "features.qualityTime.title",
     descKey: "features.qualityTime.desc",
@@ -22,24 +40,6 @@ const features: Feature[] = [
     bgColor: "bg-pastel-pink/60",
     iconColor: "text-pastel-pink-strong",
     badgeColor: "bg-pastel-pink/80 text-pastel-pink-strong",
-  },
-  {
-    icon: BatteryCharging,
-    titleKey: "features.wellbeing.title",
-    descKey: "features.wellbeing.desc",
-    badgeKey: "features.wellbeing.badge",
-    bgColor: "bg-pastel-green/60",
-    iconColor: "text-pastel-green-strong",
-    badgeColor: "bg-pastel-green/80 text-pastel-green-strong",
-  },
-  {
-    icon: Moon,
-    titleKey: "features.sleep.title",
-    descKey: "features.sleep.desc",
-    badgeKey: "features.sleep.badge",
-    bgColor: "bg-pastel-blue/60",
-    iconColor: "text-pastel-blue-strong",
-    badgeColor: "bg-pastel-blue/80 text-pastel-blue-strong",
   },
   {
     icon: Sparkles,
@@ -112,7 +112,7 @@ const FeaturesSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-button text-pastel-yellow-strong text-sm font-semibold mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-button text-primary text-sm font-semibold mb-4">
             {t("features.badge")}
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-glow">
