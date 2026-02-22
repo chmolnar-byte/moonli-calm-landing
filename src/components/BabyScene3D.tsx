@@ -20,14 +20,14 @@ const GlowingMoon = () => {
           emissiveIntensity={0.6}
           roughness={0.5}
           distort={0.15}
-          speed={2}
-        />
+          speed={2} />
+
       </mesh>
-    </Float>
-  );
+    </Float>);
+
 };
 
-const BabyCloud = ({ position, scale = 1 }: { position: [number, number, number]; scale?: number }) => {
+const BabyCloud = ({ position, scale = 1 }: {position: [number, number, number];scale?: number;}) => {
   return (
     <Float speed={1.5} rotationIntensity={0.1} floatIntensity={1}>
       <group position={position} scale={scale}>
@@ -44,11 +44,11 @@ const BabyCloud = ({ position, scale = 1 }: { position: [number, number, number]
           <meshPhysicalMaterial color="#ffffff" roughness={0.8} opacity={0.7} transparent transmission={0.3} />
         </mesh>
       </group>
-    </Float>
-  );
+    </Float>);
+
 };
 
-const TinyStar = ({ position }: { position: [number, number, number] }) => {
+const TinyStar = ({ position }: {position: [number, number, number];}) => {
   const ref = useRef<THREE.Mesh>(null);
   const speed = useMemo(() => 0.5 + Math.random() * 2, []);
   useFrame((state) => {
@@ -62,8 +62,8 @@ const TinyStar = ({ position }: { position: [number, number, number] }) => {
         <octahedronGeometry args={[0.08, 0]} />
         <meshStandardMaterial color="#fde68a" emissive="#fbbf24" emissiveIntensity={1.5} />
       </mesh>
-    </Float>
-  );
+    </Float>);
+
 };
 
 const BabyScene3D = () => {
@@ -73,32 +73,32 @@ const BabyScene3D = () => {
         background: 'radial-gradient(ellipse at center, hsl(210 50% 92% / 0.2) 0%, transparent 70%)',
         borderRadius: '1.5rem'
       }} />
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 45 }}
-        gl={{ alpha: true, antialias: true }}
-        style={{ background: "transparent" }}
-      >
-        <ambientLight intensity={0.8} />
-        <directionalLight position={[5, 5, 5]} intensity={0.6} color="#fef3c7" />
-        <pointLight position={[-3, 2, 2]} intensity={0.4} color="#fbcfe8" />
+      
 
-        <GlowingMoon />
-        <BabyCloud position={[-2.2, 1.2, -1]} scale={0.9} />
-        <BabyCloud position={[2.5, 0.8, -1.5]} scale={0.7} />
-        <BabyCloud position={[-1.5, -1.3, -0.5]} scale={0.6} />
 
-        <TinyStar position={[-1.8, 1.8, 0]} />
-        <TinyStar position={[2.0, 1.5, -0.5]} />
-        <TinyStar position={[1.2, -1.0, 0.5]} />
-        <TinyStar position={[-2.5, -0.5, -0.3]} />
-        <TinyStar position={[0.5, 2.0, -1]} />
-        <TinyStar position={[-0.8, -1.8, 0.2]} />
-        <TinyStar position={[2.8, -0.2, -0.8]} />
 
-        <Stars radius={8} depth={3} count={80} factor={2} saturation={0} fade speed={1} />
-      </Canvas>
-    </div>
-  );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>);
+
 };
 
 export default BabyScene3D;
