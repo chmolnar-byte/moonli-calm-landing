@@ -67,13 +67,7 @@ const TinyStar = ({ position }: {position: [number, number, number];}) => {
 };
 
 const BabyScene3D = () => {
-  return (
-    <div className="w-full h-[420px] md:h-[500px] relative">
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: 'radial-gradient(ellipse at center, hsl(210 50% 92% / 0.2) 0%, transparent 70%)',
-        borderRadius: '1.5rem'
-      }} />
-      
+  return;
 
 
 
@@ -97,7 +91,13 @@ const BabyScene3D = () => {
 
 
 
-    </div>);
+
+
+
+
+
+
+
 
 };
 
