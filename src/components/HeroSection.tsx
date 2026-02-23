@@ -109,10 +109,13 @@ const HeroSection = () => {
             <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <a
                 href="#"
-                className="flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-foreground text-background font-semibold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200"
+                className="relative flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-foreground text-background font-semibold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200"
               >
                 <Apple className="w-5 h-5" />
                 App Store
+                <span className="absolute -top-2.5 -right-3 px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-[10px] font-bold leading-none shadow-sm">
+                  Coming Soon
+                </span>
               </a>
               <a
                 href="#"

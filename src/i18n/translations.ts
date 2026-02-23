@@ -73,8 +73,10 @@ const translations: Record<Language, Record<string, string>> = {
     "cta.subtitle": "Lade Moonli jetzt herunter und entdecke, wie Elternsein leichter wird.",
 
     "footer.privacy": "Datenschutz",
+    "footer.terms": "AGB",
     "footer.imprint": "Impressum",
     "footer.contact": "Kontakt",
+    "nav.comingSoon": "Coming Soon",
   },
   en: {
     "nav.appStore": "App Store",
@@ -132,8 +134,10 @@ const translations: Record<Language, Record<string, string>> = {
     "cta.subtitle": "Download Moonli now and discover how parenting becomes easier.",
 
     "footer.privacy": "Privacy",
+    "footer.terms": "Terms & Conditions",
     "footer.imprint": "Imprint",
     "footer.contact": "Contact",
+    "nav.comingSoon": "Coming Soon",
   },
   es: {
     "nav.appStore": "App Store",
@@ -191,8 +195,10 @@ const translations: Record<Language, Record<string, string>> = {
     "cta.subtitle": "Descarga Moonli ahora y descubre cómo ser padre se vuelve más fácil.",
 
     "footer.privacy": "Privacidad",
+    "footer.terms": "Términos y Condiciones",
     "footer.imprint": "Aviso Legal",
     "footer.contact": "Contacto",
+    "nav.comingSoon": "Coming Soon",
   },
   fr: {
     "nav.appStore": "App Store",
@@ -250,8 +256,10 @@ const translations: Record<Language, Record<string, string>> = {
     "cta.subtitle": "Télécharge Moonli maintenant et découvre comment être parent devient plus facile.",
 
     "footer.privacy": "Confidentialité",
+    "footer.terms": "CGV",
     "footer.imprint": "Mentions légales",
     "footer.contact": "Contact",
+    "nav.comingSoon": "Coming Soon",
   },
   ru: {
     "nav.appStore": "App Store",
@@ -309,8 +317,10 @@ const translations: Record<Language, Record<string, string>> = {
     "cta.subtitle": "Скачай Moonli сейчас и узнай, как родительство становится легче.",
 
     "footer.privacy": "Конфиденциальность",
+    "footer.terms": "Условия использования",
     "footer.imprint": "Импрессум",
     "footer.contact": "Контакт",
+    "nav.comingSoon": "Coming Soon",
   },
 };
 

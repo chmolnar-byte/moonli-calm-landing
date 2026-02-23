@@ -71,10 +71,13 @@ const Navbar = () => {
 
           <a
             href="#"
-            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
+            className="relative hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
           >
             <Apple className="w-4 h-4" />
             {t("nav.appStore")}
+            <span className="absolute -top-2 -right-2 px-1.5 py-0.5 rounded-full bg-primary text-primary-foreground text-[9px] font-bold leading-none shadow-sm">
+              {t("nav.comingSoon")}
+            </span>
           </a>
           <a
             href="#"

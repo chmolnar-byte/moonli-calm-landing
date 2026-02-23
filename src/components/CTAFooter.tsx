@@ -36,10 +36,13 @@ const CTAFooter = () => {
             <div className="flex flex-wrap gap-4 justify-center">
               <a
                 href="#"
-                className="flex items-center gap-2.5 px-8 py-4 rounded-full bg-foreground text-background font-bold text-lg hover:opacity-90 transition-all shadow-soft-xl hover:scale-105 duration-200"
+                className="relative flex items-center gap-2.5 px-8 py-4 rounded-full bg-foreground text-background font-bold text-lg hover:opacity-90 transition-all shadow-soft-xl hover:scale-105 duration-200"
               >
                 <Apple className="w-6 h-6" />
                 {t("nav.appStore")}
+                <span className="absolute -top-2.5 -right-3 px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-[10px] font-bold leading-none shadow-sm">
+                  {t("nav.comingSoon")}
+                </span>
               </a>
               <a
                 href="#"
@@ -64,6 +67,7 @@ const CTAFooter = () => {
             </div>
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <a href="#" className="hover:text-foreground transition-colors">{t("footer.privacy")}</a>
+              <a href="#" className="hover:text-foreground transition-colors">{t("footer.terms")}</a>
               <a href="#" className="hover:text-foreground transition-colors">{t("footer.imprint")}</a>
               <a href="mailto:hello@moonli.app" className="hover:text-foreground transition-colors">{t("footer.contact")}</a>
             </div>
