@@ -30,6 +30,16 @@ const Navbar = () => {
           <span className="text-lg font-extrabold tracking-tight text-foreground">
             MOONLI
           </span>
+          <span className="hidden md:flex items-center gap-1.5 text-xs text-muted-foreground font-medium ml-2 pl-3 border-l border-border/50">
+            from Austria with love
+            <span className="inline-flex w-4 h-3 rounded-sm overflow-hidden shadow-sm">
+              <span className="flex flex-col w-full h-full">
+                <span className="h-1/3 bg-[hsl(0,80%,55%)]" />
+                <span className="h-1/3 bg-white" />
+                <span className="h-1/3 bg-[hsl(0,80%,55%)]" />
+              </span>
+            </span>
+          </span>
         </div>
 
         {/* Right side */}
