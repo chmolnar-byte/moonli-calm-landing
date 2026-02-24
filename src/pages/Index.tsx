@@ -5,8 +5,7 @@ import StatsCounter from "@/components/StatsCounter";
 import Marquee from "@/components/Marquee";
 import FeaturesSection from "@/components/FeaturesSection";
 import Testimonials from "@/components/Testimonials";
-import PremiumSection from "@/components/PremiumSection";
-import ComingSoonBanner from "@/components/ComingSoonBanner";
+import PricingSection from "@/components/PricingSection";
 import CTAFooter from "@/components/CTAFooter";
 
 const SectionDivider = () => (
@@ -26,10 +25,9 @@ const Index = () => {
       <SectionDivider />
       <FeaturesSection />
       <SectionDivider />
-      <Testimonials />
+      <PricingSection />
       <SectionDivider />
-      <PremiumSection />
-      <ComingSoonBanner />
+      <Testimonials />
       <CTAFooter />
     </div>
   );

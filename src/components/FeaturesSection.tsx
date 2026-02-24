@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Baby, Activity, Heart, Sparkles, BookOpen, Trophy } from "lucide-react";
+import { Baby, Activity, Bell, Battery, Globe, Gamepad2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -33,37 +33,37 @@ const features: Feature[] = [
     badgeColor: "bg-pastel-green/80 text-pastel-green-strong",
   },
   {
-    icon: Heart,
-    titleKey: "features.qualityTime.title",
-    descKey: "features.qualityTime.desc",
-    badgeKey: "features.qualityTime.badge",
-    bgColor: "bg-pastel-pink/60",
-    iconColor: "text-pastel-pink-strong",
-    badgeColor: "bg-pastel-pink/80 text-pastel-pink-strong",
-  },
-  {
-    icon: Sparkles,
-    titleKey: "features.emergency.title",
-    descKey: "features.emergency.desc",
-    badgeKey: "features.emergency.badge",
+    icon: Bell,
+    titleKey: "features.reminders.title",
+    descKey: "features.reminders.desc",
+    badgeKey: "features.reminders.badge",
     bgColor: "bg-pastel-yellow/60",
     iconColor: "text-pastel-yellow-strong",
     badgeColor: "bg-pastel-yellow/80 text-pastel-yellow-strong",
   },
   {
-    icon: BookOpen,
-    titleKey: "features.stories.title",
-    descKey: "features.stories.desc",
-    badgeKey: "features.stories.badge",
+    icon: Battery,
+    titleKey: "features.battery.title",
+    descKey: "features.battery.desc",
+    badgeKey: "features.battery.badge",
+    bgColor: "bg-pastel-pink/60",
+    iconColor: "text-pastel-pink-strong",
+    badgeColor: "bg-pastel-pink/80 text-pastel-pink-strong",
+  },
+  {
+    icon: Globe,
+    titleKey: "features.amClub.title",
+    descKey: "features.amClub.desc",
+    badgeKey: "features.amClub.badge",
     bgColor: "bg-pastel-purple/60",
     iconColor: "text-pastel-purple-strong",
     badgeColor: "bg-pastel-purple/80 text-pastel-purple-strong",
   },
   {
-    icon: Trophy,
-    titleKey: "features.gamification.title",
-    descKey: "features.gamification.desc",
-    badgeKey: "features.gamification.badge",
+    icon: Gamepad2,
+    titleKey: "features.emergency.title",
+    descKey: "features.emergency.desc",
+    badgeKey: "features.emergency.badge",
     bgColor: "bg-pastel-orange/60",
     iconColor: "text-pastel-orange-strong",
     badgeColor: "bg-pastel-orange/80 text-pastel-orange-strong",
@@ -128,6 +128,16 @@ const FeaturesSection = () => {
             <FeatureCard key={feature.titleKey} feature={feature} index={i} />
           ))}
         </div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="text-center text-sm text-muted-foreground mt-8"
+        >
+          {t("features.adNote")}
+        </motion.p>
       </div>
     </section>
   );
