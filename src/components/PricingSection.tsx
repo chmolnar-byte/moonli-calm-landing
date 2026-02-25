@@ -27,7 +27,7 @@ const PricingSection = () => {
     { key: "pricing.compare.r2", free: "check", premium: "check" },
     { key: "pricing.compare.r3", free: "check", premium: "check" },
     { key: "pricing.compare.r4", free: "check", premium: "check" },
-    { key: "pricing.compare.r5", free: "14days", premium: "check" },
+    { key: "pricing.compare.r5", free: "adSupported", premium: "check" },
     { key: "pricing.compare.r6", free: "no", premium: "check" },
     { key: "pricing.compare.r7", free: "no", premium: "check" },
     { key: "pricing.compare.r8", free: "no", premium: "check" },
@@ -36,14 +36,17 @@ const PricingSection = () => {
     { key: "pricing.compare.r11", free: "no", premium: "soon" },
   ];
 
-  const renderCell = (value: string) => {
+  const renderCell = (value: string, rowKey?: string) => {
     switch (value) {
       case "check":
+        if (rowKey === "pricing.compare.r5") {
+          return <span className="text-xs font-medium text-pastel-green-strong">{t("pricing.compare.premium.r5")}</span>;
+        }
         return <Check className="w-5 h-5 text-pastel-green-strong mx-auto" />;
       case "no":
         return <X className="w-5 h-5 text-muted-foreground/40 mx-auto" />;
-      case "14days":
-        return <span className="text-xs font-medium text-pastel-yellow-strong">{t("pricing.compare.14days")}</span>;
+      case "adSupported":
+        return <span className="text-xs font-medium text-muted-foreground">{t("pricing.compare.free.r5")}</span>;
       case "basis":
         return <span className="text-xs font-medium text-muted-foreground">{t("pricing.compare.basis")}</span>;
       case "soon":
@@ -220,9 +223,14 @@ const PricingSection = () => {
                 <tbody>
                   {comparisonRows.map((row, i) => (
                     <tr key={i} className={i % 2 === 0 ? "bg-background/30" : ""}>
-                      <td className="p-4 font-medium">{t(row.key)}</td>
-                      <td className="p-4 text-center">{renderCell(row.free)}</td>
-                      <td className="p-4 text-center">{renderCell(row.premium)}</td>
+                      <td className="p-4 font-medium">
+                        {t(row.key)}
+                        {row.key === "pricing.compare.r2" && (
+                          <span className="block text-xs text-pastel-green-strong font-semibold">{t("pricing.compare.r2.note")}</span>
+                        )}
+                      </td>
+                      <td className="p-4 text-center">{renderCell(row.free, row.key)}</td>
+                      <td className="p-4 text-center">{renderCell(row.premium, row.key)}</td>
                     </tr>
                   ))}
                 </tbody>
