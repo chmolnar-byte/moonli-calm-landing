@@ -9,7 +9,7 @@ const CTAFooter = () => {
   return (
     <>
       {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-pastel-green/25 blur-[100px]" />
           <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-pastel-peach/20 blur-[80px]" />
@@ -29,14 +29,14 @@ const CTAFooter = () => {
             <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-glow">
               {t("cta.title")}
             </h2>
-            <p className="text-muted-foreground mb-8 text-lg">
+            <p className="text-muted-foreground mb-8 text-base sm:text-lg">
               {t("cta.subtitle")}
             </p>
 
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
               <a
                 href="#"
-                className="relative flex items-center gap-2.5 px-8 py-4 rounded-full bg-foreground text-background font-bold text-lg hover:opacity-90 transition-all shadow-soft-xl hover:scale-105 duration-200"
+                className="relative flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-foreground text-background font-bold text-base sm:text-lg hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Apple className="w-6 h-6" />
                 {t("nav.appStore")}
@@ -46,7 +46,7 @@ const CTAFooter = () => {
               </a>
               <a
                 href="#"
-                className="flex items-center gap-2.5 px-8 py-4 rounded-full bg-primary text-primary-foreground font-bold text-lg hover:opacity-90 transition-all shadow-soft-xl hover:scale-105 duration-200"
+                className="flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-bold text-base sm:text-lg hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Play className="w-6 h-6" />
                 {t("nav.googlePlay")}
@@ -69,7 +69,7 @@ const CTAFooter = () => {
               <a href="#" className="hover:text-foreground transition-colors">{t("footer.privacy")}</a>
               <a href="#" className="hover:text-foreground transition-colors">{t("footer.terms")}</a>
               <a href="#" className="hover:text-foreground transition-colors">{t("footer.imprint")}</a>
-              <a href="mailto:hello@moonli.app" className="hover:text-foreground transition-colors">{t("footer.contact")}</a>
+              <a href="mailto:hello@moonli.net" className="hover:text-foreground transition-colors">{t("footer.contact")}</a>
             </div>
           </div>
         </div>

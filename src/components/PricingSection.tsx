@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Check, X, Crown, Rocket, Users, FileText } from "lucide-react";
+import { Check, Crown, Rocket, Users, FileText, Clapperboard, Feather } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const PricingSection = () => {
@@ -20,44 +20,12 @@ const PricingSection = () => {
     "pricing.premium.f3",
     "pricing.premium.f4",
     "pricing.premium.f5",
+    "pricing.premium.f6",
+    "pricing.premium.f7",
   ];
-
-  const comparisonRows = [
-    { key: "pricing.compare.r1", free: "check", premium: "check" },
-    { key: "pricing.compare.r2", free: "check", premium: "check" },
-    { key: "pricing.compare.r3", free: "check", premium: "check" },
-    { key: "pricing.compare.r4", free: "check", premium: "check" },
-    { key: "pricing.compare.r5", free: "adSupported", premium: "check" },
-    { key: "pricing.compare.r6", free: "no", premium: "check" },
-    { key: "pricing.compare.r7", free: "no", premium: "check" },
-    { key: "pricing.compare.r8", free: "no", premium: "check" },
-    { key: "pricing.compare.r9", free: "basis", premium: "check" },
-    { key: "pricing.compare.r10", free: "no", premium: "soon" },
-    { key: "pricing.compare.r11", free: "no", premium: "soon" },
-  ];
-
-  const renderCell = (value: string, rowKey?: string) => {
-    switch (value) {
-      case "check":
-        if (rowKey === "pricing.compare.r5") {
-          return <span className="text-xs font-medium text-pastel-green-strong">{t("pricing.compare.premium.r5")}</span>;
-        }
-        return <Check className="w-5 h-5 text-pastel-green-strong mx-auto" />;
-      case "no":
-        return <X className="w-5 h-5 text-muted-foreground/40 mx-auto" />;
-      case "adSupported":
-        return <span className="text-xs font-medium text-muted-foreground">{t("pricing.compare.free.r5")}</span>;
-      case "basis":
-        return <span className="text-xs font-medium text-muted-foreground">{t("pricing.compare.basis")}</span>;
-      case "soon":
-        return <span className="text-xs font-medium text-pastel-peach-strong">🚀 {t("pricing.compare.soon")}</span>;
-      default:
-        return value;
-    }
-  };
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-20 sm:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-pastel-green/15 via-transparent to-pastel-lavender/10 pointer-events-none" />
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-0 w-[400px] h-[400px] rounded-full bg-pastel-yellow/15 blur-[100px]" />
@@ -85,14 +53,14 @@ const PricingSection = () => {
         </motion.div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto mb-16 sm:mb-20">
           {/* Free Plan */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="glass-card-premium p-8 relative"
+            className="glass-card-premium p-6 sm:p-8 relative"
           >
             <div className="flex items-center gap-3 mb-2">
               <div className="w-10 h-10 rounded-xl bg-pastel-green/60 flex items-center justify-center">
@@ -125,7 +93,7 @@ const PricingSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="glass-card-premium p-8 relative overflow-hidden"
+            className="glass-card-premium p-6 sm:p-8 relative overflow-hidden"
           >
             {/* Premium highlight border */}
             <div className="absolute inset-0 rounded-[1.5rem] border-2 border-pastel-yellow-strong/30 pointer-events-none" />
@@ -164,7 +132,7 @@ const PricingSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="glass-card-premium p-8 md:p-10 max-w-4xl mx-auto mb-20 relative overflow-hidden"
+          className="glass-card-premium p-6 sm:p-8 md:p-10 max-w-4xl mx-auto mb-16 sm:mb-20 relative overflow-hidden"
         >
           <div className="absolute -top-20 -right-20 w-[200px] h-[200px] rounded-full bg-pastel-peach/30 blur-[60px] pointer-events-none" />
           <div className="relative z-10">
@@ -172,7 +140,7 @@ const PricingSection = () => {
               <Rocket className="w-6 h-6 text-pastel-peach-strong" />
               <h3 className="text-xl font-extrabold">{t("pricing.comingSoon.title")}</h3>
             </div>
-            <p className="text-sm text-muted-foreground mb-6">{t("pricing.comingSoon.subtitle")}</p>
+            <p className="text-sm text-muted-foreground mb-6 max-w-2xl mx-auto">{t("pricing.comingSoon.subtitle")}</p>
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="flex items-start gap-4 group">
                 <div className="w-10 h-10 rounded-xl bg-pastel-blue/60 flex items-center justify-center shrink-0">
@@ -192,52 +160,28 @@ const PricingSection = () => {
                   <p className="text-xs text-muted-foreground leading-relaxed">{t("pricing.comingSoon.report.desc")}</p>
                 </div>
               </div>
+              <div className="flex items-start gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-pastel-green/60 flex items-center justify-center shrink-0">
+                  <Clapperboard className="w-5 h-5 text-pastel-green-strong" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm mb-1">{t("pricing.comingSoon.clips.title")}</h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{t("pricing.comingSoon.clips.desc")}</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-pastel-pink/60 flex items-center justify-center shrink-0">
+                  <Feather className="w-5 h-5 text-pastel-pink-strong" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-sm mb-1">{t("pricing.comingSoon.whisper.title")}</h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed">{t("pricing.comingSoon.whisper.desc")}</p>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Comparison Table */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="max-w-3xl mx-auto"
-        >
-          <h3 className="text-xl font-extrabold text-center mb-8">📊 {t("pricing.compare.title")}</h3>
-          <div className="glass-card-premium overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-border/50">
-                    <th className="text-left p-4 font-semibold">Feature</th>
-                    <th className="p-4 font-semibold text-center">Free</th>
-                    <th className="p-4 font-semibold text-center">
-                      <span className="inline-flex items-center gap-1">
-                        <Crown className="w-4 h-4 text-pastel-yellow-strong" />
-                        Premium
-                      </span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparisonRows.map((row, i) => (
-                    <tr key={i} className={i % 2 === 0 ? "bg-background/30" : ""}>
-                      <td className="p-4 font-medium">
-                        {t(row.key)}
-                        {row.key === "pricing.compare.r2" && (
-                          <span className="block text-xs text-pastel-green-strong font-semibold">{t("pricing.compare.r2.note")}</span>
-                        )}
-                      </td>
-                      <td className="p-4 text-center">{renderCell(row.free, row.key)}</td>
-                      <td className="p-4 text-center">{renderCell(row.premium, row.key)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

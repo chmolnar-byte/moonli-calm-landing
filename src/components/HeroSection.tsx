@@ -111,14 +111,14 @@ const HeroSection = () => {
               <span className="text-gradient-animated">{t("hero.headline2")}</span>
             </h1>
 
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
               {t("hero.subheadline")}
             </p>
 
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center lg:justify-start">
               <a
                 href="#"
-                className="relative flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-foreground text-background font-semibold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200"
+                className="relative flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-foreground text-background font-semibold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Apple className="w-5 h-5" />
                 App Store
@@ -128,7 +128,7 @@ const HeroSection = () => {
               </a>
               <a
                 href="#"
-                className="flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200"
+                className="flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Play className="w-5 h-5" />
                 Google Play

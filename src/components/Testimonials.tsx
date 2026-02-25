@@ -12,7 +12,7 @@ const Testimonials = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-24 relative">
+    <section className="py-20 relative">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-pastel-peach/20 blur-[100px]" />
       </div>

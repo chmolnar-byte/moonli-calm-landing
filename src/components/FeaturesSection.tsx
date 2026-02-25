@@ -98,7 +98,7 @@ const FeatureCard = ({ feature, index }: { feature: Feature; index: number }) =>
 const FeaturesSection = () => {
   const { t } = useLanguage();
   return (
-    <section className="py-24 relative">
+    <section className="py-20 relative">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 right-1/4 w-[400px] h-[400px] rounded-full bg-pastel-lavender/25 blur-[100px]" />
         <div className="absolute bottom-0 left-1/4 w-[300px] h-[300px] rounded-full bg-pastel-peach/20 blur-[80px]" />

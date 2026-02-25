@@ -6,7 +6,7 @@ const StatsCounter = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-16 relative">
+    <section className="pt-10 pb-16 sm:py-16 relative">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
