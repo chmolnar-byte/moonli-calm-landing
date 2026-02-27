@@ -68,8 +68,8 @@ const CTAFooter = () => {
             <div className="flex items-center gap-6 text-sm text-muted-foreground">
               <a href="/cookies" className="hover:text-foreground transition-colors">{t("footer.cookies")}</a>
               <a href="/terms" className="hover:text-foreground transition-colors">{t("footer.terms")}</a>
-              <a href="#" className="hover:text-foreground transition-colors">{t("footer.privacy")}</a>
-              <a href="#" className="hover:text-foreground transition-colors">{t("footer.imprint")}</a>
+              <a href="/privacy" className="hover:text-foreground transition-colors">{t("footer.privacy")}</a>
+              <a href="/imprint" className="hover:text-foreground transition-colors">{t("footer.imprint")}</a>
               <a href="mailto:hello@moonli.net" className="hover:text-foreground transition-colors">{t("footer.contact")}</a>
             </div>
           </div>

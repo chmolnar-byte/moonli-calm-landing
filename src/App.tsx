@@ -8,6 +8,8 @@ import Index from "./pages/Index";
 import EmailConfirmed from "./pages/EmailConfirmed";
 import CookiePolicy from "./pages/CookiePolicy";
 import Terms from "./pages/Terms";
+import Imprint from "./pages/Imprint";
+import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 import CookieBanner from "./components/CookieBanner";
 
@@ -26,6 +28,8 @@ const App = () => (
             <Route path="/email-confirmed" element={<EmailConfirmed />} />
             <Route path="/cookies" element={<CookiePolicy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/imprint" element={<Imprint />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

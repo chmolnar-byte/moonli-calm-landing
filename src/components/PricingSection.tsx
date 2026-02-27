@@ -27,7 +27,6 @@ const PricingSection = () => {
     "pricing.premium.f4",
     "pricing.premium.f5",
     "pricing.premium.f6",
-    "pricing.premium.f7",
     "pricing.premium.f8",
     "pricing.premium.f9",
     "pricing.premium.f10",

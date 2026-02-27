@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import CTAFooter from "@/components/CTAFooter";
 
-const Terms = () => {
+const Imprint = () => {
   const { t } = useLanguage();
 
   return (
@@ -18,65 +18,67 @@ const Terms = () => {
           className="glass-card-premium max-w-3xl w-full p-6 sm:p-10 text-left"
         >
           <h1 className="text-2xl sm:text-3xl font-extrabold mb-4 text-glow">
-            {t("terms.title")}
+            {t("imprint.title")}
           </h1>
           <p className="text-sm sm:text-base text-muted-foreground mb-6">
-            {t("terms.intro")}
+            {t("imprint.subtitle")}
           </p>
 
           <div className="space-y-5 text-sm sm:text-base text-muted-foreground">
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.scope.title")}
+                {t("imprint.operatorTitle")}
               </h2>
-              <p>{t("terms.scope.text")}</p>
+              <p>{t("imprint.operatorName")}</p>
+              <p>{t("imprint.operatorStreet")}</p>
+              <p>
+                {t("imprint.operatorCity")}, {t("imprint.operatorCountry")}
+              </p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.medical.title")}
+                {t("imprint.contactTitle")}
               </h2>
-              <p className="mb-2">{t("terms.medical.text1")}</p>
-              <p className="mb-2">{t("terms.medical.text2")}</p>
-              <p>{t("terms.medical.text3")}</p>
+              <p>
+                {t("imprint.contactEmailLabel")}:{" "}
+                <a
+                  href={`mailto:${t("imprint.contactEmailValue")}`}
+                  className="text-primary hover:underline"
+                >
+                  {t("imprint.contactEmailValue")}
+                </a>
+              </p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.content.title")}
+                {t("imprint.responsibleTitle")}
               </h2>
-              <p className="mb-2">{t("terms.content.text1")}</p>
-              <p className="mb-2">{t("terms.content.text2")}</p>
-              <p>{t("terms.content.text3")}</p>
+              <p>{t("imprint.responsibleText")}</p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.ai.title")}
+                {t("imprint.disclaimerTitle")}
               </h2>
-              <p>{t("terms.ai.text")}</p>
+              <p className="mb-2">{t("imprint.disclaimerText1")}</p>
+              <p>{t("imprint.disclaimerText2")}</p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.liability.title")}
+                {t("imprint.copyrightTitle")}
               </h2>
-              <p className="mb-2">{t("terms.liability.text1")}</p>
-              <p>{t("terms.liability.text2")}</p>
+              <p>{t("imprint.copyrightText")}</p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.ip.title")}
+                {t("imprint.euTitle")}
               </h2>
-              <p>{t("terms.ip.text")}</p>
-            </section>
-
-            <section>
-              <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.final.title")}
-              </h2>
-              <p>{t("terms.final.text")}</p>
+              <p className="mb-2">{t("imprint.euText1")}</p>
+              <p>{t("imprint.euText2")}</p>
             </section>
           </div>
         </motion.div>
@@ -87,5 +89,5 @@ const Terms = () => {
   );
 };
 
-export default Terms;
+export default Imprint;
 
