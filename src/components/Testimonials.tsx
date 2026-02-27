@@ -6,6 +6,9 @@ const testimonials = [
   { nameKey: "testimonials.1.name", quoteKey: "testimonials.1.quote", initials: "SK", stars: 5, bg: "bg-pastel-pink/60", color: "text-pastel-pink-strong" },
   { nameKey: "testimonials.2.name", quoteKey: "testimonials.2.quote", initials: "MR", stars: 5, bg: "bg-pastel-blue/60", color: "text-pastel-blue-strong" },
   { nameKey: "testimonials.3.name", quoteKey: "testimonials.3.quote", initials: "LW", stars: 5, bg: "bg-pastel-green/60", color: "text-pastel-green-strong" },
+  { nameKey: "testimonials.4.name", quoteKey: "testimonials.4.quote", initials: "JT", stars: 5, bg: "bg-pastel-purple/60", color: "text-pastel-purple-strong" },
+  { nameKey: "testimonials.5.name", quoteKey: "testimonials.5.quote", initials: "AM", stars: 5, bg: "bg-pastel-yellow/60", color: "text-pastel-yellow-strong" },
+  { nameKey: "testimonials.6.name", quoteKey: "testimonials.6.quote", initials: "FB", stars: 5, bg: "bg-pastel-green/40", color: "text-pastel-green-strong" },
 ];
 
 const Testimonials = () => {
@@ -27,9 +30,12 @@ const Testimonials = () => {
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-button text-primary text-sm font-semibold mb-4">
             {t("testimonials.badge")}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-glow">
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-3 text-glow">
             {t("testimonials.title")}
           </h2>
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
+            {t("testimonials.trust")}
+          </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">

@@ -1,5 +1,17 @@
 import { motion } from "framer-motion";
-import { Baby, Activity, Bell, Battery, Globe, Gamepad2 } from "lucide-react";
+import {
+  Baby,
+  Activity,
+  Bell,
+  Battery,
+  Globe,
+  Gamepad2,
+  HeartHandshake,
+  BookOpen,
+  MoonStar,
+  Mic,
+  Music2,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
@@ -68,6 +80,51 @@ const features: Feature[] = [
     iconColor: "text-pastel-orange-strong",
     badgeColor: "bg-pastel-orange/80 text-pastel-orange-strong",
   },
+  {
+    icon: HeartHandshake,
+    titleKey: "features.qualityTime.title",
+    descKey: "features.qualityTime.desc",
+    badgeKey: "features.qualityTime.badge",
+    bgColor: "bg-pastel-red/60",
+    iconColor: "text-pastel-red-strong",
+    badgeColor: "bg-pastel-red/80 text-pastel-red-strong",
+  },
+  {
+    icon: BookOpen,
+    titleKey: "features.library.title",
+    descKey: "features.library.desc",
+    badgeKey: "features.library.badge",
+    bgColor: "bg-pastel-brown/60",
+    iconColor: "text-pastel-brown-strong",
+    badgeColor: "bg-pastel-brown/80 text-pastel-brown-strong",
+  },
+  {
+    icon: MoonStar,
+    titleKey: "features.bedtime.title",
+    descKey: "features.bedtime.desc",
+    badgeKey: "features.bedtime.badge",
+    bgColor: "bg-pastel-indigo/60",
+    iconColor: "text-pastel-indigo-strong",
+    badgeColor: "bg-pastel-indigo/80 text-pastel-indigo-strong",
+  },
+  {
+    icon: Mic,
+    titleKey: "features.voice.title",
+    descKey: "features.voice.desc",
+    badgeKey: "features.voice.badge",
+    bgColor: "bg-pastel-teal/60",
+    iconColor: "text-pastel-teal-strong",
+    badgeColor: "bg-pastel-teal/80 text-pastel-teal-strong",
+  },
+  {
+    icon: Music2,
+    titleKey: "features.sounds.title",
+    descKey: "features.sounds.desc",
+    badgeKey: "features.sounds.badge",
+    bgColor: "bg-pastel-yellow/40",
+    iconColor: "text-pastel-yellow-strong",
+    badgeColor: "bg-pastel-yellow/70 text-pastel-yellow-strong",
+  },
 ];
 
 const FeatureCard = ({ feature, index }: { feature: Feature; index: number }) => {
@@ -115,12 +172,9 @@ const FeaturesSection = () => {
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-button text-primary text-sm font-semibold mb-4">
             {t("features.badge")}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-glow">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-glow">
             {t("features.title")}
           </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto">
-            {t("features.subtitle")}
-          </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

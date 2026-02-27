@@ -3,6 +3,7 @@ import logo from "@/assets/logo.png";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { languageFlags, languageLabels, type Language } from "@/i18n/translations";
 import { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const languages: Language[] = ["de", "en", "es", "fr", "ru"];
 
@@ -25,7 +26,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 glass">
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <div className="flex items-center gap-2.5">
+        <Link to="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
           <img src={logo} alt="Moonli Logo" className="w-9 h-9 rounded-full object-cover shadow-soft" />
           <span className="text-lg font-extrabold tracking-tight text-foreground">
             MOONLI
@@ -40,7 +41,7 @@ const Navbar = () => {
               </span>
             </span>
           </span>
-        </div>
+        </Link>
 
         {/* Right side */}
         <div className="flex items-center gap-2">

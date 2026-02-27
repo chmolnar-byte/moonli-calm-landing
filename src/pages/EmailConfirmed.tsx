@@ -28,8 +28,17 @@ const EmailConfirmed = () => {
             <CheckCircle className="w-16 h-16 text-pastel-green-strong mx-auto mb-4" />
           </motion.div>
 
-          <h1 className="text-2xl font-extrabold mb-4">{t("emailConfirmed.title")}</h1>
-          <p className="text-muted-foreground leading-relaxed">{t("emailConfirmed.text")}</p>
+          <h1 className="text-2xl sm:text-3xl font-extrabold mb-4">{t("emailConfirmed.title")}</h1>
+          <p className="text-muted-foreground leading-relaxed mb-6">
+            {t("emailConfirmed.text")}
+          </p>
+
+          <a
+            href="com.christian.moonli://login-callback"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm sm:text-base shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] transition-all duration-200"
+          >
+            {t("emailConfirmed.backToApp")}
+          </a>
         </div>
       </motion.div>
     </div>

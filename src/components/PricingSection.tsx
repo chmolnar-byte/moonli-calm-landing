@@ -12,6 +12,12 @@ const PricingSection = () => {
     "pricing.free.f4",
     "pricing.free.f5",
     "pricing.free.f6",
+    "pricing.free.f7",
+    "pricing.free.f8",
+    "pricing.free.f9",
+    "pricing.free.f10",
+    "pricing.free.f11",
+    "pricing.free.f12",
   ];
 
   const premiumFeatures = [
@@ -22,6 +28,10 @@ const PricingSection = () => {
     "pricing.premium.f5",
     "pricing.premium.f6",
     "pricing.premium.f7",
+    "pricing.premium.f8",
+    "pricing.premium.f9",
+    "pricing.premium.f10",
+    "pricing.premium.f11",
   ];
 
   return (
@@ -71,11 +81,16 @@ const PricingSection = () => {
                 <p className="text-sm text-muted-foreground">{t("pricing.free.tagline")}</p>
               </div>
             </div>
-            <div className="flex items-baseline gap-1 mb-4 mt-4">
+            <div className="flex items-baseline gap-1 mb-3 mt-4">
               <span className="text-4xl font-extrabold">0 €</span>
               <span className="text-muted-foreground text-sm">/ {t("pricing.forever")}</span>
             </div>
-            <p className="text-sm text-muted-foreground mb-6 leading-relaxed">{t("pricing.free.desc")}</p>
+            <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
+              {t("pricing.free.desc")}
+            </p>
+            <p className="text-sm font-semibold text-foreground mb-5">
+              {t("pricing.free.adNote")}
+            </p>
             <div className="space-y-3">
               {freeFeatures.map((key) => (
                 <div key={key} className="flex items-start gap-3">
@@ -84,7 +99,6 @@ const PricingSection = () => {
                 </div>
               ))}
             </div>
-            <p className="text-xs text-muted-foreground mt-6 italic">{t("pricing.free.adNote")}</p>
           </motion.div>
 
           {/* Premium Plan */}
@@ -109,9 +123,11 @@ const PricingSection = () => {
                   <p className="text-sm text-muted-foreground">{t("pricing.premium.tagline")}</p>
                 </div>
               </div>
-              <div className="flex items-baseline gap-1 mb-4 mt-4">
-                <span className="text-4xl font-extrabold">5 €</span>
-                <span className="text-muted-foreground text-sm">/ {t("pricing.month")}</span>
+              <div className="mb-4 mt-4">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-extrabold">5 €</span>
+                  <span className="text-muted-foreground text-sm">/ {t("pricing.month")}*</span>
+                </div>
               </div>
               <p className="text-sm text-muted-foreground mb-6 leading-relaxed">{t("pricing.premium.desc")}</p>
               <div className="space-y-3">
@@ -122,6 +138,9 @@ const PricingSection = () => {
                   </div>
                 ))}
               </div>
+              <p className="text-xs text-muted-foreground mt-6">
+                {t("pricing.premium.priceNote")}
+              </p>
             </div>
           </motion.div>
         </div>
@@ -132,15 +151,19 @@ const PricingSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="glass-card-premium p-6 sm:p-8 md:p-10 max-w-4xl mx-auto mb-16 sm:mb-20 relative overflow-hidden"
+          className="glass-card-premium p-6 sm:p-8 md:p-10 max-w-4xl mx-auto mb-16 sm:mb-20 relative overflow-hidden group"
         >
           <div className="absolute -top-20 -right-20 w-[200px] h-[200px] rounded-full bg-pastel-peach/30 blur-[60px] pointer-events-none" />
           <div className="relative z-10">
-            <div className="flex items-center gap-3 mb-6">
-              <Rocket className="w-6 h-6 text-pastel-peach-strong" />
-              <h3 className="text-xl font-extrabold">{t("pricing.comingSoon.title")}</h3>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+              <div className="flex items-center gap-3">
+                <Rocket className="w-6 h-6 text-pastel-peach-strong" />
+                <h3 className="text-xl font-extrabold">{t("pricing.comingSoon.title")}</h3>
+              </div>
             </div>
-            <p className="text-sm text-muted-foreground mb-6 max-w-2xl mx-auto">{t("pricing.comingSoon.subtitle")}</p>
+            <p className="text-sm text-muted-foreground mb-6 max-w-2xl mx-auto">
+              {t("pricing.comingSoon.subtitle")}
+            </p>
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="flex items-start gap-4 group">
                 <div className="w-10 h-10 rounded-xl bg-pastel-blue/60 flex items-center justify-center shrink-0">
@@ -148,7 +171,9 @@ const PricingSection = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-sm mb-1">{t("pricing.comingSoon.coparenting.title")}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{t("pricing.comingSoon.coparenting.desc")}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {t("pricing.comingSoon.coparenting.desc")}
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-4 group">
@@ -157,7 +182,9 @@ const PricingSection = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-sm mb-1">{t("pricing.comingSoon.report.title")}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{t("pricing.comingSoon.report.desc")}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {t("pricing.comingSoon.report.desc")}
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-4 group">
@@ -166,7 +193,9 @@ const PricingSection = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-sm mb-1">{t("pricing.comingSoon.clips.title")}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{t("pricing.comingSoon.clips.desc")}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {t("pricing.comingSoon.clips.desc")}
+                  </p>
                 </div>
               </div>
               <div className="flex items-start gap-4 group">
@@ -175,7 +204,9 @@ const PricingSection = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-sm mb-1">{t("pricing.comingSoon.whisper.title")}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{t("pricing.comingSoon.whisper.desc")}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {t("pricing.comingSoon.whisper.desc")}
+                  </p>
                 </div>
               </div>
             </div>
