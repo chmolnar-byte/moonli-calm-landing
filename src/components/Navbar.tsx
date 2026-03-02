@@ -55,7 +55,7 @@ const Navbar = () => {
               <Globe className="w-3.5 h-3.5 text-muted-foreground" />
             </button>
             {open && (
-              <div className="absolute right-0 top-full mt-2 py-1 rounded-2xl glass-card-premium shadow-soft-xl min-w-[140px] z-50">
+              <div className="absolute right-0 top-full mt-2 py-1 rounded-2xl bg-white shadow-soft-xl min-w-[140px] z-50 border border-border/40">
                 {languages.map((lang) => (
                   <button
                     key={lang}

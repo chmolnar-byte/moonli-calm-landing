@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Crown, Rocket, Users, FileText, Clapperboard, Feather } from "lucide-react";
+import { Check, Crown, Rocket, Users, FileText, Clapperboard, Feather, ChevronDown, ChevronUp } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 const PricingSection = () => {
   const { t } = useLanguage();
+  const [showFreeFeatures, setShowFreeFeatures] = useState(false);
+  const [showPremiumFeatures, setShowPremiumFeatures] = useState(false);
 
   const freeFeatures = [
     "pricing.free.f1",
@@ -18,6 +21,7 @@ const PricingSection = () => {
     "pricing.free.f10",
     "pricing.free.f11",
     "pricing.free.f12",
+    "pricing.free.f13",
   ];
 
   const premiumFeatures = [
@@ -27,7 +31,6 @@ const PricingSection = () => {
     "pricing.premium.f4",
     "pricing.premium.f5",
     "pricing.premium.f6",
-    "pricing.premium.f8",
     "pricing.premium.f9",
     "pricing.premium.f10",
     "pricing.premium.f11",
@@ -87,17 +90,27 @@ const PricingSection = () => {
             <p className="text-sm text-muted-foreground mb-3 leading-relaxed">
               {t("pricing.free.desc")}
             </p>
-            <p className="text-sm font-semibold text-foreground mb-5">
+            <p className="text-sm font-semibold text-foreground mb-3">
               {t("pricing.free.adNote")}
             </p>
-            <div className="space-y-3">
-              {freeFeatures.map((key) => (
-                <div key={key} className="flex items-start gap-3">
-                  <Check className="w-4 h-4 text-pastel-green-strong shrink-0 mt-0.5" />
-                  <span className="text-sm">{t(key)}</span>
-                </div>
-              ))}
-            </div>
+            <button
+              type="button"
+              onClick={() => setShowFreeFeatures((prev) => !prev)}
+              className="mb-4 inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary/5 text-xs font-semibold text-primary hover:bg-primary/10 transition-colors"
+            >
+              <span>{showFreeFeatures ? t("pricing.free.hideFeatures") : t("pricing.free.showFeatures")}</span>
+              {showFreeFeatures ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+            </button>
+            {showFreeFeatures && (
+              <div className="space-y-3">
+                {freeFeatures.map((key) => (
+                  <div key={key} className="flex items-start gap-3">
+                    <Check className="w-4 h-4 text-pastel-green-strong shrink-0 mt-0.5" />
+                    <span className="text-sm">{t(key)}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </motion.div>
 
           {/* Premium Plan */}
@@ -128,15 +141,25 @@ const PricingSection = () => {
                   <span className="text-muted-foreground text-sm">/ {t("pricing.month")}*</span>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground mb-6 leading-relaxed">{t("pricing.premium.desc")}</p>
-              <div className="space-y-3">
-                {premiumFeatures.map((key) => (
-                  <div key={key} className="flex items-start gap-3">
-                    <span className="text-sm shrink-0 mt-0.5">✨</span>
-                    <span className="text-sm">{t(key)}</span>
-                  </div>
-                ))}
-              </div>
+              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{t("pricing.premium.desc")}</p>
+              <button
+                type="button"
+                onClick={() => setShowPremiumFeatures((prev) => !prev)}
+                className="mb-4 inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary/5 text-xs font-semibold text-primary hover:bg-primary/10 transition-colors"
+              >
+                <span>{showPremiumFeatures ? t("pricing.premium.hideFeatures") : t("pricing.premium.showFeatures")}</span>
+                {showPremiumFeatures ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+              </button>
+              {showPremiumFeatures && (
+                <div className="space-y-3">
+                  {premiumFeatures.map((key) => (
+                    <div key={key} className="flex items-start gap-3">
+                      <span className="text-sm shrink-0 mt-0.5">✨</span>
+                      <span className="text-sm">{t(key)}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
               <p className="text-xs text-muted-foreground mt-6">
                 {t("pricing.premium.priceNote")}
               </p>
@@ -208,6 +231,46 @@ const PricingSection = () => {
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* About the creator */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="glass-card-premium p-6 sm:p-8 md:p-10 max-w-4xl mx-auto mb-8"
+        >
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+            <div className="flex-1 text-left">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 text-primary text-xs font-semibold mb-3">
+                👨‍💻 Founder Story
+              </span>
+              <h3 className="text-xl sm:text-2xl font-extrabold mb-3">
+                {t("pricing.about.title")}
+              </h3>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                {t("pricing.about.text")}
+              </p>
+            </div>
+            <div className="flex md:flex-col justify-center items-center gap-4 shrink-0">
+              <img
+                src="/capybara-tracking.png"
+                alt="Capybara mit Sanduhr"
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-soft-md"
+              />
+              <img
+                src="/capybara-reading.png"
+                alt="Capybara beim Lesen"
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-soft-md"
+              />
+              <img
+                src="/capybara-sleep.png"
+                alt="Capybara beim Kuscheln"
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-soft-md"
+              />
             </div>
           </div>
         </motion.div>

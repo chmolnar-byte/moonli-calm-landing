@@ -11,6 +11,7 @@ import {
   MoonStar,
   Mic,
   Music2,
+  Sparkles,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -124,6 +125,15 @@ const features: Feature[] = [
     bgColor: "bg-pastel-yellow/40",
     iconColor: "text-pastel-yellow-strong",
     badgeColor: "bg-pastel-yellow/70 text-pastel-yellow-strong",
+  },
+  {
+    icon: Sparkles,
+    titleKey: "features.gamification.title",
+    descKey: "features.gamification.desc",
+    badgeKey: "features.gamification.badge",
+    bgColor: "bg-pastel-purple/50",
+    iconColor: "text-pastel-purple-strong",
+    badgeColor: "bg-pastel-purple/80 text-pastel-purple-strong",
   },
 ];
 

@@ -2,9 +2,13 @@ import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useLanguage } from "@/i18n/LanguageContext";
+import translations from "@/i18n/translations";
 
 const EmailConfirmed = () => {
   const { t } = useLanguage();
+
+  const de = translations.de;
+  const en = translations.en;
 
   return (
     <div className="min-h-screen bg-gradient-page flex items-center justify-center p-6">
@@ -20,24 +24,24 @@ const EmailConfirmed = () => {
         <div className="relative z-10">
           <img src={logo} alt="Moonli" className="w-16 h-16 rounded-full object-cover mx-auto mb-6" />
 
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
-          >
-            <CheckCircle className="w-16 h-16 text-pastel-green-strong mx-auto mb-4" />
-          </motion.div>
-
-          <h1 className="text-2xl sm:text-3xl font-extrabold mb-4">{t("emailConfirmed.title")}</h1>
-          <p className="text-muted-foreground leading-relaxed mb-6">
-            {t("emailConfirmed.text")}
-          </p>
+          <div className="grid gap-4 text-left text-sm sm:text-base mb-6">
+            <div className="p-3 rounded-2xl bg-background/60 border border-border/40">
+              <p className="text-xs font-semibold text-muted-foreground mb-1">Deutsch</p>
+              <p className="font-semibold mb-1">{de["emailConfirmed.title"]}</p>
+              <p className="text-muted-foreground">{de["emailConfirmed.text"]}</p>
+            </div>
+            <div className="p-3 rounded-2xl bg-background/60 border border-border/40">
+              <p className="text-xs font-semibold text-muted-foreground mb-1">English</p>
+              <p className="font-semibold mb-1">{en["emailConfirmed.title"]}</p>
+              <p className="text-muted-foreground">{en["emailConfirmed.text"]}</p>
+            </div>
+          </div>
 
           <a
             href="com.christian.moonli://login-callback"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm sm:text-base shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] transition-all duration-200"
+            className="block mt-4 text-lg sm:text-xl font-extrabold text-primary"
           >
-            {t("emailConfirmed.backToApp")}
+            go back to the app and login!
           </a>
         </div>
       </motion.div>

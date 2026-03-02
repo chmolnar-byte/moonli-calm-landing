@@ -78,6 +78,40 @@ const Terms = () => {
               </h2>
               <p>{t("terms.final.text")}</p>
             </section>
+
+            <section>
+              <h2 className="font-semibold text-foreground mb-1">
+                {t("terms.premium.title")}
+              </h2>
+              <p className="mb-2">{t("terms.premium.text1")}</p>
+              <p className="mb-2">{t("terms.premium.text2")}</p>
+              <p className="mb-1">{t("terms.premium.text3")}</p>
+              <p className="mb-2">{t("terms.premium.text4")}</p>
+              <p className="mb-2">{t("terms.premium.text5")}</p>
+              <p className="mb-2">{t("terms.premium.text6")}</p>
+              <p className="mb-2">{t("terms.premium.text7")}</p>
+              <p>{t("terms.premium.text8")}</p>
+            </section>
+
+            <section>
+              <h2 className="font-semibold text-foreground mb-1">
+                {t("terms.withdrawal.title")}
+              </h2>
+              <p className="mb-2">{t("terms.withdrawal.text1")}</p>
+              <p className="mb-2">{t("terms.withdrawal.text2")}</p>
+              <p className="mb-2">{t("terms.withdrawal.text3")}</p>
+              <p className="mb-2">{t("terms.withdrawal.text4")}</p>
+              <p>{t("terms.withdrawal.text5")}</p>
+            </section>
+
+            <section>
+              <h2 className="font-semibold text-foreground mb-1">
+                {t("terms.cancel.title")}
+              </h2>
+              <p className="mb-2">{t("terms.cancel.text1")}</p>
+              <p className="mb-2">{t("terms.cancel.text2")}</p>
+              <p>{t("terms.cancel.text3")}</p>
+            </section>
           </div>
         </motion.div>
       </main>
