@@ -45,6 +45,7 @@ const Privacy = () => {
                 <li>{t("privacy.data.usage")}</li>
                 <li>{t("privacy.data.input")}</li>
                 <li>{t("privacy.data.tech")}</li>
+                <li>{t("privacy.data.recorder")}</li>
               </ul>
             </section>
 
