@@ -8,6 +8,7 @@ import Testimonials from "@/components/Testimonials";
 import PricingSection from "@/components/PricingSection";
 import CTAFooter from "@/components/CTAFooter";
 import ContactSection from "@/components/ContactSection";
+import capybaraImg from "@/assets/capybara.png";
 
 const SectionDivider = () => (
   <div className="relative h-16 -my-8 z-0">
@@ -18,6 +19,11 @@ const SectionDivider = () => (
 const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-page overflow-x-hidden">
+      <img
+        src={capybaraImg}
+        alt=""
+        className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[420px] opacity-10 z-0 pointer-events-none select-none"
+      />
       <ScrollProgress />
       <Navbar />
       <HeroSection />
