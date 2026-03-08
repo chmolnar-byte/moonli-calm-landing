@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
+import CapybaraScene from "@/components/CapybaraScene";
 import HeroSection from "@/components/HeroSection";
 import StatsCounter from "@/components/StatsCounter";
 import Marquee from "@/components/Marquee";
@@ -19,6 +20,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-page overflow-x-hidden">
       <ScrollProgress />
+      <CapybaraScene />
       <Navbar />
       <HeroSection />
       <StatsCounter />
