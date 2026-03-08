@@ -181,7 +181,7 @@ const CapybaraScene = () => {
   }, [scrollYProgress]);
 
   return (
-    <div className="fixed right-4 bottom-4 w-48 h-48 md:w-64 md:h-64 z-30 pointer-events-none opacity-70">
+    <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] z-0 pointer-events-none opacity-30">
       <Canvas camera={{ position: [0, 0.5, 4.5], fov: 35 }}>
         <ambientLight intensity={0.6} />
         <directionalLight position={[3, 5, 4]} intensity={1} color="#fff5e6" />
