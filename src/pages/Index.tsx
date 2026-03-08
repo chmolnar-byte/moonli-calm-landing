@@ -20,6 +20,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-page overflow-x-hidden">
       <ScrollProgress />
+      <CapybaraScene />
       <Navbar />
       <HeroSection />
       <StatsCounter />
