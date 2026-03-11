@@ -10,6 +10,7 @@ import CookiePolicy from "./pages/CookiePolicy";
 import Terms from "./pages/Terms";
 import Imprint from "./pages/Imprint";
 import Privacy from "./pages/Privacy";
+import DataDeletion from "./pages/DataDeletion";
 import NotFound from "./pages/NotFound";
 import CookieBanner from "./components/CookieBanner";
 
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/cookies" element={<CookiePolicy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/data-deletion" element={<DataDeletion />} />
             <Route path="/imprint" element={<Imprint />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
