@@ -29,6 +29,7 @@ const Imprint = () => {
               <h2 className="font-semibold text-foreground mb-1">
                 {t("imprint.operatorTitle")}
               </h2>
+              <p>{t("imprint.operatorBrand")}</p>
               <p>{t("imprint.operatorName")}</p>
               <p>{t("imprint.operatorStreet")}</p>
               <p>
@@ -79,6 +80,23 @@ const Imprint = () => {
               </h2>
               <p className="mb-2">{t("imprint.euText1")}</p>
               <p>{t("imprint.euText2")}</p>
+            </section>
+
+            <section>
+              <h2 className="font-semibold text-foreground mb-1">
+                {t("imprint.privacyTitle")}
+              </h2>
+              <p>
+                {t("imprint.privacyLabel")}:{" "}
+                <a
+                  href={t("imprint.privacyUrl")}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  {t("imprint.privacyUrl")}
+                </a>
+              </p>
             </section>
           </div>
         </motion.div>

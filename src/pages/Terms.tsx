@@ -27,91 +27,124 @@ const Terms = () => {
           <div className="space-y-5 text-sm sm:text-base text-muted-foreground">
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.scope.title")}
+                {t("terms.section1.title")}
               </h2>
-              <p>{t("terms.scope.text")}</p>
+              <p className="mb-2">{t("terms.section1.p1")}</p>
+              <p className="mb-2">{t("terms.section1.p2")}</p>
+              <p>{t("terms.section1.p3")}</p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.medical.title")}
+                {t("terms.section2.title")}
               </h2>
-              <p className="mb-2">{t("terms.medical.text1")}</p>
-              <p className="mb-2">{t("terms.medical.text2")}</p>
-              <p>{t("terms.medical.text3")}</p>
+              <p className="mb-2">{t("terms.section2.p1")}</p>
+              <p>{t("terms.section2.p2")}</p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.content.title")}
+                {t("terms.section3.title")}
               </h2>
-              <p className="mb-2">{t("terms.content.text1")}</p>
-              <p className="mb-2">{t("terms.content.text2")}</p>
-              <p>{t("terms.content.text3")}</p>
+              <p className="mb-2">{t("terms.section3.p1")}</p>
+              <p className="mb-2">{t("terms.section3.p2")}</p>
+              <p>{t("terms.section3.p3")}</p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.ai.title")}
+                {t("terms.section4.title")}
               </h2>
-              <p>{t("terms.ai.text")}</p>
+              <p className="mb-2">{t("terms.section4.p1")}</p>
+              <p className="mb-2">{t("terms.section4.p2")}</p>
+              <p>{t("terms.section4.p3")}</p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.liability.title")}
+                {t("terms.section5.title")}
               </h2>
-              <p className="mb-2">{t("terms.liability.text1")}</p>
-              <p>{t("terms.liability.text2")}</p>
+              <p>{t("terms.section5.text")}</p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.ip.title")}
+                {t("terms.section6.title")}
               </h2>
-              <p>{t("terms.ip.text")}</p>
+              <p className="mb-2">{t("terms.section6.p1")}</p>
+              <p className="mb-2">{t("terms.section6.p2")}</p>
+              <p>{t("terms.section6.p3")}</p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.final.title")}
+                {t("terms.section7.title")}
               </h2>
-              <p>{t("terms.final.text")}</p>
+              <p>{t("terms.section7.text")}</p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.premium.title")}
+                {t("terms.section8.title")}
               </h2>
-              <p className="mb-2">{t("terms.premium.text1")}</p>
-              <p className="mb-2">{t("terms.premium.text2")}</p>
-              <p className="mb-1">{t("terms.premium.text3")}</p>
-              <p className="mb-2">{t("terms.premium.text4")}</p>
-              <p className="mb-2">{t("terms.premium.text5")}</p>
-              <p className="mb-2">{t("terms.premium.text6")}</p>
-              <p className="mb-2">{t("terms.premium.text7")}</p>
-              <p>{t("terms.premium.text8")}</p>
+              <p className="mb-2">{t("terms.section8.p1")}</p>
+              <p>{t("terms.section8.p2")}</p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.withdrawal.title")}
+                {t("terms.section9.title")}
               </h2>
-              <p className="mb-2">{t("terms.withdrawal.text1")}</p>
-              <p className="mb-2">{t("terms.withdrawal.text2")}</p>
-              <p className="mb-2">{t("terms.withdrawal.text3")}</p>
-              <p className="mb-2">{t("terms.withdrawal.text4")}</p>
-              <p>{t("terms.withdrawal.text5")}</p>
+              <p className="mb-2">{t("terms.section9.p1")}</p>
+              <p className="mb-2">{t("terms.section9.p2")}</p>
+              <p>{t("terms.section9.p3")}</p>
             </section>
 
             <section>
               <h2 className="font-semibold text-foreground mb-1">
-                {t("terms.cancel.title")}
+                {t("terms.section10.title")}
               </h2>
-              <p className="mb-2">{t("terms.cancel.text1")}</p>
-              <p className="mb-2">{t("terms.cancel.text2")}</p>
-              <p>{t("terms.cancel.text3")}</p>
+              <p>{t("terms.section10.text")}</p>
             </section>
+
+            <section>
+              <h2 className="font-semibold text-foreground mb-1">
+                {t("terms.section11.title")}
+              </h2>
+              <p className="mb-2">{t("terms.section11.p1")}</p>
+              <p className="mb-2">{t("terms.section11.p2")}</p>
+              <p>{t("terms.section11.p3")}</p>
+            </section>
+
+            <section>
+              <h2 className="font-semibold text-foreground mb-1">
+                {t("terms.section12.title")}
+              </h2>
+              <p className="mb-2">{t("terms.section12.p1")}</p>
+              <p className="mb-2">{t("terms.section12.p2")}</p>
+              <p>{t("terms.section12.p3")}</p>
+            </section>
+
+            <section>
+              <h2 className="font-semibold text-foreground mb-1">
+                {t("terms.section13.title")}
+              </h2>
+              <p className="mb-2">{t("terms.section13.p1")}</p>
+              <p className="mb-2">{t("terms.section13.p2")}</p>
+              <p>{t("terms.section13.p3")}</p>
+            </section>
+
+            <section>
+              <h2 className="font-semibold text-foreground mb-1">
+                {t("terms.section14.title")}
+              </h2>
+              <p className="mb-2">{t("terms.section14.p1")}</p>
+              <p>{t("terms.section14.p2")}</p>
+            </section>
+
+            <p className="pt-2 text-xs sm:text-sm text-muted-foreground">
+              {t("terms.stand")}
+            </p>
           </div>
         </motion.div>
       </main>
