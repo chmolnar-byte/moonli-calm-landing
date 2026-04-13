@@ -9,12 +9,12 @@ import dashboardGrowth from "@/assets/hero-dashboard-growth.png";
 const PhoneMockup = () => {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
-  const springX = useSpring(cursorX, { stiffness: 140, damping: 20 });
-  const springY = useSpring(cursorY, { stiffness: 140, damping: 20 });
-  const rotateY = useTransform(springX, [-22, 22], [-7, 7]);
-  const rotateX = useTransform(springY, [-22, 22], [7, -7]);
-  const backShiftX = useTransform(springX, [-22, 22], [-10, 10]);
-  const backShiftY = useTransform(springY, [-22, 22], [-8, 8]);
+  const springX = useSpring(cursorX, { stiffness: 120, damping: 22 });
+  const springY = useSpring(cursorY, { stiffness: 120, damping: 22 });
+  const rotateY = useTransform(springX, [-18, 18], [-3.5, 3.5]);
+  const rotateX = useTransform(springY, [-18, 18], [3.5, -3.5]);
+  const groupX = useTransform(springX, [-18, 18], [-5, 5]);
+  const groupY = useTransform(springY, [-18, 18], [-4, 4]);
 
   const handlePointerMove = (event: MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -23,8 +23,8 @@ const PhoneMockup = () => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    cursorX.set(((x - centerX) / centerX) * 22);
-    cursorY.set(((y - centerY) / centerY) * 22);
+    cursorX.set(((x - centerX) / centerX) * 18);
+    cursorY.set(((y - centerY) / centerY) * 18);
   };
 
   const resetPointer = () => {
@@ -39,8 +39,8 @@ const PhoneMockup = () => {
       transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
       onMouseMove={handlePointerMove}
       onMouseLeave={resetPointer}
-      className="relative mx-auto w-[320px] sm:w-[420px]"
-      style={{ perspective: "1400px" }}
+      className="relative mx-auto w-[300px] sm:w-[380px]"
+      style={{ perspective: "1200px" }}
     >
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="h-[82%] w-[82%] rounded-full bg-pastel-green/35 blur-[85px]" />
@@ -50,45 +50,50 @@ const PhoneMockup = () => {
       </div>
 
       <motion.div
-        className="relative h-[540px] sm:h-[620px]"
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="relative mx-auto h-[520px] sm:h-[580px] w-full"
+        style={{
+          rotateX,
+          rotateY,
+          x: groupX,
+          y: groupY,
+          transformStyle: "preserve-3d",
+        }}
       >
-        <motion.div
-          className="absolute left-0 top-16 h-[72%] w-[52%] rounded-[2rem] border border-white/60 bg-white/50 p-1.5 shadow-xl"
-          style={{ x: backShiftX, y: backShiftY, rotate: -14, z: 5 }}
-        >
+        {/* Hinten links — symmetrisch zur rechten Karte, wenig Rotation */}
+        <div className="absolute left-[4%] top-[22%] z-[1] h-[66%] w-[44%] rounded-[1.75rem] border border-white/55 bg-white/45 p-1 shadow-lg -rotate-[5deg]">
           <img
             src={dashboardWeekly}
             alt="Wochenbericht der Moonli App"
-            className="h-full w-full rounded-[1.6rem] object-cover"
+            className="h-full w-full rounded-[1.45rem] object-cover"
             loading="lazy"
           />
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="absolute right-0 bottom-6 h-[70%] w-[50%] rounded-[2rem] border border-white/60 bg-white/50 p-1.5 shadow-xl"
-          style={{ x: backShiftX, y: backShiftY, rotate: 13, z: 7 }}
-        >
+        {/* Hinten rechts */}
+        <div className="absolute right-[4%] bottom-[16%] z-[2] h-[64%] w-[44%] rounded-[1.75rem] border border-white/55 bg-white/45 p-1 shadow-lg rotate-[5deg]">
           <img
             src={dashboardGrowth}
             alt="Wachstumsverlauf der Moonli App"
-            className="h-full w-full rounded-[1.6rem] object-cover"
+            className="h-full w-full rounded-[1.45rem] object-cover"
             loading="lazy"
           />
-        </motion.div>
+        </div>
 
-        <motion.div
-          whileHover={{ scale: 1.02 }}
-          className="absolute left-1/2 top-0 h-[92%] w-[56%] -translate-x-1/2 rounded-[2.1rem] border border-white/70 bg-black/35 p-1.5 shadow-2xl"
-          style={{ x: springX, y: springY, z: 20 }}
-        >
-          <img
-            src={dashboardDark}
-            alt="Moonli Dashboard im Dark Mode"
-            className="h-full w-full rounded-[1.7rem] object-cover"
-            loading="eager"
-          />
-        </motion.div>
+        {/* Vorne — zentriert; Scale nur innen, damit translate-x-1/2 nicht mit Framer kollidiert */}
+        <div className="absolute left-1/2 top-[8%] z-20 h-[86%] w-[52%] -translate-x-1/2">
+          <motion.div
+            whileHover={{ scale: 1.012 }}
+            transition={{ type: "spring", stiffness: 400, damping: 28 }}
+            className="h-full w-full rounded-[1.9rem] border border-white/65 bg-black/25 p-1 shadow-2xl"
+          >
+            <img
+              src={dashboardDark}
+              alt="Moonli Dashboard im Dark Mode"
+              className="h-full w-full rounded-[1.55rem] object-cover"
+              loading="eager"
+            />
+          </motion.div>
+        </div>
       </motion.div>
     </motion.div>
   );
