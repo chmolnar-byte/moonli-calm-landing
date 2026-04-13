@@ -1,80 +1,98 @@
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Apple, Play } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { type MouseEvent } from "react";
+import dashboardWeekly from "@/assets/hero-dashboard-weekly.png";
+import dashboardDark from "@/assets/hero-dashboard-dark.png";
+import dashboardGrowth from "@/assets/hero-dashboard-growth.png";
 
-const PhoneMockup = () => (
-  <motion.div
-    initial={{ opacity: 0, y: 40, rotateY: -8 }}
-    animate={{ opacity: 1, y: 0, rotateY: 0 }}
-    transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-    className="relative"
-    style={{ perspective: "1200px" }}
-  >
-    {/* Glow behind phone */}
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="w-3/4 h-3/4 rounded-full bg-pastel-green/40 blur-[80px]" />
-    </div>
-    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-      <div className="w-1/2 h-1/2 rounded-full bg-pastel-lavender/30 blur-[60px] translate-y-8" />
-    </div>
+const PhoneMockup = () => {
+  const cursorX = useMotionValue(0);
+  const cursorY = useMotionValue(0);
+  const springX = useSpring(cursorX, { stiffness: 140, damping: 20 });
+  const springY = useSpring(cursorY, { stiffness: 140, damping: 20 });
+  const rotateY = useTransform(springX, [-22, 22], [-7, 7]);
+  const rotateX = useTransform(springY, [-22, 22], [7, -7]);
+  const backShiftX = useTransform(springX, [-22, 22], [-10, 10]);
+  const backShiftY = useTransform(springY, [-22, 22], [-8, 8]);
 
-    {/* Phone frame */}
-    <div className="relative mx-auto w-[260px] sm:w-[280px] rounded-[2.5rem] border-[6px] border-foreground/10 bg-background shadow-soft-xl overflow-hidden float-animation">
-      {/* Status bar */}
-      <div className="flex items-center justify-between px-6 pt-3 pb-2">
-        <span className="text-[10px] font-semibold text-muted-foreground">9:41</span>
-        <div className="w-20 h-5 rounded-full bg-foreground/10" />
-        <div className="flex gap-0.5">
-          <div className="w-3 h-3 rounded-sm bg-foreground/15" />
-          <div className="w-3 h-3 rounded-sm bg-foreground/15" />
-        </div>
+  const handlePointerMove = (event: MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    cursorX.set(((x - centerX) / centerX) * 22);
+    cursorY.set(((y - centerY) / centerY) * 22);
+  };
+
+  const resetPointer = () => {
+    cursorX.set(0);
+    cursorY.set(0);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40, scale: 0.96 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
+      onMouseMove={handlePointerMove}
+      onMouseLeave={resetPointer}
+      className="relative mx-auto w-[320px] sm:w-[420px]"
+      style={{ perspective: "1400px" }}
+    >
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="h-[82%] w-[82%] rounded-full bg-pastel-green/35 blur-[85px]" />
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="h-[60%] w-[60%] rounded-full bg-pastel-lavender/25 blur-[80px] translate-y-12" />
       </div>
 
-      {/* App content */}
-      <div className="px-4 pb-6 space-y-3">
-        {/* Greeting */}
-        <div className="pt-2">
-          <p className="text-[11px] text-muted-foreground">Guten Morgen 👋</p>
-          <p className="text-sm font-bold">Sarah's Dashboard</p>
-        </div>
+      <motion.div
+        className="relative h-[540px] sm:h-[620px]"
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+      >
+        <motion.div
+          className="absolute left-0 top-16 h-[72%] w-[52%] rounded-[2rem] border border-white/60 bg-white/50 p-1.5 shadow-xl"
+          style={{ x: backShiftX, y: backShiftY, rotate: -14, z: 5 }}
+        >
+          <img
+            src={dashboardWeekly}
+            alt="Wochenbericht der Moonli App"
+            className="h-full w-full rounded-[1.6rem] object-cover"
+            loading="lazy"
+          />
+        </motion.div>
 
-        {/* Parent Energy Bar */}
-        <div className="glass-card-premium p-3 rounded-2xl">
-          <div className="flex items-center justify-between mb-1.5">
-            <span className="text-[10px] font-semibold text-primary">Parent Energy</span>
-            <span className="text-[10px] font-bold text-primary">78%</span>
-          </div>
-          <div className="h-2 rounded-full bg-muted/60 overflow-hidden">
-            <div className="h-full w-[78%] rounded-full bg-gradient-to-r from-primary to-pastel-green-strong" />
-          </div>
-        </div>
+        <motion.div
+          className="absolute right-0 bottom-6 h-[70%] w-[50%] rounded-[2rem] border border-white/60 bg-white/50 p-1.5 shadow-xl"
+          style={{ x: backShiftX, y: backShiftY, rotate: 13, z: 7 }}
+        >
+          <img
+            src={dashboardGrowth}
+            alt="Wachstumsverlauf der Moonli App"
+            className="h-full w-full rounded-[1.6rem] object-cover"
+            loading="lazy"
+          />
+        </motion.div>
 
-        {/* Quick stats */}
-        <div className="grid grid-cols-2 gap-2">
-          <div className="glass-button rounded-xl p-2.5">
-            <p className="text-[9px] text-muted-foreground">Schlaf</p>
-            <p className="text-sm font-bold">7h 23m</p>
-            <p className="text-[9px] text-pastel-green-strong">✓ Gut</p>
-          </div>
-          <div className="glass-button rounded-xl p-2.5">
-            <p className="text-[9px] text-muted-foreground">Fläschchen</p>
-            <p className="text-sm font-bold">4x</p>
-            <p className="text-[9px] text-pastel-blue-strong">180ml ø</p>
-          </div>
-        </div>
-
-        {/* Level badge */}
-        <div className="flex items-center gap-2 glass-button rounded-xl p-2.5">
-          <span className="text-lg">⚡</span>
-          <div>
-            <p className="text-[10px] font-bold">Level 3 — Routine Ninja</p>
-            <p className="text-[9px] text-muted-foreground">2,450 XP</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </motion.div>
-);
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          className="absolute left-1/2 top-0 h-[92%] w-[56%] -translate-x-1/2 rounded-[2.1rem] border border-white/70 bg-black/35 p-1.5 shadow-2xl"
+          style={{ x: springX, y: springY, z: 20 }}
+        >
+          <img
+            src={dashboardDark}
+            alt="Moonli Dashboard im Dark Mode"
+            className="h-full w-full rounded-[1.7rem] object-cover"
+            loading="eager"
+          />
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+};
 
 const HeroSection = () => {
   const { t } = useLanguage();
