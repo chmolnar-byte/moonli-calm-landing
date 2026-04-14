@@ -43,7 +43,7 @@ const PhoneMockup = () => {
       transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
       onMouseMove={handlePointerMove}
       onMouseLeave={resetPointer}
-      className="relative mx-auto w-[310px] sm:w-[390px]"
+      className="relative mx-auto w-[320px] sm:w-[430px]"
       style={{ perspective: "1200px" }}
     >
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -54,7 +54,7 @@ const PhoneMockup = () => {
       </div>
 
       <motion.div
-        className="relative mx-auto h-[520px] sm:h-[590px] w-full"
+        className="relative mx-auto h-[520px] sm:h-[620px] w-full"
         style={{
           rotateX,
           rotateY,
@@ -72,13 +72,13 @@ const PhoneMockup = () => {
               alt: "Wochenbericht der Moonli App",
             })
           }
-          className="absolute left-[3%] top-[20%] z-[1] h-[68%] w-[45%] rounded-[1.75rem] border border-white/55 bg-white/45 p-1 shadow-lg -rotate-[4deg] transition-transform hover:scale-[1.01]"
+          className="absolute left-[4%] bottom-[13%] z-[1] h-[68%] w-[46%] rounded-[1.75rem] border border-white/35 bg-white/20 p-1 shadow-[0_16px_45px_rgba(0,0,0,0.16)] -rotate-[3deg] transition-transform duration-300 hover:scale-[1.015]"
           aria-label="Wochenbericht vergrößern"
         >
           <img
             src={dashboardWeekly}
             alt="Wochenbericht der Moonli App"
-            className="h-full w-full rounded-[1.45rem] object-cover"
+            className="h-full w-full rounded-[1.45rem] object-contain"
             loading="lazy"
           />
         </button>
@@ -92,23 +92,23 @@ const PhoneMockup = () => {
               alt: "Wachstumsverlauf der Moonli App",
             })
           }
-          className="absolute right-[3%] bottom-[14%] z-[2] h-[66%] w-[45%] rounded-[1.75rem] border border-white/55 bg-white/45 p-1 shadow-lg rotate-[4deg] transition-transform hover:scale-[1.01]"
+          className="absolute right-[4%] bottom-[13%] z-[2] h-[68%] w-[46%] rounded-[1.75rem] border border-white/35 bg-white/20 p-1 shadow-[0_16px_45px_rgba(0,0,0,0.16)] rotate-[3deg] transition-transform duration-300 hover:scale-[1.015]"
           aria-label="Wachstumsverlauf vergrößern"
         >
           <img
             src={dashboardGrowth}
             alt="Wachstumsverlauf der Moonli App"
-            className="h-full w-full rounded-[1.45rem] object-cover"
+            className="h-full w-full rounded-[1.45rem] object-contain"
             loading="lazy"
           />
         </button>
 
-        {/* Vorne — zentriert; Scale nur innen, damit translate-x-1/2 nicht mit Framer kollidiert */}
-        <div className="absolute left-1/2 top-[8%] z-20 h-[86%] w-[53%] -translate-x-1/2">
+        {/* Vorne — klarer Fokus, exakt zentriert */}
+        <div className="absolute left-1/2 bottom-[8%] z-20 h-[84%] w-[54%] -translate-x-1/2">
           <motion.div
-            whileHover={{ scale: 1.012 }}
+            whileHover={{ scale: 1.015 }}
             transition={{ type: "spring", stiffness: 400, damping: 28 }}
-            className="h-full w-full rounded-[1.9rem] border border-white/65 bg-black/25 p-1 shadow-2xl"
+            className="h-full w-full rounded-[1.9rem] border border-white/45 bg-white/15 p-1 shadow-[0_22px_60px_rgba(0,0,0,0.24)]"
           >
             <button
               type="button"
@@ -124,7 +124,7 @@ const PhoneMockup = () => {
               <img
                 src={dashboardDark}
                 alt="Moonli Dashboard im Dark Mode"
-                className="h-full w-full rounded-[1.55rem] object-cover"
+                className="h-full w-full rounded-[1.55rem] object-contain"
                 loading="eager"
               />
             </button>
@@ -134,25 +134,32 @@ const PhoneMockup = () => {
 
       <AnimatePresence>
         {activeImage && (
-          <motion.button
-            type="button"
-            onClick={() => setActiveImage(null)}
-            className="fixed inset-0 z-[90] bg-black/70 backdrop-blur-sm p-4 sm:p-8 flex items-center justify-center cursor-zoom-out"
+          <motion.div
+            className="fixed inset-0 z-[90] bg-black/72 backdrop-blur-md p-4 sm:p-8 flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            aria-label="Bild schließen"
           >
-            <motion.img
-              src={activeImage.src}
-              alt={activeImage.alt}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="max-h-[92vh] w-auto max-w-[92vw] rounded-[1.8rem] border border-white/30 shadow-2xl object-contain"
+            <button
+              type="button"
+              onClick={() => setActiveImage(null)}
+              className="absolute inset-0 cursor-zoom-out"
+              aria-label="Bild schließen"
             />
-          </motion.button>
+            <motion.div
+              initial={{ scale: 0.94, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.94, opacity: 0 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+              className="relative z-10 w-full max-w-[560px] rounded-[2rem] border border-white/30 bg-black/10 p-2 shadow-[0_30px_90px_rgba(0,0,0,0.45)]"
+            >
+              <img
+                src={activeImage.src}
+                alt={activeImage.alt}
+                className="max-h-[88vh] w-full rounded-[1.6rem] object-contain"
+              />
+            </motion.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </motion.div>
