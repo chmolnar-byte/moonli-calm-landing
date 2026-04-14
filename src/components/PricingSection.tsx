@@ -17,11 +17,6 @@ const PricingSection = () => {
     "pricing.free.f6",
     "pricing.free.f7",
     "pricing.free.f8",
-    "pricing.free.f9",
-    "pricing.free.f10",
-    "pricing.free.f11",
-    "pricing.free.f12",
-    "pricing.free.f13",
   ];
 
   const premiumFeatures = [
@@ -31,9 +26,7 @@ const PricingSection = () => {
     "pricing.premium.f4",
     "pricing.premium.f5",
     "pricing.premium.f6",
-    "pricing.premium.f9",
-    "pricing.premium.f10",
-    "pricing.premium.f11",
+    "pricing.premium.f7",
   ];
 
   return (
@@ -59,7 +52,7 @@ const PricingSection = () => {
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-glow">
             {t("pricing.title")}
           </h2>
-          <p className="text-muted-foreground max-w-lg mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             {t("pricing.subtitle")}
           </p>
         </motion.div>
@@ -166,6 +159,36 @@ const PricingSection = () => {
             </div>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="glass-card-premium p-6 sm:p-8 max-w-4xl mx-auto mb-16 sm:mb-20"
+        >
+          <h3 className="text-xl sm:text-2xl font-extrabold mb-5">Preis-Call-to-Action</h3>
+          <div className="grid gap-3">
+            <div className="grid grid-cols-3 gap-3 text-xs sm:text-sm font-semibold text-muted-foreground px-2">
+              <span>Tarif</span>
+              <span>Preis</span>
+              <span>Fokus</span>
+            </div>
+            <div className="grid grid-cols-3 gap-3 rounded-xl bg-white/50 px-4 py-3 text-sm">
+              <span className="font-semibold">Moonli Free</span>
+              <span>0 €</span>
+              <span>"Ich möchte Moonli testen"</span>
+            </div>
+            <div className="grid grid-cols-3 gap-3 rounded-xl bg-white/70 border border-primary/20 px-4 py-3 text-sm">
+              <span className="font-semibold">Moonli Premium</span>
+              <span>5 € / Monat*</span>
+              <span>"Ich will maximale Entlastung"</span>
+            </div>
+          </div>
+          <p className="text-xs text-muted-foreground mt-4">
+            *5 € bei jährlicher Zahlung (60 € p.a.) / 7 € bei monatlicher Kündigung.
+          </p>
+        </motion.div>
 
         {/* Coming Soon */}
         <motion.div
