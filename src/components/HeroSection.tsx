@@ -23,6 +23,11 @@ const PhoneMockup = () => {
   const rotateX = useTransform(springY, [-18, 18], [3.5, -3.5]);
   const groupX = useTransform(springX, [-18, 18], [-5, 5]);
   const groupY = useTransform(springY, [-18, 18], [-4, 4]);
+  const backLeftX = useTransform(springX, [-18, 18], [-7, 7]);
+  const backLeftY = useTransform(springY, [-18, 18], [-4, 4]);
+  const backRightX = useTransform(springX, [-18, 18], [7, -7]);
+  const backRightY = useTransform(springY, [-18, 18], [4, -4]);
+  const frontLift = useTransform(springY, [-18, 18], [4, -4]);
 
   const handlePointerMove = (event: MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -44,21 +49,21 @@ const PhoneMockup = () => {
     <motion.div
       initial={{ opacity: 0, y: 40, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
+      transition={{ duration: 0.85, delay: 0.2, ease: "easeOut" }}
       onMouseMove={handlePointerMove}
       onMouseLeave={resetPointer}
-      className="relative mx-auto w-[320px] sm:w-[430px]"
-      style={{ perspective: "1200px" }}
+      className="relative mx-auto w-[330px] sm:w-[480px]"
+      style={{ perspective: "1400px" }}
     >
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="h-[82%] w-[82%] rounded-full bg-pastel-green/35 blur-[85px]" />
+        <div className="h-[86%] w-[86%] rounded-full bg-pastel-green/30 blur-[95px]" />
       </div>
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="h-[60%] w-[60%] rounded-full bg-pastel-lavender/25 blur-[80px] translate-y-12" />
+        <div className="h-[62%] w-[62%] rounded-full bg-pastel-lavender/22 blur-[90px] translate-y-12" />
       </div>
 
       <motion.div
-        className="relative mx-auto h-[520px] sm:h-[620px] w-full"
+        className="relative mx-auto h-[520px] sm:h-[650px] w-full"
         style={{
           rotateX,
           rotateY,
@@ -68,52 +73,76 @@ const PhoneMockup = () => {
         }}
       >
         {/* Hinten links — symmetrisch zur rechten Karte, wenig Rotation */}
-        <button
-          type="button"
-          onClick={() =>
-            setActiveImage({
-              src: dashboardWeekly,
-              alt: "Wochenbericht der Moonli App",
-            })
-          }
-          className="absolute left-[4%] bottom-[13%] z-[1] h-[68%] w-[46%] rounded-[1.75rem] bg-transparent p-0 shadow-[0_20px_48px_rgba(0,0,0,0.22)] -rotate-[3deg] transition-transform duration-300 hover:scale-[1.015]"
-          aria-label="Wochenbericht vergrößern"
+        <motion.div
+          className="absolute left-[8%] bottom-[16%] z-[1] w-[34%] aspect-[9/19.5]"
+          style={{ x: backLeftX, y: backLeftY }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut" }}
         >
-          <img
-            src={dashboardWeekly}
-            alt="Wochenbericht der Moonli App"
-            className="h-full w-full rounded-[1.75rem] object-contain"
-            loading="lazy"
-          />
-        </button>
+          <motion.button
+            type="button"
+            onClick={() =>
+              setActiveImage({
+                src: dashboardWeekly,
+                alt: "Wochenbericht der Moonli App",
+              })
+            }
+            whileHover={{ scale: 1.03, y: -4, rotate: -4.5 }}
+            className="h-full w-full rounded-[1.85rem] bg-transparent p-0 opacity-75 shadow-[0_16px_38px_rgba(0,0,0,0.2)] -rotate-[6deg] transition-transform duration-300"
+            aria-label="Wochenbericht vergrößern"
+          >
+            <img
+              src={dashboardWeekly}
+              alt="Wochenbericht der Moonli App"
+              className="h-full w-full rounded-[1.85rem] object-cover object-center"
+              loading="lazy"
+            />
+          </motion.button>
+        </motion.div>
 
         {/* Hinten rechts */}
-        <button
-          type="button"
-          onClick={() =>
-            setActiveImage({
-              src: dashboardGrowth,
-              alt: "Wachstumsverlauf der Moonli App",
-            })
-          }
-          className="absolute right-[4%] bottom-[13%] z-[2] h-[68%] w-[46%] rounded-[1.75rem] bg-transparent p-0 shadow-[0_20px_48px_rgba(0,0,0,0.22)] rotate-[3deg] transition-transform duration-300 hover:scale-[1.015]"
-          aria-label="Wachstumsverlauf vergrößern"
+        <motion.div
+          className="absolute right-[8%] bottom-[16%] z-[2] w-[34%] aspect-[9/19.5]"
+          style={{ x: backRightX, y: backRightY }}
+          animate={{ y: [0, -12, 0] }}
+          transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
         >
-          <img
-            src={dashboardGrowth}
-            alt="Wachstumsverlauf der Moonli App"
-            className="h-full w-full rounded-[1.75rem] object-contain"
-            loading="lazy"
-          />
-        </button>
+          <motion.button
+            type="button"
+            onClick={() =>
+              setActiveImage({
+                src: dashboardGrowth,
+                alt: "Wachstumsverlauf der Moonli App",
+              })
+            }
+            whileHover={{ scale: 1.03, y: -4, rotate: 4.5 }}
+            className="h-full w-full rounded-[1.85rem] bg-transparent p-0 opacity-75 shadow-[0_16px_38px_rgba(0,0,0,0.2)] rotate-[6deg] transition-transform duration-300"
+            aria-label="Wachstumsverlauf vergrößern"
+          >
+            <img
+              src={dashboardGrowth}
+              alt="Wachstumsverlauf der Moonli App"
+              className="h-full w-full rounded-[1.85rem] object-cover object-center"
+              loading="lazy"
+            />
+          </motion.button>
+        </motion.div>
 
         {/* Vorne — klarer Fokus, exakt zentriert */}
-        <div className="absolute left-1/2 bottom-[8%] z-20 h-[84%] w-[54%] -translate-x-1/2">
+        <div className="absolute left-1/2 bottom-[6%] z-20 w-[49%] aspect-[9/19.5] -translate-x-1/2">
           <motion.div
-            whileHover={{ scale: 1.015 }}
+            whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 400, damping: 28 }}
-            className="h-full w-full rounded-[1.9rem] bg-transparent p-0 shadow-[0_28px_72px_rgba(0,0,0,0.30)]"
+            className="h-full w-full rounded-[1.95rem] bg-transparent p-0 shadow-[0_34px_85px_rgba(0,0,0,0.32)]"
+            style={{ y: frontLift }}
+            animate={{ y: [0, -6, 0] }}
+            >
+            <motion.div
+              className="absolute inset-0 rounded-[1.95rem] bg-pastel-lavender/20 blur-xl pointer-events-none"
+              animate={{ opacity: [0.12, 0.28, 0.12] }}
+              transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
           >
+            </motion.div>
             <button
               type="button"
               onClick={() =>
@@ -122,13 +151,13 @@ const PhoneMockup = () => {
                   alt: "Moonli Dashboard im Dark Mode",
                 })
               }
-              className="h-full w-full rounded-[1.55rem] overflow-hidden"
+              className="h-full w-full rounded-[1.95rem] overflow-hidden"
               aria-label="Dark Mode Dashboard vergrößern"
             >
               <img
                 src={dashboardDark}
                 alt="Moonli Dashboard im Dark Mode"
-                className="h-full w-full rounded-[1.9rem] object-contain"
+                className="h-full w-full rounded-[1.95rem] object-cover object-center"
                 loading="eager"
               />
             </button>
@@ -140,7 +169,7 @@ const PhoneMockup = () => {
         {activeImage && (
           <motion.div
             onClick={() => setActiveImage(null)}
-            className="fixed inset-0 z-[90] bg-black/72 backdrop-blur-md p-4 sm:p-8 flex items-center justify-center"
+            className="fixed inset-x-0 top-16 md:top-20 bottom-0 z-40 bg-black/72 backdrop-blur-md flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -158,12 +187,12 @@ const PhoneMockup = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
-              className="relative z-10 w-full max-w-[560px] rounded-[2rem] border border-white/30 bg-black/10 p-2 shadow-[0_30px_90px_rgba(0,0,0,0.45)] cursor-zoom-out"
+              className="relative z-10 flex h-full w-full items-center justify-center p-4 sm:p-8 cursor-zoom-out"
             >
               <img
                 src={activeImage.src}
                 alt={activeImage.alt}
-                className="max-h-[88vh] w-full rounded-[1.6rem] object-contain"
+                className="h-auto w-auto max-h-[78vh] max-w-[82vw] rounded-[1.4rem] object-contain shadow-[0_24px_70px_rgba(0,0,0,0.45)]"
               />
             </motion.div>
           </motion.div>
@@ -177,7 +206,7 @@ const HeroSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 pb-12 overflow-hidden">
+    <section className="relative min-h-[92vh] flex items-center pt-24 pb-14 overflow-hidden">
       {/* Ambient background glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-pastel-green/30 blur-[100px]" style={{ animation: 'pulseGlow 8s ease-in-out infinite' }} />
@@ -195,20 +224,24 @@ const HeroSection = () => {
       </div>
 
       <div className="container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Text */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-center lg:text-left"
+            className="text-center lg:text-left max-w-2xl"
           >
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight mb-6">
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1.5 text-xs sm:text-sm font-semibold text-primary shadow-soft mb-4">
+              Smart Parenting
+            </span>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4.1rem] font-extrabold leading-[1.02] tracking-tight mb-6">
               <span className="text-foreground">{t("hero.headline1")}</span>{" "}
               <span className="text-gradient-animated">{t("hero.headline2")}</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
               {t("hero.subheadline")}
             </p>
 
@@ -240,7 +273,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Phone Mockup */}
-          <div className="flex justify-center">
+          <div className="flex justify-center lg:justify-end">
             <PhoneMockup />
           </div>
         </div>

@@ -8,7 +8,6 @@ import {
   Heart,
   MicVocal,
   Sparkles,
-  Star,
 } from "lucide-react";
 
 const PricingSection = () => {
@@ -28,7 +27,7 @@ const PricingSection = () => {
               KOSTENLOS
             </div>
 
-            <h3 className="mt-9 text-[44px] sm:text-[46px] font-extrabold leading-none tracking-tight">Moonli Free</h3>
+            <h3 className="mt-10 text-[38px] sm:text-[40px] font-bold leading-none tracking-tight">Moonli Free</h3>
             <div className="mt-2.5 flex items-end gap-1.5">
               <span className="text-[54px] leading-none font-extrabold">0 €</span>
               <span className="text-muted-foreground text-[30px] leading-none font-semibold">/</span>
@@ -61,27 +60,22 @@ const PricingSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.08 }}
-            className="relative overflow-hidden rounded-[1.5rem] border-2 border-[#f0bf37] bg-white/70 p-6 sm:p-7 shadow-soft-xl"
+            className="relative overflow-hidden rounded-[1.5rem] border-2 border-[#f7dda0] bg-white/70 p-6 sm:p-7 shadow-soft-xl"
           >
-            <div className="absolute top-0 left-0 rounded-br-3xl rounded-tl-[1.5rem] bg-[#f0bf37] px-5 py-1 text-[11px] font-bold tracking-wide text-[#5e4a00]">
+            <div className="absolute top-0 left-0 rounded-br-3xl rounded-tl-[1.5rem] bg-[#f8e7b8] px-5 py-1 text-[11px] font-bold tracking-wide text-[#7a6530]">
               MEISTGEWÄHLT
             </div>
 
             <div className="absolute top-0 right-3 sm:right-4">
-              <div className="bg-[#f0bf37] px-4 py-2 text-center text-[11px] leading-tight font-extrabold tracking-wide text-[#5e4a00]">
+              <div className="bg-[#f8e7b8] px-4 py-2 text-center text-[11px] leading-tight font-extrabold tracking-wide text-[#7a6530]">
                 <div>30 TAGE</div>
                 <div>KOSTENLOS</div>
                 <div>TESTEN</div>
               </div>
-              <div className="mx-auto h-0 w-0 border-l-[52px] border-r-[52px] border-t-[12px] border-l-transparent border-r-transparent border-t-[#f0bf37]" />
+              <div className="mx-auto h-0 w-0 border-l-[52px] border-r-[52px] border-t-[12px] border-l-transparent border-r-transparent border-t-[#f8e7b8]" />
             </div>
 
-            <div className="mt-12 flex items-center gap-2 text-[20px] font-bold tracking-wide text-[#806300]">
-              <Star className="h-[18px] w-[18px] fill-[#806300]" />
-              PREMIUM
-            </div>
-
-            <h3 className="mt-2 text-[44px] sm:text-[46px] font-extrabold leading-none tracking-tight">Moonli Premium</h3>
+            <h3 className="mt-10 text-[38px] sm:text-[40px] font-bold leading-none tracking-tight">Moonli Premium</h3>
             <div className="mt-2.5 flex items-end gap-1.5">
               <span className="text-[62px] leading-none font-extrabold">5 €</span>
               <span className="text-muted-foreground text-[34px] leading-none font-semibold">/Monat*</span>
@@ -105,7 +99,7 @@ const PricingSection = () => {
                 { icon: MicVocal, text: "Premium Archiv & Recorder: Speichere Stimmen von Oma und Opa in unbegrenzter Qualität." },
               ].map((feature) => (
                 <div key={feature.text} className="flex items-start gap-3">
-                  <feature.icon className="mt-0.5 h-[18px] w-[18px] shrink-0 text-[#806300]" />
+                  <feature.icon className="mt-0.5 h-[18px] w-[18px] shrink-0 text-[#8a7340]" />
                   <p className="text-[17px] leading-[1.35]">{feature.text}</p>
                 </div>
               ))}

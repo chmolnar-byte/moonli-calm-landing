@@ -33,9 +33,6 @@ const Testimonials = () => {
           <h2 className="text-3xl sm:text-4xl font-extrabold mb-3 text-glow">
             {t("testimonials.title")}
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto">
-            {t("testimonials.trust")}
-          </p>
         </motion.div>
 
         <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -63,6 +60,7 @@ const Testimonials = () => {
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

@@ -66,6 +66,14 @@ const CTAFooter = () => {
         </div>
       </section>
 
+      <section className="pb-8">
+        <div className="container">
+          <p className="mx-auto max-w-4xl rounded-2xl border border-pastel-green-strong/20 bg-pastel-green/50 px-5 py-4 text-center text-sm sm:text-base font-medium text-foreground">
+            {t("testimonials.trust").replace("🇦🇹 ", "")}
+          </p>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t border-border/30 py-8">
         <div className="container">
