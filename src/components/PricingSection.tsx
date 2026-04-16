@@ -1,274 +1,117 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, Crown, Rocket, Users, FileText, Clapperboard, Feather, ChevronDown, ChevronUp } from "lucide-react";
-import { useLanguage } from "@/i18n/LanguageContext";
+import {
+  Ban,
+  BookOpen,
+  Brain,
+  CheckCircle2,
+  FileText,
+  Heart,
+  MicVocal,
+  Sparkles,
+  Star,
+} from "lucide-react";
 
 const PricingSection = () => {
-  const { t } = useLanguage();
-  const [showFreeFeatures, setShowFreeFeatures] = useState(false);
-  const [showPremiumFeatures, setShowPremiumFeatures] = useState(false);
-  const previewCount = 4;
-
-  const freeFeatures = [
-    "pricing.free.f1",
-    "pricing.free.f2",
-    "pricing.free.f3",
-    "pricing.free.f4",
-    "pricing.free.f5",
-    "pricing.free.f6",
-    "pricing.free.f7",
-    "pricing.free.f8",
-  ];
-
-  const premiumFeatures = [
-    "pricing.premium.f1",
-    "pricing.premium.f2",
-    "pricing.premium.f3",
-    "pricing.premium.f4",
-    "pricing.premium.f5",
-    "pricing.premium.f6",
-    "pricing.premium.f7",
-  ];
-
   return (
     <section className="py-20 sm:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-pastel-green/15 via-transparent to-pastel-lavender/10 pointer-events-none" />
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 right-0 w-[400px] h-[400px] rounded-full bg-pastel-yellow/15 blur-[100px]" />
-        <div className="absolute bottom-0 left-1/4 w-[300px] h-[300px] rounded-full bg-pastel-lavender/15 blur-[80px]" />
-      </div>
-
       <div className="container relative z-10">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-button text-primary text-sm font-semibold mb-4">
-            💰 {t("pricing.badge")}
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-glow">
-            {t("pricing.title")}
-          </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
-            {t("pricing.subtitle")}
-          </p>
-        </motion.div>
-
-        {/* Pricing Cards */}
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto mb-16 sm:mb-20">
-          {/* Free Plan */}
+        <div className="mx-auto grid max-w-6xl md:grid-cols-2 gap-4 sm:gap-5 items-start">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="glass-card-premium p-6 sm:p-8 relative"
+            transition={{ duration: 0.45 }}
+            className="relative rounded-[1.5rem] border border-border/70 bg-white/70 p-6 sm:p-7 shadow-soft-xl"
           >
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-xl bg-pastel-green/60 flex items-center justify-center">
-                <span className="text-lg">🟢</span>
-              </div>
-              <div>
-                <h3 className="text-xl font-extrabold">Moonli Free</h3>
-                <p className="text-sm text-muted-foreground">{t("pricing.free.tagline")}</p>
-              </div>
+            <div className="absolute top-0 left-0 rounded-br-2xl rounded-tl-[1.5rem] bg-muted px-4 py-1 text-[11px] font-bold tracking-wide text-primary">
+              KOSTENLOS
             </div>
-            <div className="flex items-baseline gap-1 mb-3 mt-4">
-              <span className="text-4xl font-extrabold">0 €</span>
-              <span className="text-muted-foreground text-sm">/ {t("pricing.forever")}</span>
+
+            <h3 className="mt-9 text-[44px] sm:text-[46px] font-extrabold leading-none tracking-tight">Moonli Free</h3>
+            <div className="mt-2.5 flex items-end gap-1.5">
+              <span className="text-[54px] leading-none font-extrabold">0 €</span>
+              <span className="text-muted-foreground text-[30px] leading-none font-semibold">/</span>
+              <span className="text-muted-foreground text-[30px] leading-none font-semibold">für immer</span>
             </div>
-            <p className="text-sm text-muted-foreground mb-2 leading-relaxed">
-              {t("pricing.free.desc")}
+
+            <p className="mt-4 text-[18px] text-muted-foreground leading-relaxed">
+              Alles, was du brauchst, um den Überblick zu behalten. Kostenlos - weil jede Unterstützung zählt.
             </p>
-            <p className="text-sm text-foreground/90 mb-4 leading-relaxed">
-              {t("pricing.free.adNote")}
-            </p>
-            <div className="space-y-2.5">
-              {(showFreeFeatures ? freeFeatures : freeFeatures.slice(0, previewCount)).map((key) => (
-                <div key={key} className="flex items-start gap-3">
-                  <Check className="w-4 h-4 text-pastel-green-strong shrink-0 mt-0.5" />
-                  <span className="text-sm leading-relaxed">{t(key)}</span>
+
+            <div className="mt-7 space-y-3.5">
+              {[
+                "Kostenloses Tracking von Schlaf, Stillen, Fläschchen, Windeln, Medikamente, etc.",
+                "Baby-Hub: Welcher Entwicklungsschritt erwartet mich? Was kann ich tun?",
+                "Einschlaf Routine: Jeden Abend einen geregelten Ablauf.",
+                "Community Hacks: Teile Tipps mit der Community und finde die besten Ideen per Upvote.",
+                "Wachstums-Check: WHO-Perzentilen-Kurven für eine sichere Entwicklung.",
+                "Alle White Noises und Einschlaflieder mit 2 Notfall-Spielen.",
+              ].map((feature) => (
+                <div key={feature} className="flex items-start gap-3">
+                  <CheckCircle2 className="mt-0.5 h-[18px] w-[18px] shrink-0 text-primary" />
+                  <p className="text-[17px] leading-[1.35]">{feature}</p>
                 </div>
               ))}
             </div>
-            {freeFeatures.length > previewCount && (
-              <button
-                type="button"
-                onClick={() => setShowFreeFeatures((prev) => !prev)}
-                className="mt-4 inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary/5 text-xs font-semibold text-primary hover:bg-primary/10 transition-colors"
-              >
-                <span>{showFreeFeatures ? t("pricing.free.hideFeatures") : t("pricing.free.showFeatures")}</span>
-                {showFreeFeatures ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-              </button>
-            )}
           </motion.div>
 
-          {/* Premium Plan */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="glass-card-premium p-6 sm:p-8 relative overflow-hidden"
+            transition={{ duration: 0.45, delay: 0.08 }}
+            className="relative overflow-hidden rounded-[1.5rem] border-2 border-[#f0bf37] bg-white/70 p-6 sm:p-7 shadow-soft-xl"
           >
-            {/* Premium highlight border */}
-            <div className="absolute inset-0 rounded-[1.5rem] border-2 border-pastel-yellow-strong/30 pointer-events-none" />
-            <div className="absolute -top-16 -right-16 w-[150px] h-[150px] rounded-full bg-pastel-yellow/30 blur-[50px] pointer-events-none" />
+            <div className="absolute top-0 left-0 rounded-br-3xl rounded-tl-[1.5rem] bg-[#f0bf37] px-5 py-1 text-[11px] font-bold tracking-wide text-[#5e4a00]">
+              MEISTGEWÄHLT
+            </div>
 
-            <div className="relative z-10">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-xl bg-pastel-yellow/60 flex items-center justify-center">
-                  <Crown className="w-5 h-5 text-pastel-yellow-strong" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-extrabold">Moonli Premium</h3>
-                  <p className="text-sm text-muted-foreground">{t("pricing.premium.tagline")}</p>
-                </div>
+            <div className="absolute top-0 right-3 sm:right-4">
+              <div className="bg-[#f0bf37] px-4 py-2 text-center text-[11px] leading-tight font-extrabold tracking-wide text-[#5e4a00]">
+                <div>30 TAGE</div>
+                <div>KOSTENLOS</div>
+                <div>TESTEN</div>
               </div>
-              <div className="mb-4 mt-4">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-extrabold">5 €</span>
-                  <span className="text-muted-foreground text-sm">/ {t("pricing.month")}*</span>
+              <div className="mx-auto h-0 w-0 border-l-[52px] border-r-[52px] border-t-[12px] border-l-transparent border-r-transparent border-t-[#f0bf37]" />
+            </div>
+
+            <div className="mt-12 flex items-center gap-2 text-[20px] font-bold tracking-wide text-[#806300]">
+              <Star className="h-[18px] w-[18px] fill-[#806300]" />
+              PREMIUM
+            </div>
+
+            <h3 className="mt-2 text-[44px] sm:text-[46px] font-extrabold leading-none tracking-tight">Moonli Premium</h3>
+            <div className="mt-2.5 flex items-end gap-1.5">
+              <span className="text-[62px] leading-none font-extrabold">5 €</span>
+              <span className="text-muted-foreground text-[34px] leading-none font-semibold">/Monat*</span>
+            </div>
+            <p className="mt-1.5 text-[13px] text-muted-foreground">
+              *5 € / Monat im Jahresabo (12 Monate). 7 € / Monat bei monatlicher Kündigung.
+            </p>
+
+            <p className="mt-5 text-[18px] leading-relaxed text-muted-foreground">
+              Moonli Premium schenkt dir die Freiheit, dich ganz auf die kostbaren Momente mit deinem Kind zu konzentrieren - für mehr Gelassenheit und gemeinsame Augenblicke, die bleiben.
+            </p>
+
+            <div className="mt-7 space-y-3.5">
+              {[
+                { icon: Ban, text: "100% werbefrei: Keine Ablenkung - pure Fokuszeit für dich und dein Kind." },
+                { icon: Brain, text: "Intelligente Schlafanalyse: Erkenne Muster und optimiere eure Routinen." },
+                { icon: FileText, text: "Arzt/Hebammen Wochen Report zum Exportieren" },
+                { icon: Sparkles, text: "Die 500-Tage-Begleitung: Jeden Tag ein Tipp, exakt passend zum Alter deines Babys." },
+                { icon: BookOpen, text: "Unlimitierter Content: Voller Zugriff auf Geschichten, Spiele und die gesamte Wissensbibliothek." },
+                { icon: Heart, text: "Wellbeing & Selbstfürsorge: Meditation, Dehnung, Atmung und Eltern-Tagebuch." },
+                { icon: MicVocal, text: "Premium Archiv & Recorder: Speichere Stimmen von Oma und Opa in unbegrenzter Qualität." },
+              ].map((feature) => (
+                <div key={feature.text} className="flex items-start gap-3">
+                  <feature.icon className="mt-0.5 h-[18px] w-[18px] shrink-0 text-[#806300]" />
+                  <p className="text-[17px] leading-[1.35]">{feature.text}</p>
                 </div>
-              </div>
-              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{t("pricing.premium.desc")}</p>
-              <div className="space-y-2.5">
-                {(showPremiumFeatures ? premiumFeatures : premiumFeatures.slice(0, previewCount)).map((key) => (
-                  <div key={key} className="flex items-start gap-3">
-                    <span className="text-sm shrink-0 mt-0.5">✨</span>
-                    <span className="text-sm leading-relaxed">{t(key)}</span>
-                  </div>
-                ))}
-              </div>
-              {premiumFeatures.length > previewCount && (
-                <button
-                  type="button"
-                  onClick={() => setShowPremiumFeatures((prev) => !prev)}
-                  className="mt-4 inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-primary/5 text-xs font-semibold text-primary hover:bg-primary/10 transition-colors"
-                >
-                  <span>{showPremiumFeatures ? t("pricing.premium.hideFeatures") : t("pricing.premium.showFeatures")}</span>
-                  {showPremiumFeatures ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
-                </button>
-              )}
-              <p className="text-xs text-muted-foreground mt-6">
-                {t("pricing.premium.priceNote")}
-              </p>
+              ))}
             </div>
           </motion.div>
         </div>
-
-        {/* Coming Soon */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="glass-card-premium p-6 sm:p-8 md:p-10 max-w-4xl mx-auto mb-16 sm:mb-20 relative overflow-hidden group"
-        >
-          <div className="absolute -top-20 -right-20 w-[200px] h-[200px] rounded-full bg-pastel-peach/30 blur-[60px] pointer-events-none" />
-          <div className="relative z-10">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-              <div className="flex items-center gap-3">
-                <Rocket className="w-6 h-6 text-pastel-peach-strong" />
-                <h3 className="text-xl font-extrabold">{t("pricing.comingSoon.title")}</h3>
-              </div>
-            </div>
-            <p className="text-sm text-muted-foreground mb-6 max-w-2xl mx-auto">
-              {t("pricing.comingSoon.subtitle")}
-            </p>
-            <div className="grid sm:grid-cols-2 gap-6">
-              <div className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-pastel-blue/60 flex items-center justify-center shrink-0">
-                  <Users className="w-5 h-5 text-pastel-blue-strong" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-sm mb-1">{t("pricing.comingSoon.coparenting.title")}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {t("pricing.comingSoon.coparenting.desc")}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-pastel-purple/60 flex items-center justify-center shrink-0">
-                  <FileText className="w-5 h-5 text-pastel-purple-strong" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-sm mb-1">{t("pricing.comingSoon.report.title")}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {t("pricing.comingSoon.report.desc")}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-pastel-green/60 flex items-center justify-center shrink-0">
-                  <Clapperboard className="w-5 h-5 text-pastel-green-strong" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-sm mb-1">{t("pricing.comingSoon.clips.title")}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {t("pricing.comingSoon.clips.desc")}
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-pastel-pink/60 flex items-center justify-center shrink-0">
-                  <Feather className="w-5 h-5 text-pastel-pink-strong" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-sm mb-1">{t("pricing.comingSoon.whisper.title")}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {t("pricing.comingSoon.whisper.desc")}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* About the creator */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="glass-card-premium p-6 sm:p-8 md:p-10 max-w-4xl mx-auto mb-8"
-        >
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-            <div className="flex-1 text-left">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 text-primary text-xs font-semibold mb-3">
-                👨‍💻 Founder Story
-              </span>
-              <h3 className="text-xl sm:text-2xl font-extrabold mb-3">
-                {t("pricing.about.title")}
-              </h3>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                {t("pricing.about.text")}
-              </p>
-            </div>
-            <div className="flex md:flex-col justify-center items-center gap-4 shrink-0">
-              <img
-                src="/capybara-tracking.png"
-                alt="Capybara mit Sanduhr"
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-soft-md"
-              />
-              <img
-                src="/capybara-reading.png"
-                alt="Capybara beim Lesen"
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-soft-md"
-              />
-              <img
-                src="/capybara-sleep.png"
-                alt="Capybara beim Kuscheln"
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full shadow-soft-md"
-              />
-            </div>
-          </div>
-        </motion.div>
-
       </div>
     </section>
   );

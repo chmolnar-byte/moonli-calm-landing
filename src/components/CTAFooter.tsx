@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { Apple, Play } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { toast } from "@/components/ui/sonner";
 
 const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
+const IOS_SOON_TEXT = "Wir arbeiten gerade daran, eine iPhone-Version zu erstellen. Sie wird bald zur Verfuegung stehen.";
 
 const CTAFooter = () => {
   const { t } = useLanguage();
@@ -38,6 +40,10 @@ const CTAFooter = () => {
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
               <a
                 href="#"
+                onClick={(event) => {
+                  event.preventDefault();
+                  toast(IOS_SOON_TEXT);
+                }}
                 className="relative flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-foreground text-background font-bold text-base sm:text-lg hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Apple className="w-6 h-6" />

@@ -1,12 +1,14 @@
 import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Apple, Play } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { toast } from "@/components/ui/sonner";
 import { type MouseEvent, useState } from "react";
 import dashboardWeekly from "@/assets/hero-dashboard-weekly.png";
 import dashboardDark from "@/assets/hero-dashboard-dark.png";
 import dashboardGrowth from "@/assets/hero-dashboard-growth.png";
 
 const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
+const IOS_SOON_TEXT = "Wir arbeiten gerade daran, eine iPhone-Version zu erstellen. Sie wird bald zur Verfuegung stehen.";
 
 const PhoneMockup = () => {
   const [activeImage, setActiveImage] = useState<{
@@ -74,13 +76,13 @@ const PhoneMockup = () => {
               alt: "Wochenbericht der Moonli App",
             })
           }
-          className="absolute left-[4%] bottom-[13%] z-[1] h-[68%] w-[46%] rounded-[1.75rem] border border-white/35 bg-white/20 p-1 shadow-[0_16px_45px_rgba(0,0,0,0.16)] -rotate-[3deg] transition-transform duration-300 hover:scale-[1.015]"
+          className="absolute left-[4%] bottom-[13%] z-[1] h-[68%] w-[46%] rounded-[1.75rem] bg-transparent p-0 shadow-[0_20px_48px_rgba(0,0,0,0.22)] -rotate-[3deg] transition-transform duration-300 hover:scale-[1.015]"
           aria-label="Wochenbericht vergrößern"
         >
           <img
             src={dashboardWeekly}
             alt="Wochenbericht der Moonli App"
-            className="h-full w-full rounded-[1.45rem] object-contain"
+            className="h-full w-full rounded-[1.75rem] object-contain"
             loading="lazy"
           />
         </button>
@@ -94,13 +96,13 @@ const PhoneMockup = () => {
               alt: "Wachstumsverlauf der Moonli App",
             })
           }
-          className="absolute right-[4%] bottom-[13%] z-[2] h-[68%] w-[46%] rounded-[1.75rem] border border-white/35 bg-white/20 p-1 shadow-[0_16px_45px_rgba(0,0,0,0.16)] rotate-[3deg] transition-transform duration-300 hover:scale-[1.015]"
+          className="absolute right-[4%] bottom-[13%] z-[2] h-[68%] w-[46%] rounded-[1.75rem] bg-transparent p-0 shadow-[0_20px_48px_rgba(0,0,0,0.22)] rotate-[3deg] transition-transform duration-300 hover:scale-[1.015]"
           aria-label="Wachstumsverlauf vergrößern"
         >
           <img
             src={dashboardGrowth}
             alt="Wachstumsverlauf der Moonli App"
-            className="h-full w-full rounded-[1.45rem] object-contain"
+            className="h-full w-full rounded-[1.75rem] object-contain"
             loading="lazy"
           />
         </button>
@@ -110,7 +112,7 @@ const PhoneMockup = () => {
           <motion.div
             whileHover={{ scale: 1.015 }}
             transition={{ type: "spring", stiffness: 400, damping: 28 }}
-            className="h-full w-full rounded-[1.9rem] border border-white/45 bg-white/15 p-1 shadow-[0_22px_60px_rgba(0,0,0,0.24)]"
+            className="h-full w-full rounded-[1.9rem] bg-transparent p-0 shadow-[0_28px_72px_rgba(0,0,0,0.30)]"
           >
             <button
               type="button"
@@ -126,7 +128,7 @@ const PhoneMockup = () => {
               <img
                 src={dashboardDark}
                 alt="Moonli Dashboard im Dark Mode"
-                className="h-full w-full rounded-[1.55rem] object-contain"
+                className="h-full w-full rounded-[1.9rem] object-contain"
                 loading="eager"
               />
             </button>
@@ -213,6 +215,10 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center lg:justify-start">
               <a
                 href="#"
+                onClick={(event) => {
+                  event.preventDefault();
+                  toast(IOS_SOON_TEXT);
+                }}
                 className="relative flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-foreground text-background font-semibold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Apple className="w-5 h-5" />

@@ -2,11 +2,13 @@ import { Apple, Play, Globe } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { languageFlags, languageLabels, type Language } from "@/i18n/translations";
+import { toast } from "@/components/ui/sonner";
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const languages: Language[] = ["de", "en", "es", "fr", "ru"];
 const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
+const IOS_SOON_TEXT = "Wir arbeiten gerade daran, eine iPhone-Version zu erstellen. Sie wird bald zur Verfuegung stehen.";
 
 const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -73,6 +75,10 @@ const Navbar = () => {
 
           <a
             href="#"
+            onClick={(event) => {
+              event.preventDefault();
+              toast(IOS_SOON_TEXT);
+            }}
             className="relative hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
           >
             <Apple className="w-4 h-4" />
