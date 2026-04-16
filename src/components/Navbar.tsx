@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const languages: Language[] = ["de", "en", "es", "fr", "ru"];
+const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
 
 const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -81,7 +82,9 @@ const Navbar = () => {
             </span>
           </a>
           <a
-            href="#"
+            href={GOOGLE_PLAY_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
           >
             <Play className="w-4 h-4" />

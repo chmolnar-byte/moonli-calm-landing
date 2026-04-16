@@ -6,6 +6,8 @@ import dashboardWeekly from "@/assets/hero-dashboard-weekly.png";
 import dashboardDark from "@/assets/hero-dashboard-dark.png";
 import dashboardGrowth from "@/assets/hero-dashboard-growth.png";
 
+const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
+
 const PhoneMockup = () => {
   const [activeImage, setActiveImage] = useState<{
     src: string;
@@ -135,23 +137,26 @@ const PhoneMockup = () => {
       <AnimatePresence>
         {activeImage && (
           <motion.div
+            onClick={() => setActiveImage(null)}
             className="fixed inset-0 z-[90] bg-black/72 backdrop-blur-md p-4 sm:p-8 flex items-center justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            role="button"
+            tabIndex={0}
+            aria-label="Bild schließen"
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                setActiveImage(null);
+              }
+            }}
           >
-            <button
-              type="button"
-              onClick={() => setActiveImage(null)}
-              className="absolute inset-0 cursor-zoom-out"
-              aria-label="Bild schließen"
-            />
             <motion.div
               initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
               transition={{ duration: 0.22, ease: "easeOut" }}
-              className="relative z-10 w-full max-w-[560px] rounded-[2rem] border border-white/30 bg-black/10 p-2 shadow-[0_30px_90px_rgba(0,0,0,0.45)]"
+              className="relative z-10 w-full max-w-[560px] rounded-[2rem] border border-white/30 bg-black/10 p-2 shadow-[0_30px_90px_rgba(0,0,0,0.45)] cursor-zoom-out"
             >
               <img
                 src={activeImage.src}
@@ -217,7 +222,9 @@ const HeroSection = () => {
                 </span>
               </a>
               <a
-                href="#"
+                href={GOOGLE_PLAY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Play className="w-5 h-5" />

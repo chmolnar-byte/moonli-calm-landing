@@ -3,6 +3,8 @@ import { Apple, Play } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useLanguage } from "@/i18n/LanguageContext";
 
+const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
+
 const CTAFooter = () => {
   const { t } = useLanguage();
 
@@ -45,7 +47,9 @@ const CTAFooter = () => {
                 </span>
               </a>
               <a
-                href="#"
+                href={GOOGLE_PLAY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-bold text-base sm:text-lg hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Play className="w-6 h-6" />

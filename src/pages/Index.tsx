@@ -7,7 +7,6 @@ import FeaturesSection from "@/components/FeaturesSection";
 import Testimonials from "@/components/Testimonials";
 import PricingSection from "@/components/PricingSection";
 import CTAFooter from "@/components/CTAFooter";
-import ContactSection from "@/components/ContactSection";
 import capybaraImg from "@/assets/capybara.png";
 
 const SectionDivider = () => (
@@ -33,7 +32,6 @@ const Index = () => {
       <FeaturesSection />
       <SectionDivider />
       <PricingSection />
-      <ContactSection />
       <SectionDivider />
       <Testimonials />
       <CTAFooter />
