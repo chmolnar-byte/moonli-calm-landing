@@ -145,7 +145,7 @@ const FeatureCard = ({ feature, index }: { feature: Feature; index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      whileHover={{ y: -8, scale: 1.02 }}
+      whileHover={{ y: -6 }}
       className="glass-card-premium gradient-border-card p-6 group cursor-default transition-shadow duration-300 hover:shadow-soft-xl"
     >
       <div className={`w-12 h-12 rounded-2xl ${feature.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
