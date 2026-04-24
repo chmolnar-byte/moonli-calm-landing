@@ -5,7 +5,7 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { toast } from "@/components/ui/sonner";
 
 const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
-const IOS_SOON_TEXT = "Wir arbeiten mit Hochdruck an der iPhone-Version. Sie ist bald für dich verfügbar.";
+const IOS_SOON_TEXT = "Wir arbeiten mit Hochdruck an der iPhone-Version. Sie ist bald fuer dich verfuegbar.";
 
 const CTAFooter = () => {
   const { t } = useLanguage();
