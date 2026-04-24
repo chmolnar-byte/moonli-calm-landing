@@ -8,7 +8,7 @@ import dashboardDark from "@/assets/hero-dashboard-dark.png";
 import dashboardGrowth from "@/assets/hero-dashboard-growth.png";
 
 const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
-const IOS_SOON_TEXT = "Wir arbeiten gerade daran, eine iPhone-Version zu erstellen. Sie wird bald zur Verfuegung stehen.";
+const IOS_SOON_TEXT = "Wir arbeiten mit Hochdruck an der iPhone-Version. Sie ist bald fuer dich verfuegbar.";
 
 const PhoneMockup = () => {
   const [activeImage, setActiveImage] = useState<{
