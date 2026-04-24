@@ -6,6 +6,7 @@ import Marquee from "@/components/Marquee";
 import FeaturesSection from "@/components/FeaturesSection";
 import Testimonials from "@/components/Testimonials";
 import PricingSection from "@/components/PricingSection";
+import FounderSection from "@/components/FounderSection";
 import CTAFooter from "@/components/CTAFooter";
 import capybaraImg from "@/assets/capybara.png";
 
@@ -32,6 +33,8 @@ const Index = () => {
       <FeaturesSection />
       <SectionDivider />
       <PricingSection />
+      <SectionDivider />
+      <FounderSection />
       <SectionDivider />
       <Testimonials />
       <CTAFooter />
