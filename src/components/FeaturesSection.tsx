@@ -137,7 +137,15 @@ const features: Feature[] = [
   },
 ];
 
-const FeatureCard = ({ feature, index }: { feature: Feature; index: number }) => {
+const FeatureCard = ({
+  feature,
+  index,
+  isPrimary = false,
+}: {
+  feature: Feature;
+  index: number;
+  isPrimary?: boolean;
+}) => {
   const { t } = useLanguage();
   return (
     <motion.div
@@ -146,24 +154,88 @@ const FeatureCard = ({ feature, index }: { feature: Feature; index: number }) =>
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       whileHover={{ y: -6 }}
-      className="glass-card-premium gradient-border-card p-6 group cursor-default transition-shadow duration-300 hover:shadow-soft-xl"
+      className={`group relative overflow-hidden rounded-2xl border border-white/60 bg-white/75 backdrop-blur-xl cursor-default transition-all duration-300 hover:border-primary/30 hover:shadow-soft-xl flex flex-col ${
+        isPrimary ? "p-6 sm:p-7 min-h-[320px]" : "p-5 sm:p-6 min-h-[210px]"
+      }`}
     >
-      <div className={`w-12 h-12 rounded-2xl ${feature.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
+      <div className={`w-11 h-11 rounded-xl ${feature.bgColor} flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300`}>
         <feature.icon className={`w-6 h-6 ${feature.iconColor}`} />
       </div>
 
-      <span className={`inline-block px-3 py-1 rounded-full ${feature.badgeColor} text-xs font-semibold mb-3`}>
-        {t(feature.badgeKey)}
-      </span>
+      <div className="flex items-center justify-between gap-3 mb-3">
+        <span className={`inline-block px-3 py-1 rounded-full ${feature.badgeColor} text-xs font-semibold`}>
+          {t(feature.badgeKey)}
+        </span>
+        {!isPrimary && (
+          <span className="text-[11px] font-semibold text-muted-foreground group-hover:text-primary transition-colors">
+            {t("features.addonLabel")}
+          </span>
+        )}
+      </div>
 
-      <h3 className="text-lg font-bold mb-2">{t(feature.titleKey)}</h3>
-      <p className="text-muted-foreground text-sm leading-relaxed">{t(feature.descKey)}</p>
+      <h3 className={`${isPrimary ? "text-2xl sm:text-3xl" : "text-lg"} font-bold mb-2 tracking-tight`}>{t(feature.titleKey)}</h3>
+      {isPrimary ? (
+        <div className="mt-1 rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/15 via-white to-white px-5 py-4">
+          <p className="text-base sm:text-lg text-foreground/90 leading-relaxed font-semibold">{t(feature.descKey)}</p>
+        </div>
+      ) : (
+        <p className="text-sm text-muted-foreground leading-relaxed">{t(feature.descKey)}</p>
+      )}
+
+      {isPrimary && (
+        <div className="mt-5 rounded-2xl border border-primary/20 bg-white p-5 shadow-sm">
+          <div className="space-y-4">
+            <div>
+              <p className="text-base sm:text-lg text-foreground leading-relaxed font-bold mb-3">
+                {t("features.tracking.lead")}
+              </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                {t("features.tracking.items")
+                  .split("|")
+                  .map((item) => item.trim())
+                  .filter(Boolean)
+                  .map((item) => (
+                    <li key={item} className="flex items-center gap-3 text-base sm:text-lg text-foreground font-medium">
+                      <span className="h-2.5 w-2.5 rounded-full bg-primary" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+            <div className="space-y-2 pt-1">
+              <div className="rounded-xl border border-primary/15 bg-primary/5 px-4 py-3">
+                <p className="text-sm sm:text-base text-foreground/90 leading-relaxed font-medium">
+                  {t("features.tracking.sleepPrediction")}
+                </p>
+              </div>
+              <div className="rounded-xl border border-primary/15 bg-white px-4 py-3">
+                <p className="text-sm sm:text-base text-foreground/90 leading-relaxed">
+                  {t("features.tracking.story2")}
+                </p>
+              </div>
+              <div className="rounded-xl border border-primary/20 bg-primary/10 px-4 py-3">
+                <p className="text-base sm:text-lg text-primary font-bold leading-relaxed">
+                  {t("features.tracking.story3")}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {!isPrimary && (
+        <div className="mt-auto pt-4" />
+      )}
     </motion.div>
   );
 };
 
 const FeaturesSection = () => {
   const { t } = useLanguage();
+  const primaryFeature = features[0];
+  const addonFeatures = features.slice(1);
+
   return (
     <section className="py-20 relative">
       <div className="absolute inset-0 pointer-events-none">
@@ -187,9 +259,29 @@ const FeaturesSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, i) => (
-            <FeatureCard key={feature.titleKey} feature={feature} index={i} />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/75 backdrop-blur-2xl p-4 sm:p-5 mb-8 shadow-soft-xl"
+        >
+          <div className="absolute -top-24 -right-8 w-64 h-64 rounded-full bg-pastel-blue/45 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-16 left-0 w-52 h-52 rounded-full bg-pastel-lavender/35 blur-3xl pointer-events-none" />
+
+          <div className="relative">
+            <FeatureCard feature={primaryFeature} index={0} isPrimary />
+          </div>
+        </motion.div>
+
+        <div className="mb-6 text-center">
+          <h3 className="text-xl sm:text-2xl font-bold">{t("features.addonsTitle")}</h3>
+          <p className="text-sm text-muted-foreground mt-1">{t("features.addonsSubtitle")}</p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {addonFeatures.map((feature, i) => (
+            <FeatureCard key={feature.titleKey} feature={feature} index={i + 1} />
           ))}
         </div>
 
