@@ -3,9 +3,9 @@ import { Apple, Play } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { toast } from "@/components/ui/sonner";
 import { type MouseEvent, useState } from "react";
-import dashboardWeekly from "@/assets/hero-dashboard-weekly.png";
-import dashboardDark from "@/assets/hero-dashboard-dark.png";
-import dashboardGrowth from "@/assets/hero-dashboard-growth.png";
+import dashboardWeekly from "@/assets/Startseite1.png";
+import dashboardDark from "@/assets/Startseite2.png";
+import dashboardGrowth from "@/assets/Startseite3.png";
 
 const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
 const IOS_SOON_TEXT = "Wir arbeiten mit Hochdruck an der iPhone-Version. Sie ist bald für dich verfügbar.";
@@ -59,7 +59,7 @@ const PhoneMockup = () => {
         <div className="h-[86%] w-[86%] rounded-full bg-pastel-green/30 blur-[95px]" />
       </div>
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="h-[62%] w-[62%] rounded-full bg-pastel-lavender/22 blur-[90px] translate-y-12" />
+        <div className="h-[62%] w-[62%] rounded-full bg-pastel-blue/22 blur-[90px] translate-y-12" />
       </div>
 
       <motion.div
@@ -111,17 +111,17 @@ const PhoneMockup = () => {
             type="button"
             onClick={() =>
               setActiveImage({
-                src: dashboardGrowth,
-                alt: "Wachstumsverlauf der Moonli App",
+                src: dashboardDark,
+                alt: "Moonli Dashboard im Dark Mode",
               })
             }
             whileHover={{ scale: 1.03, y: -4, rotate: 4.5 }}
             className="h-full w-full rounded-[1.85rem] bg-transparent p-0 opacity-75 shadow-[0_16px_38px_rgba(0,0,0,0.2)] rotate-[6deg] transition-transform duration-300"
-            aria-label="Wachstumsverlauf vergrößern"
+            aria-label="Dark Mode Dashboard vergrößern"
           >
             <img
-              src={dashboardGrowth}
-              alt="Wachstumsverlauf der Moonli App"
+              src={dashboardDark}
+              alt="Moonli Dashboard im Dark Mode"
               className="h-full w-full rounded-[1.85rem] object-cover object-center"
               loading="lazy"
             />
@@ -138,7 +138,7 @@ const PhoneMockup = () => {
             animate={{ y: [0, -6, 0] }}
             >
             <motion.div
-              className="absolute inset-0 rounded-[1.95rem] bg-pastel-lavender/20 blur-xl pointer-events-none"
+              className="absolute inset-0 rounded-[1.95rem] bg-pastel-blue/20 blur-xl pointer-events-none"
               animate={{ opacity: [0.12, 0.28, 0.12] }}
               transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
           >
@@ -147,16 +147,16 @@ const PhoneMockup = () => {
               type="button"
               onClick={() =>
                 setActiveImage({
-                  src: dashboardDark,
-                  alt: "Moonli Dashboard im Dark Mode",
+                  src: dashboardGrowth,
+                  alt: "Wachstumsverlauf der Moonli App",
                 })
               }
               className="h-full w-full rounded-[1.95rem] overflow-hidden"
-              aria-label="Dark Mode Dashboard vergrößern"
+              aria-label="Wachstumsverlauf vergrößern"
             >
               <img
-                src={dashboardDark}
-                alt="Moonli Dashboard im Dark Mode"
+                src={dashboardGrowth}
+                alt="Wachstumsverlauf der Moonli App"
                 className="h-full w-full rounded-[1.95rem] object-cover object-center"
                 loading="eager"
               />
@@ -206,25 +206,25 @@ const HeroSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-[92vh] flex items-center pt-24 pb-14 overflow-hidden">
+    <section className="relative min-h-[94vh] flex items-center pt-28 pb-16 overflow-hidden">
       {/* Ambient background glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-pastel-green/30 blur-[100px]" style={{ animation: 'pulseGlow 8s ease-in-out infinite' }} />
         <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full bg-pastel-peach/30 blur-[100px]" style={{ animation: 'pulseGlow 10s ease-in-out infinite 2s' }} />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-pastel-lavender/25 blur-[100px]" style={{ animation: 'pulseGlow 12s ease-in-out infinite 4s' }} />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-pastel-blue/25 blur-[100px]" style={{ animation: 'pulseGlow 12s ease-in-out infinite 4s' }} />
       </div>
 
       {/* Floating decorative elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-[15%] left-[10%] w-3 h-3 rounded-full bg-pastel-pink-strong/30" style={{ animation: 'float-decorative 8s ease-in-out infinite' }} />
         <div className="absolute top-[25%] right-[15%] w-2 h-2 rounded-full bg-pastel-blue-strong/25" style={{ animation: 'float-decorative 10s ease-in-out infinite 1s' }} />
-        <div className="absolute bottom-[30%] left-[20%] w-4 h-4 rounded-full bg-pastel-lavender-strong/20" style={{ animation: 'float-decorative 12s ease-in-out infinite 2s' }} />
+        <div className="absolute bottom-[30%] left-[20%] w-4 h-4 rounded-full bg-pastel-green-strong/20" style={{ animation: 'float-decorative 12s ease-in-out infinite 2s' }} />
         <div className="absolute top-[40%] right-[25%] w-2.5 h-2.5 rounded-full bg-pastel-yellow-strong/25" style={{ animation: 'float-decorative 9s ease-in-out infinite 3s' }} />
         <div className="absolute bottom-[20%] right-[10%] w-3 h-3 rounded-full bg-pastel-green-strong/20" style={{ animation: 'float-decorative 11s ease-in-out infinite 4s' }} />
       </div>
 
       <div className="container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -232,27 +232,27 @@ const HeroSection = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="text-center lg:text-left max-w-2xl"
           >
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1.5 text-xs sm:text-sm font-semibold text-primary shadow-soft mb-4">
-              Smart Parenting
+            <span className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white/95 border border-white/20 bg-white/10 backdrop-blur-md shadow-soft mb-5">
+              Smart Parenting App
             </span>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-[4.1rem] font-extrabold leading-[1.02] tracking-tight mb-6">
+            <h1 className="text-display-lg mb-7">
               <span className="text-foreground">{t("hero.headline1")}</span>{" "}
               <span className="text-gradient-animated">{t("hero.headline2")}</span>
             </h1>
 
-            <p className="text-lg sm:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed">
+            <p className="text-body-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-9 leading-relaxed">
               {t("hero.subheadline")}
             </p>
 
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
               <a
                 href="#"
                 onClick={(event) => {
                   event.preventDefault();
                   toast(IOS_SOON_TEXT);
                 }}
-                className="relative flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-foreground text-background font-semibold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
+                className="relative flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-slate-900 font-bold hover:opacity-95 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Apple className="w-5 h-5" />
                 App Store
@@ -264,16 +264,19 @@ const HeroSection = () => {
                 href={GOOGLE_PLAY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
+                className="flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-bold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Play className="w-5 h-5" />
                 Google Play
               </a>
             </div>
+            <p className="mt-4 text-sm text-white/70">
+              Fokus: Schlaftracking, Schlafprognose und ein ruhiger Baby-Alltag.
+            </p>
           </motion.div>
 
           {/* Phone Mockup */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end relative">
             <PhoneMockup />
           </div>
         </div>

@@ -77,6 +77,8 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
   }
 
   html {
@@ -149,6 +151,87 @@
   .bg-gradient-page {
     background: hsl(var(--background));
   }
+
+  .night-sky {
+    --background: 232 35% 10%;
+    --foreground: 214 45% 96%;
+    --card: 232 32% 14%;
+    --card-foreground: 214 45% 96%;
+    --popover: 232 32% 14%;
+    --popover-foreground: 214 45% 96%;
+    --primary: 165 15% 49%;
+    --primary-foreground: 235 40% 12%;
+    --secondary: 230 25% 19%;
+    --secondary-foreground: 214 45% 95%;
+    --muted: 230 25% 19%;
+    --muted-foreground: 220 24% 78%;
+    --accent: 260 45% 28%;
+    --accent-foreground: 214 45% 96%;
+    --border: 230 23% 27%;
+    --input: 230 23% 27%;
+    --ring: 165 15% 49%;
+    --glass-bg: 233 36% 16% / 0.7;
+    --glass-border: 215 45% 90% / 0.16;
+    --pastel-purple: 165 18% 22%;
+    --pastel-lavender: 165 16% 24%;
+    --pastel-purple-strong: 165 18% 58%;
+    --pastel-lavender-strong: 165 16% 56%;
+  }
+
+  .night-sky .bg-gradient-page {
+    background:
+      radial-gradient(circle at 15% 10%, rgba(106, 142, 130, 0.26), transparent 34%),
+      radial-gradient(circle at 85% 12%, rgba(119, 159, 148, 0.2), transparent 30%),
+      radial-gradient(circle at 52% 95%, rgba(143, 180, 169, 0.2), transparent 36%),
+      linear-gradient(180deg, #0e1519 0%, #111b21 45%, #131d24 100%);
+  }
+
+  .night-sky .glass,
+  .night-sky .glass-card,
+  .night-sky .glass-card-premium,
+  .night-sky .glass-button {
+    border: 1px solid rgba(214, 225, 255, 0.14);
+    backdrop-filter: blur(20px) saturate(1.25);
+    -webkit-backdrop-filter: blur(20px) saturate(1.25);
+    box-shadow:
+      0 18px 55px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
+  .night-sky .glass {
+    background: rgba(17, 24, 54, 0.7);
+  }
+
+  .night-sky .glass-card,
+  .night-sky .glass-card-premium {
+    background: rgba(17, 24, 54, 0.62);
+  }
+
+  .night-sky .glass-button {
+    background: rgba(28, 35, 72, 0.68);
+  }
+
+  .night-sky .text-glow {
+    text-shadow: 0 0 36px rgba(106, 142, 130, 0.34), 0 0 72px rgba(106, 142, 130, 0.2);
+  }
+
+  .night-sky-stars {
+    background-image:
+      radial-gradient(circle at 20% 26%, rgba(255, 255, 255, 0.25) 1.2px, transparent 1.2px),
+      radial-gradient(circle at 70% 18%, rgba(205, 223, 255, 0.22) 1px, transparent 1px),
+      radial-gradient(circle at 38% 72%, rgba(255, 255, 255, 0.2) 1.1px, transparent 1.1px),
+      radial-gradient(circle at 82% 66%, rgba(217, 228, 255, 0.25) 1.2px, transparent 1.2px);
+    background-size: 360px 360px;
+    opacity: 0.45;
+  }
+
+  .dream-gradient {
+    background: linear-gradient(120deg, rgba(106, 142, 130, 0.24) 0%, rgba(128, 164, 153, 0.18) 48%, rgba(147, 183, 172, 0.2) 100%);
+  }
+
+  .moon-glow {
+    box-shadow: 0 0 0 1px rgba(214, 225, 255, 0.18), 0 0 45px rgba(106, 142, 130, 0.32), 0 0 80px rgba(106, 142, 130, 0.2);
+  }
 }
 
 @keyframes float {
@@ -214,8 +297,8 @@
     background: linear-gradient(
       270deg,
       hsl(var(--primary)),
-      hsl(var(--pastel-lavender-strong)),
-      hsl(var(--pastel-pink-strong)),
+      hsl(var(--pastel-green-strong)),
+      hsl(var(--pastel-blue-strong)),
       hsl(var(--primary))
     );
     background-size: 300% 300%;

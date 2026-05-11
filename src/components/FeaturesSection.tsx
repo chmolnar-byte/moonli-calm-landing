@@ -1,20 +1,19 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Baby,
-  Activity,
-  Bell,
-  Battery,
-  Globe,
-  Gamepad2,
   HeartHandshake,
   BookOpen,
-  MoonStar,
-  Mic,
   Music2,
-  Sparkles,
+  CheckCircle2,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import trackingScreenshot from "@/assets/Startseite1.png";
+import sleepPredictionScreenshot from "@/assets/sleep-prognose.png";
+import parentAreaScreenshot from "@/assets/elternbereich.png";
+import knowledgeScreenshot from "@/assets/wissen.png";
+import entertainmentScreenshot from "@/assets/entertainment.png";
+import { useState } from "react";
 
 interface Feature {
   icon: LucideIcon;
@@ -36,115 +35,18 @@ const features: Feature[] = [
     iconColor: "text-pastel-blue-strong",
     badgeColor: "bg-pastel-blue/80 text-pastel-blue-strong",
   },
-  {
-    icon: Activity,
-    titleKey: "features.health.title",
-    descKey: "features.health.desc",
-    badgeKey: "features.health.badge",
-    bgColor: "bg-pastel-green/60",
-    iconColor: "text-pastel-green-strong",
-    badgeColor: "bg-pastel-green/80 text-pastel-green-strong",
-  },
-  {
-    icon: Bell,
-    titleKey: "features.reminders.title",
-    descKey: "features.reminders.desc",
-    badgeKey: "features.reminders.badge",
-    bgColor: "bg-pastel-yellow/60",
-    iconColor: "text-pastel-yellow-strong",
-    badgeColor: "bg-pastel-yellow/80 text-pastel-yellow-strong",
-  },
-  {
-    icon: Battery,
-    titleKey: "features.battery.title",
-    descKey: "features.battery.desc",
-    badgeKey: "features.battery.badge",
-    bgColor: "bg-pastel-pink/60",
-    iconColor: "text-pastel-pink-strong",
-    badgeColor: "bg-pastel-pink/80 text-pastel-pink-strong",
-  },
-  {
-    icon: Globe,
-    titleKey: "features.amClub.title",
-    descKey: "features.amClub.desc",
-    badgeKey: "features.amClub.badge",
-    bgColor: "bg-pastel-purple/60",
-    iconColor: "text-pastel-purple-strong",
-    badgeColor: "bg-pastel-purple/80 text-pastel-purple-strong",
-  },
-  {
-    icon: Gamepad2,
-    titleKey: "features.emergency.title",
-    descKey: "features.emergency.desc",
-    badgeKey: "features.emergency.badge",
-    bgColor: "bg-pastel-orange/60",
-    iconColor: "text-pastel-orange-strong",
-    badgeColor: "bg-pastel-orange/80 text-pastel-orange-strong",
-  },
-  {
-    icon: HeartHandshake,
-    titleKey: "features.qualityTime.title",
-    descKey: "features.qualityTime.desc",
-    badgeKey: "features.qualityTime.badge",
-    bgColor: "bg-pastel-red/60",
-    iconColor: "text-pastel-red-strong",
-    badgeColor: "bg-pastel-red/80 text-pastel-red-strong",
-  },
-  {
-    icon: BookOpen,
-    titleKey: "features.library.title",
-    descKey: "features.library.desc",
-    badgeKey: "features.library.badge",
-    bgColor: "bg-pastel-brown/60",
-    iconColor: "text-pastel-brown-strong",
-    badgeColor: "bg-pastel-brown/80 text-pastel-brown-strong",
-  },
-  {
-    icon: MoonStar,
-    titleKey: "features.bedtime.title",
-    descKey: "features.bedtime.desc",
-    badgeKey: "features.bedtime.badge",
-    bgColor: "bg-pastel-indigo/60",
-    iconColor: "text-pastel-indigo-strong",
-    badgeColor: "bg-pastel-indigo/80 text-pastel-indigo-strong",
-  },
-  {
-    icon: Mic,
-    titleKey: "features.voice.title",
-    descKey: "features.voice.desc",
-    badgeKey: "features.voice.badge",
-    bgColor: "bg-pastel-teal/60",
-    iconColor: "text-pastel-teal-strong",
-    badgeColor: "bg-pastel-teal/80 text-pastel-teal-strong",
-  },
-  {
-    icon: Music2,
-    titleKey: "features.sounds.title",
-    descKey: "features.sounds.desc",
-    badgeKey: "features.sounds.badge",
-    bgColor: "bg-pastel-yellow/40",
-    iconColor: "text-pastel-yellow-strong",
-    badgeColor: "bg-pastel-yellow/70 text-pastel-yellow-strong",
-  },
-  {
-    icon: Sparkles,
-    titleKey: "features.gamification.title",
-    descKey: "features.gamification.desc",
-    badgeKey: "features.gamification.badge",
-    bgColor: "bg-pastel-purple/50",
-    iconColor: "text-pastel-purple-strong",
-    badgeColor: "bg-pastel-purple/80 text-pastel-purple-strong",
-  },
 ];
 
 const FeatureCard = ({
   feature,
   index,
   isPrimary = false,
+  onOpenImage,
 }: {
   feature: Feature;
   index: number;
   isPrimary?: boolean;
+  onOpenImage: (src: string, alt: string) => void;
 }) => {
   const { t } = useLanguage();
   return (
@@ -154,69 +56,92 @@ const FeatureCard = ({
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       whileHover={{ y: -6 }}
-      className={`group relative overflow-hidden rounded-2xl border border-white/60 bg-white/75 backdrop-blur-xl cursor-default transition-all duration-300 hover:border-primary/30 hover:shadow-soft-xl flex flex-col ${
-        isPrimary ? "p-6 sm:p-7 min-h-[320px]" : "p-5 sm:p-6 min-h-[210px]"
+      className={`group relative overflow-hidden rounded-2xl border border-white/15 bg-white/5 backdrop-blur-xl cursor-default transition-all duration-300 hover:border-primary/45 hover:shadow-soft-2xl flex flex-col ${
+        isPrimary ? "p-7 sm:p-8 min-h-[360px]" : "p-6 sm:p-7 min-h-[230px]"
       }`}
     >
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/10 via-transparent to-transparent pointer-events-none" />
-      <div className={`w-11 h-11 rounded-xl ${feature.bgColor} flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300`}>
-        <feature.icon className={`w-6 h-6 ${feature.iconColor}`} />
-      </div>
-
-      <div className="flex items-center justify-between gap-3 mb-3">
-        <span className={`inline-block px-3 py-1 rounded-full ${feature.badgeColor} text-xs font-semibold`}>
-          {t(feature.badgeKey)}
-        </span>
-        {!isPrimary && (
-          <span className="text-[11px] font-semibold text-muted-foreground group-hover:text-primary transition-colors">
-            {t("features.addonLabel")}
-          </span>
+      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/8 via-transparent to-transparent pointer-events-none" />
+      <div className="flex items-center justify-between gap-3 mb-4">
+        <div className="flex items-center gap-3">
+          <div className="w-[52px] h-[52px] rounded-2xl border border-primary/35 bg-primary/12 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-[0_8px_24px_rgba(0,0,0,0.25)]">
+            <feature.icon className="w-6 h-6 text-primary drop-shadow-[0_1px_4px_rgba(0,0,0,0.35)]" />
+          </div>
+          {isPrimary && (
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-primary text-white text-xs font-semibold border border-primary/70 shadow-[0_8px_18px_rgba(0,0,0,0.22)]">
+              {t(feature.badgeKey)}
+            </span>
+          )}
+        </div>
+        {isPrimary ? (
+          <div className="rounded-full border border-primary/70 bg-primary px-3 py-1 text-xs font-bold text-white whitespace-nowrap shadow-[0_8px_18px_rgba(0,0,0,0.22)]">
+            {t("features.tracking.freeWidget")}
+          </div>
+        ) : (
+          <span className="text-[11px] font-semibold text-white/50">{t("features.groupLabel")}</span>
         )}
       </div>
 
-      <h3 className={`${isPrimary ? "text-2xl sm:text-3xl" : "text-lg"} font-bold mb-2 tracking-tight`}>{t(feature.titleKey)}</h3>
+      <h3 className={`${isPrimary ? "text-title-lg" : "text-xl"} font-bold mb-2 tracking-tight text-white`}>{t(feature.titleKey)}</h3>
       {isPrimary ? (
-        <div className="mt-1 rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/15 via-white to-white px-5 py-4">
-          <p className="text-base sm:text-lg text-foreground/90 leading-relaxed font-semibold">{t(feature.descKey)}</p>
-        </div>
+        null
       ) : (
-        <p className="text-sm text-muted-foreground leading-relaxed">{t(feature.descKey)}</p>
+        <p className="text-base text-white/75 leading-relaxed">{t(feature.descKey)}</p>
       )}
 
       {isPrimary && (
-        <div className="mt-5 rounded-2xl border border-primary/20 bg-white p-5 shadow-sm">
-          <div className="space-y-4">
+        <div className="mt-5 rounded-2xl border border-primary/25 bg-white/8 p-5 shadow-soft">
+          <div className="grid lg:grid-cols-[1.3fr,0.9fr] gap-5">
             <div>
-              <p className="text-base sm:text-lg text-foreground leading-relaxed font-bold mb-3">
+              <p className="text-lg sm:text-xl text-white leading-relaxed font-bold mb-3">
                 {t("features.tracking.lead")}
               </p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-4">
                 {t("features.tracking.items")
                   .split("|")
                   .map((item) => item.trim())
                   .filter(Boolean)
                   .map((item) => (
-                    <li key={item} className="flex items-center gap-3 text-base sm:text-lg text-foreground font-medium">
-                      <span className="h-2.5 w-2.5 rounded-full bg-primary" />
+                    <li key={item} className="flex items-center gap-2.5 text-base sm:text-lg text-white/90 font-medium">
+                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
               </ul>
-            </div>
-            <div className="space-y-2 pt-1">
-              <div className="rounded-xl border border-primary/15 bg-primary/5 px-4 py-3">
-                <p className="text-sm sm:text-base text-foreground/90 leading-relaxed font-medium">
+
+              <div className="rounded-xl border border-primary/25 bg-primary/10 px-4 py-3 mb-2">
+                <p className="text-sm sm:text-base text-white/90 leading-relaxed font-medium">
                   {t("features.tracking.sleepPrediction")}
                 </p>
               </div>
-              <div className="rounded-xl border border-primary/15 bg-white px-4 py-3">
-                <p className="text-sm sm:text-base text-foreground/90 leading-relaxed">
+              <div className="rounded-xl border border-white/20 bg-white/5 px-4 py-3">
+                <p className="text-sm sm:text-base text-white/85 leading-relaxed">
                   {t("features.tracking.story2")}
                 </p>
               </div>
-              <div className="rounded-xl border border-primary/20 bg-primary/10 px-4 py-3">
-                <p className="text-base sm:text-lg text-primary font-bold leading-relaxed">
-                  {t("features.tracking.story3")}
+            </div>
+
+            <div className="space-y-3">
+              <div className="rounded-xl border border-white/25 bg-slate-950/35 min-h-[120px] overflow-hidden p-2">
+                <button type="button" onClick={() => onOpenImage(trackingScreenshot, "Tracking Screenshot")} className="w-full block">
+                  <img
+                    src={sleepPredictionScreenshot}
+                    alt="Schlafprognose Screenshot"
+                    className="w-full h-[240px] object-contain object-center"
+                    loading="lazy"
+                  />
+                </button>
+              </div>
+              <div className="rounded-xl border border-white/25 bg-slate-950/35 min-h-[120px] overflow-hidden p-2">
+                <button type="button" onClick={() => onOpenImage(sleepPredictionScreenshot, "Schlafprognose Screenshot")} className="w-full block">
+                  <img
+                    src={trackingScreenshot}
+                    alt="Tracking Screenshot"
+                    className="w-full h-[240px] object-contain object-center"
+                    loading="lazy"
+                  />
+                </button>
+                <p className="mt-2 px-1 text-xs sm:text-sm text-white/80 font-medium">
+                  Der Wochenbericht ist nur für Premium.
                 </p>
               </div>
             </div>
@@ -233,13 +158,36 @@ const FeatureCard = ({
 
 const FeaturesSection = () => {
   const { t } = useLanguage();
+  const [activeImage, setActiveImage] = useState<{ src: string; alt: string } | null>(null);
   const primaryFeature = features[0];
-  const addonFeatures = features.slice(1);
+  const groupedFeatures = [
+    {
+      icon: HeartHandshake,
+      titleKey: "features.groups.parent.title",
+      subtitleKey: "features.groups.parent.subtitle",
+      itemsKey: "features.groups.parent.items",
+      image: parentAreaScreenshot,
+    },
+    {
+      icon: BookOpen,
+      titleKey: "features.groups.knowledge.title",
+      subtitleKey: "features.groups.knowledge.subtitle",
+      itemsKey: "features.groups.knowledge.items",
+      image: knowledgeScreenshot,
+    },
+    {
+      icon: Music2,
+      titleKey: "features.groups.entertainment.title",
+      subtitleKey: "features.groups.entertainment.subtitle",
+      itemsKey: "features.groups.entertainment.items",
+      image: entertainmentScreenshot,
+    },
+  ];
 
   return (
-    <section className="py-20 relative">
+    <section className="py-24 relative">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] rounded-full bg-pastel-lavender/25 blur-[100px]" />
+        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] rounded-full bg-pastel-blue/25 blur-[100px]" />
         <div className="absolute bottom-0 left-1/4 w-[300px] h-[300px] rounded-full bg-pastel-peach/20 blur-[80px]" />
       </div>
 
@@ -251,10 +199,10 @@ const FeaturesSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-button text-primary text-sm font-semibold mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-button text-primary text-sm font-semibold mb-4">
             {t("features.badge")}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-glow">
+          <h2 className="text-display-md text-glow">
             {t("features.title")}
           </h2>
         </motion.div>
@@ -264,24 +212,64 @@ const FeaturesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-3xl border border-white/60 bg-white/75 backdrop-blur-2xl p-4 sm:p-5 mb-8 shadow-soft-xl"
+          className="relative overflow-hidden rounded-4xl border border-white/15 bg-white/5 backdrop-blur-2xl p-4 sm:p-5 mb-10 shadow-soft-2xl"
         >
-          <div className="absolute -top-24 -right-8 w-64 h-64 rounded-full bg-pastel-blue/45 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-16 left-0 w-52 h-52 rounded-full bg-pastel-lavender/35 blur-3xl pointer-events-none" />
+          <div className="absolute -top-24 -right-8 w-64 h-64 rounded-full bg-pastel-blue/25 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-16 left-0 w-52 h-52 rounded-full bg-pastel-green/35 blur-3xl pointer-events-none" />
 
           <div className="relative">
-            <FeatureCard feature={primaryFeature} index={0} isPrimary />
+            <FeatureCard
+              feature={primaryFeature}
+              index={0}
+              isPrimary
+              onOpenImage={(src, alt) => setActiveImage({ src, alt })}
+            />
           </div>
         </motion.div>
 
         <div className="mb-6 text-center">
-          <h3 className="text-xl sm:text-2xl font-bold">{t("features.addonsTitle")}</h3>
-          <p className="text-sm text-muted-foreground mt-1">{t("features.addonsSubtitle")}</p>
+          <h3 className="text-title-lg font-bold text-white">{t("features.groupsTitle")}</h3>
+          <p className="text-base text-white/70 mt-2">{t("features.groupsSubtitle")}</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {addonFeatures.map((feature, i) => (
-            <FeatureCard key={feature.titleKey} feature={feature} index={i + 1} />
+        <div className="grid md:grid-cols-3 gap-4">
+          {groupedFeatures.map((group, i) => (
+            <motion.div
+              key={group.titleKey}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: i * 0.08 }}
+              className="rounded-2xl border border-white/15 bg-white/5 backdrop-blur-xl p-5"
+            >
+              <div className="w-[50px] h-[50px] rounded-2xl border border-primary/35 bg-primary/12 flex items-center justify-center mb-4 shadow-[0_8px_24px_rgba(0,0,0,0.2)]">
+                <group.icon className="w-6 h-6 text-primary" />
+              </div>
+              <div className="rounded-xl border border-white/20 bg-slate-950/35 overflow-hidden mb-4 p-2">
+                <button type="button" onClick={() => setActiveImage({ src: group.image, alt: t(group.titleKey) })} className="w-full block">
+                  <img
+                    src={group.image}
+                    alt={t(group.titleKey)}
+                    className="w-full h-[220px] object-contain object-center"
+                    loading="lazy"
+                  />
+                </button>
+              </div>
+              <h4 className="text-xl font-bold text-white mb-1">{t(group.titleKey)}</h4>
+              <p className="text-sm text-primary mb-3">{t(group.subtitleKey)}</p>
+              <ul className="space-y-2">
+                {t(group.itemsKey)
+                  .split("|")
+                  .map((item) => item.trim())
+                  .filter(Boolean)
+                  .map((item) => (
+                    <li key={item} className="flex items-start gap-2 text-white/85 text-sm">
+                      <span className="h-2 w-2 rounded-full bg-primary mt-1.5 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+              </ul>
+            </motion.div>
           ))}
         </div>
 
@@ -290,10 +278,33 @@ const FeaturesSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="text-center text-sm text-muted-foreground mt-8"
+          className="text-center text-base text-white/70 mt-8"
         >
           {t("features.adNote")}
         </motion.p>
+
+        <AnimatePresence>
+          {activeImage && (
+            <motion.div
+              className="fixed inset-0 z-[70] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+              onClick={() => setActiveImage(null)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <motion.img
+                src={activeImage.src}
+                alt={activeImage.alt}
+                className="max-w-[92vw] max-h-[88vh] object-contain rounded-2xl border border-white/20 shadow-soft-2xl"
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.95, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                onClick={(event) => event.stopPropagation()}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

@@ -26,15 +26,15 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
           <img src={logo} alt="Moonli Logo" className="w-9 h-9 rounded-full object-cover shadow-soft" />
-          <span className="text-lg font-extrabold tracking-tight text-foreground">
+          <span className="text-lg font-extrabold tracking-tight text-white">
             MOONLI
           </span>
-          <span className="hidden md:flex items-center gap-1.5 text-xs text-muted-foreground font-medium ml-2 pl-3 border-l border-border/50">
+          <span className="hidden md:flex items-center gap-1.5 text-xs text-white/70 font-medium ml-2 pl-3 border-l border-white/20">
             From Vienna with Love
             <span className="inline-flex w-4 h-3 rounded-sm overflow-hidden shadow-sm">
               <span className="flex flex-col w-full h-full">
@@ -52,18 +52,18 @@ const Navbar = () => {
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={() => setOpen(!open)}
-              className="flex items-center gap-1.5 px-3 py-2 rounded-full glass-button text-sm font-semibold hover:scale-[1.03] transition-all duration-200"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-full glass-button text-sm font-semibold text-white hover:scale-[1.03] transition-all duration-200"
             >
               <span>{languageFlags[language]}</span>
               <Globe className="w-3.5 h-3.5 text-muted-foreground" />
             </button>
             {open && (
-              <div className="absolute right-0 top-full mt-2 py-1 rounded-2xl bg-white shadow-soft-xl min-w-[140px] z-50 border border-border/40">
+              <div className="absolute right-0 top-full mt-2 py-1 rounded-2xl bg-slate-900 shadow-soft-xl min-w-[140px] z-50 border border-white/15">
                 {languages.map((lang) => (
                   <button
                     key={lang}
                     onClick={() => { setLanguage(lang); setOpen(false); }}
-                    className={`w-full flex items-center gap-2.5 px-4 py-2 text-sm hover:bg-muted/50 transition-colors ${lang === language ? "font-bold" : ""}`}
+                    className={`w-full flex items-center gap-2.5 px-4 py-2 text-sm hover:bg-white/10 transition-colors text-white ${lang === language ? "font-bold" : ""}`}
                   >
                     <span>{languageFlags[lang]}</span>
                     <span>{languageLabels[lang]}</span>
@@ -79,7 +79,7 @@ const Navbar = () => {
               event.preventDefault();
               toast(IOS_SOON_TEXT);
             }}
-            className="relative hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-foreground text-background text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
+            className="relative hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-white text-slate-900 text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
           >
             <Apple className="w-4 h-4" />
             {t("nav.appStore")}

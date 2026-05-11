@@ -13,7 +13,7 @@ const CTAFooter = () => {
   return (
     <>
       {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-pastel-green/25 blur-[100px]" />
           <div className="absolute top-0 right-0 w-[300px] h-[300px] rounded-full bg-pastel-peach/20 blur-[80px]" />
@@ -25,15 +25,15 @@ const CTAFooter = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-2xl mx-auto"
+            className="text-center max-w-3xl mx-auto"
           >
             <div className="w-16 h-16 rounded-full glass-button flex items-center justify-center mx-auto mb-6">
               <img src={logo} alt="Moonli" className="w-10 h-10 rounded-full object-cover" />
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold mb-4 text-glow">
+            <h2 className="text-display-md font-extrabold mb-4 text-glow text-white">
               {t("cta.title")}
             </h2>
-            <p className="text-muted-foreground mb-8 text-base sm:text-lg">
+            <p className="text-white/75 mb-8 text-body-lg">
               {t("cta.subtitle")}
             </p>
 
@@ -44,7 +44,7 @@ const CTAFooter = () => {
                   event.preventDefault();
                   toast(IOS_SOON_TEXT);
                 }}
-                className="relative flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-foreground text-background font-bold text-base sm:text-lg hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
+                className="relative flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-white text-slate-900 font-bold text-base sm:text-lg hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Apple className="w-6 h-6" />
                 {t("nav.appStore")}
@@ -66,29 +66,29 @@ const CTAFooter = () => {
         </div>
       </section>
 
-      <section className="pb-8">
+      <section className="pb-10">
         <div className="container">
-          <p className="mx-auto max-w-4xl rounded-2xl border border-pastel-green-strong/20 bg-pastel-green/50 px-5 py-4 text-center text-sm sm:text-base font-medium text-foreground">
+          <p className="mx-auto max-w-4xl rounded-2xl border border-white/20 bg-white/8 px-5 py-4 text-center text-base font-medium text-white/85 backdrop-blur-md">
             {t("testimonials.trust").replace("🇦🇹 ", "")}
           </p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border/30 py-8">
+      <footer className="border-t border-white/10 py-8">
         <div className="container">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-sm text-white/65">
               <img src={logo} alt="Moonli" className="w-5 h-5 rounded-full object-cover" />
-              <span className="font-semibold text-foreground">MOONLI</span>
+              <span className="font-semibold text-white">MOONLI</span>
               <span>© {new Date().getFullYear()}</span>
             </div>
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <a href="/cookies" className="hover:text-foreground transition-colors">{t("footer.cookies")}</a>
-              <a href="/terms" className="hover:text-foreground transition-colors">{t("footer.terms")}</a>
-              <a href="/privacy" className="hover:text-foreground transition-colors">{t("footer.privacy")}</a>
-              <a href="/imprint" className="hover:text-foreground transition-colors">{t("footer.imprint")}</a>
-              <a href="mailto:hello@moonli.net" className="hover:text-foreground transition-colors">{t("footer.contact")}</a>
+            <div className="flex items-center gap-6 text-sm text-white/65">
+              <a href="/cookies" className="hover:text-white transition-colors">{t("footer.cookies")}</a>
+              <a href="/terms" className="hover:text-white transition-colors">{t("footer.terms")}</a>
+              <a href="/privacy" className="hover:text-white transition-colors">{t("footer.privacy")}</a>
+              <a href="/imprint" className="hover:text-white transition-colors">{t("footer.imprint")}</a>
+              <a href="mailto:hello@moonli.net" className="hover:text-white transition-colors">{t("footer.contact")}</a>
             </div>
           </div>
         </div>

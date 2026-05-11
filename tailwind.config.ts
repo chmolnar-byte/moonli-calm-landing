@@ -82,6 +82,7 @@ export default {
       borderRadius: {
         "4xl": "2rem",
         "5xl": "2.5rem",
+        "6xl": "3rem",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
@@ -90,7 +91,14 @@ export default {
         soft: "0 4px 30px rgba(0, 0, 0, 0.04)",
         "soft-lg": "0 8px 40px rgba(0, 0, 0, 0.06)",
         "soft-xl": "0 12px 50px rgba(0, 0, 0, 0.08)",
+        "soft-2xl": "0 24px 80px rgba(0, 0, 0, 0.16)",
         glow: "0 0 40px rgba(112, 151, 138, 0.15)",
+      },
+      fontSize: {
+        "display-lg": ["clamp(2.4rem, 7vw, 4.6rem)", { lineHeight: "1.03", letterSpacing: "-0.02em", fontWeight: "800" }],
+        "display-md": ["clamp(2rem, 5vw, 3.4rem)", { lineHeight: "1.08", letterSpacing: "-0.018em", fontWeight: "800" }],
+        "title-lg": ["clamp(1.5rem, 3.2vw, 2.25rem)", { lineHeight: "1.15", letterSpacing: "-0.015em", fontWeight: "700" }],
+        "body-lg": ["1.125rem", { lineHeight: "1.75rem" }],
       },
       keyframes: {
         "accordion-down": {
