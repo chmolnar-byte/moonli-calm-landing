@@ -57,23 +57,29 @@ const FeatureCard = ({
       transition={{ duration: 0.5, delay: index * 0.08 }}
       whileHover={{ y: -6 }}
       className={`group relative overflow-hidden rounded-2xl border border-white/15 bg-white/5 backdrop-blur-xl cursor-default transition-all duration-300 hover:border-primary/45 hover:shadow-soft-2xl flex flex-col ${
-        isPrimary ? "p-7 sm:p-8 min-h-[360px]" : "p-6 sm:p-7 min-h-[230px]"
+        isPrimary ? "p-4 sm:p-6 lg:p-8 min-h-0 sm:min-h-[320px] lg:min-h-[360px]" : "p-6 sm:p-7 min-h-[230px]"
       }`}
     >
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/8 via-transparent to-transparent pointer-events-none" />
-      <div className="flex items-center justify-between gap-3 mb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-[52px] h-[52px] rounded-2xl border border-primary/35 bg-primary/12 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-[0_8px_24px_rgba(0,0,0,0.25)]">
-            <feature.icon className="w-6 h-6 text-primary drop-shadow-[0_1px_4px_rgba(0,0,0,0.35)]" />
+      <div
+        className={`mb-4 ${
+          isPrimary
+            ? "flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4"
+            : "flex items-center justify-between gap-3"
+        }`}
+      >
+        <div className={`flex flex-wrap items-center gap-2 sm:gap-3 min-w-0 ${isPrimary ? "flex-1" : ""}`}>
+          <div className="w-[48px] h-[48px] sm:w-[52px] sm:h-[52px] rounded-2xl border border-primary/35 bg-primary/12 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-[0_8px_24px_rgba(0,0,0,0.25)] shrink-0">
+            <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary drop-shadow-[0_1px_4px_rgba(0,0,0,0.35)]" />
           </div>
           {isPrimary && (
-            <span className="inline-block px-3.5 py-1.5 rounded-full bg-primary text-white text-xs font-semibold border border-primary/70 shadow-[0_8px_18px_rgba(0,0,0,0.22)]">
+            <span className="inline-block px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-primary text-white text-[11px] sm:text-xs font-semibold border border-primary/70 shadow-[0_8px_18px_rgba(0,0,0,0.22)] max-w-full text-center sm:text-left">
               {t(feature.badgeKey)}
             </span>
           )}
         </div>
         {isPrimary ? (
-          <div className="rounded-full border border-primary/70 bg-primary px-3 py-1 text-xs font-bold text-white whitespace-nowrap shadow-[0_8px_18px_rgba(0,0,0,0.22)]">
+          <div className="rounded-full border border-primary/70 bg-primary px-2.5 py-1.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-bold text-white text-balance shadow-[0_8px_18px_rgba(0,0,0,0.22)] w-full sm:w-auto sm:max-w-[14rem] sm:text-right shrink-0">
             {t("features.tracking.freeWidget")}
           </div>
         ) : (
@@ -89,59 +95,59 @@ const FeatureCard = ({
       )}
 
       {isPrimary && (
-        <div className="mt-5 rounded-2xl border border-primary/25 bg-white/8 p-5 shadow-soft">
-          <div className="grid lg:grid-cols-[1.3fr,0.9fr] gap-5">
-            <div>
-              <p className="text-lg sm:text-xl text-white leading-relaxed font-bold mb-3">
+        <div className="mt-4 sm:mt-5 rounded-2xl border border-primary/25 bg-white/8 p-3 sm:p-5 shadow-soft min-w-0">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.95fr)] gap-4 sm:gap-5 lg:gap-6">
+            <div className="min-w-0">
+              <p className="text-base sm:text-lg lg:text-xl text-white leading-snug sm:leading-relaxed font-bold mb-3">
                 {t("features.tracking.lead")}
               </p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 mb-4">
+              <ul className="grid grid-cols-1 min-[400px]:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-2.5 sm:gap-y-3 mb-4">
                 {t("features.tracking.items")
                   .split("|")
                   .map((item) => item.trim())
                   .filter(Boolean)
                   .map((item) => (
-                    <li key={item} className="flex items-center gap-2.5 text-base sm:text-lg text-white/90 font-medium">
-                      <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
-                      <span>{item}</span>
+                    <li key={item} className="flex items-center gap-2 sm:gap-2.5 text-sm sm:text-base lg:text-lg text-white/90 font-medium min-w-0">
+                      <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary shrink-0" />
+                      <span className="break-words">{item}</span>
                     </li>
                   ))}
               </ul>
 
-              <div className="rounded-xl border border-primary/25 bg-primary/10 px-4 py-3 mb-2">
-                <p className="text-sm sm:text-base text-white/90 leading-relaxed font-medium">
+              <div className="rounded-xl border border-primary/25 bg-primary/10 px-3 py-2.5 sm:px-4 sm:py-3 mb-2">
+                <p className="text-xs sm:text-sm lg:text-base text-white/90 leading-relaxed font-medium">
                   {t("features.tracking.sleepPrediction")}
                 </p>
               </div>
-              <div className="rounded-xl border border-white/20 bg-white/5 px-4 py-3">
-                <p className="text-sm sm:text-base text-white/85 leading-relaxed">
+              <div className="rounded-xl border border-white/20 bg-white/5 px-3 py-2.5 sm:px-4 sm:py-3">
+                <p className="text-xs sm:text-sm lg:text-base text-white/85 leading-relaxed">
                   {t("features.tracking.story2")}
                 </p>
               </div>
             </div>
 
-            <div className="space-y-3">
-              <div className="rounded-xl border border-white/25 bg-slate-950/35 min-h-[120px] overflow-hidden p-2">
-                <button type="button" onClick={() => onOpenImage(trackingScreenshot, "Tracking Screenshot")} className="w-full block">
+            <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-1 gap-3 min-w-0">
+              <div className="rounded-xl border border-white/25 bg-slate-950/35 min-h-0 overflow-hidden p-1.5 sm:p-2 flex flex-col">
+                <button type="button" onClick={() => onOpenImage(sleepPredictionScreenshot, "Schlafprognose Screenshot")} className="w-full block min-w-0">
                   <img
                     src={sleepPredictionScreenshot}
                     alt="Schlafprognose Screenshot"
-                    className="w-full h-[240px] object-contain object-center"
+                    className="w-full h-[min(42vw,200px)] min-[420px]:h-[180px] sm:h-[200px] lg:h-[240px] object-contain object-center mx-auto"
                     loading="lazy"
                   />
                 </button>
               </div>
-              <div className="rounded-xl border border-white/25 bg-slate-950/35 min-h-[120px] overflow-hidden p-2">
-                <button type="button" onClick={() => onOpenImage(sleepPredictionScreenshot, "Schlafprognose Screenshot")} className="w-full block">
+              <div className="rounded-xl border border-white/25 bg-slate-950/35 min-h-0 overflow-hidden p-1.5 sm:p-2 flex flex-col min-[420px]:min-h-0">
+                <button type="button" onClick={() => onOpenImage(trackingScreenshot, "Tracking Screenshot")} className="w-full block min-w-0">
                   <img
                     src={trackingScreenshot}
                     alt="Tracking Screenshot"
-                    className="w-full h-[240px] object-contain object-center"
+                    className="w-full h-[min(42vw,200px)] min-[420px]:h-[180px] sm:h-[200px] lg:h-[240px] object-contain object-center mx-auto"
                     loading="lazy"
                   />
                 </button>
-                <p className="mt-2 px-1 text-xs sm:text-sm text-white/80 font-medium">
-                  Der Wochenbericht ist nur für Premium.
+                <p className="mt-2 px-1 text-[11px] sm:text-xs lg:text-sm text-white/80 font-medium leading-snug text-center min-[420px]:text-left">
+                  {t("features.tracking.weeklyReportPremium")}
                 </p>
               </div>
             </div>
