@@ -206,7 +206,7 @@ const HeroSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-[94vh] flex items-center pt-28 pb-16 overflow-hidden">
+    <section className="relative min-h-[94vh] flex items-center pt-36 md:pt-28 pb-16 overflow-hidden">
       {/* Ambient background glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-pastel-green/30 blur-[100px]" style={{ animation: 'pulseGlow 8s ease-in-out infinite' }} />
@@ -214,13 +214,19 @@ const HeroSection = () => {
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-pastel-blue/25 blur-[100px]" style={{ animation: 'pulseGlow 12s ease-in-out infinite 4s' }} />
       </div>
 
-      {/* Floating decorative elements */}
+      {/* Stars + shooting star */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[15%] left-[10%] w-3 h-3 rounded-full bg-pastel-pink-strong/30" style={{ animation: 'float-decorative 8s ease-in-out infinite' }} />
-        <div className="absolute top-[25%] right-[15%] w-2 h-2 rounded-full bg-pastel-blue-strong/25" style={{ animation: 'float-decorative 10s ease-in-out infinite 1s' }} />
-        <div className="absolute bottom-[30%] left-[20%] w-4 h-4 rounded-full bg-pastel-green-strong/20" style={{ animation: 'float-decorative 12s ease-in-out infinite 2s' }} />
-        <div className="absolute top-[40%] right-[25%] w-2.5 h-2.5 rounded-full bg-pastel-yellow-strong/25" style={{ animation: 'float-decorative 9s ease-in-out infinite 3s' }} />
-        <div className="absolute bottom-[20%] right-[10%] w-3 h-3 rounded-full bg-pastel-green-strong/20" style={{ animation: 'float-decorative 11s ease-in-out infinite 4s' }} />
+        {/* Funkelnde Sterne */}
+        <div className="hero-star" style={{ top: '12%', left: '8%',  animationDelay: '0s',   width: 2, height: 2 }} />
+        <div className="hero-star" style={{ top: '22%', left: '32%', animationDelay: '1.2s', width: 1.5, height: 1.5 }} />
+        <div className="hero-star" style={{ top: '8%',  left: '55%', animationDelay: '2.4s', width: 2.5, height: 2.5 }} />
+        <div className="hero-star" style={{ top: '18%', right: '12%',animationDelay: '0.6s', width: 2, height: 2 }} />
+        <div className="hero-star" style={{ top: '35%', right: '28%',animationDelay: '3.1s', width: 1.5, height: 1.5 }} />
+        <div className="hero-star" style={{ top: '5%',  right: '40%',animationDelay: '1.8s', width: 2, height: 2 }} />
+        <div className="hero-star" style={{ top: '45%', left: '14%', animationDelay: '4.0s', width: 1.5, height: 1.5 }} />
+        <div className="hero-star" style={{ top: '55%', right: '8%', animationDelay: '2.7s', width: 2, height: 2 }} />
+        <div className="hero-star" style={{ top: '28%', left: '72%', animationDelay: '0.3s', width: 1, height: 1 }} />
+        <div className="hero-star" style={{ top: '62%', left: '42%', animationDelay: '5.2s', width: 1.5, height: 1.5 }} />
       </div>
 
       <div className="container relative z-10">

@@ -11,7 +11,8 @@ const EmailConfirmed = () => {
   const en = translations.en;
 
   return (
-    <div className="min-h-screen bg-gradient-page flex items-center justify-center p-6">
+    <div className="night-sky min-h-screen bg-gradient-page overflow-x-hidden text-foreground flex items-center justify-center p-6">
+      <div className="night-sky-stars fixed inset-0 z-0 pointer-events-none" />
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}

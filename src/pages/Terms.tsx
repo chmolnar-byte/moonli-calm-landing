@@ -7,10 +7,11 @@ const Terms = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-gradient-page flex flex-col">
+    <div className="night-sky min-h-screen bg-gradient-page overflow-x-hidden text-foreground flex flex-col">
+      <div className="night-sky-stars fixed inset-0 z-0 pointer-events-none" />
       <Navbar />
 
-      <main className="flex-1 flex items-center justify-center px-4 py-10">
+      <main className="relative z-10 flex-1 flex items-center justify-center px-4 py-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

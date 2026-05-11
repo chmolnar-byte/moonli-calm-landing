@@ -77,18 +77,18 @@ const CTAFooter = () => {
       {/* Footer */}
       <footer className="border-t border-white/10 py-8">
         <div className="container">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-sm text-white/65">
+          <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+            <div className="flex items-center gap-2 text-sm text-white/65 shrink-0">
               <img src={logo} alt="Moonli" className="w-5 h-5 rounded-full object-cover" />
               <span className="font-semibold text-white">MOONLI</span>
               <span>© {new Date().getFullYear()}</span>
             </div>
-            <div className="flex items-center gap-6 text-sm text-white/65">
-              <a href="/cookies" className="hover:text-white transition-colors">{t("footer.cookies")}</a>
-              <a href="/terms" className="hover:text-white transition-colors">{t("footer.terms")}</a>
-              <a href="/privacy" className="hover:text-white transition-colors">{t("footer.privacy")}</a>
-              <a href="/imprint" className="hover:text-white transition-colors">{t("footer.imprint")}</a>
-              <a href="mailto:hello@moonli.net" className="hover:text-white transition-colors">{t("footer.contact")}</a>
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 text-sm text-white/65 sm:justify-end">
+              <a href="/cookies" className="hover:text-white transition-colors whitespace-nowrap">{t("footer.cookies")}</a>
+              <a href="/terms" className="hover:text-white transition-colors whitespace-nowrap">{t("footer.terms")}</a>
+              <a href="/privacy" className="hover:text-white transition-colors whitespace-nowrap">{t("footer.privacy")}</a>
+              <a href="/imprint" className="hover:text-white transition-colors whitespace-nowrap">{t("footer.imprint")}</a>
+              <a href="mailto:hello@moonli.net" className="hover:text-white transition-colors whitespace-nowrap">hello@moonli.net</a>
             </div>
           </div>
         </div>

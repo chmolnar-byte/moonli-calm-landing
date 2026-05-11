@@ -34,9 +34,9 @@ const StatsCounter = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { icon: Heart, labelKey: "promise.stat1" },
-                { icon: Sparkles, labelKey: "promise.stat2" },
-                { icon: Shield, labelKey: "promise.stat3" },
+                { icon: Heart,    labelKey: "promise.stat1", bg: "bg-rose-300/10",    border: "border-rose-300/20",    color: "text-rose-200" },
+                { icon: Sparkles, labelKey: "promise.stat2", bg: "bg-purple-300/10",  border: "border-purple-300/20",  color: "text-purple-200" },
+                { icon: Shield,   labelKey: "promise.stat3", bg: "bg-blue-300/10",    border: "border-blue-300/20",    color: "text-blue-200" },
               ].map((stat, i) => (
                 <motion.div
                   key={i}
@@ -46,8 +46,8 @@ const StatsCounter = () => {
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
                   className="glass-button rounded-xl p-4 text-center border border-white/20"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary/12 border border-primary/35 flex items-center justify-center mx-auto mb-3 shadow-[0_8px_22px_rgba(0,0,0,0.2)]">
-                    <stat.icon className="w-5 h-5 text-primary drop-shadow-[0_1px_3px_rgba(0,0,0,0.35)]" />
+                  <div className={`w-12 h-12 rounded-xl ${stat.bg} border ${stat.border} flex items-center justify-center mx-auto mb-3 shadow-[0_8px_22px_rgba(0,0,0,0.2)]`}>
+                    <stat.icon className={`w-5 h-5 ${stat.color} drop-shadow-[0_1px_3px_rgba(0,0,0,0.35)]`} />
                   </div>
                   <p className="text-sm font-semibold text-white">{t(stat.labelKey)}</p>
                 </motion.div>

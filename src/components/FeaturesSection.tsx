@@ -72,11 +72,6 @@ const FeatureCard = ({
           <div className="w-[48px] h-[48px] sm:w-[52px] sm:h-[52px] rounded-2xl border border-primary/35 bg-primary/12 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-[0_8px_24px_rgba(0,0,0,0.25)] shrink-0">
             <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary drop-shadow-[0_1px_4px_rgba(0,0,0,0.35)]" />
           </div>
-          {isPrimary && (
-            <span className="inline-block px-3 py-1.5 sm:px-3.5 sm:py-1.5 rounded-full bg-primary text-white text-[11px] sm:text-xs font-semibold border border-primary/70 shadow-[0_8px_18px_rgba(0,0,0,0.22)] max-w-full text-center sm:text-left">
-              {t(feature.badgeKey)}
-            </span>
-          )}
         </div>
         {isPrimary ? (
           <div className="rounded-full border border-primary/70 bg-primary px-2.5 py-1.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-bold text-white text-balance shadow-[0_8px_18px_rgba(0,0,0,0.22)] w-full sm:w-auto sm:max-w-[14rem] sm:text-right shrink-0">
@@ -173,6 +168,9 @@ const FeaturesSection = () => {
       subtitleKey: "features.groups.parent.subtitle",
       itemsKey: "features.groups.parent.items",
       image: parentAreaScreenshot,
+      iconBg: "bg-rose-300/10",
+      iconBorder: "border-rose-300/20",
+      iconColor: "text-rose-200",
     },
     {
       icon: BookOpen,
@@ -180,6 +178,9 @@ const FeaturesSection = () => {
       subtitleKey: "features.groups.knowledge.subtitle",
       itemsKey: "features.groups.knowledge.items",
       image: knowledgeScreenshot,
+      iconBg: "bg-amber-200/10",
+      iconBorder: "border-amber-200/20",
+      iconColor: "text-amber-100",
     },
     {
       icon: Music2,
@@ -187,6 +188,9 @@ const FeaturesSection = () => {
       subtitleKey: "features.groups.entertainment.subtitle",
       itemsKey: "features.groups.entertainment.items",
       image: entertainmentScreenshot,
+      iconBg: "bg-purple-300/10",
+      iconBorder: "border-purple-300/20",
+      iconColor: "text-purple-200",
     },
   ];
 
@@ -248,8 +252,8 @@ const FeaturesSection = () => {
               transition={{ duration: 0.45, delay: i * 0.08 }}
               className="rounded-2xl border border-white/15 bg-white/5 backdrop-blur-xl p-5"
             >
-              <div className="w-[50px] h-[50px] rounded-2xl border border-primary/35 bg-primary/12 flex items-center justify-center mb-4 shadow-[0_8px_24px_rgba(0,0,0,0.2)]">
-                <group.icon className="w-6 h-6 text-primary" />
+              <div className={`w-[50px] h-[50px] rounded-2xl border ${group.iconBorder} ${group.iconBg} flex items-center justify-center mb-4 shadow-[0_8px_24px_rgba(0,0,0,0.2)]`}>
+                <group.icon className={`w-6 h-6 ${group.iconColor}`} />
               </div>
               <div className="rounded-xl border border-white/20 bg-slate-950/35 overflow-hidden mb-4 p-2">
                 <button type="button" onClick={() => setActiveImage({ src: group.image, alt: t(group.titleKey) })} className="w-full block">

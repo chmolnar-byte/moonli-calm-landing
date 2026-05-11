@@ -40,7 +40,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Features (Free)
     "features.badge": "🟢 Moonli Features",
-    "features.title": "Moonli Free: Liebevoll, ruhig und immer an eurer Seite.",
+    "features.title": "Eine liebevoll entwickelte App mit vielen Features.",
     "features.subtitle": "Alles, was Eltern im Alltag wirklich brauchen – mit Fokus auf Schlaftracking und verlässliche Prognosen.",
     "features.highlight1": "Tracking für Schlaf, Stillen, Fläschchen & Windeln",
     "features.highlight2": "WHO-Kurven & medizinisches Wachstum",
