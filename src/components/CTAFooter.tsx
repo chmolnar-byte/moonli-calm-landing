@@ -27,9 +27,11 @@ const CTAFooter = () => {
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <div className="w-16 h-16 rounded-full glass-button flex items-center justify-center mx-auto mb-6">
-              <img src={logo} alt="Moonli" className="w-10 h-10 rounded-full object-cover" />
-            </div>
+            <img
+              src={logo}
+              alt="Moonli"
+              className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover mx-auto mb-6"
+            />
             <h2 className="text-display-md font-extrabold mb-4 text-glow text-white">
               {t("cta.title")}
             </h2>
@@ -56,9 +58,9 @@ const CTAFooter = () => {
                 href={GOOGLE_PLAY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-primary text-primary-foreground font-bold text-base sm:text-lg hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
+                className="flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-primary text-white font-bold text-base sm:text-lg hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
-                <Play className="w-6 h-6" />
+                <Play className="w-6 h-6 text-white" />
                 {t("nav.googlePlay")}
               </a>
             </div>

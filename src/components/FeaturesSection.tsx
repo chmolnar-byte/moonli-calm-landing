@@ -1,4 +1,5 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import ImageLightbox from "@/components/ImageLightbox";
 import {
   Baby,
   HeartHandshake,
@@ -61,23 +62,13 @@ const FeatureCard = ({
       }`}
     >
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/8 via-transparent to-transparent pointer-events-none" />
-      <div
-        className={`mb-4 ${
-          isPrimary
-            ? "flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4"
-            : "flex items-center justify-between gap-3"
-        }`}
-      >
-        <div className={`flex flex-wrap items-center gap-2 sm:gap-3 min-w-0 ${isPrimary ? "flex-1" : ""}`}>
+      <div className={`mb-4 ${isPrimary ? "" : "flex items-center justify-between gap-3"}`}>
+        <div className={`flex flex-wrap items-center gap-2 sm:gap-3 min-w-0 ${isPrimary ? "" : "flex-1"}`}>
           <div className="w-[48px] h-[48px] sm:w-[52px] sm:h-[52px] rounded-2xl border border-primary/35 bg-primary/12 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-[0_8px_24px_rgba(0,0,0,0.25)] shrink-0">
             <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary drop-shadow-[0_1px_4px_rgba(0,0,0,0.35)]" />
           </div>
         </div>
-        {isPrimary ? (
-          <div className="rounded-full border border-primary/70 bg-primary px-2.5 py-1.5 sm:px-3 sm:py-1 text-[10px] sm:text-xs font-bold text-white text-balance shadow-[0_8px_18px_rgba(0,0,0,0.22)] w-full sm:w-auto sm:max-w-[14rem] sm:text-right shrink-0">
-            {t("features.tracking.freeWidget")}
-          </div>
-        ) : (
+        {!isPrimary && (
           <span className="text-[11px] font-semibold text-white/50">{t("features.groupLabel")}</span>
         )}
       </div>
@@ -90,8 +81,8 @@ const FeatureCard = ({
       )}
 
       {isPrimary && (
-        <div className="mt-4 sm:mt-5 rounded-2xl border border-primary/25 bg-white/8 p-3 sm:p-5 shadow-soft min-w-0">
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.95fr)] gap-4 sm:gap-5 lg:gap-6">
+        <div className="mt-4 sm:mt-5 rounded-2xl border border-primary/25 bg-white/8 p-3 sm:p-5 shadow-soft min-w-0 flex flex-col">
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.95fr)] gap-4 sm:gap-5 lg:gap-6 flex-1">
             <div className="min-w-0">
               <p className="text-base sm:text-lg lg:text-xl text-white leading-snug sm:leading-relaxed font-bold mb-3">
                 {t("features.tracking.lead")}
@@ -146,6 +137,11 @@ const FeatureCard = ({
                 </p>
               </div>
             </div>
+          </div>
+          <div className="mt-5 pt-4 border-t border-primary/20 flex justify-center">
+            <span className="inline-block rounded-full border border-primary/70 bg-primary px-4 py-2 text-xs sm:text-sm font-normal text-white text-center text-balance shadow-[0_8px_18px_rgba(0,0,0,0.22)]">
+              {t("features.tracking.freeWidget")}
+            </span>
           </div>
         </div>
       )}
@@ -293,28 +289,13 @@ const FeaturesSection = () => {
           {t("features.adNote")}
         </motion.p>
 
-        <AnimatePresence>
-          {activeImage && (
-            <motion.div
-              className="fixed inset-0 z-[70] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
-              onClick={() => setActiveImage(null)}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <motion.img
-                src={activeImage.src}
-                alt={activeImage.alt}
-                className="max-w-[92vw] max-h-[88vh] object-contain rounded-2xl border border-white/20 shadow-soft-2xl"
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.95, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                onClick={(event) => event.stopPropagation()}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {activeImage && (
+          <ImageLightbox
+            src={activeImage.src}
+            alt={activeImage.alt}
+            onClose={() => setActiveImage(null)}
+          />
+        )}
       </div>
     </section>
   );

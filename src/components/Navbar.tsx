@@ -16,7 +16,7 @@ function scrollToSection(id: string) {
   const el = document.getElementById(id);
   if (el) {
     const isMobile = window.innerWidth < 768;
-    const offset = isMobile ? 110 : 84;
+    const offset = isMobile ? 128 : 108;
     const top = el.getBoundingClientRect().top + window.scrollY - offset;
     window.scrollTo({ top, behavior: "smooth" });
   }
@@ -42,12 +42,12 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
-      <div className="container flex items-center justify-between h-16 md:h-[4.5rem]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#182331] border-b border-[#182331]">
+      <div className="container flex items-center justify-between py-2 min-h-[5rem] md:min-h-[5.75rem]">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2.5 hover:opacity-90 transition-opacity shrink-0">
-          <img src={logo} alt="Moonli Logo" className="w-8 h-8 md:w-9 md:h-9 rounded-full object-cover shadow-soft" />
-          <span className="text-base md:text-lg font-extrabold tracking-tight text-white">
+        <Link to="/" className="flex items-center gap-3 sm:gap-4 hover:opacity-90 transition-opacity shrink-0">
+          <img src={logo} alt="Moonli Logo" className="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] md:w-20 md:h-20 rounded-full object-cover" />
+          <span className="text-xl sm:text-2xl md:text-[1.75rem] font-normal tracking-[0.2em] text-white leading-none">
             MOONLI
           </span>
           <span className="hidden lg:flex items-center gap-1.5 text-xs text-white/70 font-medium ml-2 pl-3 border-l border-white/20">
@@ -63,13 +63,13 @@ const Navbar = () => {
         </Link>
 
         {/* Center nav tabs – only md+ */}
-        <div className="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
+        <div className="hidden md:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
           {NAV_TABS.map((tab) => (
             <button
               key={tab.href}
               type="button"
               onClick={() => scrollToSection(tab.href)}
-              className="px-4 py-1.5 rounded-full text-sm font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-all duration-200"
+              className="px-5 py-2 rounded-full text-base font-semibold text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200"
             >
               {tab.label}
             </button>
@@ -121,22 +121,22 @@ const Navbar = () => {
             href={GOOGLE_PLAY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-primary-foreground text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary text-white text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
           >
-            <Play className="w-4 h-4" />
+            <Play className="w-4 h-4 text-white" />
             {t("nav.googlePlay")}
           </a>
         </div>
       </div>
 
       {/* Mobile tab row */}
-      <div className="flex md:hidden items-center justify-center gap-1 px-4 pb-2 border-t border-white/8">
+      <div className="flex md:hidden items-center justify-center gap-2 px-4 pb-2.5 border-t border-[#1f2a3a]">
         {NAV_TABS.map((tab) => (
           <button
             key={tab.href}
             type="button"
             onClick={() => scrollToSection(tab.href)}
-            className="flex-1 max-w-[120px] py-1.5 rounded-full text-xs font-semibold text-white/70 hover:text-white hover:bg-white/10 transition-all duration-200 text-center"
+            className="flex-1 max-w-[140px] py-2 rounded-full text-sm font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-all duration-200 text-center"
           >
             {tab.label}
           </button>

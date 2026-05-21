@@ -1,11 +1,12 @@
-import { AnimatePresence, motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Apple, Play } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { toast } from "@/components/ui/sonner";
 import { type MouseEvent, useState } from "react";
+import ImageLightbox from "@/components/ImageLightbox";
 import dashboardWeekly from "@/assets/Startseite1.png";
-import dashboardDark from "@/assets/Startseite2.png";
-import dashboardGrowth from "@/assets/Startseite3.png";
+import dashboardDark from "@/assets/Startseite3.png";
+import dashboardGrowth from "@/assets/Startseite2.png";
 
 const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
 const IOS_SOON_TEXT = "Wir arbeiten mit Hochdruck an der iPhone-Version. Sie ist bald für dich verfügbar.";
@@ -52,7 +53,7 @@ const PhoneMockup = () => {
       transition={{ duration: 0.85, delay: 0.2, ease: "easeOut" }}
       onMouseMove={handlePointerMove}
       onMouseLeave={resetPointer}
-      className="relative mx-auto w-[330px] sm:w-[480px]"
+      className="relative mx-auto w-full max-w-[360px] sm:max-w-[540px]"
       style={{ perspective: "1400px" }}
     >
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -63,7 +64,7 @@ const PhoneMockup = () => {
       </div>
 
       <motion.div
-        className="relative mx-auto h-[520px] sm:h-[650px] w-full"
+        className="relative mx-auto w-full min-h-[420px] sm:min-h-[520px] py-4"
         style={{
           rotateX,
           rotateY,
@@ -72,132 +73,108 @@ const PhoneMockup = () => {
           transformStyle: "preserve-3d",
         }}
       >
-        {/* Hinten links — symmetrisch zur rechten Karte, wenig Rotation */}
-        <motion.div
-          className="absolute left-[8%] bottom-[16%] z-[1] w-[34%] aspect-[9/19.5]"
-          style={{ x: backLeftX, y: backLeftY }}
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <motion.button
-            type="button"
-            onClick={() =>
-              setActiveImage({
-                src: dashboardWeekly,
-                alt: "Wochenbericht der Moonli App",
-              })
-            }
-            whileHover={{ scale: 1.03, y: -4, rotate: -4.5 }}
-            className="h-full w-full rounded-[1.85rem] bg-transparent p-0 opacity-75 shadow-[0_16px_38px_rgba(0,0,0,0.2)] -rotate-[6deg] transition-transform duration-300"
-            aria-label="Wochenbericht vergrößern"
-          >
-            <img
-              src={dashboardWeekly}
-              alt="Wochenbericht der Moonli App"
-              className="h-full w-full rounded-[1.85rem] object-cover object-center"
-              loading="lazy"
-            />
-          </motion.button>
-        </motion.div>
-
-        {/* Hinten rechts */}
-        <motion.div
-          className="absolute right-[8%] bottom-[16%] z-[2] w-[34%] aspect-[9/19.5]"
-          style={{ x: backRightX, y: backRightY }}
-          animate={{ y: [0, -12, 0] }}
-          transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-        >
-          <motion.button
-            type="button"
-            onClick={() =>
-              setActiveImage({
-                src: dashboardDark,
-                alt: "Moonli Dashboard im Dark Mode",
-              })
-            }
-            whileHover={{ scale: 1.03, y: -4, rotate: 4.5 }}
-            className="h-full w-full rounded-[1.85rem] bg-transparent p-0 opacity-75 shadow-[0_16px_38px_rgba(0,0,0,0.2)] rotate-[6deg] transition-transform duration-300"
-            aria-label="Dark Mode Dashboard vergrößern"
-          >
-            <img
-              src={dashboardDark}
-              alt="Moonli Dashboard im Dark Mode"
-              className="h-full w-full rounded-[1.85rem] object-cover object-center"
-              loading="lazy"
-            />
-          </motion.button>
-        </motion.div>
-
-        {/* Vorne — klarer Fokus, exakt zentriert */}
-        <div className="absolute left-1/2 bottom-[6%] z-20 w-[49%] aspect-[9/19.5] -translate-x-1/2">
+        <div className="relative flex items-end justify-center w-full max-w-[520px] mx-auto min-h-[380px] sm:min-h-[480px]">
+          {/* Hinten links */}
           <motion.div
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 400, damping: 28 }}
-            className="h-full w-full rounded-[1.95rem] bg-transparent p-0 shadow-[0_34px_85px_rgba(0,0,0,0.32)]"
-            style={{ y: frontLift }}
-            animate={{ y: [0, -6, 0] }}
-            >
-            <motion.div
-              className="absolute inset-0 rounded-[1.95rem] bg-pastel-blue/20 blur-xl pointer-events-none"
-              animate={{ opacity: [0.12, 0.28, 0.12] }}
-              transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute left-0 sm:left-[2%] bottom-[8%] z-[1] w-[34%] sm:w-[32%]"
+            style={{ x: backLeftX, y: backLeftY }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut" }}
           >
-            </motion.div>
-            <button
+            <motion.button
               type="button"
               onClick={() =>
                 setActiveImage({
-                  src: dashboardGrowth,
+                  src: dashboardWeekly,
+                  alt: "Wochenbericht der Moonli App",
+                })
+              }
+              whileHover={{ scale: 1.03, y: -4 }}
+              className="block w-full -rotate-[6deg] opacity-90 transition-transform duration-300 drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
+              aria-label="Wochenbericht vergrößern"
+            >
+              <img
+                src={dashboardWeekly}
+                alt="Wochenbericht der Moonli App"
+                className="block w-full h-auto select-none"
+                loading="lazy"
+                draggable={false}
+              />
+            </motion.button>
+          </motion.div>
+
+          {/* Hinten rechts */}
+          <motion.div
+            className="absolute right-0 sm:right-[2%] bottom-[8%] z-[2] w-[34%] sm:w-[32%]"
+            style={{ x: backRightX, y: backRightY }}
+            animate={{ y: [0, -12, 0] }}
+            transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+          >
+            <motion.button
+              type="button"
+              onClick={() =>
+                setActiveImage({
+                  src: dashboardDark,
                   alt: "Wachstumsverlauf der Moonli App",
                 })
               }
-              className="h-full w-full rounded-[1.95rem] overflow-hidden"
+              whileHover={{ scale: 1.03, y: -4 }}
+              className="block w-full rotate-[6deg] opacity-90 transition-transform duration-300 drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
               aria-label="Wachstumsverlauf vergrößern"
             >
               <img
-                src={dashboardGrowth}
+                src={dashboardDark}
                 alt="Wachstumsverlauf der Moonli App"
-                className="h-full w-full rounded-[1.95rem] object-cover object-center"
-                loading="eager"
+                className="block w-full h-auto select-none"
+                loading="lazy"
+                draggable={false}
               />
-            </button>
+            </motion.button>
+          </motion.div>
+
+          {/* Vorne — Mitte */}
+          <motion.div
+            className="relative z-20 w-[52%] sm:w-[48%] mx-auto"
+            style={{ y: frontLift }}
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: "spring", stiffness: 400, damping: 28 }}
+              className="relative drop-shadow-[0_34px_85px_rgba(0,0,0,0.45)]"
+            >
+              <button
+                type="button"
+                onClick={() =>
+                  setActiveImage({
+                    src: dashboardGrowth,
+                    alt: "Moonli Elternbereich – Home",
+                  })
+                }
+                className="relative block w-full"
+                aria-label="Elternbereich vergrößern"
+              >
+                <img
+                  src={dashboardGrowth}
+                  alt="Moonli Elternbereich – Home"
+                  className="block w-full h-auto select-none"
+                  loading="eager"
+                  draggable={false}
+                />
+              </button>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
 
-      <AnimatePresence>
-        {activeImage && (
-          <motion.div
-            onClick={() => setActiveImage(null)}
-            className="fixed inset-x-0 top-16 md:top-20 bottom-0 z-40 bg-black/72 backdrop-blur-md flex items-center justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            role="button"
-            tabIndex={0}
-            aria-label="Bild schließen"
-            onKeyDown={(event) => {
-              if (event.key === "Enter" || event.key === " ") {
-                setActiveImage(null);
-              }
-            }}
-          >
-            <motion.div
-              initial={{ scale: 0.94, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.94, opacity: 0 }}
-              transition={{ duration: 0.22, ease: "easeOut" }}
-              className="relative z-10 flex h-full w-full items-center justify-center p-4 sm:p-8 cursor-zoom-out"
-            >
-              <img
-                src={activeImage.src}
-                alt={activeImage.alt}
-                className="h-auto w-auto max-h-[78vh] max-w-[82vw] rounded-[1.4rem] object-contain shadow-[0_24px_70px_rgba(0,0,0,0.45)]"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {activeImage && (
+        <ImageLightbox
+          src={activeImage.src}
+          alt={activeImage.alt}
+          onClose={() => setActiveImage(null)}
+        />
+      )}
     </motion.div>
   );
 };
@@ -206,7 +183,7 @@ const HeroSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative min-h-[94vh] flex items-center pt-36 md:pt-28 pb-16 overflow-hidden">
+    <section className="relative min-h-[94vh] flex items-center pt-44 md:pt-36 pb-16 overflow-x-hidden">
       {/* Ambient background glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-pastel-green/30 blur-[100px]" style={{ animation: 'pulseGlow 8s ease-in-out infinite' }} />
@@ -270,9 +247,9 @@ const HeroSection = () => {
                 href={GOOGLE_PLAY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-primary text-primary-foreground font-bold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
+                className="flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-primary text-white font-bold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
-                <Play className="w-5 h-5" />
+                <Play className="w-5 h-5 text-white" />
                 Google Play
               </a>
             </div>
@@ -282,7 +259,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Phone Mockup */}
-          <div className="flex justify-center lg:justify-end relative">
+          <div className="flex justify-center lg:justify-end relative overflow-visible py-6 sm:py-8">
             <PhoneMockup />
           </div>
         </div>

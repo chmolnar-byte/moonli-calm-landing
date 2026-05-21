@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
@@ -76,9 +77,13 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'League Spartan', 'Plus Jakarta Sans', system-ui, sans-serif;
     font-size: 17px;
     line-height: 1.65;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'League Spartan', 'Plus Jakarta Sans', system-ui, sans-serif;
   }
 
   html {

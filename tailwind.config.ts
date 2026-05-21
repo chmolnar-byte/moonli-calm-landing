@@ -14,7 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"League Spartan"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        display: ['"League Spartan"', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
