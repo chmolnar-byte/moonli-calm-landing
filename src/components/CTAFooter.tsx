@@ -2,10 +2,7 @@ import { motion } from "framer-motion";
 import { Apple, Play } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { toast } from "@/components/ui/sonner";
-
-const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
-const IOS_SOON_TEXT = "Wir arbeiten mit Hochdruck an der iPhone-Version. Sie ist bald für dich verfügbar.";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
 
 const CTAFooter = () => {
   const { t } = useLanguage();
@@ -41,18 +38,13 @@ const CTAFooter = () => {
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
               <a
-                href="#"
-                onClick={(event) => {
-                  event.preventDefault();
-                  toast(IOS_SOON_TEXT);
-                }}
-                className="relative flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-white text-slate-900 font-bold text-base sm:text-lg hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-white text-slate-900 font-bold text-base sm:text-lg hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Apple className="w-6 h-6" />
                 {t("nav.appStore")}
-                <span className="absolute -top-2.5 -right-3 px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-[10px] font-bold leading-none shadow-sm">
-                  {t("nav.comingSoon")}
-                </span>
               </a>
               <a
                 href={GOOGLE_PLAY_URL}

@@ -2,8 +2,8 @@ import { Apple, Play, Globe } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { languageFlags, languageLabels, type Language } from "@/i18n/translations";
-import { toast } from "@/components/ui/sonner";
 import { useState, useRef, useEffect } from "react";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
 import { Link } from "react-router-dom";
 
 const NAV_TABS = [
@@ -23,8 +23,6 @@ function scrollToSection(id: string) {
 }
 
 const languages: Language[] = ["de", "en", "es", "fr", "ru"];
-const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
-const IOS_SOON_TEXT = "Wir arbeiten mit Hochdruck an der iPhone-Version. Sie ist bald für dich verfügbar.";
 
 const Navbar = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -104,18 +102,13 @@ const Navbar = () => {
           </div>
 
           <a
-            href="#"
-            onClick={(event) => {
-              event.preventDefault();
-              toast(IOS_SOON_TEXT);
-            }}
-            className="relative hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-white text-slate-900 text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full bg-white text-slate-900 text-sm font-semibold hover:opacity-90 transition-all hover:scale-[1.03] duration-200"
           >
             <Apple className="w-4 h-4" />
             {t("nav.appStore")}
-            <span className="absolute -top-2 -right-2 px-1.5 py-0.5 rounded-full bg-primary text-primary-foreground text-[9px] font-bold leading-none shadow-sm">
-              {t("nav.comingSoon")}
-            </span>
           </a>
           <a
             href={GOOGLE_PLAY_URL}

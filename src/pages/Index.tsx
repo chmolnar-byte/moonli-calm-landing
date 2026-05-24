@@ -8,6 +8,7 @@ import Testimonials from "@/components/Testimonials";
 import PricingSection from "@/components/PricingSection";
 import FounderSection from "@/components/FounderSection";
 import CTAFooter from "@/components/CTAFooter";
+import BabyExpoPopup from "@/components/BabyExpoPopup";
 import capybaraImg from "@/assets/capybara.png";
 import capybara1Img from "@/assets/capybara1.png";
 import capybara2Img from "@/assets/capybara2.png";
@@ -57,6 +58,7 @@ const Index = () => {
       <SectionDivider />
       <div id="feedback"><Testimonials /></div>
       <CTAFooter />
+      <BabyExpoPopup />
     </div>
   );
 };

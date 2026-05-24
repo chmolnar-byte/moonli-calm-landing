@@ -21,6 +21,16 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.appStore": "App Store",
     "nav.googlePlay": "Google Play",
 
+    "babyExpo.title": "Besuche uns auf der BabyExpo in der Wiener Stadthalle",
+    "babyExpo.text": "Lade dir die App herunter und erhalte -50 % Ermäßigung auf den Messeeintritt.",
+    "babyExpo.dates": "19.–21. Juni 2026",
+    "babyExpo.stand": "Messestand 416",
+    "babyExpo.posterAlt": "BabyExpo 2026 – Wiener Stadthalle, 19.–21. Juni",
+    "babyExpo.discount": "-50 % Messeeintritt mit der App",
+    "babyExpo.ctaApp": "App herunterladen",
+    "babyExpo.ctaExpo": "Zur BabyExpo",
+    "babyExpo.close": "Schließen",
+
     "hero.headline1": "Babys brauchen Liebe.",
     "hero.headline2": "Den Rest macht Moonli.",
     "hero.subheadline": "Die liebevolle Baby-App für ruhige Nächte: Tracke Schlaf, Ernährung und Entwicklung und erhalte altersgerechte Schlafprognosen, die euch den Alltag leichter machen.",
@@ -441,6 +451,16 @@ const translations: Record<Language, Record<string, string>> = {
   en: {
     "nav.appStore": "App Store",
     "nav.googlePlay": "Google Play",
+
+    "babyExpo.title": "Visit us at BabyExpo at Wiener Stadthalle",
+    "babyExpo.text": "Download the app and get 50% off your fair ticket.",
+    "babyExpo.dates": "19–21 June 2026",
+    "babyExpo.stand": "Booth 416",
+    "babyExpo.posterAlt": "BabyExpo 2026 – Wiener Stadthalle, 19–21 June",
+    "babyExpo.discount": "-50% fair entry with the app",
+    "babyExpo.ctaApp": "Download app",
+    "babyExpo.ctaExpo": "Go to BabyExpo",
+    "babyExpo.close": "Close",
 
     "hero.headline1": "Sleep softly, little one.",
     "hero.headline2": "Moonli stays with you.",
@@ -866,6 +886,16 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.appStore": "App Store",
     "nav.googlePlay": "Google Play",
 
+    "babyExpo.title": "Visítanos en BabyExpo en la Wiener Stadthalle",
+    "babyExpo.text": "Descarga la app y obtén un 50 % de descuento en la entrada a la feria.",
+    "babyExpo.dates": "19–21 de junio de 2026",
+    "babyExpo.stand": "Stand 416",
+    "babyExpo.posterAlt": "BabyExpo 2026 – Wiener Stadthalle, 19–21 de junio",
+    "babyExpo.discount": "-50 % entrada con la app",
+    "babyExpo.ctaApp": "Descargar app",
+    "babyExpo.ctaExpo": "Ir a BabyExpo",
+    "babyExpo.close": "Cerrar",
+
     "hero.headline1": "Los bebés necesitan amor.",
     "hero.headline2": "Del resto se encarga Moonli.",
     "hero.subheadline": "El compañero inteligente para toda tu familia. Rastrea sueño, nutrición y desarrollo mientras recargas tus propias baterías.",
@@ -1278,6 +1308,16 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.appStore": "App Store",
     "nav.googlePlay": "Google Play",
 
+    "babyExpo.title": "Retrouvez-nous à la BabyExpo à la Wiener Stadthalle",
+    "babyExpo.text": "Téléchargez l’app et bénéficiez de -50 % sur l’entrée du salon.",
+    "babyExpo.dates": "19–21 juin 2026",
+    "babyExpo.stand": "Stand 416",
+    "babyExpo.posterAlt": "BabyExpo 2026 – Wiener Stadthalle, 19–21 juin",
+    "babyExpo.discount": "-50 % entrée avec l’app",
+    "babyExpo.ctaApp": "Télécharger l’app",
+    "babyExpo.ctaExpo": "Vers BabyExpo",
+    "babyExpo.close": "Fermer",
+
     "hero.headline1": "Les bébés ont besoin d’amour.",
     "hero.headline2": "Moonli s’occupe du reste.",
     "hero.subheadline": "Le compagnon intelligent pour toute ta famille. Suis le sommeil, la nutrition et le développement tout en rechargeant tes propres batteries.",
@@ -1688,6 +1728,16 @@ const translations: Record<Language, Record<string, string>> = {
   ru: {
     "nav.appStore": "App Store",
     "nav.googlePlay": "Google Play",
+
+    "babyExpo.title": "Встречайте нас на BabyExpo в Wiener Stadthalle",
+    "babyExpo.text": "Скачайте приложение и получите скидку 50 % на вход на ярмарку.",
+    "babyExpo.dates": "19–21 июня 2026",
+    "babyExpo.stand": "Стенд 416",
+    "babyExpo.posterAlt": "BabyExpo 2026 – Wiener Stadthalle, 19–21 июня",
+    "babyExpo.discount": "-50 % вход с приложением",
+    "babyExpo.ctaApp": "Скачать приложение",
+    "babyExpo.ctaExpo": "На BabyExpo",
+    "babyExpo.close": "Закрыть",
 
     "hero.headline1": "Малышам нужна любовь.",
     "hero.headline2": "Остальное сделает Moonli.",

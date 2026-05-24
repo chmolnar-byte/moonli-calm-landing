@@ -1,15 +1,12 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Apple, Play } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { toast } from "@/components/ui/sonner";
 import { type MouseEvent, useState } from "react";
+import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
 import ImageLightbox from "@/components/ImageLightbox";
 import dashboardWeekly from "@/assets/Startseite1.png";
 import dashboardDark from "@/assets/Startseite3.png";
 import dashboardGrowth from "@/assets/Startseite2.png";
-
-const GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=en";
-const IOS_SOON_TEXT = "Wir arbeiten mit Hochdruck an der iPhone-Version. Sie ist bald für dich verfügbar.";
 
 const PhoneMockup = () => {
   const [activeImage, setActiveImage] = useState<{
@@ -230,18 +227,13 @@ const HeroSection = () => {
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
               <a
-                href="#"
-                onClick={(event) => {
-                  event.preventDefault();
-                  toast(IOS_SOON_TEXT);
-                }}
-                className="relative flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-slate-900 font-bold hover:opacity-95 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
+                href={APP_STORE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-slate-900 font-bold hover:opacity-95 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
               >
                 <Apple className="w-5 h-5" />
-                App Store
-                <span className="absolute -top-2.5 -right-3 px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-[10px] font-bold leading-none shadow-sm">
-                  Coming Soon
-                </span>
+                {t("nav.appStore")}
               </a>
               <a
                 href={GOOGLE_PLAY_URL}
