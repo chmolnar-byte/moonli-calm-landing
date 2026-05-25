@@ -70,7 +70,7 @@ const translations: Record<Language, Record<string, string>> = {
     "features.groups.knowledge.title": "Wissen",
     "features.groups.knowledge.subtitle": "Schnell, hilfreich, alltagsnah",
     "features.groups.knowledge.items": "500 Tipps|Hebammen-Hilfe|Community Hacks|Über 100 Artikel",
-    "features.groups.entertainment.title": "Entertainment",
+    "features.groups.entertainment.title": "Spaß",
     "features.groups.entertainment.subtitle": "Ruhig, liebevoll, altersgerecht",
     "features.groups.entertainment.items": "Gutenacht-Geschichten|Schatten-Spiele|Ruhige Spiele & Animationen|Lieder / White Noise|Stimmen-Recorder|Einschlafroutine",
     "features.hoverHint": "Mehr entdecken",

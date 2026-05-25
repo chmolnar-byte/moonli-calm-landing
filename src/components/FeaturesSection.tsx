@@ -110,6 +110,11 @@ const FeatureCard = ({
                   {t("features.tracking.story2")}
                 </p>
               </div>
+              <div className="mt-3 flex justify-start">
+                <span className="inline-block rounded-full border border-primary/70 bg-primary px-4 py-2 text-xs sm:text-sm font-normal text-white text-center text-balance shadow-[0_8px_18px_rgba(0,0,0,0.22)]">
+                  {t("features.tracking.freeWidget")}
+                </span>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-1 gap-3 min-w-0">
@@ -137,11 +142,6 @@ const FeatureCard = ({
                 </p>
               </div>
             </div>
-          </div>
-          <div className="mt-5 pt-4 border-t border-primary/20 flex justify-center">
-            <span className="inline-block rounded-full border border-primary/70 bg-primary px-4 py-2 text-xs sm:text-sm font-normal text-white text-center text-balance shadow-[0_8px_18px_rgba(0,0,0,0.22)]">
-              {t("features.tracking.freeWidget")}
-            </span>
           </div>
         </div>
       )}
