@@ -9,9 +9,9 @@ import PricingSection from "@/components/PricingSection";
 import FounderSection from "@/components/FounderSection";
 import CTAFooter from "@/components/CTAFooter";
 import BabyExpoPopup from "@/components/BabyExpoPopup";
-import capybaraImg from "@/assets/capybara.png";
-import capybara1Img from "@/assets/capybara1.png";
-import capybara2Img from "@/assets/capybara2.png";
+import capybaraImg from "@/assets/capybara.webp";
+import capybara1Img from "@/assets/capybara1.webp";
+import capybara2Img from "@/assets/capybara2.webp";
 
 const SectionDivider = () => (
   <div className="relative h-16 -my-8 z-0">

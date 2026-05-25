@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Apple, Play } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
 

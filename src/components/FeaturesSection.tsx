@@ -9,11 +9,11 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import trackingScreenshot from "@/assets/Startseite1.png";
-import sleepPredictionScreenshot from "@/assets/sleep-prognose.png";
-import parentAreaScreenshot from "@/assets/elternbereich.png";
-import knowledgeScreenshot from "@/assets/wissen.png";
-import entertainmentScreenshot from "@/assets/entertainment.png";
+import trackingScreenshot from "@/assets/Startseite1.webp";
+import sleepPredictionScreenshot from "@/assets/sleep-prognose.webp";
+import parentAreaScreenshot from "@/assets/elternbereich.webp";
+import knowledgeScreenshot from "@/assets/wissen.webp";
+import entertainmentScreenshot from "@/assets/entertainment.webp";
 import { useState } from "react";
 
 interface Feature {

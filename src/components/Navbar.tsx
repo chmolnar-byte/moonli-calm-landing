@@ -1,5 +1,5 @@
 import { Apple, Play, Globe } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { languageFlags, languageLabels, type Language } from "@/i18n/translations";
 import { useState, useRef, useEffect } from "react";

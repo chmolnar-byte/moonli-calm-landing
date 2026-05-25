@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Apple, CalendarDays, ExternalLink, MapPin, Play, X } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
-import babyExpoPoster from "@/assets/babyexpo-2026.png";
+import babyExpoPoster from "@/assets/babyexpo-2026.webp";
 
 const STORAGE_KEY = "moonli_babyexpo_popup_2026";
 const BABY_EXPO_URL = "https://www.babyexpo.at/";

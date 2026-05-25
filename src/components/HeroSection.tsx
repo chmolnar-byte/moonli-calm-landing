@@ -4,9 +4,9 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { type MouseEvent, useState } from "react";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
 import ImageLightbox from "@/components/ImageLightbox";
-import dashboardWeekly from "@/assets/Startseite1.png";
-import dashboardDark from "@/assets/Startseite3.png";
-import dashboardGrowth from "@/assets/Startseite2.png";
+import dashboardWeekly from "@/assets/Startseite1.webp";
+import dashboardDark from "@/assets/Startseite3.webp";
+import dashboardGrowth from "@/assets/Startseite2.webp";
 
 const PhoneMockup = () => {
   const [activeImage, setActiveImage] = useState<{
@@ -245,9 +245,6 @@ const HeroSection = () => {
                 Google Play
               </a>
             </div>
-            <p className="mt-4 text-sm text-white/70">
-              Fokus: Schlaftracking, Schlafprognose und ein ruhiger Baby-Alltag.
-            </p>
           </motion.div>
 
           {/* Phone Mockup */}

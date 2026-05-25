@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import { useLanguage } from "@/i18n/LanguageContext";
 import translations from "@/i18n/translations";
 
