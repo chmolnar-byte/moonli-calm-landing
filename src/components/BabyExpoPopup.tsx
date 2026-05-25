@@ -38,12 +38,12 @@ const BabyExpoPopup = () => {
 
   return (
     <div
-      className="fixed inset-0 z-[55] flex items-center justify-center bg-background/60 backdrop-blur-sm px-4 py-6"
+      className="fixed inset-0 z-[55] flex items-center justify-center bg-background/60 backdrop-blur-sm px-3 py-3 sm:px-4 sm:py-6"
       role="dialog"
       aria-modal="true"
       aria-labelledby="babyexpo-title"
     >
-      <div className="glass-card-premium relative max-w-md w-full p-4 sm:p-6 shadow-soft-xl border border-white/20 max-h-[min(92vh,900px)] overflow-y-auto">
+      <div className="glass-card-premium relative flex max-h-[calc(100svh-1.5rem)] w-full max-w-md flex-col overflow-hidden border border-white/20 p-3 shadow-soft-xl sm:max-h-[min(92vh,900px)] sm:p-6">
         <button
           type="button"
           onClick={dismiss}
@@ -56,10 +56,11 @@ const BabyExpoPopup = () => {
         <img
           src={babyExpoPoster}
           alt={t("babyExpo.posterAlt")}
-          className="w-full rounded-xl border border-white/15 object-cover mb-4"
+          className="mb-3 max-h-[30svh] w-full rounded-xl border border-white/15 bg-[#5ec8ed] object-contain sm:mb-4 sm:max-h-none"
         />
 
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="min-h-0 overflow-y-auto pr-1">
+        <div className="mb-3 flex flex-wrap gap-2 sm:mb-4">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-3 py-1 text-xs font-semibold text-primary">
             <CalendarDays className="h-3.5 w-3.5" />
             {t("babyExpo.dates")}
@@ -72,26 +73,26 @@ const BabyExpoPopup = () => {
 
         <h2
           id="babyexpo-title"
-          className="text-xl sm:text-2xl font-bold text-foreground leading-snug pr-8 mb-3"
+          className="mb-2 pr-8 text-lg font-bold leading-snug text-foreground sm:mb-3 sm:text-2xl"
         >
           {t("babyExpo.title")}
         </h2>
 
-        <p className="text-sm sm:text-base text-muted-foreground mb-4 leading-relaxed">
+        <p className="mb-3 text-sm leading-relaxed text-muted-foreground sm:mb-4 sm:text-base">
           {t("babyExpo.text")}
         </p>
 
-        <p className="inline-flex items-center rounded-full bg-primary/20 border border-primary/50 px-3 py-1 text-sm font-semibold text-primary mb-6">
+        <p className="mb-4 inline-flex items-center rounded-full border border-primary/50 bg-primary/20 px-3 py-1 text-sm font-semibold text-primary sm:mb-6">
           {t("babyExpo.discount")}
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3 mb-3">
+        <div className="mb-3 grid grid-cols-2 gap-2 sm:gap-3">
           <a
             href={APP_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
             onClick={dismiss}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-slate-900 hover:opacity-90 transition-all shadow-soft-lg hover:scale-[1.02]"
+            className="inline-flex min-h-11 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-white px-3 py-3 text-sm font-semibold text-slate-900 shadow-soft-lg transition-all hover:scale-[1.02] hover:opacity-90 sm:gap-2 sm:px-5"
           >
             <Apple className="h-4 w-4" />
             {t("nav.appStore")}
@@ -101,7 +102,7 @@ const BabyExpoPopup = () => {
             target="_blank"
             rel="noopener noreferrer"
             onClick={dismiss}
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white hover:opacity-90 transition-all shadow-soft-lg hover:scale-[1.02]"
+            className="inline-flex min-h-11 items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-primary px-3 py-3 text-sm font-semibold text-white shadow-soft-lg transition-all hover:scale-[1.02] hover:opacity-90 sm:gap-2 sm:px-5"
           >
             <Play className="h-4 w-4 text-white" />
             {t("nav.googlePlay")}
@@ -117,6 +118,7 @@ const BabyExpoPopup = () => {
             <ExternalLink className="h-4 w-4" />
             {t("babyExpo.ctaExpo")}
           </a>
+        </div>
         </div>
       </div>
     </div>
