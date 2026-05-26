@@ -219,14 +219,14 @@ const translations: Record<Language, Record<string, string>> = {
     "testimonials.6.quote": "Mit Moonli haben wir zum ersten Mal das Gefühl, unseren Familienalltag im Griff zu haben – ohne dass sich etwas nach noch einer App anfühlt.",
 
     // Marquee
-    "marquee.sleep": "Einschlafroutine",
-    "marquee.gamification": "Spiele",
-    "marquee.zen": "Meditation",
+    "marquee.sleep": "Sanfte Einschlafroutinen",
+    "marquee.gamification": "Ruhige Spiele",
+    "marquee.zen": "Atempausen für Eltern",
     "marquee.ai": "Elternwohlbefinden",
     "marquee.stories": "Gutenachtgeschichten",
-    "marquee.qualityTime": "White-Noise",
-    "marquee.coparenting": "Einschlaflieder",
-    "marquee.tracking": "Bibliothek",
+    "marquee.qualityTime": "Beruhigende Sounds",
+    "marquee.coparenting": "Wachfenster & Erinnerungen",
+    "marquee.tracking": "Baby-Tracking & Elternwissen",
 
     // CTA & Footer
     "cta.title": "Bereit für ruhigere Nächte und entspanntere Tage?",

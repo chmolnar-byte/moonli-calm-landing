@@ -1,17 +1,19 @@
 import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
 import HeroSection from "@/components/HeroSection";
-import StatsCounter from "@/components/StatsCounter";
-import Marquee from "@/components/Marquee";
-import FeaturesSection from "@/components/FeaturesSection";
-import Testimonials from "@/components/Testimonials";
-import PricingSection from "@/components/PricingSection";
-import FounderSection from "@/components/FounderSection";
-import CTAFooter from "@/components/CTAFooter";
-import BabyExpoPopup from "@/components/BabyExpoPopup";
+import { lazy, Suspense } from "react";
 import capybaraImg from "@/assets/capybara.webp";
 import capybara1Img from "@/assets/capybara1.webp";
 import capybara2Img from "@/assets/capybara2.webp";
+
+const StatsCounter = lazy(() => import("@/components/StatsCounter"));
+const Marquee = lazy(() => import("@/components/Marquee"));
+const FeaturesSection = lazy(() => import("@/components/FeaturesSection"));
+const Testimonials = lazy(() => import("@/components/Testimonials"));
+const PricingSection = lazy(() => import("@/components/PricingSection"));
+const FounderSection = lazy(() => import("@/components/FounderSection"));
+const CTAFooter = lazy(() => import("@/components/CTAFooter"));
+const BabyExpoPopup = lazy(() => import("@/components/BabyExpoPopup"));
 
 const SectionDivider = () => (
   <div className="relative h-16 -my-8 z-0">
@@ -47,18 +49,20 @@ const Index = () => {
       <ScrollProgress />
       <Navbar />
       <HeroSection />
-      <StatsCounter />
-      <Marquee />
-      <SectionDivider />
-      <div id="funktionen"><FeaturesSection /></div>
-      <SectionDivider />
-      <div id="preise"><PricingSection /></div>
-      <SectionDivider />
-      <FounderSection />
-      <SectionDivider />
-      <div id="feedback"><Testimonials /></div>
-      <CTAFooter />
-      <BabyExpoPopup />
+      <Suspense fallback={null}>
+        <StatsCounter />
+        <Marquee />
+        <SectionDivider />
+        <div id="funktionen"><FeaturesSection /></div>
+        <SectionDivider />
+        <div id="preise"><PricingSection /></div>
+        <SectionDivider />
+        <FounderSection />
+        <SectionDivider />
+        <div id="feedback"><Testimonials /></div>
+        <CTAFooter />
+        <BabyExpoPopup />
+      </Suspense>
     </div>
   );
 };
