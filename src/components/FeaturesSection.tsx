@@ -6,8 +6,8 @@ import {
   BookOpen,
   Music2,
   CheckCircle2,
+  Sparkles,
 } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import trackingScreenshot from "@/assets/Startseite1.webp";
 import sleepPredictionScreenshot from "@/assets/sleep-prognose.webp";
@@ -16,147 +16,16 @@ import knowledgeScreenshot from "@/assets/wissen.webp";
 import entertainmentScreenshot from "@/assets/entertainment.webp";
 import { useState } from "react";
 
-interface Feature {
-  icon: LucideIcon;
-  titleKey: string;
-  descKey: string;
-  badgeKey: string;
-  bgColor: string;
-  iconColor: string;
-  badgeColor: string;
-}
-
-const features: Feature[] = [
-  {
-    icon: Baby,
-    titleKey: "features.tracking.title",
-    descKey: "features.tracking.desc",
-    badgeKey: "features.tracking.badge",
-    bgColor: "bg-pastel-blue/60",
-    iconColor: "text-pastel-blue-strong",
-    badgeColor: "bg-pastel-blue/80 text-pastel-blue-strong",
-  },
-];
-
-const FeatureCard = ({
-  feature,
-  index,
-  isPrimary = false,
-  onOpenImage,
-}: {
-  feature: Feature;
-  index: number;
-  isPrimary?: boolean;
-  onOpenImage: (src: string, alt: string) => void;
-}) => {
-  const { t } = useLanguage();
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      whileHover={{ y: -6 }}
-      className={`group relative overflow-hidden rounded-2xl border border-white/15 bg-white/5 backdrop-blur-xl cursor-default transition-all duration-300 hover:border-primary/45 hover:shadow-soft-2xl flex flex-col ${
-        isPrimary ? "p-4 sm:p-6 lg:p-8 min-h-0 sm:min-h-[320px] lg:min-h-[360px]" : "p-6 sm:p-7 min-h-[230px]"
-      }`}
-    >
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/8 via-transparent to-transparent pointer-events-none" />
-      <div className={`mb-4 ${isPrimary ? "" : "flex items-center justify-between gap-3"}`}>
-        <div className={`flex flex-wrap items-center gap-2 sm:gap-3 min-w-0 ${isPrimary ? "" : "flex-1"}`}>
-          <div className="w-[48px] h-[48px] sm:w-[52px] sm:h-[52px] rounded-2xl border border-primary/35 bg-primary/12 flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-[0_8px_24px_rgba(0,0,0,0.25)] shrink-0">
-            <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary drop-shadow-[0_1px_4px_rgba(0,0,0,0.35)]" />
-          </div>
-        </div>
-        {!isPrimary && (
-          <span className="text-[11px] font-semibold text-white/50">{t("features.groupLabel")}</span>
-        )}
-      </div>
-
-      <h3 className={`${isPrimary ? "text-title-lg" : "text-xl"} font-bold mb-2 tracking-tight text-white`}>{t(feature.titleKey)}</h3>
-      {isPrimary ? (
-        null
-      ) : (
-        <p className="text-base text-white/75 leading-relaxed">{t(feature.descKey)}</p>
-      )}
-
-      {isPrimary && (
-        <div className="mt-4 sm:mt-5 rounded-2xl border border-primary/25 bg-white/8 p-3 sm:p-5 shadow-soft min-w-0 flex flex-col">
-          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.95fr)] gap-4 sm:gap-5 lg:gap-6 flex-1">
-            <div className="min-w-0">
-              <p className="text-base sm:text-lg lg:text-xl text-white leading-snug sm:leading-relaxed font-bold mb-3">
-                {t("features.tracking.lead")}
-              </p>
-              <ul className="grid grid-cols-1 min-[400px]:grid-cols-2 gap-x-4 sm:gap-x-6 gap-y-2.5 sm:gap-y-3 mb-4">
-                {t("features.tracking.items")
-                  .split("|")
-                  .map((item) => item.trim())
-                  .filter(Boolean)
-                  .map((item) => (
-                    <li key={item} className="flex items-center gap-2 sm:gap-2.5 text-sm sm:text-base lg:text-lg text-white/90 font-medium min-w-0">
-                      <CheckCircle2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary shrink-0" />
-                      <span className="break-words">{item}</span>
-                    </li>
-                  ))}
-              </ul>
-
-              <div className="rounded-xl border border-primary/25 bg-primary/10 px-3 py-2.5 sm:px-4 sm:py-3 mb-2">
-                <p className="text-xs sm:text-sm lg:text-base text-white/90 leading-relaxed font-medium">
-                  {t("features.tracking.sleepPrediction")}
-                </p>
-              </div>
-              <div className="rounded-xl border border-white/20 bg-white/5 px-3 py-2.5 sm:px-4 sm:py-3">
-                <p className="text-xs sm:text-sm lg:text-base text-white/85 leading-relaxed">
-                  {t("features.tracking.story2")}
-                </p>
-              </div>
-              <div className="mt-3 flex justify-start">
-                <span className="inline-block rounded-full border border-primary/70 bg-primary px-4 py-2 text-xs sm:text-sm font-normal text-white text-center text-balance shadow-[0_8px_18px_rgba(0,0,0,0.22)]">
-                  {t("features.tracking.freeWidget")}
-                </span>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-1 gap-3 min-w-0">
-              <div className="rounded-xl border border-white/25 bg-slate-950/35 min-h-0 overflow-hidden p-1.5 sm:p-2 flex flex-col">
-                <button type="button" onClick={() => onOpenImage(sleepPredictionScreenshot, "Schlafprognose Screenshot")} className="w-full block min-w-0">
-                  <img
-                    src={sleepPredictionScreenshot}
-                    alt="Schlafprognose Screenshot"
-                    className="w-full h-[min(42vw,200px)] min-[420px]:h-[180px] sm:h-[200px] lg:h-[240px] object-contain object-center mx-auto"
-                    loading="lazy"
-                  />
-                </button>
-              </div>
-              <div className="rounded-xl border border-white/25 bg-slate-950/35 min-h-0 overflow-hidden p-1.5 sm:p-2 flex flex-col min-[420px]:min-h-0">
-                <button type="button" onClick={() => onOpenImage(trackingScreenshot, "Tracking Screenshot")} className="w-full block min-w-0">
-                  <img
-                    src={trackingScreenshot}
-                    alt="Tracking Screenshot"
-                    className="w-full h-[min(42vw,200px)] min-[420px]:h-[180px] sm:h-[200px] lg:h-[240px] object-contain object-center mx-auto"
-                    loading="lazy"
-                  />
-                </button>
-                <p className="mt-2 px-1 text-[11px] sm:text-xs lg:text-sm text-white/80 font-medium leading-snug text-center min-[420px]:text-left">
-                  {t("features.tracking.weeklyReportPremium")}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {!isPrimary && (
-        <div className="mt-auto pt-4" />
-      )}
-    </motion.div>
-  );
-};
+const splitItems = (raw: string) =>
+  raw
+    .split("|")
+    .map((item) => item.trim())
+    .filter(Boolean);
 
 const FeaturesSection = () => {
   const { t } = useLanguage();
   const [activeImage, setActiveImage] = useState<{ src: string; alt: string } | null>(null);
-  const primaryFeature = features[0];
+
   const groupedFeatures = [
     {
       icon: HeartHandshake,
@@ -164,8 +33,9 @@ const FeaturesSection = () => {
       subtitleKey: "features.groups.parent.subtitle",
       itemsKey: "features.groups.parent.items",
       image: parentAreaScreenshot,
-      iconBg: "bg-rose-300/10",
-      iconBorder: "border-rose-300/20",
+      accent: "from-rose-400/20 to-transparent",
+      iconBorder: "border-rose-300/30",
+      iconBg: "bg-rose-300/15",
       iconColor: "text-rose-200",
     },
     {
@@ -174,8 +44,9 @@ const FeaturesSection = () => {
       subtitleKey: "features.groups.knowledge.subtitle",
       itemsKey: "features.groups.knowledge.items",
       image: knowledgeScreenshot,
-      iconBg: "bg-amber-200/10",
-      iconBorder: "border-amber-200/20",
+      accent: "from-amber-300/20 to-transparent",
+      iconBorder: "border-amber-200/30",
+      iconBg: "bg-amber-200/15",
       iconColor: "text-amber-100",
     },
     {
@@ -184,18 +55,20 @@ const FeaturesSection = () => {
       subtitleKey: "features.groups.entertainment.subtitle",
       itemsKey: "features.groups.entertainment.items",
       image: entertainmentScreenshot,
-      iconBg: "bg-purple-300/10",
-      iconBorder: "border-purple-300/20",
+      accent: "from-purple-400/20 to-transparent",
+      iconBorder: "border-purple-300/30",
+      iconBg: "bg-purple-300/15",
       iconColor: "text-purple-200",
     },
   ];
 
+  const trackingItems = splitItems(t("features.tracking.items"));
+
   return (
-    <section className="py-24 relative">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-1/4 w-[400px] h-[400px] rounded-full bg-pastel-blue/25 blur-[100px]" />
-        <div className="absolute bottom-0 left-1/4 w-[300px] h-[300px] rounded-full bg-pastel-peach/20 blur-[80px]" />
-      </div>
+    <section className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 via-transparent to-pastel-blue/10 pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-[420px] h-[420px] rounded-full bg-pastel-blue/20 blur-[110px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[320px] h-[320px] rounded-full bg-pastel-peach/15 blur-[90px] pointer-events-none" />
 
       <div className="container relative z-10">
         <motion.div
@@ -203,79 +76,196 @@ const FeaturesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          className="text-center mb-12 max-w-3xl mx-auto"
         >
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-button text-primary text-sm font-semibold mb-4">
             {t("features.badge")}
           </span>
-          <h2 className="text-display-md text-glow">
+          <h2 className="text-display-md font-extrabold text-glow text-white mb-3">
             {t("features.title")}
           </h2>
+          <p className="text-base sm:text-lg text-white/75 leading-relaxed">
+            {t("features.subtitle")}
+          </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        {/* Haupt-Feature: Tracking */}
+        <motion.article
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-4xl border border-white/15 bg-white/5 backdrop-blur-2xl p-4 sm:p-5 mb-10 shadow-soft-2xl"
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5 }}
+          className="relative mb-14 overflow-hidden rounded-[1.5rem] border border-primary/40 bg-white/[0.07] p-6 sm:p-8 lg:p-10 shadow-soft-2xl backdrop-blur-2xl"
         >
-          <div className="absolute -top-24 -right-8 w-64 h-64 rounded-full bg-pastel-blue/25 blur-3xl pointer-events-none" />
-          <div className="absolute -bottom-16 left-0 w-52 h-52 rounded-full bg-pastel-green/35 blur-3xl pointer-events-none" />
+          <div className="absolute -top-20 -right-10 h-56 w-56 rounded-full bg-primary/25 blur-3xl pointer-events-none" />
+          <div className="absolute -bottom-16 left-0 h-48 w-48 rounded-full bg-pastel-green/30 blur-3xl pointer-events-none" />
 
           <div className="relative">
-            <FeatureCard
-              feature={primaryFeature}
-              index={0}
-              isPrimary
-              onOpenImage={(src, alt) => setActiveImage({ src, alt })}
-            />
+            <div className="flex flex-wrap items-center gap-3 mb-5">
+              <span className="inline-flex items-center rounded-br-2xl rounded-tl-xl bg-[#f6d87a] px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-[#5f4a15] shadow-[0_8px_20px_rgba(246,216,122,0.35)]">
+                {t("features.primaryLabel")}
+              </span>
+              <span className="text-sm font-medium text-white/60">{t("features.primaryHint")}</span>
+            </div>
+
+            <div className="flex flex-col gap-6 lg:gap-8 lg:grid lg:grid-cols-[1fr_minmax(280px,360px)] lg:items-start">
+              <div className="min-w-0">
+                <div className="flex items-start gap-4 mb-4">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-primary/40 bg-primary/15 shadow-[0_8px_24px_rgba(0,0,0,0.25)]">
+                    <Baby className="h-7 w-7 text-primary" />
+                  </div>
+                  <div className="min-w-0 pt-0.5">
+                    <h3 className="text-[28px] sm:text-[32px] font-extrabold leading-tight tracking-tight text-white">
+                      {t("features.tracking.title")}
+                    </h3>
+                    <p className="mt-2 text-base sm:text-lg text-white/80 leading-relaxed">
+                      {t("features.tracking.desc")}
+                    </p>
+                  </div>
+                </div>
+
+                <p className="text-sm font-bold uppercase tracking-widest text-primary mb-3">
+                  {t("features.tracking.lead")}
+                </p>
+                <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5 mb-6">
+                  {trackingItems.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm font-medium text-white/90"
+                    >
+                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-primary" />
+                      <span className="truncate">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="space-y-3">
+                  <div className="flex gap-3 rounded-xl border border-primary/30 bg-primary/10 px-4 py-3.5">
+                    <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+                    <p className="text-sm sm:text-base font-medium text-white leading-relaxed">
+                      {t("features.tracking.sleepPrediction")}
+                    </p>
+                  </div>
+                  <p className="text-sm sm:text-base text-white/75 leading-relaxed pl-1">
+                    {t("features.tracking.story2")}
+                  </p>
+                </div>
+
+                <div className="mt-5">
+                  <span className="inline-flex items-center rounded-full border border-primary/60 bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-[0_8px_20px_rgba(0,0,0,0.2)]">
+                    {t("features.tracking.freeWidget")}
+                  </span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 min-w-0">
+                <button
+                  type="button"
+                  onClick={() => setActiveImage({ src: sleepPredictionScreenshot, alt: "Schlafprognose" })}
+                  className="group rounded-xl border border-white/20 bg-slate-950/40 p-2 transition hover:border-primary/50 hover:shadow-soft"
+                >
+                  <img
+                    src={sleepPredictionScreenshot}
+                    alt="Schlafprognose"
+                    className="mx-auto h-[200px] w-full object-contain object-center sm:h-[220px]"
+                    loading="lazy"
+                  />
+                  <p className="mt-2 px-2 text-center text-xs font-medium text-white/50 group-hover:text-white/70">
+                    {t("features.hoverHint")}
+                  </p>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveImage({ src: trackingScreenshot, alt: "Tracking" })}
+                  className="group rounded-xl border border-white/20 bg-slate-950/40 p-2 transition hover:border-primary/50 hover:shadow-soft"
+                >
+                  <img
+                    src={trackingScreenshot}
+                    alt="Tracking"
+                    className="mx-auto h-[200px] w-full object-contain object-center sm:h-[220px]"
+                    loading="lazy"
+                  />
+                  <p className="mt-2 px-2 text-center text-xs text-white/70 leading-snug">
+                    {t("features.tracking.weeklyReportPremium")}
+                  </p>
+                </button>
+              </div>
+            </div>
           </div>
+        </motion.article>
+
+        {/* Add-on Bereiche */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45 }}
+          className="mb-8 text-center"
+        >
+          <span className="inline-flex items-center rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-[11px] font-bold uppercase tracking-wider text-white/70 mb-4">
+            {t("features.addonLabel")}
+          </span>
+          <h3 className="text-[26px] sm:text-[30px] font-extrabold leading-tight text-white">
+            {t("features.groupsTitle")}
+          </h3>
+          <p className="mt-2 text-base text-white/70 max-w-2xl mx-auto">
+            {t("features.groupsSubtitle")}
+          </p>
         </motion.div>
 
-        <div className="mb-6 text-center">
-          <h3 className="text-title-lg font-bold text-white">{t("features.groupsTitle")}</h3>
-          <p className="text-base text-white/70 mt-2">{t("features.groupsSubtitle")}</p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid gap-5 md:grid-cols-3 md:gap-6">
           {groupedFeatures.map((group, i) => (
-            <motion.div
+            <motion.article
               key={group.titleKey}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: i * 0.08 }}
-              className="rounded-2xl border border-white/15 bg-white/5 backdrop-blur-xl p-5"
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.45, delay: i * 0.07 }}
+              whileHover={{ y: -4 }}
+              className="group relative flex flex-col overflow-hidden rounded-[1.25rem] border border-white/15 bg-white/[0.06] p-5 sm:p-6 shadow-soft backdrop-blur-xl transition hover:border-primary/35 hover:shadow-soft-2xl"
             >
-              <div className={`w-[50px] h-[50px] rounded-2xl border ${group.iconBorder} ${group.iconBg} flex items-center justify-center mb-4 shadow-[0_8px_24px_rgba(0,0,0,0.2)]`}>
-                <group.icon className={`w-6 h-6 ${group.iconColor}`} />
-              </div>
-              <div className="rounded-xl border border-white/20 bg-slate-950/35 overflow-hidden mb-4 p-2">
-                <button type="button" onClick={() => setActiveImage({ src: group.image, alt: t(group.titleKey) })} className="w-full block">
+              <div className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${group.accent} opacity-0 transition group-hover:opacity-100`} />
+
+              <div className="relative flex flex-col flex-1">
+                <div className="mb-4 flex items-center justify-between gap-3">
+                  <div
+                    className={`flex h-12 w-12 items-center justify-center rounded-xl border ${group.iconBorder} ${group.iconBg}`}
+                  >
+                    <group.icon className={`h-6 w-6 ${group.iconColor}`} />
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-white/45">
+                    {t("features.addonLabel")}
+                  </span>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setActiveImage({ src: group.image, alt: t(group.titleKey) })}
+                  className="mb-5 overflow-hidden rounded-xl border border-white/20 bg-slate-950/40 p-2 transition group-hover:border-primary/40"
+                >
                   <img
                     src={group.image}
                     alt={t(group.titleKey)}
-                    className="w-full h-[220px] object-contain object-center"
+                    className="mx-auto h-[200px] w-full object-contain object-center transition group-hover:scale-[1.02]"
                     loading="lazy"
                   />
                 </button>
-              </div>
-              <h4 className="text-xl font-bold text-white mb-1">{t(group.titleKey)}</h4>
-              <p className="text-sm text-primary mb-3">{t(group.subtitleKey)}</p>
-              <ul className="space-y-2">
-                {t(group.itemsKey)
-                  .split("|")
-                  .map((item) => item.trim())
-                  .filter(Boolean)
-                  .map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-white/85 text-sm">
-                      <span className="h-2 w-2 rounded-full bg-primary mt-1.5 shrink-0" />
+
+                <h4 className="text-[22px] font-extrabold leading-tight text-white mb-1">
+                  {t(group.titleKey)}
+                </h4>
+                <p className="text-sm font-semibold text-primary mb-4">{t(group.subtitleKey)}</p>
+
+                <ul className="mt-auto space-y-2.5 border-t border-white/10 pt-4">
+                  {splitItems(t(group.itemsKey)).map((item) => (
+                    <li key={item} className="flex items-start gap-2.5 text-[15px] leading-snug text-white/90">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
                       <span>{item}</span>
                     </li>
                   ))}
-              </ul>
-            </motion.div>
+                </ul>
+              </div>
+            </motion.article>
           ))}
         </div>
 
@@ -283,8 +273,8 @@ const FeaturesSection = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="text-center text-base text-white/70 mt-8"
+          transition={{ delay: 0.3 }}
+          className="mt-10 text-center text-sm text-white/60"
         >
           {t("features.adNote")}
         </motion.p>
