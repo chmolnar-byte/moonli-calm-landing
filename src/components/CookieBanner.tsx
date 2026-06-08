@@ -1,11 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
-
-const COOKIE_KEY = "moonli_cookie_consent_v2";
-
-type CookieConsent = {
-  analytics: boolean;
-};
+import { applyAnalyticsConsent, trackPageView } from "@/lib/analytics";
+import { getStoredConsent, saveConsent } from "@/lib/cookieConsent";
 
 const CookieBanner = () => {
   const { t } = useLanguage();
@@ -13,26 +9,20 @@ const CookieBanner = () => {
   const [analytics, setAnalytics] = useState(true);
 
   useEffect(() => {
-    try {
-      const stored = window.localStorage.getItem(COOKIE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored) as CookieConsent;
-        setAnalytics(!!parsed.analytics);
-        setVisible(false);
-      } else {
-        setVisible(true);
-      }
-    } catch {
+    const stored = getStoredConsent();
+    if (stored) {
+      setAnalytics(stored.analytics);
+      setVisible(false);
+    } else {
       setVisible(true);
     }
   }, []);
 
   const save = (value: boolean) => {
-    try {
-      const consent: CookieConsent = { analytics: value };
-      window.localStorage.setItem(COOKIE_KEY, JSON.stringify(consent));
-    } catch {
-      // ignore
+    saveConsent({ analytics: value });
+    applyAnalyticsConsent(value);
+    if (value) {
+      trackPageView(window.location.pathname + window.location.search);
     }
     setVisible(false);
   };
@@ -92,4 +82,3 @@ const CookieBanner = () => {
 };
 
 export default CookieBanner;
-

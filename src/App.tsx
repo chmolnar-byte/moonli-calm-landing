@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { LanguageProvider } from "@/i18n/LanguageContext";
 import Index from "./pages/Index";
+import AnalyticsPageView from "./components/AnalyticsPageView";
 import CookieBanner from "./components/CookieBanner";
 
 const EmailConfirmed = lazy(() => import("./pages/EmailConfirmed"));
@@ -17,6 +18,7 @@ const App = () => (
     <BrowserRouter
       basename={import.meta.env.BASE_URL.replace(/\/$/, "") || undefined}
     >
+      <AnalyticsPageView />
       <CookieBanner />
       <Suspense fallback={null}>
         <Routes>
