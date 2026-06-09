@@ -27,6 +27,13 @@ export function trackPageView(path: string): void {
 }
 
 export function initAnalyticsFromStoredConsent(): void {
+  if (!MEASUREMENT_ID || !window.gtag) return;
+
+  gtag("config", MEASUREMENT_ID, {
+    anonymize_ip: true,
+    send_page_view: false,
+  });
+
   const consent = getStoredConsent();
   if (consent !== null) {
     applyAnalyticsConsent(consent.analytics);
