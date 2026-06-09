@@ -68,6 +68,27 @@
         ]
       }
     </script>
+
+    <!-- Google tag (gtag.js) – Consent Mode v2: Tracking erst nach Cookie-Einwilligung -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-497RKXKY2W"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+        wait_for_update: 500,
+      });
+      gtag("config", "G-497RKXKY2W", {
+        anonymize_ip: true,
+        send_page_view: false,
+      });
+    </script>
   </head>
 
   <body>
