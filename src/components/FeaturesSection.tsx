@@ -31,6 +31,7 @@ const FeaturesSection = () => {
       icon: HeartHandshake,
       titleKey: "features.groups.parent.title",
       subtitleKey: "features.groups.parent.subtitle",
+      descKey: "features.groups.parent.desc",
       itemsKey: "features.groups.parent.items",
       image: parentAreaScreenshot,
       accent: "from-rose-400/20 to-transparent",
@@ -42,6 +43,7 @@ const FeaturesSection = () => {
       icon: BookOpen,
       titleKey: "features.groups.knowledge.title",
       subtitleKey: "features.groups.knowledge.subtitle",
+      descKey: "features.groups.knowledge.desc",
       itemsKey: "features.groups.knowledge.items",
       image: knowledgeScreenshot,
       accent: "from-amber-300/20 to-transparent",
@@ -53,6 +55,7 @@ const FeaturesSection = () => {
       icon: Music2,
       titleKey: "features.groups.entertainment.title",
       subtitleKey: "features.groups.entertainment.subtitle",
+      descKey: "features.groups.entertainment.desc",
       itemsKey: "features.groups.entertainment.items",
       image: entertainmentScreenshot,
       accent: "from-purple-400/20 to-transparent",
@@ -254,7 +257,8 @@ const FeaturesSection = () => {
                 <h4 className="text-[22px] font-extrabold leading-tight text-white mb-1">
                   {t(group.titleKey)}
                 </h4>
-                <p className="text-sm font-semibold text-primary mb-4">{t(group.subtitleKey)}</p>
+                <p className="text-sm font-semibold text-primary mb-2">{t(group.subtitleKey)}</p>
+                <p className="text-sm text-white/75 leading-relaxed mb-4">{t(group.descKey)}</p>
 
                 <ul className="mt-auto space-y-2.5 border-t border-white/10 pt-4">
                   {splitItems(t(group.itemsKey)).map((item) => (
