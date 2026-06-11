@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.moonli.net/sitemap.xml
+Sitemap: https://moonli.net/sitemap.xml
