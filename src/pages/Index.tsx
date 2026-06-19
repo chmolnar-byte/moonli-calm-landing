@@ -13,7 +13,6 @@ const Testimonials = lazy(() => import("@/components/Testimonials"));
 const PricingSection = lazy(() => import("@/components/PricingSection"));
 const FounderSection = lazy(() => import("@/components/FounderSection"));
 const CTAFooter = lazy(() => import("@/components/CTAFooter"));
-const BabyExpoPopup = lazy(() => import("@/components/BabyExpoPopup"));
 
 const SectionDivider = () => (
   <div className="relative h-16 -my-8 z-0">
@@ -61,7 +60,6 @@ const Index = () => {
         <SectionDivider />
         <div id="feedback"><Testimonials /></div>
         <CTAFooter />
-        <BabyExpoPopup />
       </Suspense>
     </div>
   );
