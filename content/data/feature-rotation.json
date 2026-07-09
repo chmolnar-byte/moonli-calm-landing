@@ -1,0 +1,41 @@
+{
+  "features": [
+    {
+      "id": "sleep-tracking",
+      "titleKey": "features.tracking.title",
+      "descriptionKey": "features.tracking.desc",
+      "priority": 1
+    },
+    {
+      "id": "wake-windows",
+      "titleKey": "features.reminders.title",
+      "descriptionKey": "features.reminders.desc",
+      "priority": 2
+    },
+    {
+      "id": "3am-club",
+      "titleKey": "features.amClub.title",
+      "descriptionKey": "features.amClub.desc",
+      "priority": 3
+    },
+    {
+      "id": "who-growth",
+      "titleKey": "features.health.title",
+      "descriptionKey": "features.health.desc",
+      "priority": 4
+    },
+    {
+      "id": "parent-wellbeing",
+      "titleKey": "features.groups.parent.title",
+      "descriptionKey": "features.groups.parent.desc",
+      "priority": 5
+    },
+    {
+      "id": "knowledge-library",
+      "titleKey": "features.groups.knowledge.title",
+      "descriptionKey": "features.groups.knowledge.desc",
+      "priority": 6
+    }
+  ],
+  "lastRotatedIndex": 0
+}

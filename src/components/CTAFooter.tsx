@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { Apple, Play } from "lucide-react";
 import logo from "@/assets/logo.webp";
+import { assetUrl } from "@/lib/assetUrl";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
+import { motionInitial } from "@/lib/motion";
 
 const CTAFooter = () => {
   const { t } = useLanguage();
@@ -18,14 +20,14 @@ const CTAFooter = () => {
 
         <div className="container relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={motionInitial}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="text-center max-w-3xl mx-auto"
           >
             <img
-              src={logo}
+              src={assetUrl(logo)}
               alt="Moonli"
               className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover mx-auto mb-6"
             />
@@ -73,7 +75,7 @@ const CTAFooter = () => {
         <div className="container">
           <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
             <div className="flex items-center gap-2 text-sm text-white/65 shrink-0">
-              <img src={logo} alt="Moonli" className="w-5 h-5 rounded-full object-cover" />
+              <img src={assetUrl(logo)} alt="Moonli" className="w-5 h-5 rounded-full object-cover" />
               <span className="font-semibold text-white">MOONLI</span>
               <span>© {new Date().getFullYear()}</span>
             </div>

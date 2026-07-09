@@ -1,0 +1,9 @@
+partners:
+  - slug: hebammen-partnerin-beispiel
+    name: "Hebammen-Partnerin Beispiel"
+    url: https://moonli.net
+    logo: /og-image.png
+    description: "Fundiertes Hebammen-Wissen für den Familienalltag."
+    featuredMonth: "2026-07"
+    previewToken: "partner-juli-2026"
+    contactEmail: partner@example.com

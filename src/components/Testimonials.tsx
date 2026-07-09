@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { motionInitial } from "@/lib/motion";
 
 const testimonials = [
   { nameKey: "testimonials.1.name", quoteKey: "testimonials.1.quote", initials: "SK", stars: 5, bg: "bg-pastel-pink/60" },
@@ -21,7 +22,7 @@ const Testimonials = () => {
       </div>
       <div className="container relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={motionInitial}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
@@ -39,7 +40,7 @@ const Testimonials = () => {
           {testimonials.map((item, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              initial={motionInitial}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}

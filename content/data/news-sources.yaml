@@ -1,0 +1,27 @@
+# Quellen für News-Recherche (Trends + seriöse Referenz).
+# Der Bot synthetisiert daraus einen Originalartikel – kein Copy-Paste.
+sources:
+  - name: The Conversation (Parenting)
+    url: https://theconversation.com/europe/topics/parenting-1616/articles.atom
+    region: international
+    weight: high
+
+  - name: WHO News
+    url: https://www.who.int/rss-feeds/news-english.xml
+    region: international
+    weight: high
+
+  - name: NIH News
+    url: https://www.nih.gov/news-events/news-releases/rss
+    region: international
+    weight: medium
+
+  - name: CDC Media
+    url: https://tools.cdc.gov/api/v2/resources/media/403372.rss
+    region: international
+    weight: medium
+
+  - name: Baby und Familie
+    url: https://www.baby-und-familie.de/rss.xml
+    region: dach
+    weight: medium

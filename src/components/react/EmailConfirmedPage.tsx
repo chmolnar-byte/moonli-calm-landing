@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import logo from "@/assets/logo.webp";
+import { assetUrl } from "@/lib/assetUrl";
 import { useLanguage } from "@/i18n/LanguageContext";
 import translations from "@/i18n/translations";
 
@@ -23,7 +24,7 @@ const EmailConfirmed = () => {
         <div className="absolute -bottom-20 -left-20 w-[150px] h-[150px] rounded-full bg-pastel-lavender/20 blur-[50px] pointer-events-none" />
 
         <div className="relative z-10">
-          <img src={logo} alt="Moonli" className="w-16 h-16 rounded-full object-cover mx-auto mb-6" />
+          <img src={assetUrl(logo)} alt="Moonli" className="w-16 h-16 rounded-full object-cover mx-auto mb-6" />
 
           <div className="grid gap-4 text-left text-sm sm:text-base mb-6">
             <div className="p-3 rounded-2xl bg-background/60 border border-border/40">

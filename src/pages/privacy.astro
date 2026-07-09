@@ -1,0 +1,15 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import AppProviders from "@/components/react/AppProviders";
+import PrivacyPage from "@/components/react/PrivacyPage";
+---
+
+<BaseLayout
+  title="Datenschutz | Moonli"
+  description="Datenschutzerklärung der Moonli Baby- und Eltern-App."
+  canonical="https://moonli.net/privacy"
+>
+  <AppProviders client:load>
+    <PrivacyPage />
+  </AppProviders>
+</BaseLayout>

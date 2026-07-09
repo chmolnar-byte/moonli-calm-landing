@@ -1,0 +1,23 @@
+name: Generate Blog Feature
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: bash .github/scripts/checkout-content-drafts.sh
+      - run: npx tsx scripts/generate/generate-feature.ts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      - run: bash .github/scripts/push-content-draft.sh "blog(draft): auto feature $(date -u +%Y-%m-%d)"

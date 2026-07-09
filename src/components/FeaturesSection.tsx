@@ -14,7 +14,15 @@ import sleepPredictionScreenshot from "@/assets/sleep-prognose.webp";
 import parentAreaScreenshot from "@/assets/elternbereich.webp";
 import knowledgeScreenshot from "@/assets/wissen.webp";
 import entertainmentScreenshot from "@/assets/entertainment.webp";
+import { assetUrl } from "@/lib/assetUrl";
+import { motionInitial } from "@/lib/motion";
 import { useState } from "react";
+
+const trackingScreenshotUrl = assetUrl(trackingScreenshot);
+const sleepPredictionScreenshotUrl = assetUrl(sleepPredictionScreenshot);
+const parentAreaScreenshotUrl = assetUrl(parentAreaScreenshot);
+const knowledgeScreenshotUrl = assetUrl(knowledgeScreenshot);
+const entertainmentScreenshotUrl = assetUrl(entertainmentScreenshot);
 
 const splitItems = (raw: string) =>
   raw
@@ -33,7 +41,7 @@ const FeaturesSection = () => {
       subtitleKey: "features.groups.parent.subtitle",
       descKey: "features.groups.parent.desc",
       itemsKey: "features.groups.parent.items",
-      image: parentAreaScreenshot,
+      image: parentAreaScreenshotUrl,
       accent: "from-rose-400/20 to-transparent",
       iconBorder: "border-rose-300/30",
       iconBg: "bg-rose-300/15",
@@ -45,7 +53,7 @@ const FeaturesSection = () => {
       subtitleKey: "features.groups.knowledge.subtitle",
       descKey: "features.groups.knowledge.desc",
       itemsKey: "features.groups.knowledge.items",
-      image: knowledgeScreenshot,
+      image: knowledgeScreenshotUrl,
       accent: "from-amber-300/20 to-transparent",
       iconBorder: "border-amber-200/30",
       iconBg: "bg-amber-200/15",
@@ -57,7 +65,7 @@ const FeaturesSection = () => {
       subtitleKey: "features.groups.entertainment.subtitle",
       descKey: "features.groups.entertainment.desc",
       itemsKey: "features.groups.entertainment.items",
-      image: entertainmentScreenshot,
+      image: entertainmentScreenshotUrl,
       accent: "from-purple-400/20 to-transparent",
       iconBorder: "border-purple-300/30",
       iconBg: "bg-purple-300/15",
@@ -75,7 +83,7 @@ const FeaturesSection = () => {
 
       <div className="container relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={motionInitial}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
@@ -94,7 +102,7 @@ const FeaturesSection = () => {
 
         {/* Haupt-Feature: Tracking */}
         <motion.article
-          initial={{ opacity: 0, y: 24 }}
+          initial={motionInitial}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.5 }}
@@ -164,11 +172,11 @@ const FeaturesSection = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3 min-w-0">
                 <button
                   type="button"
-                  onClick={() => setActiveImage({ src: sleepPredictionScreenshot, alt: "Schlafprognose" })}
+                  onClick={() => setActiveImage({ src: sleepPredictionScreenshotUrl, alt: "Schlafprognose" })}
                   className="group rounded-xl border border-white/20 bg-slate-950/40 p-2 transition hover:border-primary/50 hover:shadow-soft"
                 >
                   <img
-                    src={sleepPredictionScreenshot}
+                    src={sleepPredictionScreenshotUrl}
                     alt="Schlafprognose"
                     className="mx-auto h-[200px] w-full object-contain object-center sm:h-[220px]"
                     loading="lazy"
@@ -179,11 +187,11 @@ const FeaturesSection = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => setActiveImage({ src: trackingScreenshot, alt: "Tracking" })}
+                  onClick={() => setActiveImage({ src: trackingScreenshotUrl, alt: "Tracking" })}
                   className="group rounded-xl border border-white/20 bg-slate-950/40 p-2 transition hover:border-primary/50 hover:shadow-soft"
                 >
                   <img
-                    src={trackingScreenshot}
+                    src={trackingScreenshotUrl}
                     alt="Tracking"
                     className="mx-auto h-[200px] w-full object-contain object-center sm:h-[220px]"
                     loading="lazy"
@@ -199,7 +207,7 @@ const FeaturesSection = () => {
 
         {/* Add-on Bereiche */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={motionInitial}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
@@ -220,7 +228,7 @@ const FeaturesSection = () => {
           {groupedFeatures.map((group, i) => (
             <motion.article
               key={group.titleKey}
-              initial={{ opacity: 0, y: 24 }}
+              initial={motionInitial}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-30px" }}
               transition={{ duration: 0.45, delay: i * 0.07 }}
@@ -274,7 +282,7 @@ const FeaturesSection = () => {
         </div>
 
         <motion.p
-          initial={{ opacity: 0 }}
+          initial={motionInitial}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}

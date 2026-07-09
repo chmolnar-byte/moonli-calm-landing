@@ -25,18 +25,30 @@ const detectBrowserLanguage = (): Language => {
   return "en";
 };
 
-export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>(() => {
-    try {
-      const stored = window.localStorage.getItem(STORAGE_KEY) as Language | null;
-      if (stored && ["de", "en", "es", "fr", "ru"].includes(stored)) {
-        return stored;
-      }
-    } catch {
-      // ignore
+const readStoredLanguage = (): Language => {
+  if (typeof window === "undefined") return "de";
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY) as Language | null;
+    if (stored && ["de", "en", "es", "fr", "ru"].includes(stored)) {
+      return stored;
     }
-    return detectBrowserLanguage();
-  });
+  } catch {
+    // ignore
+  }
+  return detectBrowserLanguage();
+};
+
+const createTranslator = (language: Language) => (key: string) =>
+  translations[language]?.[key] ?? translations.de[key] ?? key;
+
+const defaultContext: LanguageContextType = {
+  language: "de",
+  setLanguage: () => {},
+  t: createTranslator("de"),
+};
+
+export const LanguageProvider = ({ children }: { children: ReactNode }) => {
+  const [language, setLanguage] = useState<Language>(readStoredLanguage);
 
   useEffect(() => {
     try {
@@ -46,10 +58,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [language]);
 
-  const t = useCallback(
-    (key: string) => translations[language]?.[key] ?? translations.de[key] ?? key,
-    [language]
-  );
+  const t = useCallback((key: string) => createTranslator(language)(key), [language]);
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
@@ -60,7 +69,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
 export const useLanguage = () => {
   const ctx = useContext(LanguageContext);
-  if (!ctx) throw new Error("useLanguage must be used within LanguageProvider");
+  if (!ctx) return defaultContext;
   return ctx;
 };
-

@@ -7,6 +7,12 @@ import ImageLightbox from "@/components/ImageLightbox";
 import dashboardWeekly from "@/assets/Startseite1.webp";
 import dashboardDark from "@/assets/Startseite3.webp";
 import dashboardGrowth from "@/assets/Startseite2.webp";
+import { assetUrl } from "@/lib/assetUrl";
+import { motionInitial } from "@/lib/motion";
+
+const dashboardWeeklyUrl = assetUrl(dashboardWeekly);
+const dashboardDarkUrl = assetUrl(dashboardDark);
+const dashboardGrowthUrl = assetUrl(dashboardGrowth);
 
 const PhoneMockup = () => {
   const [activeImage, setActiveImage] = useState<{
@@ -45,7 +51,7 @@ const PhoneMockup = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40, scale: 0.96 }}
+      initial={motionInitial}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.85, delay: 0.2, ease: "easeOut" }}
       onMouseMove={handlePointerMove}
@@ -82,7 +88,7 @@ const PhoneMockup = () => {
               type="button"
               onClick={() =>
                 setActiveImage({
-                  src: dashboardWeekly,
+                  src: dashboardWeeklyUrl,
                   alt: "Wochenbericht der Moonli App",
                 })
               }
@@ -91,7 +97,7 @@ const PhoneMockup = () => {
               aria-label="Wochenbericht vergrößern"
             >
               <img
-                src={dashboardWeekly}
+                src={dashboardWeeklyUrl}
                 alt="Wochenbericht der Moonli App"
                 className="block w-full h-auto select-none"
                 loading="lazy"
@@ -111,7 +117,7 @@ const PhoneMockup = () => {
               type="button"
               onClick={() =>
                 setActiveImage({
-                  src: dashboardDark,
+                  src: dashboardDarkUrl,
                   alt: "Wachstumsverlauf der Moonli App",
                 })
               }
@@ -120,7 +126,7 @@ const PhoneMockup = () => {
               aria-label="Wachstumsverlauf vergrößern"
             >
               <img
-                src={dashboardDark}
+                src={dashboardDarkUrl}
                 alt="Wachstumsverlauf der Moonli App"
                 className="block w-full h-auto select-none"
                 loading="lazy"
@@ -145,7 +151,7 @@ const PhoneMockup = () => {
                 type="button"
                 onClick={() =>
                   setActiveImage({
-                    src: dashboardGrowth,
+                    src: dashboardGrowthUrl,
                     alt: "Moonli Elternbereich – Home",
                   })
                 }
@@ -153,7 +159,7 @@ const PhoneMockup = () => {
                 aria-label="Elternbereich vergrößern"
               >
                 <img
-                  src={dashboardGrowth}
+                  src={dashboardGrowthUrl}
                   alt="Moonli Elternbereich – Home"
                   className="block w-full h-auto select-none"
                   loading="eager"
@@ -207,7 +213,7 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text */}
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={motionInitial}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="text-center lg:text-left max-w-2xl"

@@ -30,9 +30,7 @@ jobs:
       - run: npm run build
         env:
           GITHUB_PAGES: "true"
-          VITE_GA_MEASUREMENT_ID: G-497RKXKY2W
-
-      - run: cp dist/index.html dist/404.html
+          PUBLIC_GA_MEASUREMENT_ID: G-497RKXKY2W
 
       - run: touch dist/.nojekyll
 

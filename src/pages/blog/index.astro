@@ -1,0 +1,109 @@
+---
+import BlogListLayout from "@/layouts/BlogListLayout.astro";
+import BlogHero from "@/components/blog/BlogHero.astro";
+import BlogSpotlight from "@/components/blog/BlogSpotlight.astro";
+import BlogCategorySection from "@/components/blog/BlogCategorySection.astro";
+import {
+  getPublishedPosts,
+  getAllPublishedPosts,
+  getCategoryLabel,
+  getCategoryPath,
+  type BlogCollection,
+} from "@/lib/blog";
+
+const site = "https://moonli.net";
+
+const categories: BlogCollection[] = ["news", "features", "deals", "partners"];
+
+const [allPosts, categorySections] = await Promise.all([
+  getAllPublishedPosts(),
+  Promise.all(
+    categories.map(async (collection) => ({
+      collection,
+      posts: await getPublishedPosts(collection),
+    })),
+  ),
+]);
+
+const [heroPost, ...restPosts] = allPosts;
+const spotlightPosts = restPosts.slice(0, 2);
+
+function postUrl(collection: BlogCollection, slug: string): string {
+  const segment = collection === "partners" ? "partner" : collection;
+  return `${site}/blog/${segment}/${slug}`;
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      name: "Moonli Blog",
+      description:
+        "Baby-News, Moonli-Features, Angebote und Partner-Highlights für Eltern im DACH-Raum.",
+      url: `${site}/blog`,
+      publisher: {
+        "@type": "Organization",
+        name: "Moonli",
+        url: site,
+      },
+      blogPost: allPosts.map((post) => ({
+        "@type": "BlogPosting",
+        headline: post.data.title,
+        description: post.data.description,
+        datePublished: post.data.pubDate.toISOString(),
+        url: postUrl(post.collection, post.slug),
+      })),
+    },
+    ...categorySections
+      .filter((section) => section.posts.length > 0)
+      .map((section) => ({
+        "@type": "ItemList",
+        name: getCategoryLabel(section.collection),
+        url: `${site}${getCategoryPath(section.collection)}`,
+        itemListElement: section.posts.map((post, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          url: postUrl(post.collection, post.slug),
+          name: post.data.title,
+        })),
+      })),
+  ],
+};
+---
+
+<BlogListLayout
+  title="Moonli Blog – Baby-News, App-Features, Angebote & Tipps für Eltern"
+  description="Aktuelle Baby-News, Moonli App-Features, Eltern-Tipps und Angebote – informativ, übersichtlich und SEO-optimiert für Eltern in Österreich und Deutschland."
+  canonical={`${site}/blog`}
+  jsonLd={jsonLd}
+>
+  <main class="blog-index-main container max-w-4xl">
+    <header class="blog-index-top">
+      <div>
+        <p class="blog-index-eyebrow">Moonli Blog</p>
+        <h1 class="blog-index-title">Ratgeber & News für Eltern</h1>
+      </div>
+      <nav class="blog-index-categories" aria-label="Blog-Kategorien">
+        {categories.map((collection) => (
+          <a href={getCategoryPath(collection)}>{getCategoryLabel(collection)}</a>
+        ))}
+      </nav>
+    </header>
+
+    {allPosts.length === 0 ? (
+      <p class="blog-index-empty">Noch keine Artikel veröffentlicht.</p>
+    ) : (
+      <>
+        {heroPost && <BlogHero post={heroPost} />}
+        <BlogSpotlight posts={spotlightPosts} />
+
+        <div class="blog-category-sections" aria-label="Artikel nach Kategorie">
+          {categorySections.map((section) => (
+            <BlogCategorySection collection={section.collection} posts={section.posts} />
+          ))}
+        </div>
+      </>
+    )}
+  </main>
+</BlogListLayout>

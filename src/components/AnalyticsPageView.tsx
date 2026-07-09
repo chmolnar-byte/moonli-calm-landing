@@ -1,20 +1,11 @@
-import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { initAnalyticsFromStoredConsent, trackPageView } from "@/lib/analytics";
 
 const AnalyticsPageView = () => {
-  const location = useLocation();
-  const [ready, setReady] = useState(false);
-
   useEffect(() => {
     initAnalyticsFromStoredConsent();
-    setReady(true);
+    trackPageView(window.location.pathname + window.location.search);
   }, []);
-
-  useEffect(() => {
-    if (!ready) return;
-    trackPageView(location.pathname + location.search);
-  }, [location, ready]);
 
   return null;
 };

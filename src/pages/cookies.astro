@@ -1,0 +1,15 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import AppProviders from "@/components/react/AppProviders";
+import CookiePolicyPage from "@/components/react/CookiePolicyPage";
+---
+
+<BaseLayout
+  title="Cookie-Richtlinie | Moonli"
+  description="Informationen zur Cookie-Nutzung auf moonli.net."
+  canonical="https://moonli.net/cookies"
+>
+  <AppProviders client:load>
+    <CookiePolicyPage />
+  </AppProviders>
+</BaseLayout>

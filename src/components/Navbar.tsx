@@ -1,11 +1,10 @@
 import { Apple, Play, Globe } from "lucide-react";
 import logo from "@/assets/logo.webp";
+import { assetUrl } from "@/lib/assetUrl";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { languageFlags, languageLabels, type Language } from "@/i18n/translations";
 import { useState, useRef, useEffect } from "react";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
-import { Link } from "react-router-dom";
-
 const NAV_TABS = [
   { label: "Funktionen", href: "funktionen" },
   { label: "Preise", href: "preise" },
@@ -43,8 +42,8 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#182331] border-b border-[#182331]">
       <div className="container flex items-center justify-between py-2 min-h-[5rem] md:min-h-[5.75rem]">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 sm:gap-4 hover:opacity-90 transition-opacity shrink-0">
-          <img src={logo} alt="Moonli Logo" className="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] md:w-20 md:h-20 rounded-full object-cover" />
+        <a href="/" className="flex items-center gap-3 sm:gap-4 hover:opacity-90 transition-opacity shrink-0">
+          <img src={assetUrl(logo)} alt="Moonli Logo" className="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] md:w-20 md:h-20 rounded-full object-cover" />
           <span className="text-xl sm:text-2xl md:text-[1.75rem] font-normal tracking-[0.2em] text-white leading-none">
             MOONLI
           </span>
@@ -58,7 +57,7 @@ const Navbar = () => {
               </span>
             </span>
           </span>
-        </Link>
+        </a>
 
         {/* Center nav tabs – only md+ */}
         <div className="hidden md:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
@@ -76,6 +75,12 @@ const Navbar = () => {
 
         {/* Right side */}
         <div className="flex items-center gap-2">
+          <a
+            href="/blog"
+            className="hidden md:inline-flex px-4 py-2 rounded-full text-sm font-semibold text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200"
+          >
+            Blog
+          </a>
           {/* Language Switcher */}
           <div className="relative" ref={dropdownRef}>
             <button

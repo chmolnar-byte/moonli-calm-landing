@@ -1,0 +1,35 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import BlogChrome from "@/components/react/BlogChrome";
+
+interface Props {
+  title: string;
+  description: string;
+  canonical: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { title, description, canonical, jsonLd } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<BaseLayout {title} {description} {canonical} jsonLd={jsonLd}>
+  <div class="blog-index night-sky min-h-screen flex flex-col text-foreground">
+    <BlogChrome client:load mode="nav" />
+    <div class="flex-1 relative z-10">
+      <slot />
+    </div>
+    <footer class="blog-index-footer relative z-10">
+      <div class="container max-w-3xl">
+        <p class="blog-index-footer-lead">Moonli – Schlaftracking & Elternbegleitung</p>
+        <nav class="blog-index-footer-nav" aria-label="Footer">
+          <a href="/">Startseite</a>
+          <a href="/blog/rss.xml">RSS</a>
+          <a href="/privacy">Datenschutz</a>
+          <a href="/imprint">Impressum</a>
+        </nav>
+        <p class="blog-index-footer-copy">© {year} Moonli</p>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>

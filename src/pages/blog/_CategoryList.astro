@@ -1,0 +1,79 @@
+---
+import BlogListLayout from "@/layouts/BlogListLayout.astro";
+import BlogHero from "@/components/blog/BlogHero.astro";
+import BlogArchiveList from "@/components/blog/BlogArchiveList.astro";
+import {
+  getPublishedPosts,
+  getCategoryLabel,
+  getCategoryDescription,
+  type BlogCollection,
+} from "@/lib/blog";
+
+const collection = Astro.props.collection as BlogCollection;
+const posts = await getPublishedPosts(collection);
+const label = getCategoryLabel(collection);
+const description = getCategoryDescription(collection);
+const site = "https://moonli.net";
+const canonicalSlug = collection === "partners" ? "partner" : collection;
+
+const [heroPost, ...archivePosts] = posts;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: `${label} | Moonli Blog`,
+  description: `Alle ${label}-Artikel im Moonli Blog für Eltern.`,
+  url: `${site}/blog/${canonicalSlug}`,
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: posts.map((post, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${site}/blog/${canonicalSlug}/${post.slug}`,
+      name: post.data.title,
+    })),
+  },
+};
+---
+
+<BlogListLayout
+  title={`${label} – Moonli Blog`}
+  description={`${label}: Alle Artikel und Ratgeber im Moonli Blog für Eltern.`}
+  canonical={`${site}/blog/${canonicalSlug}`}
+  jsonLd={jsonLd}
+>
+  <main class="blog-index-main container max-w-4xl">
+    <nav class="blog-index-breadcrumb" aria-label="Breadcrumb">
+      <a href="/blog">Blog</a>
+      <span aria-hidden="true">/</span>
+      <span>{label}</span>
+    </nav>
+
+    <header class="blog-index-top">
+      <div>
+        <p class="blog-index-eyebrow">Kategorie</p>
+        <h1 class="blog-index-title">{label}</h1>
+        <p class="blog-index-lead">{description}</p>
+      </div>
+    </header>
+
+    {posts.length === 0 ? (
+      <p class="blog-index-empty">Noch keine Artikel in dieser Kategorie.</p>
+    ) : (
+      <>
+        {heroPost && <BlogHero post={heroPost} />}
+
+        {archivePosts.length > 0 && (
+          <section class="blog-index-archive-wrap" aria-labelledby="blog-cat-more">
+            <h2 id="blog-cat-more" class="blog-index-section-title">Weitere Artikel</h2>
+            <BlogArchiveList posts={archivePosts} showCategory={false} />
+          </section>
+        )}
+      </>
+    )}
+
+    <nav class="blog-index-categories blog-index-categories--footer" aria-label="Zurück">
+      <a href="/blog">← Alle Beiträge</a>
+    </nav>
+  </main>
+</BlogListLayout>

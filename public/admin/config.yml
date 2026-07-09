@@ -1,0 +1,97 @@
+# Lokal: npm run cms starten → Editor ohne GitHub-Login
+local_backend: true
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Live (moonli.net): GitHub OAuth einmal einrichten, dann:
+# backend:
+#   name: github
+#   repo: chmolnar-byte/moonli-calm-landing
+#   branch: main
+
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+locale: de
+
+collections:
+  - name: news
+    label: "📰 News"
+    folder: src/content/news
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Titel, name: title, widget: string }
+      - { label: Kurzbeschreibung (SEO), name: description, widget: text }
+      - { label: Veröffentlichungsdatum, name: pubDate, widget: datetime }
+      - { label: Autor, name: author, widget: string, default: "Moonli Redaktion" }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: Als Entwurf speichern, name: draft, widget: boolean, default: true, hint: "Haken entfernen = Artikel veröffentlichen" }
+      - { label: Kategorie, name: category, widget: hidden, default: news }
+      - { label: Vorschau-Token, name: previewToken, widget: string, required: false }
+      - label: Quellen
+        name: sources
+        widget: list
+        required: false
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: URL, name: url, widget: string }
+      - { label: Artikeltext, name: body, widget: markdown }
+  - name: features
+    label: "✨ Moonli Features"
+    folder: src/content/features
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Titel, name: title, widget: string }
+      - { label: Kurzbeschreibung (SEO), name: description, widget: text }
+      - { label: Veröffentlichungsdatum, name: pubDate, widget: datetime }
+      - { label: Moonli Feature, name: moonliFeature, widget: string }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: Als Entwurf speichern, name: draft, widget: boolean, default: true, hint: "Haken entfernen = Artikel veröffentlichen" }
+      - { label: Kategorie, name: category, widget: hidden, default: features }
+      - { label: Artikeltext, name: body, widget: markdown }
+
+  - name: deals
+    label: "🏷️ Baby-Angebote"
+    folder: src/content/deals
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Titel, name: title, widget: string }
+      - { label: Kurzbeschreibung (SEO), name: description, widget: text }
+      - { label: Veröffentlichungsdatum, name: pubDate, widget: datetime }
+      - { label: Gültig bis, name: validUntil, widget: datetime, required: false }
+      - { label: Shops, name: shops, widget: list, default: [] }
+      - { label: Als Entwurf speichern, name: draft, widget: boolean, default: true, hint: "Haken entfernen = Artikel veröffentlichen" }
+      - { label: Kategorie, name: category, widget: hidden, default: deals }
+      - { label: Artikeltext, name: body, widget: markdown }
+
+  - name: partners
+    label: "🤝 Partner des Monats"
+    folder: src/content/partners
+    create: true
+    slug: "{{year}}-{{month}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Titel, name: title, widget: string }
+      - { label: Kurzbeschreibung (SEO), name: description, widget: text }
+      - { label: Veröffentlichungsdatum, name: pubDate, widget: datetime }
+      - { label: Partner Name, name: partnerName, widget: string }
+      - { label: Partner URL, name: partnerUrl, widget: string, required: false }
+      - { label: Partner Logo, name: partnerLogo, widget: image, required: false }
+      - { label: Monat, name: featuredMonth, widget: string }
+      - { label: Vorschau-Token, name: previewToken, widget: string, required: false }
+      - { label: Als Entwurf speichern, name: draft, widget: boolean, default: true, hint: "Haken entfernen = Artikel veröffentlichen" }
+      - { label: Kategorie, name: category, widget: hidden, default: partner }
+      - { label: Artikeltext, name: body, widget: markdown }

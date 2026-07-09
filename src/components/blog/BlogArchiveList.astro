@@ -1,0 +1,25 @@
+---
+import ArticleListItem from "@/components/blog/ArticleListItem.astro";
+import { groupPostsByMonth, type BlogEntry } from "@/lib/blog";
+
+interface Props {
+  posts: BlogEntry[];
+  showCategory?: boolean;
+}
+
+const { posts, showCategory = true } = Astro.props;
+const groups = groupPostsByMonth(posts);
+---
+
+{groups.map((group) => (
+  <section class="blog-index-archive" aria-labelledby={`archive-${group.key}`}>
+    <h2 id={`archive-${group.key}`} class="blog-index-month">{group.label}</h2>
+    <ol class="blog-index-list" role="list">
+      {group.posts.map((post) => (
+        <li>
+          <ArticleListItem post={post} showCategory={showCategory} />
+        </li>
+      ))}
+    </ol>
+  </section>
+))}

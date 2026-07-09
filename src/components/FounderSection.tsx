@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { motionInitial } from "@/lib/motion";
 
 const FounderSection = () => {
   const { t } = useLanguage();
@@ -8,7 +9,7 @@ const FounderSection = () => {
     <section className="py-10 sm:py-12 relative">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={motionInitial}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}

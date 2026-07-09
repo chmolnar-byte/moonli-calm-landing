@@ -1,0 +1,30 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import AppProviders from "@/components/react/AppProviders";
+import LandingPage from "@/components/react/LandingPage";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Moonli",
+  alternateName: "Moonli Baby/Parent Assistant",
+  applicationCategory: "HealthApplication",
+  operatingSystem: "iOS, Android",
+  description:
+    "Moonli ist eine Baby- und Eltern-App für Schlaftracking, Stillen, Fläschchen, Windeln, Wachfenster, Schlafprognosen und mentale Entlastung im Familienalltag.",
+  url: "https://moonli.net/",
+  image: "https://moonli.net/og-image.png",
+  author: { "@type": "Person", name: "Christian Molnar" },
+  offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
+  downloadUrl: [
+    "https://apps.apple.com/us/app/moonli-baby-parent-assistant/id6762447948",
+    "https://play.google.com/store/apps/details?id=com.christian.moonli&hl=de",
+  ],
+};
+---
+
+<BaseLayout jsonLd={jsonLd}>
+  <AppProviders client:load>
+    <LandingPage />
+  </AppProviders>
+</BaseLayout>

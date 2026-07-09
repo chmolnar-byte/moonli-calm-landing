@@ -1,0 +1,72 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BlogChrome from "@/components/react/BlogChrome";
+import { getArticlePath, formatDate } from "@/lib/blog";
+
+export async function getStaticPaths() {
+  const collections = ["news", "features", "deals", "partners"] as const;
+  const allPosts = await Promise.all(collections.map((c) => getCollection(c)));
+  const tokens = new Set<string>();
+
+  allPosts.flat().forEach((post) => {
+    if (post.data.previewToken) {
+      tokens.add(post.data.previewToken);
+    }
+  });
+
+  return Array.from(tokens).map((token) => ({ params: { token } }));
+}
+
+const { token } = Astro.params;
+const collections = ["news", "features", "deals", "partners"] as const;
+const allPosts = (await Promise.all(collections.map((c) => getCollection(c)))).flat();
+const previewPosts = allPosts
+  .filter((post) => post.data.previewToken === token)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const previewPostsWithContent = await Promise.all(
+  previewPosts.map(async (post) => {
+    const { Content } = await post.render();
+    return { post, Content };
+  }),
+);
+---
+
+<BaseLayout
+  title="Vorschau | Moonli Blog"
+  description="Partner-Vorschau – nicht öffentlich indexiert."
+  noindex={true}
+>
+  <div class="night-sky min-h-screen bg-gradient-page text-foreground">
+    <BlogChrome client:load />
+    <main class="relative z-10 container py-28 md:py-32 max-w-3xl">
+      <div class="mb-8 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-200 text-sm">
+        Vorschau-Modus – dieser Inhalt ist noch nicht öffentlich und wird nicht von Suchmaschinen indexiert.
+      </div>
+      <h1 class="text-display-md font-extrabold text-glow mb-8">Partner-Vorschau</h1>
+      {previewPosts.length === 0 ? (
+        <p class="text-muted-foreground">Keine Artikel für diesen Vorschau-Link gefunden.</p>
+      ) : (
+        <div class="space-y-8">
+          {previewPostsWithContent.map(({ post, Content }) => (
+            <article class="glass-card-premium p-8">
+              <h2 class="font-bold text-2xl mb-2">{post.data.title}</h2>
+              <p class="text-muted-foreground mb-4">{post.data.description}</p>
+              <time class="text-xs text-muted-foreground block mb-6" datetime={post.data.pubDate.toISOString()}>
+                {formatDate(post.data.pubDate)}
+              </time>
+              <div class="blog-prose prose prose-invert max-w-none prose-headings:font-bold prose-headings:text-white prose-p:text-white/90 prose-li:text-white/90">
+                <Content />
+              </div>
+              {!post.data.draft && (
+                <a href={getArticlePath(post)} class="inline-block mt-6 text-sm text-primary hover:underline">
+                  Öffentliche URL →
+                </a>
+              )}
+            </article>
+          ))}
+        </div>
+      )}
+    </main>
+  </div>
+</BaseLayout>

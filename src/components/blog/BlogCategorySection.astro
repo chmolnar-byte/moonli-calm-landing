@@ -1,0 +1,45 @@
+---
+import ArticleListItem from "@/components/blog/ArticleListItem.astro";
+import {
+  getCategoryLabel,
+  getCategoryPath,
+  getCategoryDescription,
+  type BlogCollection,
+  type BlogEntry,
+} from "@/lib/blog";
+
+interface Props {
+  collection: BlogCollection;
+  posts: BlogEntry[];
+}
+
+const { collection, posts } = Astro.props;
+const label = getCategoryLabel(collection);
+const path = getCategoryPath(collection);
+const description = getCategoryDescription(collection);
+const headingId = `blog-cat-${collection}`;
+---
+
+<section class="blog-category-section" aria-labelledby={headingId}>
+  <div class="blog-category-section-head">
+    <div>
+      <h2 id={headingId} class="blog-category-section-title">
+        <a href={path}>{label}</a>
+      </h2>
+      <p class="blog-category-section-desc">{description}</p>
+    </div>
+    <a href={path} class="blog-category-section-more">Alle anzeigen</a>
+  </div>
+
+  {posts.length > 0 ? (
+    <ol class="blog-index-list" role="list">
+      {posts.map((post) => (
+        <li>
+          <ArticleListItem post={post} showCategory={false} />
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <p class="blog-category-section-empty">Noch keine Artikel in dieser Kategorie.</p>
+  )}
+</section>

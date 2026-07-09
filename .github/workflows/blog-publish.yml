@@ -1,0 +1,51 @@
+name: Blog veröffentlichen
+
+# Wöchentliches Sammel-Deployment:
+# Entwürfe aus content-drafts werden gesammelt nach main übernommen.
+# Erzeugt genau einen Push auf main → ein Netlify-Deploy.
+
+on:
+  schedule:
+    # Sonntagabend 21:00 CET (20:00 UTC)
+    - cron: "0 20 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: content-drafts in main mergen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin main content-drafts
+
+          if ! git show-ref --verify --quiet refs/remotes/origin/content-drafts; then
+            echo "Branch content-drafts existiert nicht – nichts zu veröffentlichen."
+            exit 1
+          fi
+
+          git checkout main
+          git pull origin main
+
+          if git merge origin/content-drafts -m "blog: publish approved content"; then
+            echo "Merge erfolgreich."
+          else
+            echo "Merge-Konflikt – bitte lokal auflösen oder in Decap CMS bearbeiten."
+            exit 1
+          fi
+
+          git push origin main
+
+      - name: Hinweis
+        run: |
+          echo "main wurde aktualisiert → Netlify baut einmal neu."
+          echo "Artikel mit draft: true erscheinen weiterhin nicht auf der Website."

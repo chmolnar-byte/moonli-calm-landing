@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import BlogChrome from "@/components/react/BlogChrome";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("deals", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BlogLayout
+  title={post.data.title}
+  description={post.data.description}
+  pubDate={post.data.pubDate}
+  updatedDate={post.data.updatedDate}
+  author={post.data.author}
+  category="deals"
+  categoryLabel="Baby-Angebote"
+  tags={post.data.tags}
+>
+  <BlogChrome client:load slot="nav" mode="nav" />
+  <Content />
+  <p class="text-sm text-muted-foreground mt-8 not-prose border-t border-border pt-4">
+    Transparenzhinweis: Links in diesem Artikel können Affiliate-Links sein. Du unterstützt Moonli, ohne mehr zu zahlen.
+  </p>
+  <BlogChrome client:load slot="footer" mode="footer" />
+</BlogLayout>

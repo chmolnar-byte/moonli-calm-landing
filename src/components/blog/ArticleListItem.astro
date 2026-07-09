@@ -1,0 +1,40 @@
+---
+import type { BlogCollection } from "@/lib/blog";
+import { getArticlePath, getCategoryLabel, formatDate, type BlogEntry } from "@/lib/blog";
+
+interface Props {
+  post: BlogEntry;
+  showCategory?: boolean;
+}
+
+const { post, showCategory = true } = Astro.props;
+const category = post.collection as BlogCollection;
+const articlePath = getArticlePath(post);
+---
+
+<article
+  class="blog-entry"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+  role="listitem"
+>
+  <a href={articlePath} class="blog-entry-link" itemprop="url">
+    <div class="blog-entry-meta">
+      {showCategory && (
+        <span class="blog-entry-category">{getCategoryLabel(category)}</span>
+      )}
+      <time datetime={post.data.pubDate.toISOString()} itemprop="datePublished">
+        {formatDate(post.data.pubDate)}
+      </time>
+    </div>
+    <h2 class="blog-entry-title" itemprop="headline">{post.data.title}</h2>
+    <p class="blog-entry-excerpt" itemprop="description">{post.data.description}</p>
+    {post.data.tags && post.data.tags.length > 0 && (
+      <ul class="blog-entry-tags" aria-label="Themen">
+        {post.data.tags.slice(0, 4).map((tag) => (
+          <li>{tag}</li>
+        ))}
+      </ul>
+    )}
+  </a>
+</article>

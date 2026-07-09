@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import BlogChrome from "@/components/react/BlogChrome";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("partners", ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BlogLayout
+  title={post.data.title}
+  description={post.data.description}
+  pubDate={post.data.pubDate}
+  updatedDate={post.data.updatedDate}
+  author={post.data.author}
+  category="partner"
+  categoryLabel="Partner des Monats"
+  tags={post.data.tags}
+>
+  <BlogChrome client:load slot="nav" mode="nav" />
+  {post.data.partnerLogo && (
+    <div class="not-prose mb-8 flex items-center gap-4">
+      <img src={post.data.partnerLogo} alt={post.data.partnerName} class="h-16 w-16 rounded-2xl object-cover" />
+      <div>
+        <p class="text-xs font-semibold text-primary uppercase tracking-wide">Partner des Monats</p>
+        <p class="font-bold text-lg">{post.data.partnerName}</p>
+        {post.data.partnerUrl && (
+          <a href={post.data.partnerUrl} target="_blank" rel="noopener noreferrer" class="text-sm text-primary hover:underline">
+            Website besuchen →
+          </a>
+        )}
+      </div>
+    </div>
+  )}
+  <Content />
+  <BlogChrome client:load slot="footer" mode="footer" />
+</BlogLayout>

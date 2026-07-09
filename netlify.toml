@@ -1,0 +1,13 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Production nur von main – in Netlify UI unter Build & deploy → Branches:
+# "Production branch: main", Branch deploys: off (oder nur content-drafts ausgeschlossen)
+
+[context.production]
+  branch = "main"
+
+# Draft-Branch nicht bauen (falls Branch-Deploys aktiv sind)
+[context.content-drafts]
+  ignore = "exit 0"

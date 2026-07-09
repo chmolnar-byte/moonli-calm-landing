@@ -1,0 +1,86 @@
+---
+import "@/index.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title = "Moonli – Baby Tracking, Schlafprognose und Elternbegleitung",
+  description = "Moonli ist die Baby-App für Schlaftracking, Stillen, Fläschchen, Windeln, Wachfenster, Schlafprognosen und mentale Entlastung im Familienalltag.",
+  canonical,
+  ogImage = "https://moonli.net/og-image.png",
+  ogType = "website",
+  noindex = false,
+  jsonLd,
+} = Astro.props;
+
+const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://moonli.net";
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site).href;
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "G-497RKXKY2W";
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+    <script is:inline define:vars={{ gaId }}>
+      gtag('js', new Date());
+      gtag('config', gaId);
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Christian Molnar" />
+    <meta name="theme-color" content="#182331" />
+    <meta name="application-name" content="Moonli" />
+    <meta name="apple-itunes-app" content="app-id=6762447948" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.png`} type="image/png" />
+    <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}apple-touch-icon.png`} />
+
+    <meta property="og:site_name" content="Moonli" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="de_AT" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    )}
+
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

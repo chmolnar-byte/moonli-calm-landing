@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { motionInitial } from "@/lib/motion";
 
 const PricingFeatureRow = ({ featureKey }: { featureKey: string }) => {
   const { t } = useLanguage();
@@ -49,7 +50,7 @@ const PricingSection = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-primary/12 via-transparent to-pastel-green/10 pointer-events-none" />
       <div className="container relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={motionInitial}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
@@ -64,7 +65,7 @@ const PricingSection = () => {
 
         <div className="mx-auto grid max-w-6xl md:grid-cols-2 gap-4 sm:gap-6 items-start">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={motionInitial}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45 }}
@@ -91,7 +92,7 @@ const PricingSection = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={motionInitial}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: 0.08 }}

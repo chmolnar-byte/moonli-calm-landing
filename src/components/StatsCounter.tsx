@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Shield, Heart, Sparkles } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { motionInitial } from "@/lib/motion";
 
 const StatsCounter = () => {
   const { t } = useLanguage();
@@ -9,7 +10,7 @@ const StatsCounter = () => {
     <section className="pt-10 pb-16 sm:py-16 relative">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={motionInitial}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
@@ -40,7 +41,7 @@ const StatsCounter = () => {
               ].map((stat, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={motionInitial}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}

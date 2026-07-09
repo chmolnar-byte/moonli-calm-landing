@@ -1,0 +1,38 @@
+---
+import type { BlogCollection } from "@/lib/blog";
+import { getArticlePath, getCategoryLabel, formatDate, type BlogEntry } from "@/lib/blog";
+
+interface Props {
+  posts: BlogEntry[];
+}
+
+const { posts } = Astro.props;
+---
+
+{posts.length > 0 && (
+  <section class="blog-spotlight" aria-label="Weitere aktuelle Artikel">
+    <div class="blog-spotlight-grid">
+      {posts.map((post) => {
+        const category = post.collection as BlogCollection;
+        const articlePath = getArticlePath(post);
+        return (
+          <a
+            href={articlePath}
+            class="blog-spotlight-card"
+            itemscope
+            itemtype="https://schema.org/BlogPosting"
+          >
+            <div class="blog-spotlight-meta">
+              <span class="blog-spotlight-category">{getCategoryLabel(category)}</span>
+              <time datetime={post.data.pubDate.toISOString()} itemprop="datePublished">
+                {formatDate(post.data.pubDate)}
+              </time>
+            </div>
+            <h3 class="blog-spotlight-title" itemprop="headline">{post.data.title}</h3>
+            <p class="blog-spotlight-excerpt" itemprop="description">{post.data.description}</p>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+)}
