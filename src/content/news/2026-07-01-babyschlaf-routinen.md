@@ -6,7 +6,7 @@ updatedDate: 2026-07-15
 category: news
 tags: [schlaf, routinen, wachfenster, entwicklung]
 author: "Moonli Redaktion · geprüft von Christian Molnar"
-image: /images/blog/babyschlaf-routinen-cover.png
+image: /images/blog/news-schlafroutinen-cover.svg
 draft: false
 sources:
   - name: American Academy of Pediatrics – Safe Sleep

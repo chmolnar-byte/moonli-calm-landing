@@ -7,7 +7,7 @@ category: features
 tags: [schlaftracking, wachfenster, schlafprognose, baby schlaf]
 moonliFeature: sleep-tracking
 ctaText: "Moonli kostenlos testen"
-image: /images/blog/sleep-tracking-cover.webp
+image: /images/blog/features-wachfenster-cover.svg
 author: "Moonli Redaktion · geprüft von Christian Molnar"
 draft: false
 seo:
