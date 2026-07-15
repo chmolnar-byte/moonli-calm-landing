@@ -3,7 +3,7 @@ import type { BlogCollection, BlogEntry } from "./blog";
 export const CATEGORY_PLACEHOLDER_IMAGES: Record<BlogCollection, string> = {
   news: "/images/blog/news-placeholder.svg",
   features: "/images/blog/features-placeholder.svg",
-  partners: "/images/blog/partner-placeholder.svg",
+  partners: "/images/blog/partner-spotlight-cover.svg",
 };
 
 export function getCategoryPlaceholderImage(collection: BlogCollection): string {

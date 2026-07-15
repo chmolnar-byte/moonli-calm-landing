@@ -1,11 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none" role="img" aria-label="Partner des Monats Platzhalter">
-  <rect width="1200" height="675" fill="#1a252d"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none" role="img" aria-label="Partner des Monats">
+  <defs>
+    <linearGradient id="pbg" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#182331"/>
+      <stop offset="1" stop-color="#243038"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#pbg)"/>
   <rect x="1.5" y="1.5" width="1197" height="672" rx="20" stroke="#2d3d47" stroke-width="3"/>
-  <circle cx="520" cy="295" r="52" fill="#243038" stroke="#c4b5e8" stroke-width="3"/>
-  <circle cx="680" cy="295" r="52" fill="#243038" stroke="#c4b5e8" stroke-width="3"/>
-  <path d="M468 360c20-38 52-58 92-58s72 20 92 58" stroke="#c4b5e8" stroke-width="4" stroke-linecap="round"/>
-  <path d="M548 360c20-38 52-58 92-58s72 20 92 58" stroke="#c4b5e8" stroke-width="4" stroke-linecap="round"/>
-  <path d="M545 330h110" stroke="#c4b5e8" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="520" cy="280" r="44" fill="#243038" stroke="#c4b5e8" stroke-width="2.5"/>
+  <circle cx="680" cy="280" r="44" fill="#243038" stroke="#7eb8d4" stroke-width="2.5"/>
+  <path d="M468 350c18-36 48-54 84-54s66 18 84 54" stroke="#c4b5e8" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M548 350c18-36 48-54 84-54s66 18 84 54" stroke="#7eb8d4" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <path d="M545 310h110" stroke="#7eb8d4" stroke-width="4" stroke-linecap="round"/>
+  <path d="M575 10c0-12 10-22 22-22s22 10 22 22c0 18-22 38-22 38s-22-20-22-38z" transform="translate(600 255) scale(0.55)" fill="#7eb8d4" fill-opacity="0.3"/>
   <text x="600" y="500" text-anchor="middle" fill="#8fa5ad" font-family="system-ui,Segoe UI,sans-serif" font-size="30" font-weight="700">Partner des Monats</text>
-  <text x="600" y="542" text-anchor="middle" fill="#5c7079" font-family="system-ui,Segoe UI,sans-serif" font-size="18">Platzhalter  Bild bald ersetzen</text>
+  <text x="600" y="542" text-anchor="middle" fill="#5c7079" font-family="system-ui,Segoe UI,sans-serif" font-size="18">Experten, die Eltern begleiten</text>
 </svg>

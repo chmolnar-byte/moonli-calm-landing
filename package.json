@@ -15,8 +15,6 @@
     "revise:news": "tsx scripts/generate/revise-news.ts",
     "approve:news": "tsx scripts/generate/approve-news.ts",
     "generate:feature": "tsx scripts/generate/generate-feature.ts",
-    "generate:cover": "tsx scripts/generate/generate-cover.ts",
-    "generate:covers": "tsx scripts/generate/regenerate-live-covers.ts",
     "generate:partner": "tsx scripts/generate/generate-partner.ts",
     "cms": "decap-server",
     "dev:all": "concurrently -n astro,cms -c blue,magenta \"npm run dev\" \"npm run cms\""

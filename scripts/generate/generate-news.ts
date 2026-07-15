@@ -3,7 +3,6 @@ import { join } from "node:path";
 import { parse } from "yaml";
 import { buildFrontmatter, callAIJson, slugify, todaySlug } from "./lib/ai.js";
 import { EDITORIAL_SYSTEM, NEWS_ARTICLE_SPEC } from "./lib/editorial.js";
-import { generateBlogCover } from "./lib/images.js";
 import { fetchAllNewsItems, formatItemsForPrompt } from "./lib/rss.js";
 
 interface ResearchBrief {
@@ -91,13 +90,6 @@ JSON-Schema:
   const slugBase = slugify(brief.topic || article.title || "baby-news").slice(0, 40) || "baby-news";
   const slug = todaySlug(slugBase);
 
-  const cover = await generateBlogCover({
-    slug,
-    title: article.title,
-    category: "news",
-    angle: brief.angle || brief.topic,
-  });
-
   const content = buildFrontmatter(
     {
       title: article.title,
@@ -106,8 +98,6 @@ JSON-Schema:
       category: "news",
       tags: article.tags?.length ? article.tags : brief.tags,
       author: "Moonli Redaktion",
-      image: cover.publicPath,
-      imageAlt: cover.altText,
       draft: true,
       sources: article.sources?.length ? article.sources : brief.sources,
       seo: {
@@ -122,7 +112,6 @@ JSON-Schema:
   console.log(`Created news draft: ${outPath}`);
   console.log(`Topic: ${brief.topic}`);
   console.log(`Title: ${article.title}`);
-  console.log(`Cover: ${cover.publicPath}`);
 
   if (process.env.GITHUB_OUTPUT) {
     appendFileSync(process.env.GITHUB_OUTPUT, `article_slug=${slug}\n`);

@@ -9,13 +9,6 @@ import { parseMarkdownFile } from "./lib/frontmatter.js";
 
 type BlogCategory = "news" | "features" | "partners";
 
-const PLACEHOLDER_IMAGES = [
-  "/images/blog/news-placeholder.svg",
-  "/images/blog/features-placeholder.svg",
-  "/images/blog/partner-placeholder.svg",
-  "/images/blog/deals-placeholder.svg",
-];
-
 const MIN_WORDS: Record<BlogCategory, number> = {
   news: 700,
   features: 600,
@@ -101,19 +94,7 @@ function checkArticle(category: BlogCategory, filePath: string): Issue[] {
   }
 
   const image = data.image as string | undefined;
-  if (!image) {
-    issues.push({
-      file: rel,
-      level: "error",
-      message: "Hero-Bild fehlt (Frontmatter: image).",
-    });
-  } else if (PLACEHOLDER_IMAGES.includes(image)) {
-    issues.push({
-      file: rel,
-      level: "error",
-      message: "Platzhalter-Bild ist für veröffentlichte Artikel nicht erlaubt.",
-    });
-  } else {
+  if (image) {
     const publicPath = join(process.cwd(), "public", image.replace(/^\//, ""));
     if (!existsSync(publicPath)) {
       issues.push({

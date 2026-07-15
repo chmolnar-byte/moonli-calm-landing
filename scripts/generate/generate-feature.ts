@@ -2,7 +2,6 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { buildFrontmatter, callAIJson, slugify, todaySlug } from "./lib/ai.js";
 import { EDITORIAL_SYSTEM, FEATURE_ARTICLE_SPEC } from "./lib/editorial.js";
-import { generateBlogCover } from "./lib/images.js";
 
 interface FeatureBrief {
   workingTitle: string;
@@ -112,13 +111,6 @@ JSON-Schema:
   const slugBase = slugify(brief.workingTitle || article.title || feature.id).slice(0, 40) || feature.id;
   const slug = todaySlug(slugBase);
 
-  const cover = await generateBlogCover({
-    slug,
-    title: article.title,
-    category: "features",
-    angle: brief.angle || brief.painScenario,
-  });
-
   const content = buildFrontmatter(
     {
       title: article.title,
@@ -128,8 +120,6 @@ JSON-Schema:
       moonliFeature: feature.id,
       tags: article.tags?.length ? article.tags : [feature.id, "moonli"],
       author: "Moonli Redaktion",
-      image: cover.publicPath,
-      imageAlt: cover.altText,
       ctaText: "Moonli kostenlos testen",
       draft: true,
       seo: {
@@ -144,7 +134,6 @@ JSON-Schema:
   writeFileSync(rotationPath, JSON.stringify(rotation, null, 2), "utf-8");
   console.log(`Created feature draft: ${slug}`);
   console.log(`Titel: ${article.title}`);
-  console.log(`Cover: ${cover.publicPath}`);
 }
 
 main().catch((error) => {

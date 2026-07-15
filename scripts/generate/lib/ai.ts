@@ -5,7 +5,6 @@
  * Modelle (überschreibbar via .env):
  * - OPENAI_MODEL_BRIEF: Recherche/Briefs (default gpt-4o-mini)
  * - OPENAI_MODEL_WRITING: finale Artikel (default gpt-4o – Goldstandard-Qualität)
- * - OPENAI_MODEL_IMAGE: Cover-Bilder (default dall-e-3)
  */
 
 import { existsSync, readFileSync } from "node:fs";

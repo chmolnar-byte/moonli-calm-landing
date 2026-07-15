@@ -6,7 +6,9 @@ category: partner
 tags: [partner, hebamme, elternwissen]
 partnerName: "Hebammen-Partnerin Beispiel"
 partnerUrl: https://moonli.net
-partnerLogo: /og-image.png
+image: /images/blog/partner-spotlight-cover.svg
+imageAlt: "Partner des Monats – Hebammen-Wissen für Eltern"
+partnerLogo: /images/blog/partner-spotlight-cover.svg
 featuredMonth: "2026-07"
 draft: true
 previewToken: "partner-juli-2026"

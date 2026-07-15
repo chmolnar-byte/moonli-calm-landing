@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" fill="none" role="img" aria-label="Partner des Monats  Hebammen-Wissen für Eltern">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="675" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#182331"/>
+      <stop offset="0.55" stop-color="#1a2a38"/>
+      <stop offset="1" stop-color="#243038"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="600" y1="120" x2="600" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7eb8d4" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#7eb8d4" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lavender" x1="380" y1="200" x2="820" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c4b5e8" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#7eb8d4" stop-opacity="0.12"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <ellipse cx="600" cy="280" rx="320" ry="180" fill="url(#glow)" filter="url(#soft)"/>
+  <ellipse cx="420" cy="340" rx="140" ry="90" fill="url(#lavender)" filter="url(#soft)"/>
+  <ellipse cx="780" cy="320" rx="120" ry="80" fill="url(#lavender)" filter="url(#soft)"/>
+
+  <!-- Moonli moon accent -->
+  <circle cx="980" cy="120" r="48" fill="#7eb8d4" fill-opacity="0.12"/>
+  <path d="M980 78a42 42 0 1 0 0 84a34 34 0 1 1 0-84z" fill="#7eb8d4" fill-opacity="0.35"/>
+
+  <!-- Partnership: caregiver + family (abstract silhouettes) -->
+  <g transform="translate(600 310)">
+    <!-- Parent figure -->
+    <ellipse cx="-130" cy="55" rx="48" ry="14" fill="#0f1720" fill-opacity="0.5"/>
+    <circle cx="-130" cy="-10" r="36" fill="#243038" stroke="#7eb8d4" stroke-width="2.5"/>
+    <path d="M-168 38c8-42 36-62 62-62s54 20 62 62" fill="#243038" stroke="#7eb8d4" stroke-width="2.5" stroke-linejoin="round"/>
+    <!-- Baby in arms -->
+    <circle cx="-95" cy="8" r="18" fill="#2d3d47" stroke="#c4b5e8" stroke-width="2"/>
+    <path d="M-113 24c6-14 18-20 32-20" stroke="#c4b5e8" stroke-width="2" stroke-linecap="round" fill="none"/>
+
+    <!-- Midwife / partner figure -->
+    <ellipse cx="120" cy="55" rx="48" ry="14" fill="#0f1720" fill-opacity="0.5"/>
+    <circle cx="120" cy="-10" r="36" fill="#243038" stroke="#c4b5e8" stroke-width="2.5"/>
+    <path d="M82 38c8-42 36-62 62-62s54 20 62 62" fill="#243038" stroke="#c4b5e8" stroke-width="2.5" stroke-linejoin="round"/>
+    <!-- Stethoscope hint -->
+    <path d="M108-2c-8 12-8 28 0 40" stroke="#7eb8d4" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <circle cx="108" cy="42" r="6" fill="none" stroke="#7eb8d4" stroke-width="2"/>
+
+    <!-- Connecting heart / trust -->
+    <path d="M-55 10c0-12 10-22 22-22s22 10 22 22c0 18-22 38-22 38s-22-20-22-38z" fill="#7eb8d4" fill-opacity="0.25" stroke="#7eb8d4" stroke-width="1.5"/>
+  </g>
+
+  <!-- Decorative stars -->
+  <circle cx="180" cy="140" r="2.5" fill="#7eb8d4" fill-opacity="0.6"/>
+  <circle cx="220" cy="200" r="1.5" fill="#c4b5e8" fill-opacity="0.5"/>
+  <circle cx="1020" cy="480" r="2" fill="#7eb8d4" fill-opacity="0.45"/>
+  <circle cx="140" cy="520" r="1.5" fill="#7eb8d4" fill-opacity="0.35"/>
+
+  <!-- Text -->
+  <text x="600" y="520" text-anchor="middle" fill="#e8f0f3" font-family="system-ui,Segoe UI,sans-serif" font-size="34" font-weight="700" letter-spacing="0.04em">Partner des Monats</text>
+  <text x="600" y="562" text-anchor="middle" fill="#8fa5ad" font-family="system-ui,Segoe UI,sans-serif" font-size="20">Hebammen-Wissen für den Familienalltag</text>
+  <text x="600" y="598" text-anchor="middle" fill="#5c7079" font-family="system-ui,Segoe UI,sans-serif" font-size="15">Made in Vienna · Moonli Blog</text>
+</svg>

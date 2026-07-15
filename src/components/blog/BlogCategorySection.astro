@@ -52,6 +52,25 @@ const categoryImage = getCategoryPlaceholderImage(collection);
       ))}
     </ol>
   ) : (
-    <p class="blog-category-section-empty">Noch keine Artikel in dieser Kategorie.</p>
+    collection === "partners" ? (
+      <a href="/blog/preview/partner-juli-2026" class="blog-partner-teaser">
+        <img
+          src="/images/blog/partner-spotlight-cover.svg"
+          alt="Partner des Monats – Hebammen-Wissen für Eltern"
+          class="blog-partner-teaser-cover"
+          width="1200"
+          height="675"
+          loading="lazy"
+          decoding="async"
+        />
+        <div class="blog-partner-teaser-body">
+          <span class="blog-partner-teaser-label">Kommend</span>
+          <p class="blog-partner-teaser-title">Partner des Monats: Hebammen-Wissen für den Alltag</p>
+          <p class="blog-partner-teaser-text">Vorschau ansehen →</p>
+        </div>
+      </a>
+    ) : (
+      <p class="blog-category-section-empty">Noch keine Artikel in dieser Kategorie.</p>
+    )
   )}
 </section>
