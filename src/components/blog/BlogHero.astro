@@ -1,6 +1,7 @@
 ---
 import type { BlogCollection } from "@/lib/blog";
 import { getArticlePath, getCategoryLabel, formatDate, type BlogEntry } from "@/lib/blog";
+import { getPostCoverImage } from "@/lib/blogImages";
 
 interface Props {
   post: BlogEntry;
@@ -9,21 +10,38 @@ interface Props {
 const { post } = Astro.props;
 const category = post.collection as BlogCollection;
 const articlePath = getArticlePath(post);
+const coverImage = getPostCoverImage(post);
 ---
 
 <section class="blog-hero" aria-labelledby="blog-hero-title">
   <a href={articlePath} class="blog-hero-link" itemscope itemtype="https://schema.org/BlogPosting">
-    <div class="blog-hero-meta">
-      <span class="blog-hero-label">Aktuell</span>
-      <span class="blog-hero-category">{getCategoryLabel(category)}</span>
-      <time datetime={post.data.pubDate.toISOString()} itemprop="datePublished">
-        {formatDate(post.data.pubDate)}
-      </time>
+    <div class="blog-hero-inner">
+      <div class="blog-hero-media">
+        <img
+          src={coverImage}
+          alt=""
+          class="blog-hero-cover"
+          width="1200"
+          height="675"
+          loading="eager"
+          decoding="async"
+          itemprop="image"
+        />
+      </div>
+      <div class="blog-hero-body">
+        <div class="blog-hero-meta">
+          <span class="blog-hero-label">Aktuell</span>
+          <span class="blog-hero-category">{getCategoryLabel(category)}</span>
+          <time datetime={post.data.pubDate.toISOString()} itemprop="datePublished">
+            {formatDate(post.data.pubDate)}
+          </time>
+        </div>
+        <h2 id="blog-hero-title" class="blog-hero-title" itemprop="headline">
+          {post.data.title}
+        </h2>
+        <p class="blog-hero-excerpt" itemprop="description">{post.data.description}</p>
+        <span class="blog-hero-cta">Artikel lesen</span>
+      </div>
     </div>
-    <h2 id="blog-hero-title" class="blog-hero-title" itemprop="headline">
-      {post.data.title}
-    </h2>
-    <p class="blog-hero-excerpt" itemprop="description">{post.data.description}</p>
-    <span class="blog-hero-cta">Artikel lesen</span>
   </a>
 </section>

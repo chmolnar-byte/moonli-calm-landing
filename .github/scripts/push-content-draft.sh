@@ -12,6 +12,6 @@ if git diff --staged --quiet; then
 fi
 
 git commit -m "${COMMIT_MSG}"
-git push origin content-drafts
+git push -u origin content-drafts
 
 echo "Entwurf auf content-drafts gepusht."

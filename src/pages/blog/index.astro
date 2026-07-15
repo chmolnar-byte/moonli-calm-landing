@@ -13,7 +13,7 @@ import {
 
 const site = "https://moonli.net";
 
-const categories: BlogCollection[] = ["news", "features", "deals", "partners"];
+const categories: BlogCollection[] = ["news", "features", "partners"];
 
 const [allPosts, categorySections] = await Promise.all([
   getAllPublishedPosts(),
@@ -40,7 +40,7 @@ const jsonLd = {
       "@type": "Blog",
       name: "Moonli Blog",
       description:
-        "Baby-News, Moonli-Features, Angebote und Partner-Highlights für Eltern im DACH-Raum.",
+        "Baby-News, Moonli-Features und Partner-Highlights für Eltern im DACH-Raum.",
       url: `${site}/blog`,
       publisher: {
         "@type": "Organization",
@@ -73,8 +73,8 @@ const jsonLd = {
 ---
 
 <BlogListLayout
-  title="Moonli Blog – Baby-News, App-Features, Angebote & Tipps für Eltern"
-  description="Aktuelle Baby-News, Moonli App-Features, Eltern-Tipps und Angebote – informativ, übersichtlich und SEO-optimiert für Eltern in Österreich und Deutschland."
+  title="Moonli Blog – Baby-News, App-Features & Tipps für Eltern"
+  description="Aktuelle Baby-News, Moonli App-Features und Eltern-Tipps – informativ, übersichtlich und SEO-optimiert für Eltern in Österreich und Deutschland."
   canonical={`${site}/blog`}
   jsonLd={jsonLd}
 >

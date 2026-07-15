@@ -1,0 +1,37 @@
+name: Deploy-Vorschau News
+
+# Sonntag 10:00 CET – Erinnerung was heute Abend live geht
+on:
+  schedule:
+    - cron: "0 9 * * 0"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Draft-Branch auschecken
+        run: bash .github/scripts/checkout-content-drafts.sh
+
+      - name: GitHub-Labels anlegen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create "blog-deploy" --color "FBCA04" --description "Deploy-Vorschau Sonntag" 2>/dev/null || true
+
+      - name: Deploy-Vorschau senden
+        run: npx tsx scripts/generate/notify-deploy-preview.ts
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

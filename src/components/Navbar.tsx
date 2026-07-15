@@ -3,23 +3,21 @@ import logo from "@/assets/logo.webp";
 import { assetUrl } from "@/lib/assetUrl";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { languageFlags, languageLabels, type Language } from "@/i18n/translations";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type MouseEvent as ReactMouseEvent } from "react";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
+import { isHomePath, scrollToSection } from "@/lib/scrollToSection";
+
 const NAV_TABS = [
   { label: "Funktionen", href: "funktionen" },
   { label: "Preise", href: "preise" },
   { label: "Feedback", href: "feedback" },
 ] as const;
 
-function scrollToSection(id: string) {
-  const el = document.getElementById(id);
-  if (el) {
-    const isMobile = window.innerWidth < 768;
-    const offset = isMobile ? 128 : 108;
-    const top = el.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: "smooth" });
-  }
-}
+const tabClassName =
+  "px-5 py-2 rounded-full text-base font-semibold text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200 pointer-events-auto";
+
+const mobileTabClassName =
+  "flex-1 max-w-[140px] py-2 rounded-full text-sm font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-all duration-200 text-center pointer-events-auto";
 
 const languages: Language[] = ["de", "en", "es", "fr", "ru"];
 
@@ -29,7 +27,7 @@ const Navbar = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handler = (e: MouseEvent) => {
+    const handler = (e: globalThis.MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setOpen(false);
       }
@@ -38,11 +36,30 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handler);
   }, []);
 
+  const handleSectionNav = (event: ReactMouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    if (isHomePath(window.location.pathname)) {
+      event.preventDefault();
+      scrollToSection(sectionId);
+      window.history.replaceState(null, "", `/#${sectionId}`);
+    }
+  };
+
+  const renderNavTab = (tab: (typeof NAV_TABS)[number], className: string) => (
+    <a
+      key={tab.href}
+      href={`/#${tab.href}`}
+      className={className}
+      onClick={(event) => handleSectionNav(event, tab.href)}
+    >
+      {tab.label}
+    </a>
+  );
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#182331] border-b border-[#182331]">
-      <div className="container flex items-center justify-between py-2 min-h-[5rem] md:min-h-[5.75rem]">
+      <div className="container relative flex items-center justify-between py-2 min-h-[5rem] md:min-h-[5.75rem]">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-3 sm:gap-4 hover:opacity-90 transition-opacity shrink-0">
+        <a href="/" className="relative z-20 flex items-center gap-3 sm:gap-4 hover:opacity-90 transition-opacity shrink-0">
           <img src={assetUrl(logo)} alt="Moonli Logo" className="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] md:w-20 md:h-20 rounded-full object-cover" />
           <span className="text-xl sm:text-2xl md:text-[1.75rem] font-normal tracking-[0.2em] text-white leading-none">
             MOONLI
@@ -60,21 +77,12 @@ const Navbar = () => {
         </a>
 
         {/* Center nav tabs – only md+ */}
-        <div className="hidden md:flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
-          {NAV_TABS.map((tab) => (
-            <button
-              key={tab.href}
-              type="button"
-              onClick={() => scrollToSection(tab.href)}
-              className="px-5 py-2 rounded-full text-base font-semibold text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200"
-            >
-              {tab.label}
-            </button>
-          ))}
+        <div className="hidden md:flex items-center gap-2 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none">
+          {NAV_TABS.map((tab) => renderNavTab(tab, tabClassName))}
         </div>
 
         {/* Right side */}
-        <div className="flex items-center gap-2">
+        <div className="relative z-20 flex items-center gap-2 shrink-0">
           <a
             href="/blog"
             className="hidden md:inline-flex px-4 py-2 rounded-full text-sm font-semibold text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200"
@@ -128,17 +136,14 @@ const Navbar = () => {
       </div>
 
       {/* Mobile tab row */}
-      <div className="flex md:hidden items-center justify-center gap-2 px-4 pb-2.5 border-t border-[#1f2a3a]">
-        {NAV_TABS.map((tab) => (
-          <button
-            key={tab.href}
-            type="button"
-            onClick={() => scrollToSection(tab.href)}
-            className="flex-1 max-w-[140px] py-2 rounded-full text-sm font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-all duration-200 text-center"
-          >
-            {tab.label}
-          </button>
-        ))}
+      <div className="relative z-30 flex md:hidden items-center justify-center gap-2 px-4 pb-2.5 border-t border-[#1f2a3a]">
+        {NAV_TABS.map((tab) => renderNavTab(tab, mobileTabClassName))}
+        <a
+          href="/blog"
+          className="flex-1 max-w-[100px] py-2 rounded-full text-sm font-semibold text-white/75 hover:text-white hover:bg-white/10 transition-all duration-200 text-center"
+        >
+          Blog
+        </a>
       </div>
     </nav>
   );

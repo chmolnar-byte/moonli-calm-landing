@@ -1,6 +1,7 @@
 ---
 import type { BlogCollection } from "@/lib/blog";
 import { getArticlePath, getCategoryLabel, formatDate, type BlogEntry } from "@/lib/blog";
+import { getPostCoverImage } from "@/lib/blogImages";
 
 interface Props {
   posts: BlogEntry[];
@@ -15,6 +16,7 @@ const { posts } = Astro.props;
       {posts.map((post) => {
         const category = post.collection as BlogCollection;
         const articlePath = getArticlePath(post);
+        const coverImage = getPostCoverImage(post);
         return (
           <a
             href={articlePath}
@@ -22,14 +24,26 @@ const { posts } = Astro.props;
             itemscope
             itemtype="https://schema.org/BlogPosting"
           >
-            <div class="blog-spotlight-meta">
-              <span class="blog-spotlight-category">{getCategoryLabel(category)}</span>
-              <time datetime={post.data.pubDate.toISOString()} itemprop="datePublished">
-                {formatDate(post.data.pubDate)}
-              </time>
+            <img
+              src={coverImage}
+              alt=""
+              class="blog-spotlight-cover"
+              width="1200"
+              height="675"
+              loading="lazy"
+              decoding="async"
+              itemprop="image"
+            />
+            <div class="blog-spotlight-body">
+              <div class="blog-spotlight-meta">
+                <span class="blog-spotlight-category">{getCategoryLabel(category)}</span>
+                <time datetime={post.data.pubDate.toISOString()} itemprop="datePublished">
+                  {formatDate(post.data.pubDate)}
+                </time>
+              </div>
+              <h3 class="blog-spotlight-title" itemprop="headline">{post.data.title}</h3>
+              <p class="blog-spotlight-excerpt" itemprop="description">{post.data.description}</p>
             </div>
-            <h3 class="blog-spotlight-title" itemprop="headline">{post.data.title}</h3>
-            <p class="blog-spotlight-excerpt" itemprop="description">{post.data.description}</p>
           </a>
         );
       })}

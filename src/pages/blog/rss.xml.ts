@@ -8,7 +8,7 @@ export const GET: APIRoute = async (context) => {
 
   return rss({
     title: "Moonli Blog",
-    description: "Baby-News, Moonli-Features, Angebote und Partner-Highlights für Eltern.",
+    description: "Baby-News, Moonli-Features und Partner-Highlights für Eltern.",
     site,
     items: posts.map((post) => ({
       title: post.data.title,

@@ -1,6 +1,7 @@
 ---
 import type { BlogCollection } from "@/lib/blog";
 import { getArticlePath, getCategoryLabel, formatDate, type BlogEntry } from "@/lib/blog";
+import { getPostCoverImage } from "@/lib/blogImages";
 
 interface Props {
   post: BlogEntry;
@@ -10,6 +11,7 @@ interface Props {
 const { post, showCategory = true } = Astro.props;
 const category = post.collection as BlogCollection;
 const articlePath = getArticlePath(post);
+const coverImage = getPostCoverImage(post);
 ---
 
 <article
@@ -19,6 +21,17 @@ const articlePath = getArticlePath(post);
   role="listitem"
 >
   <a href={articlePath} class="blog-entry-link" itemprop="url">
+    <img
+      src={coverImage}
+      alt=""
+      class="blog-entry-thumb"
+      width="320"
+      height="180"
+      loading="lazy"
+      decoding="async"
+      itemprop="image"
+    />
+    <div class="blog-entry-content">
     <div class="blog-entry-meta">
       {showCategory && (
         <span class="blog-entry-category">{getCategoryLabel(category)}</span>
@@ -36,5 +49,6 @@ const articlePath = getArticlePath(post);
         ))}
       </ul>
     )}
+    </div>
   </a>
 </article>

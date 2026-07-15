@@ -43,16 +43,6 @@ const features = defineCollection({
   }),
 });
 
-const deals = defineCollection({
-  type: "content",
-  schema: z.object({
-    ...blogBase,
-    category: z.literal("deals").default("deals"),
-    validUntil: z.coerce.date().optional(),
-    shops: z.array(z.string()).default([]),
-  }),
-});
-
 const partners = defineCollection({
   type: "content",
   schema: z.object({
@@ -65,4 +55,4 @@ const partners = defineCollection({
   }),
 });
 
-export const collections = { news, features, deals, partners };
+export const collections = { news, features, partners };

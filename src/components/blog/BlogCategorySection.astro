@@ -7,6 +7,7 @@ import {
   type BlogCollection,
   type BlogEntry,
 } from "@/lib/blog";
+import { getCategoryPlaceholderImage } from "@/lib/blogImages";
 
 interface Props {
   collection: BlogCollection;
@@ -18,10 +19,21 @@ const label = getCategoryLabel(collection);
 const path = getCategoryPath(collection);
 const description = getCategoryDescription(collection);
 const headingId = `blog-cat-${collection}`;
+const categoryImage = getCategoryPlaceholderImage(collection);
 ---
 
 <section class="blog-category-section" aria-labelledby={headingId}>
   <div class="blog-category-section-head">
+    <img
+      src={categoryImage}
+      alt=""
+      class="blog-category-section-thumb"
+      width="120"
+      height="68"
+      loading="lazy"
+      decoding="async"
+      aria-hidden="true"
+    />
     <div>
       <h2 id={headingId} class="blog-category-section-title">
         <a href={path}>{label}</a>

@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from "node:fs";
+import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse } from "yaml";
 import { buildFrontmatter, callAIJson, slugify, todaySlug } from "./lib/ai.js";
@@ -124,6 +124,10 @@ JSON-Schema:
   console.log(`Created news draft: ${outPath}`);
   console.log(`Topic: ${brief.topic}`);
   console.log(`Title: ${article.title}`);
+
+  if (process.env.GITHUB_OUTPUT) {
+    appendFileSync(process.env.GITHUB_OUTPUT, `article_slug=${slug}\n`);
+  }
 }
 
 main().catch((error) => {

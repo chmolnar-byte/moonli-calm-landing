@@ -5,7 +5,7 @@ import BlogChrome from "@/components/react/BlogChrome";
 import { getArticlePath, formatDate } from "@/lib/blog";
 
 export async function getStaticPaths() {
-  const collections = ["news", "features", "deals", "partners"] as const;
+  const collections = ["news", "features", "partners"] as const;
   const allPosts = await Promise.all(collections.map((c) => getCollection(c)));
   const tokens = new Set<string>();
 
@@ -19,7 +19,7 @@ export async function getStaticPaths() {
 }
 
 const { token } = Astro.params;
-const collections = ["news", "features", "deals", "partners"] as const;
+const collections = ["news", "features", "partners"] as const;
 const allPosts = (await Promise.all(collections.map((c) => getCollection(c)))).flat();
 const previewPosts = allPosts
   .filter((post) => post.data.previewToken === token)

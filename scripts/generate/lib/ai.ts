@@ -3,6 +3,31 @@
  * Requires OPENAI_API_KEY or ANTHROPIC_API_KEY in environment.
  */
 
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+
+function loadEnvFile(): void {
+  const envPath = join(process.cwd(), ".env");
+  if (!existsSync(envPath)) return;
+
+  for (const line of readFileSync(envPath, "utf-8").split("\n")) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) continue;
+    const separator = trimmed.indexOf("=");
+    if (separator === -1) continue;
+    const key = trimmed.slice(0, separator).trim();
+    const value = trimmed
+      .slice(separator + 1)
+      .trim()
+      .replace(/^["']|["']$/g, "");
+    if (key && process.env[key] === undefined) {
+      process.env[key] = value;
+    }
+  }
+}
+
+loadEnvFile();
+
 const DEFAULT_MODEL = "gpt-4o-mini";
 
 export function slugify(text: string): string {

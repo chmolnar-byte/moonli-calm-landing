@@ -1,24 +1,21 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 
-export type BlogCollection = "news" | "features" | "deals" | "partners";
+export type BlogCollection = "news" | "features" | "partners";
 
 export type BlogEntry =
   | CollectionEntry<"news">
   | CollectionEntry<"features">
-  | CollectionEntry<"deals">
   | CollectionEntry<"partners">;
 
 const CATEGORY_LABELS: Record<BlogCollection, string> = {
   news: "News",
   features: "Moonli Features",
-  deals: "Baby-Angebote",
   partners: "Partner des Monats",
 };
 
 const CATEGORY_PATHS: Record<BlogCollection, string> = {
   news: "/blog/news",
   features: "/blog/features",
-  deals: "/blog/deals",
   partners: "/blog/partner",
 };
 
@@ -49,7 +46,7 @@ export async function getPublishedPosts(
 export async function getAllPublishedPosts(
   includeDrafts = false,
 ): Promise<BlogEntry[]> {
-  const collections: BlogCollection[] = ["news", "features", "deals", "partners"];
+  const collections: BlogCollection[] = ["news", "features", "partners"];
   const all = await Promise.all(
     collections.map((c) => getPublishedPosts(c, includeDrafts)),
   );
@@ -61,7 +58,7 @@ export async function getAllPublishedPosts(
 export async function getPostsByPreviewToken(
   token: string,
 ): Promise<BlogEntry[]> {
-  const collections: BlogCollection[] = ["news", "features", "deals", "partners"];
+  const collections: BlogCollection[] = ["news", "features", "partners"];
   const all = await Promise.all(
     collections.map((c) => getCollection(c)),
   );
@@ -74,7 +71,6 @@ export async function getPostsByPreviewToken(
 const CATEGORY_DESCRIPTIONS: Record<BlogCollection, string> = {
   news: "Aktuelle Themen zu Babys und Elternalltag. Ältere News bleiben online – nichts wird gelöscht.",
   features: "Alle Moonli-Funktionen erklärt. Auch ältere Feature-Artikel bleiben als Nachschlagewerk erreichbar.",
-  deals: "Aktuelle und vergangene Angebote. Abgelaufene Deals bleiben im Archiv sichtbar.",
   partners: "Partner-Highlights – aktuell und aus vergangenen Monaten.",
 };
 

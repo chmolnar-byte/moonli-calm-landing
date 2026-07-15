@@ -1,13 +1,14 @@
 name: Generate Blog News
 
-# 1x pro Woche: Freitag 07:00 UTC (08:00 CET) – Entwurf vor Sonntag-Publish
+# Mittwoch 08:00 CET – Entwurf + GitHub-Issue zur Prüfung
 on:
   schedule:
-    - cron: "0 7 * * 5"
+    - cron: "0 7 * * 3"
   workflow_dispatch:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   generate:
@@ -17,7 +18,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - run: npm ci
@@ -25,9 +26,24 @@ jobs:
       - name: Draft-Branch auschecken
         run: bash .github/scripts/checkout-content-drafts.sh
 
-      - run: npx tsx scripts/generate/generate-news.ts
+      - name: GitHub-Labels anlegen
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create "blog-review" --color "0E8A16" --description "News-Entwurf zur Prüfung" 2>/dev/null || true
+          gh label create "blog-deploy" --color "FBCA04" --description "Deploy-Vorschau Sonntag" 2>/dev/null || true
+
+      - name: News-Artikel generieren
+        id: generate
+        run: npx tsx scripts/generate/generate-news.ts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Entwurf committen
-        run: bash .github/scripts/push-content-draft.sh "blog(draft): news v2 $(date -u +%Y-%m-%d)"
+        run: bash .github/scripts/push-content-draft.sh "blog(draft): news $(date -u +%Y-%m-%d)"
+
+      - name: Review-Benachrichtigung (GitHub Issue)
+        run: npx tsx scripts/generate/notify-review.ts
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          ARTICLE_SLUG: ${{ steps.generate.outputs.article_slug }}

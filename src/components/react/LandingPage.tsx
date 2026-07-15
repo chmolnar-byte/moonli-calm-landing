@@ -12,6 +12,8 @@ import capybaraImg from "@/assets/capybara.webp";
 import capybara1Img from "@/assets/capybara1.webp";
 import capybara2Img from "@/assets/capybara2.webp";
 import { assetUrl } from "@/lib/assetUrl";
+import { scrollToHashFromUrl } from "@/lib/scrollToSection";
+import { useEffect } from "react";
 
 const SectionDivider = () => (
   <div className="relative h-16 -my-8 z-0">
@@ -20,6 +22,10 @@ const SectionDivider = () => (
 );
 
 const LandingPage = () => {
+  useEffect(() => {
+    scrollToHashFromUrl();
+  }, []);
+
   return (
     <div className="night-sky min-h-screen bg-gradient-page overflow-x-hidden text-foreground">
       <div className="night-sky-stars fixed inset-0 z-0 pointer-events-none" />

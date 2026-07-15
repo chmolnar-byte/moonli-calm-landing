@@ -8,11 +8,13 @@ import {
   getCategoryDescription,
   type BlogCollection,
 } from "@/lib/blog";
+import { getCategoryPlaceholderImage } from "@/lib/blogImages";
 
 const collection = Astro.props.collection as BlogCollection;
 const posts = await getPublishedPosts(collection);
 const label = getCategoryLabel(collection);
 const description = getCategoryDescription(collection);
+const categoryImage = getCategoryPlaceholderImage(collection);
 const site = "https://moonli.net";
 const canonicalSlug = collection === "partners" ? "partner" : collection;
 
@@ -49,7 +51,17 @@ const jsonLd = {
       <span>{label}</span>
     </nav>
 
-    <header class="blog-index-top">
+    <header class="blog-index-top blog-index-top--category">
+      <img
+        src={categoryImage}
+        alt=""
+        class="blog-index-category-thumb"
+        width="200"
+        height="113"
+        loading="eager"
+        decoding="async"
+        aria-hidden="true"
+      />
       <div>
         <p class="blog-index-eyebrow">Kategorie</p>
         <h1 class="blog-index-title">{label}</h1>

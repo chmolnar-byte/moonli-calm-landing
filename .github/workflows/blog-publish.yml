@@ -1,12 +1,8 @@
 name: Blog veröffentlichen
 
-# Wöchentliches Sammel-Deployment:
-# Entwürfe aus content-drafts werden gesammelt nach main übernommen.
-# Erzeugt genau einen Push auf main → ein Netlify-Deploy.
-
+# Sonntag 21:00 CET – nur wenn mindestens ein News-Artikel freigegeben ist
 on:
   schedule:
-    # Sonntagabend 21:00 CET (20:00 UTC)
     - cron: "0 20 * * 0"
   workflow_dispatch:
 
@@ -21,25 +17,51 @@ jobs:
         with:
           fetch-depth: 0
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Freigabe prüfen
+        id: check
+        run: |
+          git fetch origin main
+
+          if ! git ls-remote --exit-code --heads origin content-drafts >/dev/null 2>&1; then
+            echo "has_approved=false" >> "$GITHUB_OUTPUT"
+            echo "Branch content-drafts existiert nicht – nichts zu veröffentlichen."
+            exit 0
+          fi
+
+          git fetch origin content-drafts
+          git checkout content-drafts
+          git pull origin content-drafts
+
+          APPROVED=$(npx tsx scripts/generate/check-approved-news.ts)
+          echo "approved_count=$APPROVED" >> "$GITHUB_OUTPUT"
+          if [ "$APPROVED" -gt 0 ]; then
+            echo "has_approved=true" >> "$GITHUB_OUTPUT"
+            echo "$APPROVED freigegebene News-Artikel gefunden."
+          else
+            echo "has_approved=false" >> "$GITHUB_OUTPUT"
+            echo "Keine freigegebenen News – Deploy übersprungen."
+          fi
+
       - name: content-drafts in main mergen
+        if: steps.check.outputs.has_approved == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git fetch origin main content-drafts
-
-          if ! git show-ref --verify --quiet refs/remotes/origin/content-drafts; then
-            echo "Branch content-drafts existiert nicht – nichts zu veröffentlichen."
-            exit 1
-          fi
-
           git checkout main
           git pull origin main
 
-          if git merge origin/content-drafts -m "blog: publish approved content"; then
+          if git merge origin/content-drafts -m "blog: publish approved news"; then
             echo "Merge erfolgreich."
           else
-            echo "Merge-Konflikt – bitte lokal auflösen oder in Decap CMS bearbeiten."
+            echo "Merge-Konflikt – bitte lokal auflösen."
             exit 1
           fi
 
@@ -47,5 +69,9 @@ jobs:
 
       - name: Hinweis
         run: |
-          echo "main wurde aktualisiert → Netlify baut einmal neu."
-          echo "Artikel mit draft: true erscheinen weiterhin nicht auf der Website."
+          if [ "${{ steps.check.outputs.has_approved }}" = "true" ]; then
+            echo "main wurde aktualisiert → Netlify baut einmal neu."
+            echo "Freigegebene Artikel (${{ steps.check.outputs.approved_count }}) sind jetzt live."
+          else
+            echo "Deploy übersprungen – bitte News freigeben für nächsten Sonntag."
+          fi
