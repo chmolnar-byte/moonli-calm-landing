@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   generate:
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,6 +23,11 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: OpenAI API-Key prüfen
+        run: npx tsx scripts/generate/verify-openai.ts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Draft-Branch auschecken
         run: bash .github/scripts/checkout-content-drafts.sh

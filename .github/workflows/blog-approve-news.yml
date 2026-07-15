@@ -14,6 +14,7 @@ permissions:
 
 jobs:
   approve:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -31,7 +32,7 @@ jobs:
       - name: Freigeben
         run: npx tsx scripts/generate/approve-news.ts
         env:
-          ARTICLE_SLUG: ${{ inputs.article_slug }}
+          ARTICLE_SLUG: ${{ github.event.inputs.article_slug }}
 
       - name: Freigabe committen
         run: bash .github/scripts/push-content-draft.sh "blog(approve): news freigegeben"

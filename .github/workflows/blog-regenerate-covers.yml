@@ -1,20 +1,15 @@
 name: Blog Cover generieren
 
+# Manuell starten – generiert KI-Cover für Live-Artikel (DALL-E 3)
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - ".github/workflows/blog-regenerate-covers.yml"
-      - "scripts/generate/regenerate-live-covers.ts"
-      - "scripts/generate/lib/images.ts"
-      - "scripts/generate/lib/editorial.ts"
 
 permissions:
   contents: write
 
 jobs:
   covers:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,6 +20,11 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: OpenAI API-Key prüfen
+        run: npx tsx scripts/generate/verify-openai.ts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: KI-Cover für Live-Artikel generieren
         run: npx tsx scripts/generate/regenerate-live-covers.ts

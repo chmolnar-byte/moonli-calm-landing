@@ -19,6 +19,7 @@ permissions:
 
 jobs:
   revise:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,8 +38,8 @@ jobs:
         run: npx tsx scripts/generate/revise-news.ts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          FEEDBACK: ${{ inputs.feedback }}
-          ARTICLE_SLUG: ${{ inputs.article_slug }}
+          FEEDBACK: ${{ github.event.inputs.feedback }}
+          ARTICLE_SLUG: ${{ github.event.inputs.article_slug }}
 
       - name: Änderungen speichern
         run: bash .github/scripts/push-content-draft.sh "blog(revise): news feedback"
@@ -47,4 +48,4 @@ jobs:
         run: npx tsx scripts/generate/notify-review.ts
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          ARTICLE_SLUG: ${{ inputs.article_slug }}
+          ARTICLE_SLUG: ${{ github.event.inputs.article_slug }}
