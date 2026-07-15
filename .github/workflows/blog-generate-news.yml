@@ -11,6 +11,12 @@ permissions:
   issues: write
 
 jobs:
+  skip-on-push:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Geplanter/manueller Workflow – bei Push übersprungen."
+
   generate:
     if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
     runs-on: ubuntu-latest
