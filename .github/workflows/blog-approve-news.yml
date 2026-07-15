@@ -2,6 +2,8 @@ name: News freigeben
 
 # Setzt draft: false – Artikel wird am Sonntag deployed
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       article_slug:

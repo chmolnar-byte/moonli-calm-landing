@@ -2,6 +2,8 @@ name: News überarbeiten
 
 # Feedback an den Bot – überarbeitet den aktuellen Entwurf auf content-drafts
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       feedback:
