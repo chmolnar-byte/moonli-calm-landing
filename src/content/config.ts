@@ -7,6 +7,7 @@ const blogBase = {
   updatedDate: z.coerce.date().optional(),
   author: z.string().default("Moonli Redaktion"),
   image: z.string().optional(),
+  imageAlt: z.string().optional(),
   tags: z.array(z.string()).default([]),
   draft: z.boolean().default(false),
   previewToken: z.string().nullable().optional(),

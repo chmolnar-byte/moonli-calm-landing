@@ -1,11 +1,9 @@
 import { readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 import { callAIJson } from "./lib/ai.js";
+import { EDITORIAL_SYSTEM, NEWS_ARTICLE_SPEC } from "./lib/editorial.js";
 import { parseMarkdownFile, stringifyMarkdownFile } from "./lib/frontmatter.js";
 import { findNewsDraft } from "./lib/newsDrafts.js";
-
-const NEWS_SYSTEM = `Du bist Chefredakteur für den Moonli Baby-Blog (DACH, Fokus Österreich).
-Überarbeite Artikel präzise nach Redaktions-Feedback. Behalte Fakten und Quellen bei, es sei denn das Feedback verlangt Korrekturen.
-Keine Heilversprechen. Deutsch (Österreich), duzen.`;
 
 interface RevisedArticle {
   title: string;
@@ -28,7 +26,7 @@ async function main() {
   const parsed = parseMarkdownFile(raw);
 
   const revised = await callAIJson<RevisedArticle>(
-    NEWS_SYSTEM,
+    EDITORIAL_SYSTEM,
     `Überarbeite diesen News-Artikel nach dem Redaktions-Feedback.
 
 Aktueller Artikel:
@@ -45,8 +43,8 @@ ${feedback}
 
 Anforderungen:
 - Feedback vollständig umsetzen
-- Struktur beibehalten (H2-Abschnitte, FAQ, Quellen)
-- Länge: 700-900 Wörter
+- Qualitätsniveau: Goldstandard Moonli-Blog (siehe EDITORIAL_SYSTEM)
+- ${NEWS_ARTICLE_SPEC}
 - draft bleibt true (wird separat freigegeben)
 
 JSON-Schema:
@@ -58,6 +56,7 @@ JSON-Schema:
   "sources": [{"name":"string","url":"string"}],
   "bodyMarkdown": "string"
 }`,
+    { model: "writing", temperature: 0.45 },
   );
 
   parsed.data.title = revised.title;

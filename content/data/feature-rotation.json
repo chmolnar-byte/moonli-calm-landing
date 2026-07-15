@@ -4,37 +4,112 @@
       "id": "sleep-tracking",
       "titleKey": "features.tracking.title",
       "descriptionKey": "features.tracking.desc",
-      "priority": 1
+      "priority": 1,
+      "searchIntent": "Baby schläft schlecht ein, Wachfenster verstehen, Schlaf tracken ohne teure App",
+      "painPoints": [
+        "Übermüdung erkennen",
+        "Timing für Schläfchen unklar",
+        "Teure Premium-Apps nur für Schlaf",
+        "Excel/Zettel-Chaos im Alltag"
+      ],
+      "moonliBenefits": [
+        "Schlaftracking dauerhaft kostenlos",
+        "Altersgerechte Schlafprognosen",
+        "Wachfenster-Erinnerungen",
+        "Stillen, Windeln, Wachstum an einem Ort"
+      ],
+      "coverImage": "/images/blog/sleep-tracking-cover.webp"
     },
     {
       "id": "wake-windows",
       "titleKey": "features.reminders.title",
       "descriptionKey": "features.reminders.desc",
-      "priority": 2
+      "priority": 2,
+      "searchIntent": "Wachfenster Baby App, Erinnerungen für Schläfchen und Stillen",
+      "painPoints": [
+        "Vergessene Schläfchen",
+        "Ständig auf die Uhr schauen",
+        "Partner nicht synchron",
+        "Push-Erinnerungen bei anderen Apps kostenpflichtig"
+      ],
+      "moonliBenefits": [
+        "Smarte Wachfenster kostenlos",
+        "Individuelle Push-Erinnerungen",
+        "Anpassbar an euren Rhythmus"
+      ],
+      "coverImage": "/images/blog/features-placeholder.svg"
     },
     {
       "id": "3am-club",
       "titleKey": "features.amClub.title",
       "descriptionKey": "features.amClub.desc",
-      "priority": 3
+      "priority": 3,
+      "searchIntent": "Nachts wach mit Baby, Eltern nicht allein fühlen, 3 Uhr nachts Club",
+      "painPoints": [
+        "Einsamkeit nachts",
+        "Gefühl allein wach zu sein",
+        "Keine Orientierung in der Nacht"
+      ],
+      "moonliBenefits": [
+        "NightGlobe / 3-a.m.-Club Community",
+        "Wissen, dass andere Eltern auch wach sind",
+        "Beruhigung in der Nacht"
+      ],
+      "coverImage": "/images/blog/features-placeholder.svg"
     },
     {
       "id": "who-growth",
       "titleKey": "features.health.title",
       "descriptionKey": "features.health.desc",
-      "priority": 4
+      "priority": 4,
+      "searchIntent": "Baby Wachstum WHO Kurven, Gewicht Größe tracken",
+      "painPoints": [
+        "Wachstumskurven verstehen",
+        "U-Heime vorbereiten",
+        "Entwicklung im Blick behalten"
+      ],
+      "moonliBenefits": [
+        "WHO-Wachstumskurven integriert",
+        "Wachstum neben Schlaf und Ernährung",
+        "Kostenlos tracken"
+      ],
+      "coverImage": "/images/blog/features-placeholder.svg"
     },
     {
       "id": "parent-wellbeing",
       "titleKey": "features.groups.parent.title",
       "descriptionKey": "features.groups.parent.desc",
-      "priority": 5
+      "priority": 5,
+      "searchIntent": "Eltern Erschöpfung Baby, Elternwohlbefinden, Paar nach Geburt",
+      "painPoints": [
+        "Erschöpfung und Überforderung",
+        "Paar kommt zu kurz",
+        "Keine Zeit für sich selbst"
+      ],
+      "moonliBenefits": [
+        "Elternbereich mit Checks und Ritualen",
+        "Meditationen und Atemübungen",
+        "Quality-Time Impulse"
+      ],
+      "coverImage": "/images/blog/features-placeholder.svg"
     },
     {
       "id": "knowledge-library",
       "titleKey": "features.groups.knowledge.title",
       "descriptionKey": "features.groups.knowledge.desc",
-      "priority": 6
+      "priority": 6,
+      "searchIntent": "Elternwissen Baby, Hebammen Tipps App, Baby Fragen nachts",
+      "painPoints": [
+        "Endlose Google-Suchen um 3 Uhr nachts",
+        "Unsichere Informationen",
+        "Keine gebündelte Wissensquelle"
+      ],
+      "moonliBenefits": [
+        "500+ Tipps und Hebammen-Wissen",
+        "100+ Artikel in der App",
+        "Community-Hacks von Eltern"
+      ],
+      "coverImage": "/images/blog/features-placeholder.svg"
     }
   ],
   "lastRotatedIndex": 0

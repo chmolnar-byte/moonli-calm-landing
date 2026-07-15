@@ -1,6 +1,11 @@
 /**
  * Shared utilities for AI content generation scripts.
- * Requires OPENAI_API_KEY or ANTHROPIC_API_KEY in environment.
+ * Requires OPENAI_API_KEY in environment.
+ *
+ * Modelle (überschreibbar via .env):
+ * - OPENAI_MODEL_BRIEF: Recherche/Briefs (default gpt-4o-mini)
+ * - OPENAI_MODEL_WRITING: finale Artikel (default gpt-4o – Goldstandard-Qualität)
+ * - OPENAI_MODEL_IMAGE: Cover-Bilder (default dall-e-3)
  */
 
 import { existsSync, readFileSync } from "node:fs";
@@ -28,7 +33,12 @@ function loadEnvFile(): void {
 
 loadEnvFile();
 
-const DEFAULT_MODEL = "gpt-4o-mini";
+export const MODEL_BRIEF = process.env.OPENAI_MODEL_BRIEF ?? "gpt-4o-mini";
+export const MODEL_WRITING = process.env.OPENAI_MODEL_WRITING ?? "gpt-4o";
+
+function resolveModel(tier?: "brief" | "writing"): string {
+  return tier === "writing" ? MODEL_WRITING : MODEL_BRIEF;
+}
 
 export function slugify(text: string): string {
   return text
@@ -99,26 +109,24 @@ export function buildFrontmatter(
 async function callOpenAI(
   system: string,
   user: string,
-  options?: { json?: boolean; temperature?: number },
+  options?: { json?: boolean; temperature?: number; model?: string },
 ): Promise<string> {
-  const apiKey = process.env.OPENAI_API_KEY ?? process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
-    console.warn("No AI API key set – returning placeholder content.");
+    console.warn("No OPENAI_API_KEY set – returning placeholder content.");
     return options?.json
       ? "{}"
       : `> Automatisch generierter Platzhalter. Bitte API-Key setzen und erneut ausführen.\n\n${user.slice(0, 200)}...`;
   }
 
-  if (!process.env.OPENAI_API_KEY) return options?.json ? "{}" : "";
-
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
+      Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      model: DEFAULT_MODEL,
+      model: options?.model ?? MODEL_BRIEF,
       messages: [
         { role: "system", content: system },
         { role: "user", content: user },
@@ -142,12 +150,20 @@ export async function callAI(prompt: string, system?: string): Promise<string> {
     system ??
       "Du bist Redakteur für den Moonli Baby-Blog. Schreibe auf Deutsch (Österreich), SEO-optimiert, professionell, mit H2/H3-Struktur und FAQ am Ende. Ziel: 700-900 Wörter.",
     prompt,
-    { temperature: 0.6 },
+    { temperature: 0.6, model: MODEL_WRITING },
   );
 }
 
-export async function callAIJson<T>(system: string, user: string): Promise<T> {
-  const raw = await callOpenAI(system, user, { json: true, temperature: 0.4 });
+export async function callAIJson<T>(
+  system: string,
+  user: string,
+  options?: { model?: "brief" | "writing"; temperature?: number },
+): Promise<T> {
+  const raw = await callOpenAI(system, user, {
+    json: true,
+    temperature: options?.temperature ?? 0.4,
+    model: resolveModel(options?.model),
+  });
   if (!raw || raw === "{}") {
     throw new Error("KI-Antwort leer – OPENAI_API_KEY prüfen oder API-Limit erreicht.");
   }

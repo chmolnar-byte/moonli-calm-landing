@@ -58,6 +58,8 @@ jobs:
           git checkout main
           git pull origin main
 
+          npm run check:blog
+
           if git merge origin/content-drafts -m "blog: publish approved news"; then
             echo "Merge erfolgreich."
           else

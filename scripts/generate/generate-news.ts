@@ -2,12 +2,9 @@ import { appendFileSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { parse } from "yaml";
 import { buildFrontmatter, callAIJson, slugify, todaySlug } from "./lib/ai.js";
+import { EDITORIAL_SYSTEM, NEWS_ARTICLE_SPEC } from "./lib/editorial.js";
+import { generateBlogCover } from "./lib/images.js";
 import { fetchAllNewsItems, formatItemsForPrompt } from "./lib/rss.js";
-
-const NEWS_SYSTEM = `Du bist Chefredakteur für den Moonli Baby-Blog (DACH, Fokus Österreich).
-Schreibe faktenbasiert, verständlich und original – niemals Copy-Paste.
-Keine Heilversprechen, keine Diagnosen. Bei Gesundheitsthemen vorsichtig formulieren ("laut Fachstelle", "kann helfen").
-Keine wörtlichen Übernahmen länger als 8 Wörter aus Quellen.`;
 
 interface ResearchBrief {
   topic: string;
@@ -43,14 +40,15 @@ async function main() {
   const researchInput = formatItemsForPrompt(items.slice(0, 25));
 
   const brief = await callAIJson<ResearchBrief>(
-    NEWS_SYSTEM,
+    EDITORIAL_SYSTEM,
     `Analysiere diese Meldungen aus mehreren Quellen und erstelle einen Research-Brief als JSON.
 
 Regeln:
 - Wähle genau 1 relevantes Kernthema für Eltern mit Baby (0-24 Monate)
 - Priorisiere Themen mit Praxisnutzen (Schlaf, Ernährung, Entwicklung, Sicherheit, Elternbelastung)
 - Nutze internationale Evidenz, erkläre aber den Bezug für Eltern in AT/DE
-- Wähle 2-4 Quellen aus der Liste (echte URLs)
+- Wähle 2-4 Quellen mit echten Deep-Links (nicht nur Startseiten)
+- Kein erfundener Studien-Titel
 
 Input:
 ${researchInput}
@@ -66,28 +64,17 @@ JSON-Schema:
   "tags": ["string"],
   "seoKeywords": ["string"]
 }`,
+    { model: "brief" },
   );
 
   const article = await callAIJson<NewsArticle>(
-    NEWS_SYSTEM,
+    EDITORIAL_SYSTEM,
     `Schreibe auf Basis dieses Research-Briefs einen vollständigen Blogartikel als JSON.
 
 Research-Brief:
 ${JSON.stringify(brief, null, 2)}
 
-Anforderungen:
-- Sprache: Deutsch (Österreich), Sie-Ansprache vermeiden, duzen
-- Länge: 700-900 Wörter
-- Struktur in Markdown:
-  - Einleitung (klarer Nutzen)
-  - "## Was aktuell wichtig ist"
-  - "## Was das für euren Alltag bedeutet" (mit Bulletpoints)
-  - "## Praktische Tipps" (konkret umsetzbar)
-  - "## Wie Moonli unterstützen kann" (1 kurzer Absatz, nicht werblich)
-  - "## Häufige Fragen" (3 Fragen mit ### Überschriften)
-  - "## Quellen" (Liste mit Name + Link)
-- SEO: title max 65 Zeichen, description 140-160 Zeichen
-- Keine erfundenen Studien/Zahlen
+${NEWS_ARTICLE_SPEC}
 
 JSON-Schema:
 {
@@ -98,10 +85,19 @@ JSON-Schema:
   "sources": [{"name":"string","url":"string"}],
   "bodyMarkdown": "string"
 }`,
+    { model: "writing", temperature: 0.5 },
   );
 
   const slugBase = slugify(brief.topic || article.title || "baby-news").slice(0, 40) || "baby-news";
   const slug = todaySlug(slugBase);
+
+  const cover = await generateBlogCover({
+    slug,
+    title: article.title,
+    category: "news",
+    angle: brief.angle || brief.topic,
+  });
+
   const content = buildFrontmatter(
     {
       title: article.title,
@@ -110,6 +106,8 @@ JSON-Schema:
       category: "news",
       tags: article.tags?.length ? article.tags : brief.tags,
       author: "Moonli Redaktion",
+      image: cover.publicPath,
+      imageAlt: cover.altText,
       draft: true,
       sources: article.sources?.length ? article.sources : brief.sources,
       seo: {
@@ -124,6 +122,7 @@ JSON-Schema:
   console.log(`Created news draft: ${outPath}`);
   console.log(`Topic: ${brief.topic}`);
   console.log(`Title: ${article.title}`);
+  console.log(`Cover: ${cover.publicPath}`);
 
   if (process.env.GITHUB_OUTPUT) {
     appendFileSync(process.env.GITHUB_OUTPUT, `article_slug=${slug}\n`);

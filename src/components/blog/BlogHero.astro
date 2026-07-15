@@ -19,7 +19,7 @@ const coverImage = getPostCoverImage(post);
       <div class="blog-hero-media">
         <img
           src={coverImage}
-          alt=""
+          alt={post.data.imageAlt ?? post.data.title}
           class="blog-hero-cover"
           width="1200"
           height="675"
