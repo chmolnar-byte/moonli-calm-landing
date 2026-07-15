@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import AppProviders from "@/components/react/AppProviders";
 import DataDeletionPage from "@/components/react/DataDeletionPage";
 ---
 
@@ -9,7 +8,5 @@ import DataDeletionPage from "@/components/react/DataDeletionPage";
   description="Anleitung zur Datenlöschung in der Moonli App."
   canonical="https://moonli.net/data-deletion"
 >
-  <AppProviders client:load>
-    <DataDeletionPage />
-  </AppProviders>
+  <DataDeletionPage client:load />
 </BaseLayout>

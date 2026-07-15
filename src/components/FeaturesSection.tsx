@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import ImageLightbox from "@/components/ImageLightbox";
 import {
   Baby,
@@ -173,7 +173,7 @@ const FeaturesSection = () => {
                 <button
                   type="button"
                   onClick={() => setActiveImage({ src: sleepPredictionScreenshotUrl, alt: "Schlafprognose" })}
-                  className="group rounded-xl border border-white/20 bg-slate-950/40 p-2 transition hover:border-primary/50 hover:shadow-soft"
+                  className="group cursor-zoom-in rounded-xl border border-white/20 bg-slate-950/40 p-2 transition hover:border-primary/50 hover:shadow-soft"
                 >
                   <img
                     src={sleepPredictionScreenshotUrl}
@@ -188,7 +188,7 @@ const FeaturesSection = () => {
                 <button
                   type="button"
                   onClick={() => setActiveImage({ src: trackingScreenshotUrl, alt: "Tracking" })}
-                  className="group rounded-xl border border-white/20 bg-slate-950/40 p-2 transition hover:border-primary/50 hover:shadow-soft"
+                  className="group cursor-zoom-in rounded-xl border border-white/20 bg-slate-950/40 p-2 transition hover:border-primary/50 hover:shadow-soft"
                 >
                   <img
                     src={trackingScreenshotUrl}
@@ -252,7 +252,7 @@ const FeaturesSection = () => {
                 <button
                   type="button"
                   onClick={() => setActiveImage({ src: group.image, alt: t(group.titleKey) })}
-                  className="mb-5 overflow-hidden rounded-xl border border-white/20 bg-slate-950/40 p-2 transition group-hover:border-primary/40"
+                  className="mb-5 cursor-zoom-in overflow-hidden rounded-xl border border-white/20 bg-slate-950/40 p-2 transition group-hover:border-primary/40"
                 >
                   <img
                     src={group.image}
@@ -291,13 +291,16 @@ const FeaturesSection = () => {
           {t("features.adNote")}
         </motion.p>
 
-        {activeImage && (
-          <ImageLightbox
-            src={activeImage.src}
-            alt={activeImage.alt}
-            onClose={() => setActiveImage(null)}
-          />
-        )}
+        <AnimatePresence>
+          {activeImage && (
+            <ImageLightbox
+              key={activeImage.src}
+              src={activeImage.src}
+              alt={activeImage.alt}
+              onClose={() => setActiveImage(null)}
+            />
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

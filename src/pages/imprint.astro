@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import AppProviders from "@/components/react/AppProviders";
 import ImprintPage from "@/components/react/ImprintPage";
 ---
 
@@ -9,7 +8,5 @@ import ImprintPage from "@/components/react/ImprintPage";
   description="Impressum und Kontaktinformationen zu Moonli."
   canonical="https://moonli.net/imprint"
 >
-  <AppProviders client:load>
-    <ImprintPage />
-  </AppProviders>
+  <ImprintPage client:load />
 </BaseLayout>

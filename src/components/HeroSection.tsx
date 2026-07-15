@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
 import { Apple, Play } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { type MouseEvent, useState } from "react";
@@ -80,10 +80,10 @@ const PhoneMockup = () => {
           {/* Hinten links */}
           <motion.div
             className="absolute left-0 sm:left-[2%] bottom-[8%] z-[1] w-[34%] sm:w-[32%]"
-            style={{ x: backLeftX, y: backLeftY }}
             animate={{ y: [0, -10, 0] }}
             transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut" }}
           >
+            <motion.div style={{ x: backLeftX, y: backLeftY }}>
             <motion.button
               type="button"
               onClick={() =>
@@ -93,26 +93,27 @@ const PhoneMockup = () => {
                 })
               }
               whileHover={{ scale: 1.03, y: -4 }}
-              className="block w-full -rotate-[6deg] opacity-90 transition-transform duration-300 drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
+              className="block w-full cursor-zoom-in -rotate-[6deg] opacity-90 transition-transform duration-300 drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
               aria-label="Wochenbericht vergrößern"
             >
               <img
                 src={dashboardWeeklyUrl}
                 alt="Wochenbericht der Moonli App"
-                className="block w-full h-auto select-none"
+                className="block w-full h-auto select-none pointer-events-none"
                 loading="lazy"
                 draggable={false}
               />
             </motion.button>
+            </motion.div>
           </motion.div>
 
           {/* Hinten rechts */}
           <motion.div
             className="absolute right-0 sm:right-[2%] bottom-[8%] z-[2] w-[34%] sm:w-[32%]"
-            style={{ x: backRightX, y: backRightY }}
             animate={{ y: [0, -12, 0] }}
             transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
           >
+            <motion.div style={{ x: backRightX, y: backRightY }}>
             <motion.button
               type="button"
               onClick={() =>
@@ -122,26 +123,27 @@ const PhoneMockup = () => {
                 })
               }
               whileHover={{ scale: 1.03, y: -4 }}
-              className="block w-full rotate-[6deg] opacity-90 transition-transform duration-300 drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
+              className="block w-full cursor-zoom-in rotate-[6deg] opacity-90 transition-transform duration-300 drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
               aria-label="Wachstumsverlauf vergrößern"
             >
               <img
                 src={dashboardDarkUrl}
                 alt="Wachstumsverlauf der Moonli App"
-                className="block w-full h-auto select-none"
+                className="block w-full h-auto select-none pointer-events-none"
                 loading="lazy"
                 draggable={false}
               />
             </motion.button>
+            </motion.div>
           </motion.div>
 
           {/* Vorne — Mitte */}
           <motion.div
             className="relative z-20 w-[52%] sm:w-[48%] mx-auto"
-            style={{ y: frontLift }}
             animate={{ y: [0, -6, 0] }}
             transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
           >
+            <motion.div style={{ y: frontLift }}>
             <motion.div
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400, damping: 28 }}
@@ -155,29 +157,33 @@ const PhoneMockup = () => {
                     alt: "Moonli Elternbereich – Home",
                   })
                 }
-                className="relative block w-full"
+                className="relative block w-full cursor-zoom-in"
                 aria-label="Elternbereich vergrößern"
               >
                 <img
                   src={dashboardGrowthUrl}
                   alt="Moonli Elternbereich – Home"
-                  className="block w-full h-auto select-none"
+                  className="block w-full h-auto select-none pointer-events-none"
                   loading="eager"
                   draggable={false}
                 />
               </button>
             </motion.div>
+            </motion.div>
           </motion.div>
         </div>
       </motion.div>
 
-      {activeImage && (
-        <ImageLightbox
-          src={activeImage.src}
-          alt={activeImage.alt}
-          onClose={() => setActiveImage(null)}
-        />
-      )}
+      <AnimatePresence>
+        {activeImage && (
+          <ImageLightbox
+            key={activeImage.src}
+            src={activeImage.src}
+            alt={activeImage.alt}
+            onClose={() => setActiveImage(null)}
+          />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
@@ -254,7 +260,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Phone Mockup */}
-          <div className="flex justify-center lg:justify-end relative overflow-visible py-6 sm:py-8">
+          <div className="relative z-10 flex justify-center lg:justify-end overflow-visible py-6 sm:py-8">
             <PhoneMockup />
           </div>
         </div>

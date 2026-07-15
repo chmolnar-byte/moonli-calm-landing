@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import AppProviders from "@/components/react/AppProviders";
 import EmailConfirmedPage from "@/components/react/EmailConfirmedPage";
 ---
 
@@ -9,7 +8,5 @@ import EmailConfirmedPage from "@/components/react/EmailConfirmedPage";
   description="Deine E-Mail-Adresse wurde erfolgreich bestätigt."
   canonical="https://moonli.net/email-confirmed"
 >
-  <AppProviders client:load>
-    <EmailConfirmedPage />
-  </AppProviders>
+  <EmailConfirmedPage client:load />
 </BaseLayout>

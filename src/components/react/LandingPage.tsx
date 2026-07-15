@@ -1,3 +1,4 @@
+import AppProviders from "@/components/react/AppProviders";
 import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
 import HeroSection from "@/components/HeroSection";
@@ -27,6 +28,7 @@ const LandingPage = () => {
   }, []);
 
   return (
+    <AppProviders>
     <div className="night-sky min-h-screen bg-gradient-page overflow-x-hidden text-foreground">
       <div className="night-sky-stars fixed inset-0 z-0 pointer-events-none" />
       <div className="fixed top-[12%] right-[8%] h-44 w-44 rounded-full dream-gradient blur-3xl pointer-events-none z-0" />
@@ -62,6 +64,7 @@ const LandingPage = () => {
       <div id="feedback"><Testimonials /></div>
       <CTAFooter />
     </div>
+    </AppProviders>
   );
 };
 

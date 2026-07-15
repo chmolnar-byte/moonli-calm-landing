@@ -2,21 +2,24 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import CTAFooter from "@/components/CTAFooter";
+import AppProviders from "@/components/react/AppProviders";
+import { motionInitial } from "@/lib/motion";
 
-const Imprint = () => {
+const ImprintPage = () => {
   const { t } = useLanguage();
 
   return (
+    <AppProviders>
     <div className="night-sky min-h-screen bg-gradient-page overflow-x-hidden text-foreground flex flex-col">
       <div className="night-sky-stars fixed inset-0 z-0 pointer-events-none" />
       <Navbar />
 
-      <main className="relative z-10 flex-1 flex items-center justify-center px-4 py-10">
+      <main className="relative z-10 flex-1 px-4 py-28 md:py-32">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={motionInitial}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="glass-card-premium max-w-3xl w-full p-6 sm:p-10 text-left"
+          className="glass-card-premium max-w-3xl w-full mx-auto p-6 sm:p-10 text-left"
         >
           <h1 className="text-2xl sm:text-3xl font-extrabold mb-4 text-glow">
             {t("imprint.title")}
@@ -105,8 +108,9 @@ const Imprint = () => {
 
       <CTAFooter />
     </div>
+    </AppProviders>
   );
 };
 
-export default Imprint;
+export default ImprintPage;
 

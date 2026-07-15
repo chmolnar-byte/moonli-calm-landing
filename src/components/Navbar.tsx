@@ -81,8 +81,8 @@ const Navbar = () => {
           {NAV_TABS.map((tab) => renderNavTab(tab, tabClassName))}
         </div>
 
-        {/* Right side */}
-        <div className="relative z-20 flex items-center gap-2 shrink-0">
+        {/* Right side – über der Mitte, damit Sprache & Store-Buttons klickbar bleiben */}
+        <div className="relative z-40 flex items-center gap-2 shrink-0 ml-auto">
           <a
             href="/blog"
             className="hidden md:inline-flex px-4 py-2 rounded-full text-sm font-semibold text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200"
@@ -99,7 +99,7 @@ const Navbar = () => {
               <Globe className="w-3.5 h-3.5 text-muted-foreground" />
             </button>
             {open && (
-              <div className="absolute right-0 top-full mt-2 py-1 rounded-2xl bg-slate-900 shadow-soft-xl min-w-[140px] z-50 border border-white/15">
+              <div className="absolute right-0 top-full mt-2 py-1 rounded-2xl bg-slate-900 shadow-soft-xl min-w-[140px] z-[120] border border-white/15">
                 {languages.map((lang) => (
                   <button
                     key={lang}

@@ -1,11 +1,8 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import AppProviders from "@/components/react/AppProviders";
 import NotFoundPage from "@/components/react/NotFoundPage";
 ---
 
 <BaseLayout title="Seite nicht gefunden | Moonli" noindex={true}>
-  <AppProviders client:load>
-    <NotFoundPage />
-  </AppProviders>
+  <NotFoundPage client:load />
 </BaseLayout>

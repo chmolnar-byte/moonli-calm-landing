@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import AppProviders from "@/components/react/AppProviders";
 import LandingPage from "@/components/react/LandingPage";
 
 const jsonLd = {
@@ -24,7 +23,5 @@ const jsonLd = {
 ---
 
 <BaseLayout jsonLd={jsonLd}>
-  <AppProviders client:load>
-    <LandingPage />
-  </AppProviders>
+  <LandingPage client:load />
 </BaseLayout>

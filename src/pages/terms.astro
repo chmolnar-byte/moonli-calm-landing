@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import AppProviders from "@/components/react/AppProviders";
 import TermsPage from "@/components/react/TermsPage";
 ---
 
@@ -9,7 +8,5 @@ import TermsPage from "@/components/react/TermsPage";
   description="Nutzungsbedingungen der Moonli Baby- und Eltern-App."
   canonical="https://moonli.net/terms"
 >
-  <AppProviders client:load>
-    <TermsPage />
-  </AppProviders>
+  <TermsPage client:load />
 </BaseLayout>
