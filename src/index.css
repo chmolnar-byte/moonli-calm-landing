@@ -360,6 +360,16 @@
     background: hsl(var(--muted) / 0.25);
   }
 
+  .blog-article-cover {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 0.875rem;
+    border: 1px solid hsl(var(--border));
+    background: hsl(var(--muted) / 0.25);
+  }
+
   .blog-hero-body {
     min-width: 0;
   }
