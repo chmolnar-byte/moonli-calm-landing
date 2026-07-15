@@ -1,0 +1,5 @@
+# Vor manuellem Workflow-Start nach content/data/ci-manual-task.yaml kopieren und anpassen.
+# Actions → "Blog Pipeline" → Run workflow
+task: generate-feature
+# feedback: "Kürzer formulieren, mehr Fokus auf Wachfenster"
+# article_slug: "2026-07-01-babyschlaf-routinen"

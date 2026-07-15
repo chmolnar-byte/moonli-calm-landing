@@ -1,15 +1,19 @@
-name: Blog veröffentlichen
+name: Blog Pipeline
 
-# Sonntag 21:00 CET – nur wenn mindestens ein News-Artikel freigegeben ist
+# Sonntag 21:00 CET: freigegebene News veröffentlichen
+# Mittwoch 08:00 CET: News-Entwurf generieren
+# Manuell: content/data/ci-manual-task.yaml auf content-drafts setzen, dann Run workflow
 on:
   push:
     branches: [main]
   schedule:
     - cron: "0 20 * * 0"
+    - cron: "0 7 * * 3"
   workflow_dispatch:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   skip-on-push:
@@ -19,21 +23,35 @@ jobs:
       - run: echo "Geplanter/manueller Workflow – bei Push übersprungen."
 
   publish:
-    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    if: github.event_name == 'schedule'
     runs-on: ubuntu-latest
     steps:
+      - name: Prüfen ob Veröffentlichungstag
+        id: day
+        run: |
+          if [ "$(date -u +%u)" = "7" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Heute kein Veröffentlichungstag – übersprungen."
+          fi
+
       - uses: actions/checkout@v4
+        if: steps.day.outputs.run == 'true'
         with:
           fetch-depth: 0
 
       - uses: actions/setup-node@v4
+        if: steps.day.outputs.run == 'true'
         with:
           node-version: 24
           cache: npm
 
       - run: npm ci
+        if: steps.day.outputs.run == 'true'
 
       - name: Freigabe prüfen
+        if: steps.day.outputs.run == 'true'
         id: check
         run: |
           git fetch origin main
@@ -59,7 +77,7 @@ jobs:
           fi
 
       - name: content-drafts in main mergen
-        if: steps.check.outputs.has_approved == 'true'
+        if: steps.day.outputs.run == 'true' && steps.check.outputs.has_approved == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -79,6 +97,7 @@ jobs:
           git push origin main
 
       - name: Hinweis
+        if: steps.day.outputs.run == 'true'
         run: |
           if [ "${{ steps.check.outputs.has_approved }}" = "true" ]; then
             echo "main wurde aktualisiert → Netlify baut einmal neu."
@@ -86,3 +105,87 @@ jobs:
           else
             echo "Deploy übersprungen – bitte News freigeben für nächsten Sonntag."
           fi
+
+  generate-news:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prüfen ob News-Generierungstag
+        id: day
+        run: |
+          if [ "$(date -u +%u)" = "3" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+            echo "Heute kein News-Generierungstag – übersprungen."
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.day.outputs.run == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.day.outputs.run == 'true'
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+        if: steps.day.outputs.run == 'true'
+
+      - name: OpenAI API-Key prüfen
+        if: steps.day.outputs.run == 'true'
+        run: npx tsx scripts/generate/verify-openai.ts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Draft-Branch auschecken
+        if: steps.day.outputs.run == 'true'
+        run: bash .github/scripts/checkout-content-drafts.sh
+
+      - name: GitHub-Labels anlegen
+        if: steps.day.outputs.run == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create "blog-review" --color "0E8A16" --description "News-Entwurf zur Prüfung" 2>/dev/null || true
+          gh label create "blog-deploy" --color "FBCA04" --description "Deploy-Vorschau Sonntag" 2>/dev/null || true
+
+      - name: News-Artikel generieren
+        if: steps.day.outputs.run == 'true'
+        id: generate
+        run: npx tsx scripts/generate/generate-news.ts
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
+      - name: Entwurf committen
+        if: steps.day.outputs.run == 'true'
+        run: bash .github/scripts/push-content-draft.sh "blog(draft): news $(date -u +%Y-%m-%d)"
+
+      - name: Review-Benachrichtigung (GitHub Issue)
+        if: steps.day.outputs.run == 'true'
+        run: npx tsx scripts/generate/notify-review.ts
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          ARTICLE_SLUG: ${{ steps.generate.outputs.article_slug }}
+
+  manual:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Draft-Branch auschecken
+        run: bash .github/scripts/checkout-content-drafts.sh
+
+      - name: Task aus ci-manual-task.yaml ausführen
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: npx tsx scripts/generate/run-manual-task.ts
