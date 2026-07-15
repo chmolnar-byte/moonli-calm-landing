@@ -5,47 +5,55 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      feedback:
+        description: "Dein Feedback an den Bot (z.B. kürzer, mehr Fokus Schlaf, Ton lockerer)"
+        required: true
+        type: string
+      article_slug:
+        description: "Optional: Dateiname ohne .md (leer = neuester Entwurf)"
+        required: false
+        type: string
 
 permissions:
   contents: write
   issues: write
 
 jobs:
-  revise:
+  skip-on-push:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - name: Bei Push überspringen
-        if: github.event_name == 'push'
-        run: echo "Manueller Workflow – bei Push übersprungen."
+      - run: echo "Manueller Workflow – bei Push übersprungen."
 
+  revise:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v4
-        if: github.event_name == 'workflow_dispatch'
 
       - uses: actions/setup-node@v4
-        if: github.event_name == 'workflow_dispatch'
         with:
           node-version: 24
           cache: npm
 
       - run: npm ci
-        if: github.event_name == 'workflow_dispatch'
 
       - name: Draft-Branch auschecken
-        if: github.event_name == 'workflow_dispatch'
         run: bash .github/scripts/checkout-content-drafts.sh
 
       - name: Artikel überarbeiten
-        if: github.event_name == 'workflow_dispatch'
         run: npx tsx scripts/generate/revise-news.ts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          FEEDBACK: ${{ github.event.inputs.feedback }}
+          ARTICLE_SLUG: ${{ github.event.inputs.article_slug }}
 
       - name: Änderungen speichern
-        if: github.event_name == 'workflow_dispatch'
         run: bash .github/scripts/push-content-draft.sh "blog(revise): news feedback"
 
       - name: Review-Benachrichtigung
-        if: github.event_name == 'workflow_dispatch'
         run: npx tsx scripts/generate/notify-review.ts
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          ARTICLE_SLUG: ${{ github.event.inputs.article_slug }}

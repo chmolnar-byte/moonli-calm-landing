@@ -1,5 +1,6 @@
 name: Generate Blog Feature
 
+# Manuell starten – Feature-Artikel auf content-drafts generieren
 on:
   push:
     branches: [main]
@@ -9,38 +10,28 @@ permissions:
   contents: write
 
 jobs:
-  generate:
+  skip-on-push:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - name: Bei Push überspringen
-        if: github.event_name == 'push'
-        run: echo "Manueller Workflow – bei Push übersprungen."
+      - run: echo "Manueller Workflow – bei Push übersprungen."
 
+  generate:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v4
-        if: github.event_name == 'workflow_dispatch'
-
       - uses: actions/setup-node@v4
-        if: github.event_name == 'workflow_dispatch'
         with:
           node-version: 24
           cache: npm
-
       - run: npm ci
-        if: github.event_name == 'workflow_dispatch'
-
       - name: OpenAI API-Key prüfen
-        if: github.event_name == 'workflow_dispatch'
         run: npx tsx scripts/generate/verify-openai.ts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-
       - run: bash .github/scripts/checkout-content-drafts.sh
-        if: github.event_name == 'workflow_dispatch'
-
       - run: npx tsx scripts/generate/generate-feature.ts
-        if: github.event_name == 'workflow_dispatch'
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-
       - run: bash .github/scripts/push-content-draft.sh "blog(draft): auto feature $(date -u +%Y-%m-%d)"
-        if: github.event_name == 'workflow_dispatch'

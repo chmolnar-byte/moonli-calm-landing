@@ -13,37 +13,34 @@ permissions:
   issues: write
 
 jobs:
-  generate:
+  skip-on-push:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - name: Bei Push überspringen
-        if: github.event_name == 'push'
-        run: echo "Geplanter/manueller Workflow – bei Push übersprungen."
+      - run: echo "Geplanter/manueller Workflow – bei Push übersprungen."
 
+  generate:
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v4
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
 
       - uses: actions/setup-node@v4
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
         with:
           node-version: 24
           cache: npm
 
       - run: npm ci
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
 
       - name: OpenAI API-Key prüfen
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
         run: npx tsx scripts/generate/verify-openai.ts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Draft-Branch auschecken
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
         run: bash .github/scripts/checkout-content-drafts.sh
 
       - name: GitHub-Labels anlegen
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -51,18 +48,15 @@ jobs:
           gh label create "blog-deploy" --color "FBCA04" --description "Deploy-Vorschau Sonntag" 2>/dev/null || true
 
       - name: News-Artikel generieren
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
         id: generate
         run: npx tsx scripts/generate/generate-news.ts
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
       - name: Entwurf committen
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
         run: bash .github/scripts/push-content-draft.sh "blog(draft): news $(date -u +%Y-%m-%d)"
 
       - name: Review-Benachrichtigung (GitHub Issue)
-        if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
         run: npx tsx scripts/generate/notify-review.ts
         env:
           GITHUB_TOKEN: ${{ github.token }}
