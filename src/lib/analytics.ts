@@ -1,6 +1,10 @@
 import { getStoredConsent } from "@/lib/cookieConsent";
 
-const MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+/** GA4 Measurement ID – PUBLIC_ (Astro) oder VITE_ (Legacy), sonst Fallback. */
+const MEASUREMENT_ID =
+  import.meta.env.PUBLIC_GA_MEASUREMENT_ID ||
+  import.meta.env.VITE_GA_MEASUREMENT_ID ||
+  "G-497RKXKY2W";
 
 function gtag(...args: unknown[]): void {
   if (typeof window.gtag === "function") {
@@ -9,7 +13,7 @@ function gtag(...args: unknown[]): void {
 }
 
 export function applyAnalyticsConsent(granted: boolean): void {
-  if (!MEASUREMENT_ID || !window.gtag) return;
+  if (!window.gtag) return;
 
   gtag("consent", "update", {
     analytics_storage: granted ? "granted" : "denied",
@@ -17,7 +21,7 @@ export function applyAnalyticsConsent(granted: boolean): void {
 }
 
 export function trackPageView(path: string): void {
-  if (!MEASUREMENT_ID || !getStoredConsent()?.analytics || !window.gtag) return;
+  if (!getStoredConsent()?.analytics || !window.gtag) return;
 
   gtag("event", "page_view", {
     page_path: path,
@@ -27,7 +31,7 @@ export function trackPageView(path: string): void {
 }
 
 export function initAnalyticsFromStoredConsent(): void {
-  if (!MEASUREMENT_ID || !window.gtag) return;
+  if (!window.gtag) return;
 
   gtag("config", MEASUREMENT_ID, {
     anonymize_ip: true,

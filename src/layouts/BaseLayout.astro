@@ -43,7 +43,10 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "G-497RKXKY2W";
     <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
     <script is:inline define:vars={{ gaId }}>
       gtag('js', new Date());
-      gtag('config', gaId);
+      gtag('config', gaId, {
+        anonymize_ip: true,
+        send_page_view: false
+      });
     </script>
 
     <meta charset="UTF-8" />
