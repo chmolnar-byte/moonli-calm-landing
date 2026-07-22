@@ -23,15 +23,17 @@ const {
 
 const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://moonli.net";
 const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site).href;
-const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "G-497RKXKY2W";
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-497RKXKY2W";
 ---
 
 <!doctype html>
 <html lang="de">
   <head>
-    <script is:inline>
+    <!-- Google tag (gtag.js) + Consent Mode v2 – Standardformat für GA-Tag-Erkennung -->
+    <script is:inline set:html={`
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
       gtag('consent', 'default', {
         'ad_storage': 'denied',
         'ad_user_data': 'denied',
@@ -39,15 +41,15 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "G-497RKXKY2W";
         'analytics_storage': 'denied',
         'wait_for_update': 500
       });
-    </script>
+    `} />
     <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-    <script is:inline define:vars={{ gaId }}>
+    <script is:inline set:html={`
       gtag('js', new Date());
-      gtag('config', gaId, {
+      gtag('config', '${gaId}', {
         anonymize_ip: true,
         send_page_view: false
       });
-    </script>
+    `} />
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
