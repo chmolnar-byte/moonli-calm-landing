@@ -1,2 +1,5 @@
 /images/*  /images/:splat  200
+/datenschutzerklärung  /privacy  301
+/impressum-%2F-kontakt  /imprint  301
+/impressum  /imprint  301
 /*         /index.html     200
