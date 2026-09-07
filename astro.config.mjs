@@ -3,18 +3,32 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
+import { SITE_ORIGIN, canonicalUrl, isIndexableUrl } from "./src/lib/seo";
 
 const githubPagesBase = "/moonli-calm-landing/";
 
 export default defineConfig({
-  site: "https://moonli.net",
+  site: SITE_ORIGIN,
   base: process.env.GITHUB_PAGES === "true" ? githubPagesBase : "/",
   integrations: [
     react(),
     tailwind({ applyBaseStyles: false }),
     sitemap({
-      filter: (page) =>
-        !page.includes("/blog/preview/") && !page.includes("/admin"),
+      filter: (page) => isIndexableUrl(page),
+      serialize(item) {
+        const url = canonicalUrl(item.url);
+        if (!isIndexableUrl(url)) return undefined;
+        item.url = url;
+        delete item.changefreq;
+        delete item.priority;
+        return item;
+      },
+      namespaces: {
+        news: false,
+        xhtml: false,
+        image: false,
+        video: false,
+      },
     }),
     mdx(),
   ],

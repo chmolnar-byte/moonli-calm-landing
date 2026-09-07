@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import CTAFooter from "@/components/CTAFooter";
 
 import AppProviders from "@/components/react/AppProviders";
+import PageShell from "@/components/react/PageShell";
 import { motionInitial } from "@/lib/motion";
 
 const PrivacyPage = () => {
@@ -11,8 +12,7 @@ const PrivacyPage = () => {
 
   return (
     <AppProviders>
-    <div className="night-sky min-h-screen bg-gradient-page overflow-x-hidden text-foreground flex flex-col">
-      <div className="night-sky-stars fixed inset-0 z-0 pointer-events-none" />
+    <PageShell className="flex flex-col">
       <Navbar />
 
       <main className="relative z-10 flex-1 px-4 py-28 md:py-32">
@@ -67,6 +67,7 @@ const PrivacyPage = () => {
                 <div>
                   <p className="font-semibold text-foreground">{t("privacy.data.b.title")}</p>
                   <p>{t("privacy.data.b.text")}</p>
+                  <p className="mt-1">{t("privacy.data.b.note")}</p>
                 </div>
                 <div>
                   <p className="font-semibold text-foreground">{t("privacy.data.c.title")}</p>
@@ -85,6 +86,14 @@ const PrivacyPage = () => {
                   <p className="font-semibold text-foreground">{t("privacy.data.f.title")}</p>
                   <p>{t("privacy.data.f.text")}</p>
                 </div>
+                <div>
+                  <p className="font-semibold text-foreground">{t("privacy.data.g.title")}</p>
+                  <p>{t("privacy.data.g.text")}</p>
+                </div>
+                <div>
+                  <p className="font-semibold text-foreground">{t("privacy.data.h.title")}</p>
+                  <p>{t("privacy.data.h.text")}</p>
+                </div>
               </div>
             </section>
 
@@ -101,10 +110,37 @@ const PrivacyPage = () => {
                 <li>{t("privacy.purpose.li4")}</li>
                 <li>{t("privacy.purpose.li5")}</li>
                 <li>{t("privacy.purpose.li6")}</li>
+                <li>{t("privacy.purpose.li7")}</li>
+                <li>{t("privacy.purpose.li8")}</li>
+                <li>{t("privacy.purpose.li9")}</li>
               </ul>
             </section>
 
-            {/* 5. 3 a.m. Club / NightGlobe (optional) */}
+            {/* 5. Server-Speicherung & Parent-Sync */}
+            <section>
+              <h2 className="font-semibold text-foreground mb-1">
+                {t("privacy.sync.title")}
+              </h2>
+              <p className="mb-2">{t("privacy.sync.text1")}</p>
+              <p className="mb-2">{t("privacy.sync.text2")}</p>
+              <p className="mb-2">{t("privacy.sync.text3")}</p>
+              <p className="mb-2">{t("privacy.sync.text4")}</p>
+              <p className="mb-2 border-l-2 border-border pl-3 text-foreground/90">
+                {t("privacy.sync.consentQuote")}
+              </p>
+              <p>{t("privacy.sync.text5")}</p>
+            </section>
+
+            {/* 6. Nachrichten vom Moonli Team */}
+            <section>
+              <h2 className="font-semibold text-foreground mb-1">
+                {t("privacy.messages.title")}
+              </h2>
+              <p className="mb-2">{t("privacy.messages.text1")}</p>
+              <p>{t("privacy.messages.text2")}</p>
+            </section>
+
+            {/* 7. 3 a.m. Club / NightGlobe (optional) */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.nightglobe.title")}
@@ -113,7 +149,7 @@ const PrivacyPage = () => {
               <p>{t("privacy.nightglobe.text2")}</p>
             </section>
 
-            {/* 6. Dienstleister (Auftragsverarbeiter) */}
+            {/* 8. Dienstleister (Auftragsverarbeiter) */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.processors.title")}
@@ -125,12 +161,14 @@ const PrivacyPage = () => {
                 <li>{t("privacy.processors.netlify")}</li>
                 <li>{t("privacy.processors.revenuecat")}</li>
                 <li>{t("privacy.processors.googlePlay")}</li>
+                <li>{t("privacy.processors.admob")}</li>
+                <li>{t("privacy.processors.push")}</li>
                 <li>{t("privacy.processors.emailProvider")}</li>
               </ul>
               <p>{t("privacy.processors.transfers")}</p>
             </section>
 
-            {/* 7. Rechtsgrundlagen */}
+            {/* 9. Rechtsgrundlagen */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.legal.title")}
@@ -141,19 +179,26 @@ const PrivacyPage = () => {
                 <li>{t("privacy.legal.li2")}</li>
                 <li>{t("privacy.legal.li3")}</li>
                 <li>{t("privacy.legal.li4")}</li>
+                <li>{t("privacy.legal.li5")}</li>
               </ul>
             </section>
 
-            {/* 8. Speicherdauer & Sicherheit */}
+            {/* 10. Speicherdauer & Sicherheit */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.retention.title")}
               </h2>
               <p className="mb-2">{t("privacy.retention.text1")}</p>
+              <p className="mb-2">
+                {t("privacy.retention.text3")}{" "}
+                <a href="/data-deletion" className="text-primary underline underline-offset-2 hover:text-foreground">
+                  {t("privacy.retention.deletionLink")}
+                </a>
+              </p>
               <p>{t("privacy.retention.text2")}</p>
             </section>
 
-            {/* 9. Internationale Datenübermittlungen */}
+            {/* 11. Internationale Datenübermittlungen */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.transfers.title")}
@@ -161,7 +206,7 @@ const PrivacyPage = () => {
               <p>{t("privacy.transfers.text1")}</p>
             </section>
 
-            {/* 10. Deine Rechte */}
+            {/* 12. Deine Rechte */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.rights.title")}
@@ -176,7 +221,7 @@ const PrivacyPage = () => {
               </ul>
             </section>
 
-            {/* 11. Änderungen der Datenschutzerklärung */}
+            {/* 13. Änderungen der Datenschutzerklärung */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.changes.title")}
@@ -188,7 +233,7 @@ const PrivacyPage = () => {
       </main>
 
       <CTAFooter />
-    </div>
+    </PageShell>
     </AppProviders>
   );
 };

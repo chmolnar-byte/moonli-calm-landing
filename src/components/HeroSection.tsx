@@ -1,20 +1,37 @@
-import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
-import { Apple, Play } from "lucide-react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useMotionTemplate,
+  AnimatePresence,
+  useReducedMotion,
+  useScroll,
+  type MotionValue,
+} from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { type MouseEvent, useState } from "react";
-import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
+import { type MouseEvent, useRef, useState } from "react";
 import ImageLightbox from "@/components/ImageLightbox";
-import dashboardWeekly from "@/assets/Startseite1.webp";
-import dashboardDark from "@/assets/Startseite3.webp";
-import dashboardGrowth from "@/assets/Startseite2.webp";
+import MagneticCta from "@/components/MagneticCta";
+import LeafAccent from "@/components/LeafAccent";
+import dashboardWeekly from "@/assets/hero-wochenbericht.png";
+import dashboardGrowth from "@/assets/hero-entwicklung.png";
+import dashboardHome from "@/assets/hero-sleep.png";
 import { assetUrl } from "@/lib/assetUrl";
-import { motionInitial } from "@/lib/motion";
+import { easeOut, motionInitial, scrollSpring } from "@/lib/motion";
 
 const dashboardWeeklyUrl = assetUrl(dashboardWeekly);
-const dashboardDarkUrl = assetUrl(dashboardDark);
 const dashboardGrowthUrl = assetUrl(dashboardGrowth);
+const dashboardHomeUrl = assetUrl(dashboardHome);
 
-const PhoneMockup = () => {
+const PHONE_W = 447;
+const PHONE_H = 921;
+
+const as2d = ({ x, y }: { x?: string; y?: string }) =>
+  `translate(${x ?? 0}, ${y ?? 0})`;
+
+const PhoneMockup = ({ progress }: { progress: MotionValue<number> }) => {
+  const reduceMotion = useReducedMotion();
   const [activeImage, setActiveImage] = useState<{
     src: string;
     alt: string;
@@ -23,8 +40,6 @@ const PhoneMockup = () => {
   const cursorY = useMotionValue(0);
   const springX = useSpring(cursorX, { stiffness: 120, damping: 22 });
   const springY = useSpring(cursorY, { stiffness: 120, damping: 22 });
-  const rotateY = useTransform(springX, [-18, 18], [-3.5, 3.5]);
-  const rotateX = useTransform(springY, [-18, 18], [3.5, -3.5]);
   const groupX = useTransform(springX, [-18, 18], [-5, 5]);
   const groupY = useTransform(springY, [-18, 18], [-4, 4]);
   const backLeftX = useTransform(springX, [-18, 18], [-7, 7]);
@@ -33,7 +48,14 @@ const PhoneMockup = () => {
   const backRightY = useTransform(springY, [-18, 18], [4, -4]);
   const frontLift = useTransform(springY, [-18, 18], [4, -4]);
 
+  const leftSpread = useTransform(progress, (p) => Math.round(p * -12));
+  const rightSpread = useTransform(progress, (p) => Math.round(p * 12));
+  const clusterY = useTransform(progress, (p) => Math.round(p * 72));
+  const clusterOpacity = useTransform(progress, [0, 0.72, 1], [1, 1, 0.62]);
+  const clusterTransform = useMotionTemplate`translate(0, ${clusterY}px)`;
+
   const handlePointerMove = (event: MouseEvent<HTMLDivElement>) => {
+    if (reduceMotion) return;
     const rect = event.currentTarget.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
@@ -52,38 +74,32 @@ const PhoneMockup = () => {
   return (
     <motion.div
       initial={motionInitial}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.85, delay: 0.2, ease: "easeOut" }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.85, delay: 0.2, ease: easeOut }}
       onMouseMove={handlePointerMove}
       onMouseLeave={resetPointer}
-      className="relative mx-auto w-full max-w-[360px] sm:max-w-[540px]"
-      style={{ perspective: "1400px" }}
+      className="relative mx-auto w-full max-w-[380px] sm:max-w-[580px] overflow-visible"
     >
+      <motion.div
+        className="relative"
+        style={reduceMotion ? undefined : { transform: clusterTransform, opacity: clusterOpacity }}
+      >
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="h-[86%] w-[86%] rounded-full bg-pastel-green/30 blur-[95px]" />
-      </div>
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="h-[62%] w-[62%] rounded-full bg-pastel-blue/22 blur-[90px] translate-y-12" />
+        <div className="h-[48%] w-[48%] rounded-full bg-primary/8 blur-[70px] translate-y-6" />
       </div>
 
       <motion.div
-        className="relative mx-auto w-full min-h-[420px] sm:min-h-[520px] py-4"
-        style={{
-          rotateX,
-          rotateY,
-          x: groupX,
-          y: groupY,
-          transformStyle: "preserve-3d",
-        }}
+        className="relative mx-auto w-full min-h-[300px] sm:min-h-[min(460px,46dvh)] px-9 py-4 sm:px-12"
+        style={{ x: groupX, y: groupY }}
+        transformTemplate={as2d}
       >
-        <div className="relative flex items-end justify-center w-full max-w-[520px] mx-auto min-h-[380px] sm:min-h-[480px]">
-          {/* Hinten links */}
+        <div className="relative flex items-end justify-center w-full max-w-[520px] mx-auto min-h-[280px] sm:min-h-[min(420px,42dvh)]">
           <motion.div
-            className="absolute left-0 sm:left-[2%] bottom-[8%] z-[1] w-[34%] sm:w-[32%]"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5.4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute left-0 bottom-[8%] z-[1] w-[34%] sm:w-[32%]"
+            style={reduceMotion ? undefined : { x: leftSpread }}
+            transformTemplate={as2d}
           >
-            <motion.div style={{ x: backLeftX, y: backLeftY }}>
+            <motion.div style={{ x: backLeftX, y: backLeftY }} transformTemplate={as2d}>
             <motion.button
               type="button"
               onClick={() =>
@@ -92,79 +108,77 @@ const PhoneMockup = () => {
                   alt: "Wochenbericht der Moonli App",
                 })
               }
-              whileHover={{ scale: 1.03, y: -4 }}
-              className="block w-full cursor-zoom-in -rotate-[6deg] opacity-90 transition-transform duration-300 drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
+              className="block w-full cursor-zoom-in -rotate-[6deg]"
               aria-label="Wochenbericht vergrößern"
             >
               <img
                 src={dashboardWeeklyUrl}
                 alt="Wochenbericht der Moonli App"
-                className="block w-full h-auto select-none pointer-events-none"
-                loading="lazy"
+                width={PHONE_W}
+                height={PHONE_H}
+                className="shot-crisp block w-full h-auto select-none pointer-events-none"
+                loading="eager"
+                decoding="async"
                 draggable={false}
               />
             </motion.button>
             </motion.div>
           </motion.div>
 
-          {/* Hinten rechts */}
           <motion.div
-            className="absolute right-0 sm:right-[2%] bottom-[8%] z-[2] w-[34%] sm:w-[32%]"
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+            className="absolute right-0 bottom-[8%] z-[2] w-[34%] sm:w-[32%]"
+            style={reduceMotion ? undefined : { x: rightSpread }}
+            transformTemplate={as2d}
           >
-            <motion.div style={{ x: backRightX, y: backRightY }}>
+            <motion.div style={{ x: backRightX, y: backRightY }} transformTemplate={as2d}>
             <motion.button
               type="button"
               onClick={() =>
                 setActiveImage({
-                  src: dashboardDarkUrl,
-                  alt: "Wachstumsverlauf der Moonli App",
+                  src: dashboardGrowthUrl,
+                  alt: "Entwicklung und Phasen in der Moonli App",
                 })
               }
-              whileHover={{ scale: 1.03, y: -4 }}
-              className="block w-full cursor-zoom-in rotate-[6deg] opacity-90 transition-transform duration-300 drop-shadow-[0_20px_50px_rgba(0,0,0,0.4)]"
-              aria-label="Wachstumsverlauf vergrößern"
+              className="block w-full cursor-zoom-in rotate-[6deg]"
+              aria-label="Entwicklung vergrößern"
             >
               <img
-                src={dashboardDarkUrl}
-                alt="Wachstumsverlauf der Moonli App"
-                className="block w-full h-auto select-none pointer-events-none"
-                loading="lazy"
+                src={dashboardGrowthUrl}
+                alt="Entwicklung und Phasen in der Moonli App"
+                width={PHONE_W}
+                height={PHONE_H}
+                className="shot-crisp block w-full h-auto select-none pointer-events-none"
+                loading="eager"
+                decoding="async"
                 draggable={false}
               />
             </motion.button>
             </motion.div>
           </motion.div>
 
-          {/* Vorne — Mitte */}
-          <motion.div
-            className="relative z-20 w-[52%] sm:w-[48%] mx-auto"
-            animate={{ y: [0, -6, 0] }}
-            transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <motion.div style={{ y: frontLift }}>
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 400, damping: 28 }}
-              className="relative drop-shadow-[0_34px_85px_rgba(0,0,0,0.45)]"
-            >
+          <motion.div className="relative z-20 w-[60%] sm:w-[56%] mx-auto">
+            <motion.div style={{ y: frontLift }} transformTemplate={as2d}>
+            <motion.div className="relative">
               <button
                 type="button"
                 onClick={() =>
                   setActiveImage({
-                    src: dashboardGrowthUrl,
-                    alt: "Moonli Elternbereich – Home",
+                    src: dashboardHomeUrl,
+                    alt: "Moonli Smart Sleep",
                   })
                 }
                 className="relative block w-full cursor-zoom-in"
-                aria-label="Elternbereich vergrößern"
+                aria-label="Moonli Smart Sleep vergrößern"
               >
                 <img
-                  src={dashboardGrowthUrl}
-                  alt="Moonli Elternbereich – Home"
-                  className="block w-full h-auto select-none pointer-events-none"
+                  src={dashboardHomeUrl}
+                  alt="Moonli Smart Sleep"
+                  width={PHONE_W}
+                  height={PHONE_H}
+                  className="shot-crisp block w-full h-auto select-none pointer-events-none"
                   loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
                   draggable={false}
                 />
               </button>
@@ -172,6 +186,7 @@ const PhoneMockup = () => {
             </motion.div>
           </motion.div>
         </div>
+      </motion.div>
       </motion.div>
 
       <AnimatePresence>
@@ -189,79 +204,71 @@ const PhoneMockup = () => {
 };
 
 const HeroSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const reduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const progress = useSpring(scrollYProgress, scrollSpring);
+  const glowOpacity = useTransform(progress, [0, 0.7], [1, 0]);
 
   return (
-    <section className="relative min-h-[94vh] flex items-center pt-44 md:pt-36 pb-16 overflow-x-hidden">
-      {/* Ambient background glows */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-pastel-green/30 blur-[100px]" style={{ animation: 'pulseGlow 8s ease-in-out infinite' }} />
-        <div className="absolute -bottom-40 -left-40 w-[600px] h-[600px] rounded-full bg-pastel-peach/30 blur-[100px]" style={{ animation: 'pulseGlow 10s ease-in-out infinite 2s' }} />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-pastel-blue/25 blur-[100px]" style={{ animation: 'pulseGlow 12s ease-in-out infinite 4s' }} />
-      </div>
-
-      {/* Stars + shooting star */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Funkelnde Sterne */}
-        <div className="hero-star" style={{ top: '12%', left: '8%',  animationDelay: '0s',   width: 2, height: 2 }} />
-        <div className="hero-star" style={{ top: '22%', left: '32%', animationDelay: '1.2s', width: 1.5, height: 1.5 }} />
-        <div className="hero-star" style={{ top: '8%',  left: '55%', animationDelay: '2.4s', width: 2.5, height: 2.5 }} />
-        <div className="hero-star" style={{ top: '18%', right: '12%',animationDelay: '0.6s', width: 2, height: 2 }} />
-        <div className="hero-star" style={{ top: '35%', right: '28%',animationDelay: '3.1s', width: 1.5, height: 1.5 }} />
-        <div className="hero-star" style={{ top: '5%',  right: '40%',animationDelay: '1.8s', width: 2, height: 2 }} />
-        <div className="hero-star" style={{ top: '45%', left: '14%', animationDelay: '4.0s', width: 1.5, height: 1.5 }} />
-        <div className="hero-star" style={{ top: '55%', right: '8%', animationDelay: '2.7s', width: 2, height: 2 }} />
-        <div className="hero-star" style={{ top: '28%', left: '72%', animationDelay: '0.3s', width: 1, height: 1 }} />
-        <div className="hero-star" style={{ top: '62%', left: '42%', animationDelay: '5.2s', width: 1.5, height: 1.5 }} />
-      </div>
+    <section
+      ref={sectionRef}
+      className="relative flex flex-1 flex-col justify-center pt-20 md:pt-24 pb-3 overflow-visible"
+    >
+      <motion.div
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        style={reduceMotion ? undefined : { opacity: glowOpacity }}
+      >
+        <div className="absolute -top-40 -right-40 w-[560px] h-[560px] rounded-full bg-primary/15 blur-[100px]" />
+        <div className="absolute -bottom-40 -left-40 w-[420px] h-[420px] rounded-full bg-pastel-peach/25 blur-[100px]" />
+      </motion.div>
+      <LeafAccent
+        src="/leaves/hanging.png"
+        className="page-leaf page-leaf-fade-top -left-12 top-8 z-0 hidden w-[200px] sm:block sm:w-[240px]"
+      />
 
       <div className="container relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Text */}
+        <div className="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-10 lg:gap-14 items-center">
           <motion.div
             initial={motionInitial}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-            className="text-center lg:text-left max-w-2xl"
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.55, ease: easeOut }}
+            className="text-left max-w-xl"
           >
-            <span className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white/95 border border-white/20 bg-white/10 backdrop-blur-md shadow-soft mb-5">
-              Smart Parenting App
-            </span>
-
-            <h1 className="text-display-lg mb-7">
-              <span className="text-foreground">{t("hero.headline1")}</span>{" "}
-              <span className="text-gradient-animated">{t("hero.headline2")}</span>
+            <h1 className="text-display-lg mb-3 text-foreground">
+              {t("hero.headline1")}
+              <br />
+              {t("hero.headline2")}
+              <br />
+              {t("hero.headline3")}
             </h1>
 
-            <p className="text-body-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 mb-9 leading-relaxed">
-              {t("hero.subheadline")}
+            <p className="mb-8 text-lg font-semibold leading-snug text-foreground sm:text-xl">
+              {t("hero.tagline")}
             </p>
 
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
-              <a
-                href={APP_STORE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-white text-slate-900 font-bold hover:opacity-95 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
-              >
-                <Apple className="w-5 h-5" />
-                {t("nav.appStore")}
-              </a>
-              <a
-                href={GOOGLE_PLAY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full bg-primary text-white font-bold hover:opacity-90 transition-all shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] duration-200 w-full sm:w-auto"
-              >
-                <Play className="w-5 h-5 text-white" />
-                Google Play
-              </a>
+            {language !== "de" && (
+              <p className="mb-6 max-w-[42ch] text-sm leading-relaxed text-muted-foreground">
+                {t("lang.mediaNote")}
+              </p>
+            )}
+
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+              <MagneticCta href="/#download" variant="primary">
+                {t("hero.ctaDownload")}
+              </MagneticCta>
+              <MagneticCta href="/#funktionen" variant="ghost">
+                {t("hero.ctaFeatures")}
+              </MagneticCta>
             </div>
           </motion.div>
 
-          {/* Phone Mockup */}
-          <div className="relative z-10 flex justify-center lg:justify-end overflow-visible py-6 sm:py-8">
-            <PhoneMockup />
+          <div className="relative z-10 w-full max-w-[380px] sm:max-w-[580px] lg:ml-auto overflow-visible">
+            <PhoneMockup progress={progress} />
           </div>
         </div>
       </div>

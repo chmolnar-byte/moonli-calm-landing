@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import CookiePolicyPage from "@/components/react/CookiePolicyPage";
+import { canonicalUrl } from "@/lib/seo";
 ---
 
 <BaseLayout
   title="Cookie-Richtlinie | Moonli"
   description="Informationen zur Cookie-Nutzung auf moonli.net."
-  canonical="https://moonli.net/cookies"
+  canonical={canonicalUrl("/cookies")}
 >
   <CookiePolicyPage client:load />
 </BaseLayout>

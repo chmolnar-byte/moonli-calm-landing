@@ -1,12 +1,14 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import EmailConfirmedPage from "@/components/react/EmailConfirmedPage";
+import { canonicalUrl } from "@/lib/seo";
 ---
 
 <BaseLayout
   title="E-Mail bestätigt | Moonli"
   description="Deine E-Mail-Adresse wurde erfolgreich bestätigt."
-  canonical="https://moonli.net/email-confirmed"
+  canonical={canonicalUrl("/email-confirmed")}
+  noindex={true}
 >
   <EmailConfirmedPage client:load />
 </BaseLayout>

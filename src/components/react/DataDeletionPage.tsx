@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import CTAFooter from "@/components/CTAFooter";
 import AppProviders from "@/components/react/AppProviders";
+import PageShell from "@/components/react/PageShell";
 import { motionInitial } from "@/lib/motion";
 
 const DataDeletionPage = () => {
@@ -10,8 +11,7 @@ const DataDeletionPage = () => {
 
   return (
     <AppProviders>
-      <div className="night-sky min-h-screen bg-gradient-page overflow-x-hidden text-foreground flex flex-col">
-        <div className="night-sky-stars fixed inset-0 z-0 pointer-events-none" />
+      <PageShell className="flex flex-col">
         <Navbar />
 
         <main className="relative z-10 flex-1 px-4 py-28 md:py-32">
@@ -27,6 +27,10 @@ const DataDeletionPage = () => {
 
             <p className="text-sm sm:text-base text-muted-foreground mb-4">
               {t("dataDeletion.intro")}
+            </p>
+
+            <p className="text-sm sm:text-base text-muted-foreground mb-4">
+              {t("dataDeletion.inApp")}
             </p>
 
             <p className="text-sm sm:text-base text-muted-foreground mb-3">
@@ -46,7 +50,7 @@ const DataDeletionPage = () => {
         </main>
 
         <CTAFooter />
-      </div>
+      </PageShell>
     </AppProviders>
   );
 };

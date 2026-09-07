@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import TermsPage from "@/components/react/TermsPage";
+import { canonicalUrl } from "@/lib/seo";
 ---
 
 <BaseLayout
   title="Nutzungsbedingungen | Moonli"
   description="Nutzungsbedingungen der Moonli Baby- und Eltern-App."
-  canonical="https://moonli.net/terms"
+  canonical={canonicalUrl("/terms")}
 >
   <TermsPage client:load />
 </BaseLayout>

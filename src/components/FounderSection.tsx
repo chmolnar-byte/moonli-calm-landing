@@ -1,30 +1,27 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { motionInitial } from "@/lib/motion";
+import LeafAccent from "@/components/LeafAccent";
+import { easeOut, motionInitial } from "@/lib/motion";
 
 const FounderSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-10 sm:py-12 relative">
-      <div className="container">
+    <section className="relative py-20 md:py-24">
+      <LeafAccent
+        src="/leaves/frond.png"
+        className="page-leaf page-leaf-fade-bl bottom-0 left-0 z-0 w-[240px] sm:w-[300px]"
+      />
+      <div className="container relative z-10">
         <motion.div
           initial={motionInitial}
-          whileInView={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.45 }}
-          className="mx-auto max-w-6xl rounded-[1.75rem] border border-white/20 bg-white/8 backdrop-blur-xl p-7 sm:p-9 shadow-soft-2xl relative overflow-hidden"
+          transition={{ duration: 0.45, ease: easeOut }}
+          className="max-w-3xl"
         >
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute -top-20 right-10 w-56 h-56 rounded-full bg-primary/15 blur-3xl" />
-            <div className="absolute -bottom-24 left-8 w-52 h-52 rounded-full bg-pastel-blue/15 blur-3xl" />
-          </div>
-
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-primary/30 bg-primary/15 text-primary text-xs font-semibold mb-4 relative z-10">
-            Founder Story
-          </span>
-          <h3 className="text-2xl sm:text-3xl font-extrabold mb-4 text-white relative z-10">{t("pricing.about.title")}</h3>
-          <p className="text-base sm:text-lg text-white/85 leading-relaxed relative z-10 max-w-5xl">
+          <h2 className="text-display-md text-foreground mb-5">{t("pricing.about.title")}</h2>
+          <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
             {t("pricing.about.text")}
           </p>
         </motion.div>

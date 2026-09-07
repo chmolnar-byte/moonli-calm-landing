@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import PrivacyPage from "@/components/react/PrivacyPage";
+import { canonicalUrl } from "@/lib/seo";
 ---
 
 <BaseLayout
   title="Datenschutz | Moonli"
-  description="Datenschutzerklärung der Moonli Baby- und Eltern-App."
-  canonical="https://moonli.net/privacy"
+  description="Datenschutzerklärung von Moonli 2.0: Server-Speicherung der Tracking-Daten für Parent-Sync, Nachrichten vom Moonli Team, keine Weitergabe zum Datenverkauf."
+  canonical={canonicalUrl("/privacy")}
 >
   <PrivacyPage client:load />
 </BaseLayout>

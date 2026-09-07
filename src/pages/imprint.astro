@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ImprintPage from "@/components/react/ImprintPage";
+import { canonicalUrl } from "@/lib/seo";
 ---
 
 <BaseLayout
   title="Impressum | Moonli"
   description="Impressum und Kontaktinformationen zu Moonli."
-  canonical="https://moonli.net/imprint"
+  canonical={canonicalUrl("/imprint")}
 >
   <ImprintPage client:load />
 </BaseLayout>

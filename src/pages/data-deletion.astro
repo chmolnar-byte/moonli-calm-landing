@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import DataDeletionPage from "@/components/react/DataDeletionPage";
+import { canonicalUrl } from "@/lib/seo";
 ---
 
 <BaseLayout
   title="Datenlöschung | Moonli"
   description="Anleitung zur Datenlöschung in der Moonli App."
-  canonical="https://moonli.net/data-deletion"
+  canonical={canonicalUrl("/data-deletion")}
 >
   <DataDeletionPage client:load />
 </BaseLayout>

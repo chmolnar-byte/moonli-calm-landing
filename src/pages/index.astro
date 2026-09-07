@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import LandingPage from "@/components/react/LandingPage";
+import { SITE_ORIGIN, canonicalUrl } from "@/lib/seo";
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -10,9 +11,9 @@ const jsonLd = {
   applicationCategory: "HealthApplication",
   operatingSystem: "iOS, Android",
   description:
-    "Moonli ist eine Baby- und Eltern-App für Schlaftracking, Stillen, Fläschchen, Windeln, Wachfenster, Schlafprognosen und mentale Entlastung im Familienalltag.",
-  url: "https://moonli.net/",
-  image: "https://moonli.net/og-image.png",
+    "Moonli 2.0: Baby-App mit Parent-Sync, eigenem Tracking in Echtzeit, Info-Hub, Quick-Buttons, Geschichten, Spielen und gemeinsamer Care-Arbeit.",
+  url: `${SITE_ORIGIN}/`,
+  image: `${SITE_ORIGIN}/og-image.png`,
   author: { "@type": "Person", name: "Christian Molnar" },
   offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
   downloadUrl: [
@@ -22,6 +23,6 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout jsonLd={jsonLd}>
+<BaseLayout canonical={canonicalUrl("/")} jsonLd={jsonLd}>
   <LandingPage client:load />
 </BaseLayout>

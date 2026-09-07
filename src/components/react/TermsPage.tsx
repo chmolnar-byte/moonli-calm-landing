@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import CTAFooter from "@/components/CTAFooter";
 
 import AppProviders from "@/components/react/AppProviders";
+import PageShell from "@/components/react/PageShell";
 import { motionInitial } from "@/lib/motion";
 
 const TermsPage = () => {
@@ -11,8 +12,7 @@ const TermsPage = () => {
 
   return (
     <AppProviders>
-    <div className="night-sky min-h-screen bg-gradient-page overflow-x-hidden text-foreground flex flex-col">
-      <div className="night-sky-stars fixed inset-0 z-0 pointer-events-none" />
+    <PageShell className="flex flex-col">
       <Navbar />
 
       <main className="relative z-10 flex-1 px-4 py-28 md:py-32">
@@ -69,7 +69,8 @@ const TermsPage = () => {
               <h2 className="font-semibold text-foreground mb-1">
                 {t("terms.section5.title")}
               </h2>
-              <p>{t("terms.section5.text")}</p>
+              <p className="mb-2">{t("terms.section5.text")}</p>
+              <p>{t("terms.section5.graphics")}</p>
             </section>
 
             <section>
@@ -155,7 +156,7 @@ const TermsPage = () => {
       </main>
 
       <CTAFooter />
-    </div>
+    </PageShell>
     </AppProviders>
   );
 };

@@ -1,7 +1,0 @@
-User-agent: *
-Allow: /
-
-Disallow: /blog/preview/
-Disallow: /admin/
-
-Sitemap: https://moonli.net/sitemap-index.xml

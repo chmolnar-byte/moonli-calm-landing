@@ -1,17 +1,25 @@
 import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 import translations, { type Language } from "./translations";
 
+const LANGUAGES: Language[] = ["de", "en", "es", "fr", "ru"];
+
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
+  needsLanguageChoice: boolean;
+  confirmLanguageChoice: (lang: Language) => void;
   t: (key: string) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 const STORAGE_KEY = "moonli_lang_v1";
+const CHOICE_KEY = "moonli_lang_choice_v1";
 
-const detectBrowserLanguage = (): Language => {
+const isLanguage = (value: string | null): value is Language =>
+  !!value && LANGUAGES.includes(value as Language);
+
+export const detectBrowserLanguage = (): Language => {
   if (typeof window === "undefined") return "de";
   const navLang =
     (navigator.languages && navigator.languages[0]) ||
@@ -25,13 +33,20 @@ const detectBrowserLanguage = (): Language => {
   return "en";
 };
 
+const readHasLanguageChoice = (): boolean => {
+  if (typeof window === "undefined") return true;
+  try {
+    return window.localStorage.getItem(CHOICE_KEY) === "1";
+  } catch {
+    return true;
+  }
+};
+
 const readStoredLanguage = (): Language => {
   if (typeof window === "undefined") return "de";
   try {
-    const stored = window.localStorage.getItem(STORAGE_KEY) as Language | null;
-    if (stored && ["de", "en", "es", "fr", "ru"].includes(stored)) {
-      return stored;
-    }
+    const stored = window.localStorage.getItem(STORAGE_KEY);
+    if (isLanguage(stored)) return stored;
   } catch {
     // ignore
   }
@@ -44,11 +59,18 @@ const createTranslator = (language: Language) => (key: string) =>
 const defaultContext: LanguageContextType = {
   language: "de",
   setLanguage: () => {},
+  needsLanguageChoice: false,
+  confirmLanguageChoice: () => {},
   t: createTranslator("de"),
 };
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>(readStoredLanguage);
+  const [language, setLanguageState] = useState<Language>(readStoredLanguage);
+  const [needsLanguageChoice, setNeedsLanguageChoice] = useState(false);
+
+  useEffect(() => {
+    setNeedsLanguageChoice(!readHasLanguageChoice());
+  }, []);
 
   useEffect(() => {
     try {
@@ -58,10 +80,37 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [language]);
 
+  const markChoice = useCallback(() => {
+    try {
+      window.localStorage.setItem(CHOICE_KEY, "1");
+    } catch {
+      // ignore
+    }
+    setNeedsLanguageChoice(false);
+  }, []);
+
+  const setLanguage = useCallback(
+    (lang: Language) => {
+      setLanguageState(lang);
+      markChoice();
+    },
+    [markChoice],
+  );
+
+  const confirmLanguageChoice = useCallback(
+    (lang: Language) => {
+      setLanguageState(lang);
+      markChoice();
+    },
+    [markChoice],
+  );
+
   const t = useCallback((key: string) => createTranslator(language)(key), [language]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider
+      value={{ language, setLanguage, needsLanguageChoice, confirmLanguageChoice, t }}
+    >
       {children}
     </LanguageContext.Provider>
   );

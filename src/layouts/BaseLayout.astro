@@ -1,5 +1,6 @@
 ---
 import "@/index.css";
+import { SITE_ORIGIN, canonicalUrl as toCanonical } from "@/lib/seo";
 
 interface Props {
   title?: string;
@@ -12,17 +13,16 @@ interface Props {
 }
 
 const {
-  title = "Moonli – Baby Tracking, Schlafprognose und Elternbegleitung",
-  description = "Moonli ist die Baby-App für Schlaftracking, Stillen, Fläschchen, Windeln, Wachfenster, Schlafprognosen und mentale Entlastung im Familienalltag.",
+  title = "Moonli. Die Baby-/Elternapp für deinen Alltag.",
+  description = "Moonli 2.0: Neues Design, Parent-Sync in Echtzeit, eigene Quick-Buttons, Info-Hub, mehr Geschichten und Spiele – und Care-Arbeit gemeinsam teilen.",
   canonical,
-  ogImage = "https://moonli.net/og-image.png",
+  ogImage = `${SITE_ORIGIN}/og-image.png`,
   ogType = "website",
   noindex = false,
   jsonLd,
 } = Astro.props;
 
-const site = Astro.site?.toString().replace(/\/$/, "") ?? "https://moonli.net";
-const canonicalUrl = canonical ?? new URL(Astro.url.pathname, site).href;
+const canonicalUrl = toCanonical(canonical ?? Astro.url.pathname);
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-497RKXKY2W";
 ---
 
@@ -51,16 +51,25 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-497RKXKY2W";
       });
     `} />
 
+    <script is:inline>
+      (function () {
+        try {
+          var theme = localStorage.getItem("moonli_theme_v1");
+          if (theme === "dark") document.documentElement.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="author" content="Christian Molnar" />
-    <meta name="theme-color" content="#182331" />
+    <meta name="theme-color" content="#EFE4D4" />
     <meta name="application-name" content="Moonli" />
     <meta name="apple-itunes-app" content="app-id=6762447948" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="sitemap" type="application/xml" href={`${SITE_ORIGIN}/sitemap-index.xml`} />
     <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.png`} type="image/png" />
     <link rel="apple-touch-icon" href={`${import.meta.env.BASE_URL}apple-touch-icon.png`} />
 

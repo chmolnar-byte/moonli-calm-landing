@@ -4,11 +4,15 @@ import { applyAnalyticsConsent, trackPageView } from "@/lib/analytics";
 import { getStoredConsent, saveConsent } from "@/lib/cookieConsent";
 
 const CookieBanner = () => {
-  const { t } = useLanguage();
+  const { t, needsLanguageChoice } = useLanguage();
   const [visible, setVisible] = useState(false);
   const [analytics, setAnalytics] = useState(true);
 
   useEffect(() => {
+    if (needsLanguageChoice) {
+      setVisible(false);
+      return;
+    }
     const stored = getStoredConsent();
     if (stored) {
       setAnalytics(stored.analytics);
@@ -16,7 +20,7 @@ const CookieBanner = () => {
     } else {
       setVisible(true);
     }
-  }, []);
+  }, [needsLanguageChoice]);
 
   const save = (value: boolean) => {
     saveConsent({ analytics: value });
@@ -27,11 +31,11 @@ const CookieBanner = () => {
     setVisible(false);
   };
 
-  if (!visible) return null;
+  if (!visible || needsLanguageChoice) return null;
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-end sm:items-center justify-center bg-background/70 backdrop-blur-sm px-4 py-6">
-      <div className="glass-card-premium max-w-xl w-full p-5 sm:p-6 shadow-soft-xl border border-border/60">
+    <div className="overlay-enter fixed inset-0 z-[60] flex items-end sm:items-center justify-center bg-background/70 backdrop-blur-sm px-4 py-6">
+      <div className="sheet-enter glass-card-premium max-w-xl w-full p-5 sm:p-6 shadow-soft-xl border border-border/60">
         <h2 className="text-base sm:text-lg font-extrabold mb-2">
           {t("cookies.title")}
         </h2>
@@ -64,14 +68,14 @@ const CookieBanner = () => {
           <button
             type="button"
             onClick={() => save(analytics)}
-            className="inline-flex items-center justify-center px-4 py-2 rounded-full border border-border/70 bg-background text-xs sm:text-sm font-semibold text-foreground hover:bg-foreground/5 transition-colors"
+            className="pressable inline-flex items-center justify-center px-4 py-2 rounded-full border border-border/70 bg-background text-xs sm:text-sm font-semibold text-foreground hover:bg-foreground/5"
           >
             {t("cookies.banner.save")}
           </button>
           <button
             type="button"
             onClick={() => save(true)}
-            className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-primary text-primary-foreground font-semibold text-xs sm:text-sm shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] transition-all duration-200"
+            className="pressable inline-flex items-center justify-center px-4 py-2 rounded-full bg-primary text-primary-foreground font-semibold text-xs sm:text-sm shadow-soft-lg"
           >
             {t("cookies.banner.allowAll")}
           </button>

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import CTAFooter from "@/components/CTAFooter";
 import AppProviders from "@/components/react/AppProviders";
+import PageShell from "@/components/react/PageShell";
 import { motionInitial } from "@/lib/motion";
 
 const ImprintPage = () => {
@@ -10,8 +11,7 @@ const ImprintPage = () => {
 
   return (
     <AppProviders>
-    <div className="night-sky min-h-screen bg-gradient-page overflow-x-hidden text-foreground flex flex-col">
-      <div className="night-sky-stars fixed inset-0 z-0 pointer-events-none" />
+    <PageShell className="flex flex-col">
       <Navbar />
 
       <main className="relative z-10 flex-1 px-4 py-28 md:py-32">
@@ -75,7 +75,8 @@ const ImprintPage = () => {
               <h2 className="font-semibold text-foreground mb-1">
                 {t("imprint.copyrightTitle")}
               </h2>
-              <p>{t("imprint.copyrightText")}</p>
+              <p className="mb-2">{t("imprint.copyrightText")}</p>
+              <p>{t("imprint.copyrightAi")}</p>
             </section>
 
             <section>
@@ -107,7 +108,7 @@ const ImprintPage = () => {
       </main>
 
       <CTAFooter />
-    </div>
+    </PageShell>
     </AppProviders>
   );
 };

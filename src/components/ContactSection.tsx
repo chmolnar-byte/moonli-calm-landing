@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Mail } from "lucide-react";
+import { easeOut, motionInitial } from "@/lib/motion";
 
 const ContactSection = () => {
   const { t } = useLanguage();
@@ -9,10 +10,10 @@ const ContactSection = () => {
     <section className="py-16">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={motionInitial}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: easeOut }}
           className="glass-card-premium max-w-md mx-auto p-6 sm:p-7 text-center"
         >
           <div className="inline-flex items-center justify-center w-11 h-11 rounded-2xl bg-pastel-blue/60 mb-4 shadow-soft">
@@ -26,7 +27,7 @@ const ContactSection = () => {
           <div className="flex justify-center">
             <a
               href="mailto:hello@moonli.net"
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-pastel-green-strong text-white text-lg sm:text-xl font-semibold shadow-soft-lg hover:shadow-soft-xl hover:scale-[1.02] transition-all duration-200"
+              className="pressable inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-pastel-green-strong text-white text-lg sm:text-xl font-semibold shadow-soft-lg"
             >
               <Mail className="w-5 h-5" />
               <span>hello@moonli.net</span>

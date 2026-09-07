@@ -3,6 +3,7 @@ import logo from "@/assets/logo.webp";
 import { assetUrl } from "@/lib/assetUrl";
 import translations from "@/i18n/translations";
 import AppProviders from "@/components/react/AppProviders";
+import PageShell from "@/components/react/PageShell";
 import { motionInitial } from "@/lib/motion";
 
 const EmailConfirmedPage = () => {
@@ -11,8 +12,7 @@ const EmailConfirmedPage = () => {
 
   return (
     <AppProviders>
-      <div className="night-sky min-h-screen bg-gradient-page overflow-x-hidden text-foreground flex items-center justify-center p-6">
-        <div className="night-sky-stars fixed inset-0 z-0 pointer-events-none" />
+      <PageShell className="flex items-center justify-center p-6">
         <motion.div
           initial={motionInitial}
           animate={{ opacity: 1, scale: 1 }}
@@ -46,7 +46,7 @@ const EmailConfirmedPage = () => {
             </a>
           </div>
         </motion.div>
-      </div>
+      </PageShell>
     </AppProviders>
   );
 };

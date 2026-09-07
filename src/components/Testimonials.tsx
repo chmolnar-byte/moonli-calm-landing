@@ -1,67 +1,59 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { motionInitial } from "@/lib/motion";
+import LeafAccent from "@/components/LeafAccent";
+import { easeOut, motionInitial } from "@/lib/motion";
 
 const testimonials = [
-  { nameKey: "testimonials.1.name", quoteKey: "testimonials.1.quote", initials: "SK", stars: 5, bg: "bg-pastel-pink/60" },
-  { nameKey: "testimonials.2.name", quoteKey: "testimonials.2.quote", initials: "MR", stars: 5, bg: "bg-pastel-blue/60" },
-  { nameKey: "testimonials.3.name", quoteKey: "testimonials.3.quote", initials: "LW", stars: 5, bg: "bg-pastel-green/60" },
-  { nameKey: "testimonials.4.name", quoteKey: "testimonials.4.quote", initials: "JT", stars: 5, bg: "bg-pastel-green/60" },
-  { nameKey: "testimonials.5.name", quoteKey: "testimonials.5.quote", initials: "AM", stars: 5, bg: "bg-pastel-yellow/60" },
-  { nameKey: "testimonials.6.name", quoteKey: "testimonials.6.quote", initials: "FB", stars: 5, bg: "bg-pastel-green/40" },
+  { nameKey: "testimonials.1.name", quoteKey: "testimonials.1.quote", roleKey: "testimonials.1.role" },
+  { nameKey: "testimonials.2.name", quoteKey: "testimonials.2.quote", roleKey: "testimonials.2.role" },
+  { nameKey: "testimonials.3.name", quoteKey: "testimonials.3.quote", roleKey: "testimonials.3.role" },
+  { nameKey: "testimonials.4.name", quoteKey: "testimonials.4.quote", roleKey: "testimonials.4.role" },
+  { nameKey: "testimonials.5.name", quoteKey: "testimonials.5.quote", roleKey: "testimonials.5.role" },
+  { nameKey: "testimonials.6.name", quoteKey: "testimonials.6.quote", roleKey: "testimonials.6.role" },
 ];
 
 const Testimonials = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="py-24 relative">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-pastel-peach/20 blur-[100px]" />
-      </div>
+    <section className="relative overflow-x-clip py-20 md:py-24">
+      <LeafAccent
+        src="/leaves/sprigs-right.png"
+        className="page-leaf -right-4 top-0 z-0 w-[170px] sm:w-[210px]"
+      />
       <div className="container relative z-10">
         <motion.div
           initial={motionInitial}
-          whileInView={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.45, ease: easeOut }}
+          className="mb-12 max-w-[28ch]"
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-button text-primary text-sm font-semibold mb-4">
-            {t("testimonials.badge")}
-          </span>
-          <h2 className="text-display-md font-extrabold mb-3 text-glow text-white">
+          <h2 className="text-display-md text-foreground">
             {t("testimonials.title")}
           </h2>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {testimonials.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={motionInitial}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card-premium p-7 text-center border border-white/15"
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {testimonials.map((item) => (
+            <article
+              key={item.quoteKey}
+              className="rounded-[1.5rem] border border-border bg-card p-6 sm:p-7"
             >
-              <div className={`w-14 h-14 rounded-full ${item.bg} border border-white/35 flex items-center justify-center mx-auto mb-4 shadow-[0_6px_18px_rgba(0,0,0,0.22)]`}>
-                <span className="text-lg font-bold text-slate-900/80">{item.initials}</span>
-              </div>
-              <div className="flex justify-center gap-0.5 mb-3">
-                {Array.from({ length: item.stars }).map((_, j) => (
-                  <Star key={j} className="w-4 h-4 fill-pastel-yellow-strong text-pastel-yellow-strong" />
+              <div className="flex gap-0.5 mb-4">
+                {Array.from({ length: 5 }).map((_, j) => (
+                  <Star key={j} className="w-3.5 h-3.5 fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-base text-white/80 italic mb-3 leading-relaxed">
-                "{t(item.quoteKey)}"
+              <p className="text-base text-foreground leading-relaxed mb-5">
+                {t(item.quoteKey)}
               </p>
-              <p className="text-base font-bold text-white">{t(item.nameKey)}</p>
-            </motion.div>
+              <p className="text-sm font-bold text-foreground">{t(item.nameKey)}</p>
+              <p className="text-sm text-muted-foreground">{t(item.roleKey)}</p>
+            </article>
           ))}
         </div>
-
       </div>
     </section>
   );
