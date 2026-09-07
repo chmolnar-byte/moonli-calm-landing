@@ -217,7 +217,7 @@ const HeroSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative flex flex-1 flex-col justify-center pt-20 md:pt-24 pb-3 overflow-visible"
+      className="relative flex flex-1 flex-col justify-center overflow-visible pb-3 pt-[8.5rem] lg:pt-24"
     >
       <motion.div
         className="absolute inset-0 pointer-events-none overflow-hidden"

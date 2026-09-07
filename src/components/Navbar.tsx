@@ -16,7 +16,7 @@ const NAV_TABS = [
 ] as const;
 
 const tabClassName =
-  "px-5 py-2 rounded-full text-base font-semibold text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-colors duration-200 pointer-events-auto";
+  "px-4 py-2 rounded-full text-base font-semibold text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-colors duration-200";
 
 const mobileTabClassName =
   "flex-1 max-w-[140px] py-2 rounded-full text-sm font-semibold text-foreground/65 hover:text-foreground hover:bg-foreground/5 transition-colors duration-200 text-center pointer-events-auto";
@@ -58,14 +58,17 @@ const Navbar = () => {
     </a>
   );
 
+  const storeFaceClassName =
+    "h-9 w-9 px-0 py-0 gap-0 xl:h-11 xl:w-auto xl:px-3.5 xl:py-2 xl:gap-2";
+
   return (
     <nav className="nav-glass fixed top-0 left-0 right-0 z-50">
-      <div className="container relative flex items-center justify-between h-16 md:h-[4.5rem]">
-        <a href="/" className="relative z-20 flex items-center gap-2.5 hover:opacity-90 transition-opacity shrink-0 min-w-0">
-          <img src={assetUrl(logo)} alt="Moonli Logo" className="w-10 h-10 md:w-11 md:h-11 rounded-full object-cover" />
-          <span className="flex min-w-0 flex-col justify-center gap-[5px]">
+      <div className="container relative flex h-14 items-center gap-2 px-3 sm:h-16 sm:px-6 md:h-[4.5rem]">
+        <a href="/" className="relative z-20 flex min-w-0 items-center gap-2 hover:opacity-90 transition-opacity sm:gap-2.5 lg:flex-1">
+          <img src={assetUrl(logo)} alt="Moonli Logo" className="h-8 w-8 shrink-0 rounded-full object-cover sm:h-10 sm:w-10 md:h-11 md:w-11" />
+          <span className="flex min-w-0 flex-col justify-center gap-[3px] sm:gap-[5px]">
             <span className="flex items-center gap-1.5">
-              <span className="text-lg md:text-xl font-semibold tracking-[0.18em] text-foreground leading-none">
+              <span className="text-[15px] font-semibold leading-none tracking-[0.14em] text-foreground sm:text-lg sm:tracking-[0.18em] md:text-xl">
                 MOONLI
               </span>
               <span
@@ -84,30 +87,30 @@ const Navbar = () => {
                 </svg>
               </span>
             </span>
-            <span className="text-[8px] sm:text-[10px] font-medium tracking-[0.1em] sm:tracking-[0.14em] text-muted-foreground/70 leading-none whitespace-nowrap">
+            <span className="hidden text-[10px] font-medium leading-none tracking-[0.14em] text-muted-foreground/70 sm:block">
               From Vienna with Love
             </span>
           </span>
         </a>
 
-        <div className="hidden md:flex items-center gap-2 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none">
+        <div className="hidden items-center justify-center gap-1 lg:flex">
           {NAV_TABS.map((tab) => renderNavTab(tab, tabClassName))}
         </div>
 
-        <div className="relative z-40 flex items-center gap-2 shrink-0 ml-auto">
-          <div className="relative" ref={dropdownRef}>
+        <div className="relative z-40 ml-auto flex shrink-0 items-center justify-end gap-1 sm:gap-2 lg:ml-0 lg:flex-1">
+          <div className="relative shrink-0" ref={dropdownRef}>
             <button
               onClick={() => setOpen(!open)}
-              className="pressable inline-flex h-11 items-center gap-1.5 rounded-full bg-card border border-border px-3 text-foreground shadow-soft"
+              className="pressable icon-circle shrink-0 sm:h-11 sm:w-auto sm:gap-1.5 sm:px-3"
               aria-label={t("nav.language")}
               aria-expanded={open}
               aria-haspopup="listbox"
             >
               <span className="text-sm leading-none">{languageFlags[language]}</span>
-              <Globe className="w-3.5 h-3.5 text-muted-foreground" />
+              <Globe className="hidden h-3.5 w-3.5 text-muted-foreground sm:block" />
             </button>
             {open && (
-              <div className="popover-menu absolute right-0 top-full mt-2 py-1 rounded-2xl bg-card shadow-soft-xl min-w-[220px] z-[120] border border-border">
+              <div className="popover-menu absolute right-0 top-full z-[120] mt-2 min-w-[min(220px,calc(100vw-1.5rem))] rounded-2xl border border-border bg-card py-1 shadow-soft-xl">
                 {languages.map((lang) => (
                   <button
                     key={lang}
@@ -130,29 +133,36 @@ const Navbar = () => {
           <button
             type="button"
             onClick={toggleTheme}
-            className="icon-circle"
+            className="icon-circle h-9 w-9 shrink-0 sm:h-10 sm:w-10"
             aria-label={theme === "dark" ? t("nav.themeLight") : t("nav.themeDark")}
           >
-            {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </button>
 
           <MagneticCta
             href={APP_STORE_URL}
             variant="ghost"
             size="sm"
-            className="hidden sm:inline-flex"
+            className="shrink-0"
+            faceClassName={storeFaceClassName}
           >
-            <Apple className="w-4 h-4" />
-            {t("nav.appStore")}
+            <Apple className="h-4 w-4" />
+            <span className="sr-only xl:not-sr-only">{t("nav.appStore")}</span>
           </MagneticCta>
-          <MagneticCta href={GOOGLE_PLAY_URL} variant="primary" size="sm">
-            <Play className="w-4 h-4" />
-            {t("nav.googlePlay")}
+          <MagneticCta
+            href={GOOGLE_PLAY_URL}
+            variant="primary"
+            size="sm"
+            className="shrink-0"
+            faceClassName={storeFaceClassName}
+          >
+            <Play className="h-4 w-4" />
+            <span className="sr-only xl:not-sr-only">{t("nav.googlePlay")}</span>
           </MagneticCta>
         </div>
       </div>
 
-      <div className="relative z-30 flex md:hidden items-center justify-center gap-2 px-4 pb-2.5 border-t border-border">
+      <div className="relative z-30 flex items-center justify-center gap-1 border-t border-border px-3 py-1.5 lg:hidden">
         {NAV_TABS.map((tab) => renderNavTab(tab, mobileTabClassName))}
       </div>
     </nav>

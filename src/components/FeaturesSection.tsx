@@ -70,7 +70,7 @@ const FeaturesSection = () => {
             <h3 className="text-title-lg text-foreground">
               {t("features.tracking.title")}
             </h3>
-            <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-[42ch]">
+            <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-[48ch]">
               {t("features.tracking.desc")}
             </p>
             <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-foreground/75">

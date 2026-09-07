@@ -20,7 +20,7 @@ const LandingSurface = () => {
 
   return (
     <div
-      className={`${isDark ? "night-sky" : "linen"} min-h-[100dvh] bg-gradient-page overflow-x-clip text-foreground`}
+      className={`${isDark ? "night-sky" : "linen"} min-h-[100dvh] bg-gradient-page text-foreground`}
     >
       <div className="night-sky-stars fixed inset-0 z-0 pointer-events-none" />
       <div className="linen-leaves pointer-events-none">
@@ -29,17 +29,19 @@ const LandingSurface = () => {
 
       <ScrollProgress />
       <Navbar />
-      <div className="relative flex min-h-[100dvh] flex-col pb-2">
-        <HeroSection />
-        <Marquee />
+      <div className="relative overflow-x-clip">
+        <div className="relative flex min-h-[100dvh] flex-col pb-2">
+          <HeroSection />
+          <Marquee />
+        </div>
+        <StatsCounter />
+        <div id="funktionen"><FeaturesSection /></div>
+        <CompareSection />
+        <div id="feedback"><Testimonials /></div>
+        <div id="preise"><PricingSection /></div>
+        <FounderSection />
+        <CTAFooter />
       </div>
-      <StatsCounter />
-      <div id="funktionen"><FeaturesSection /></div>
-      <CompareSection />
-      <div id="feedback"><Testimonials /></div>
-      <div id="preise"><PricingSection /></div>
-      <FounderSection />
-      <CTAFooter />
     </div>
   );
 };
