@@ -1,4 +1,5 @@
 /images/*  /images/:splat  200
+https://www.moonli.net/*  https://moonli.net/:splat  301!
 /datenschutzerklärung  /privacy  301
 /impressum-%2F-kontakt  /imprint  301
 /impressum  /imprint  301

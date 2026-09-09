@@ -27,3 +27,17 @@
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
     X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/app-ads.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"
+    X-Content-Type-Options = "nosniff"
+    Cache-Control = "public, max-age=3600"
+
+# www verschluckt sonst /app-ads.txt und landet auf der Startseite.
+[[redirects]]
+  from = "https://www.moonli.net/*"
+  to = "https://moonli.net/:splat"
+  status = 301
+  force = true
