@@ -40,7 +40,7 @@ const CTAFooter = () => {
               trackParams={{ store: "google_play", location: "footer" }}
             >
               <Play className="w-5 h-5" />
-              {t("cta.button")}
+              {t("nav.googlePlay")}
             </MagneticCta>
           </div>
         </div>
