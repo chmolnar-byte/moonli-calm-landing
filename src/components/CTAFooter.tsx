@@ -24,11 +24,21 @@ const CTAFooter = () => {
             {t("cta.subtitle")}
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:justify-center">
-            <MagneticCta href={APP_STORE_URL} variant="ghost">
+            <MagneticCta
+              href={APP_STORE_URL}
+              variant="ghost"
+              trackEventName="store_click"
+              trackParams={{ store: "app_store", location: "footer" }}
+            >
               <Apple className="w-5 h-5" />
               {t("nav.appStore")}
             </MagneticCta>
-            <MagneticCta href={GOOGLE_PLAY_URL} variant="primary">
+            <MagneticCta
+              href={GOOGLE_PLAY_URL}
+              variant="primary"
+              trackEventName="store_click"
+              trackParams={{ store: "google_play", location: "footer" }}
+            >
               <Play className="w-5 h-5" />
               {t("cta.button")}
             </MagneticCta>

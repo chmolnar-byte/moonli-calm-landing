@@ -6,6 +6,10 @@ export const MEASUREMENT_ID =
   import.meta.env.VITE_GA_MEASUREMENT_ID ||
   "G-497RKXKY2W";
 
+export const ANALYTICS_CONSENT_EVENT = "moonli-analytics-consent";
+
+export type AnalyticsParams = Record<string, string | number | boolean | undefined>;
+
 function ensureGtag(): void {
   if (typeof window === "undefined") return;
   window.dataLayer = window.dataLayer || [];
@@ -21,6 +25,17 @@ function ensureGtag(): void {
 function gtag(...args: unknown[]): void {
   ensureGtag();
   window.gtag!(...args);
+}
+
+function hasAnalyticsConsent(): boolean {
+  return getStoredConsent()?.analytics === true;
+}
+
+function emitConsent(granted: boolean): void {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(
+    new CustomEvent(ANALYTICS_CONSENT_EVENT, { detail: { granted } }),
+  );
 }
 
 /** Nach Cookie-Einwilligung: Consent freigeben und Pageview senden. */
@@ -39,10 +54,12 @@ export function applyAnalyticsConsent(granted: boolean): void {
       page_title: document.title,
     });
   }
+
+  emitConsent(granted);
 }
 
 export function trackPageView(path: string): void {
-  if (!getStoredConsent()?.analytics) return;
+  if (!hasAnalyticsConsent()) return;
   ensureGtag();
 
   gtag("event", "page_view", {
@@ -51,6 +68,22 @@ export function trackPageView(path: string): void {
     page_title: document.title,
     send_to: MEASUREMENT_ID,
   });
+}
+
+export function trackEvent(name: string, params: AnalyticsParams = {}): void {
+  if (!hasAnalyticsConsent()) return;
+  ensureGtag();
+
+  gtag("event", name, {
+    ...params,
+    send_to: MEASUREMENT_ID,
+  });
+}
+
+export function setAnalyticsLanguage(language: string): void {
+  if (!hasAnalyticsConsent()) return;
+  ensureGtag();
+  gtag("set", "user_properties", { ui_language: language });
 }
 
 export function initAnalyticsFromStoredConsent(): void {

@@ -145,6 +145,8 @@ const Navbar = () => {
             size="sm"
             className="shrink-0"
             faceClassName={storeFaceClassName}
+            trackEventName="store_click"
+            trackParams={{ store: "app_store", location: "nav" }}
           >
             <Apple className="h-4 w-4" />
             <span className="sr-only xl:not-sr-only">{t("nav.appStore")}</span>
@@ -155,6 +157,8 @@ const Navbar = () => {
             size="sm"
             className="shrink-0"
             faceClassName={storeFaceClassName}
+            trackEventName="store_click"
+            trackParams={{ store: "google_play", location: "nav" }}
           >
             <Play className="h-4 w-4" />
             <span className="sr-only xl:not-sr-only">{t("nav.googlePlay")}</span>

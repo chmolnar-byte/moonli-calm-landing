@@ -258,10 +258,20 @@ const HeroSection = () => {
             )}
 
             <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-              <MagneticCta href="/#download" variant="primary">
+              <MagneticCta
+                href="/#download"
+                variant="primary"
+                trackEventName="cta_click"
+                trackParams={{ cta: "download", location: "hero" }}
+              >
                 {t("hero.ctaDownload")}
               </MagneticCta>
-              <MagneticCta href="/#funktionen" variant="ghost">
+              <MagneticCta
+                href="/#funktionen"
+                variant="ghost"
+                trackEventName="cta_click"
+                trackParams={{ cta: "features", location: "hero" }}
+              >
                 {t("hero.ctaFeatures")}
               </MagneticCta>
             </div>

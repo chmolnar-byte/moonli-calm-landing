@@ -3,6 +3,7 @@ import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { magneticSpring } from "@/lib/motion";
 import { scrollToSection } from "@/lib/scrollToSection";
+import { trackEvent, type AnalyticsParams } from "@/lib/analytics";
 
 type Variant = "primary" | "ghost";
 type Size = "sm" | "md" | "lg";
@@ -25,6 +26,8 @@ type MagneticCtaProps = {
   size?: Size;
   className?: string;
   faceClassName?: string;
+  trackEventName?: string;
+  trackParams?: AnalyticsParams;
 };
 
 const MagneticCta = ({
@@ -34,6 +37,8 @@ const MagneticCta = ({
   size = "md",
   className,
   faceClassName,
+  trackEventName,
+  trackParams,
 }: MagneticCtaProps) => {
   const reduce = useReducedMotion();
   const canHover = useRef(false);
@@ -61,7 +66,10 @@ const MagneticCta = ({
     faceClassName,
   );
 
-  const onInternalClick = (event: MouseEvent<HTMLAnchorElement>) => {
+  const onClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (trackEventName) {
+      trackEvent(trackEventName, { link_url: href, ...trackParams });
+    }
     if (!isInternal) return;
     event.preventDefault();
     const id = href.replace(/^\/?#/, "");
@@ -91,7 +99,7 @@ const MagneticCta = ({
         target={isInternal ? undefined : "_blank"}
         rel={isInternal ? undefined : "noopener noreferrer"}
         className={cn(face, className)}
-        onClick={onInternalClick}
+        onClick={onClick}
       >
         {children}
       </a>
@@ -107,7 +115,7 @@ const MagneticCta = ({
       style={{ transform }}
       onMouseMove={onMove}
       onMouseLeave={reset}
-      onClick={onInternalClick}
+      onClick={onClick}
     >
       <span className={face}>{children}</span>
     </motion.a>

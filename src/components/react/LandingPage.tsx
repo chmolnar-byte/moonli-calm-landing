@@ -9,6 +9,7 @@ import CompareSection from "@/components/CompareSection";
 import Testimonials from "@/components/Testimonials";
 import PricingSection from "@/components/PricingSection";
 import FounderSection from "@/components/FounderSection";
+import AnalyticsEngagement from "@/components/AnalyticsEngagement";
 import CTAFooter from "@/components/CTAFooter";
 import { scrollToHashFromUrl } from "@/lib/scrollToSection";
 import { useTheme } from "@/theme/ThemeContext";
@@ -29,6 +30,7 @@ const LandingSurface = () => {
 
       <ScrollProgress />
       <Navbar />
+      <AnalyticsEngagement />
       <div className="relative overflow-x-clip">
         <div className="relative flex min-h-[100dvh] flex-col pb-2">
           <HeroSection />
@@ -36,10 +38,10 @@ const LandingSurface = () => {
         </div>
         <StatsCounter />
         <div id="funktionen"><FeaturesSection /></div>
-        <CompareSection />
+        <div id="vergleich"><CompareSection /></div>
         <div id="feedback"><Testimonials /></div>
         <div id="preise"><PricingSection /></div>
-        <FounderSection />
+        <div id="gruender"><FounderSection /></div>
         <CTAFooter />
       </div>
     </div>
