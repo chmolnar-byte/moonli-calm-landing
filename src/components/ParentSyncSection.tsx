@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { easeOut, motionInitial } from "@/lib/motion";
 import PhoneDemoVideo from "@/components/PhoneDemoVideo";
+import GuidePointer from "@/components/GuidePointer";
 
 type ParentSyncSectionProps = {
   imageSrc: string;
@@ -35,6 +36,7 @@ const ParentSyncSection = ({ imageSrc, onOpenImage, onOpenVideo }: ParentSyncSec
           <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-[42ch]">
             {t("features.sync.desc")}
           </p>
+          <GuidePointer topic="care-work" />
         </div>
 
         <div className="relative mx-auto w-full max-w-[420px] overflow-visible px-5 sm:px-8">

@@ -9,6 +9,8 @@ interface Props {
   ogImage?: string;
   ogType?: string;
   noindex?: boolean;
+  lang?: string;
+  ogLocale?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
@@ -19,6 +21,8 @@ const {
   ogImage = `${SITE_ORIGIN}/og-image.png`,
   ogType = "website",
   noindex = false,
+  lang = "de",
+  ogLocale = "de_AT",
   jsonLd,
 } = Astro.props;
 
@@ -27,7 +31,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-497RKXKY2W";
 ---
 
 <!doctype html>
-<html lang="de">
+<html lang={lang}>
   <head>
     <!-- Google tag (gtag.js) + Consent Mode v2 – Standardformat für GA-Tag-Erkennung -->
     <script is:inline set:html={`
@@ -81,7 +85,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-497RKXKY2W";
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale" content="de_AT" />
+    <meta property="og:locale" content={ogLocale} />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />

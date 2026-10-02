@@ -4,6 +4,7 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import { SITE_ORIGIN, canonicalUrl, isIndexableUrl } from "./src/lib/seo";
+import { guideLastModified } from "./src/lib/guideLastmod";
 
 const githubPagesBase = "/moonli-calm-landing/";
 
@@ -19,6 +20,8 @@ export default defineConfig({
         const url = canonicalUrl(item.url);
         if (!isIndexableUrl(url)) return undefined;
         item.url = url;
+        const lastmod = guideLastModified(url);
+        if (lastmod) item.lastmod = lastmod;
         delete item.changefreq;
         delete item.priority;
         return item;

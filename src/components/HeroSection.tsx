@@ -18,6 +18,7 @@ import dashboardWeekly from "@/assets/hero-wochenbericht.png";
 import dashboardGrowth from "@/assets/hero-entwicklung.png";
 import dashboardHome from "@/assets/hero-sleep.png";
 import { assetUrl } from "@/lib/assetUrl";
+import { guidesIndexPath } from "@/lib/guidePaths";
 import { easeOut, motionInitial, scrollSpring } from "@/lib/motion";
 
 const dashboardWeeklyUrl = assetUrl(dashboardWeekly);
@@ -273,6 +274,14 @@ const HeroSection = () => {
                 trackParams={{ cta: "features", location: "hero" }}
               >
                 {t("hero.ctaFeatures")}
+              </MagneticCta>
+              <MagneticCta
+                href={guidesIndexPath(language)}
+                variant="ghost"
+                trackEventName="cta_click"
+                trackParams={{ cta: "guides", location: "hero" }}
+              >
+                {t("hero.ctaGuides")}
               </MagneticCta>
             </div>
           </motion.div>

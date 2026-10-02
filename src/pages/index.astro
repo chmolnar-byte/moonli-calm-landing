@@ -11,7 +11,7 @@ const jsonLd = {
   applicationCategory: "HealthApplication",
   operatingSystem: "iOS, Android",
   description:
-    "Moonli 2.0: Baby-App mit Parent-Sync, eigenem Tracking in Echtzeit, Info-Hub, Quick-Buttons, Geschichten, Spielen und gemeinsamer Care-Arbeit.",
+    "Kostenloses Schlaftracking, Wachfenster nach Alter und ein gemeinsamer Überblick für beide Eltern. Stillen, Windeln und Wachstum an einem Ort.",
   url: `${SITE_ORIGIN}/`,
   image: `${SITE_ORIGIN}/og-image.png`,
   author: { "@type": "Person", name: "Christian Molnar" },
@@ -23,6 +23,11 @@ const jsonLd = {
 };
 ---
 
-<BaseLayout canonical={canonicalUrl("/")} jsonLd={jsonLd}>
+<BaseLayout
+  title="Moonli: Baby-App für Schlaf, Wachfenster und Tracking"
+  description="Kostenloses Schlaftracking, Wachfenster nach Alter und ein gemeinsamer Überblick für beide Eltern. Stillen, Windeln und Wachstum an einem Ort."
+  canonical={canonicalUrl("/")}
+  jsonLd={jsonLd}
+>
   <LandingPage client:load />
 </BaseLayout>

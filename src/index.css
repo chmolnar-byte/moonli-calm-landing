@@ -681,6 +681,48 @@
     color: rgba(255, 255, 255, 0.95);
   }
 
+  html.dark .guide-root.linen {
+    background-image: none;
+  }
+
+  .guide-prose {
+    --tw-prose-body: hsl(var(--foreground) / 0.92);
+    --tw-prose-headings: hsl(var(--foreground));
+    --tw-prose-links: hsl(var(--primary));
+    --tw-prose-bold: hsl(var(--foreground));
+    --tw-prose-bullets: hsl(var(--foreground) / 0.7);
+    --tw-prose-quotes: hsl(var(--foreground) / 0.9);
+    --tw-prose-quote-borders: hsl(var(--primary));
+  }
+
+  .guide-prose h2 {
+    margin-top: 2.25rem;
+    font-size: 1.5rem;
+    line-height: 1.25;
+  }
+
+  .guide-prose h3 {
+    margin-top: 1.25rem;
+    font-size: 1.125rem;
+  }
+
+  .guide-prose table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .guide-prose th,
+  .guide-prose td {
+    border-bottom: 1px solid hsl(var(--border));
+    padding: 0.55rem 0.4rem;
+    text-align: left;
+  }
+
+  .guide-prose th {
+    font-weight: 700;
+  }
+
   /* Blog-Übersicht: flach, dunkel, typografisch – passend zu Artikel-Seiten */
   .blog-index {
     background: #131d24;

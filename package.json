@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "check:blog": "tsx scripts/generate/check-blog-quality.ts",
-    "build": "npm run check:blog && astro build",
+    "check:guides": "tsx scripts/generate/check-guides.ts",
+    "build": "npm run check:blog && npm run check:guides && astro build",
     "preview": "astro preview",
     "lint": "eslint .",
     "test": "vitest run",

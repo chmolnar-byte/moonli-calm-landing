@@ -1,0 +1,76 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import GuideLayout from "@/layouts/GuideLayout.astro";
+import { topicAlternates } from "@/lib/guideAlternates";
+import { FEATURE_IDS, FEATURE_META, OVERVIEW } from "@/lib/featureCatalog";
+import {
+  GUIDE_SECTION,
+  TOPIC_ANCHOR,
+  featuresPath,
+  isTopicId,
+  publishedTopicPath,
+  type GuideLang,
+  type TopicId,
+} from "@/lib/guidePaths";
+import { GUIDE_UI } from "@/lib/guideUi";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("guides", ({ data }) => data.draft !== true);
+  return posts.map((entry) => ({
+    params: {
+      lang: entry.data.lang,
+      section: GUIDE_SECTION[entry.data.lang],
+      slug: entry.data.urlSlug,
+    },
+    props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"guides">;
+}
+
+const { entry } = Astro.props;
+const lang = entry.data.lang;
+const ui = GUIDE_UI[lang];
+const copy = OVERVIEW[lang];
+const { Content } = await entry.render();
+
+const primary = new Set(entry.data.primaryFeatures);
+const moreFeatures = FEATURE_IDS.filter((id) => !primary.has(id))
+  .slice(0, 6)
+  .map((id) => {
+    const meta = FEATURE_META[id];
+    const href = publishedTopicPath(lang, meta.topic) ?? featuresPath(lang);
+    const feature = copy.features[id];
+    return { href, title: feature.title, text: feature.text };
+  });
+
+const related = entry.data.related
+  .filter((topic): topic is TopicId => isTopicId(topic))
+  .flatMap((topic) => {
+    const href = publishedTopicPath(lang, topic);
+    if (!href) return [];
+    return [{ href, label: TOPIC_ANCHOR[topic][lang] }];
+  });
+
+---
+
+<GuideLayout
+  lang={lang as GuideLang}
+  seoTitle={entry.data.seoTitle}
+  description={entry.data.description}
+  h1={entry.data.title}
+  kind="article"
+  pubDate={entry.data.pubDate}
+  updatedDate={entry.data.updatedDate}
+  faq={entry.data.faq}
+  sources={entry.data.sources}
+  related={related}
+  moreFeatures={moreFeatures}
+  alternates={topicAlternates(entry.data.topic as TopicId)}
+  guideId={entry.data.topic}
+  breadcrumbName={ui.kicker}
+>
+  <Content />
+</GuideLayout>

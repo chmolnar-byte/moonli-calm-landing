@@ -1,0 +1,134 @@
+---
+import { getCollection } from "astro:content";
+import GuideLayout from "@/layouts/GuideLayout.astro";
+import { featureAlternates, indexAlternates } from "@/lib/guideAlternates";
+import { FEATURE_GROUPS, FEATURE_IDS, FEATURE_META, OVERVIEW } from "@/lib/featureCatalog";
+import { guideVisual } from "@/lib/guideVisuals";
+import {
+  FEATURES_SLUG,
+  GUIDE_LANGS,
+  GUIDE_SECTION,
+  TOPIC_ANCHOR,
+  TOPIC_IDS,
+  guidePath,
+  isGuideLang,
+  isTopicId,
+  publishedTopicPath,
+  type GuideLang,
+} from "@/lib/guidePaths";
+import { GUIDE_UI } from "@/lib/guideUi";
+
+export function getStaticPaths() {
+  const features = GUIDE_LANGS.map((lang) => ({
+    params: { lang, overview: FEATURES_SLUG[lang] },
+    props: { lang, kind: "features" as const },
+  }));
+  const indexes = GUIDE_LANGS.map((lang) => ({
+    params: { lang, overview: GUIDE_SECTION[lang] },
+    props: { lang, kind: "index" as const },
+  }));
+  return [...features, ...indexes];
+}
+
+interface Props {
+  lang: GuideLang;
+  kind: "features" | "index";
+}
+
+const { lang, kind } = Astro.props;
+if (!isGuideLang(lang)) {
+  throw new Error(`Unbekannte Sprache: ${lang}`);
+}
+
+const ui = GUIDE_UI[lang];
+const copy = OVERVIEW[lang];
+const updated = new Date("2026-10-02T00:00:00.000Z");
+const isIndex = kind === "index";
+
+const groups = FEATURE_GROUPS.map((group) => ({
+  ...copy.groups[group],
+  features: FEATURE_IDS.filter((id) => FEATURE_META[id].group === group).map((id) => {
+    const topic = FEATURE_META[id].topic;
+    const guideHref = publishedTopicPath(lang, topic);
+    return {
+      ...copy.features[id],
+      href: guideHref,
+      linkLabel: guideHref ? TOPIC_ANCHOR[topic][lang] : null,
+    };
+  }),
+}));
+
+const published = isIndex
+  ? (await getCollection("guides", ({ data }) => data.draft !== true && data.lang === lang)).sort(
+      (a, b) => TOPIC_IDS.indexOf(a.data.topic as (typeof TOPIC_IDS)[number]) - TOPIC_IDS.indexOf(b.data.topic as (typeof TOPIC_IDS)[number]),
+    )
+  : [];
+
+const cards = published.flatMap((entry) => {
+  if (!isTopicId(entry.data.topic)) return [];
+  const visual = guideVisual(entry.data.topic, lang);
+  return [
+    {
+      href: guidePath(lang, entry.data.urlSlug),
+      title: entry.data.title,
+      description: entry.data.description,
+      image: visual?.src ?? "",
+      alt: visual?.alt ?? entry.data.title,
+    },
+  ];
+});
+---
+
+<GuideLayout
+  lang={lang}
+  seoTitle={isIndex ? ui.indexSeoTitle : copy.seoTitle}
+  description={isIndex ? ui.indexDescription : copy.description}
+  h1={isIndex ? ui.indexTitle : copy.h1}
+  kind="overview"
+  pubDate={updated}
+  updatedDate={updated}
+  alternates={isIndex ? indexAlternates() : featureAlternates()}
+  guideId={isIndex ? "index" : "features"}
+  breadcrumbName={isIndex ? ui.kicker : copy.h1}
+  wide={isIndex}
+>
+  {isIndex ? (
+    <p class="not-prose mb-6 text-sm text-muted-foreground">{ui.imageCredit}</p>
+    <ul class="not-prose grid gap-6 sm:grid-cols-2">
+      {cards.map((card) => (
+        <li>
+          <a href={card.href} class="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card text-card-foreground">
+            {card.image && (
+              <img src={card.image} alt={card.alt} class="aspect-[16/9] w-full object-cover" />
+            )}
+            <span class="flex flex-1 flex-col p-5">
+              <h2 class="text-lg font-bold text-foreground">{card.title}</h2>
+              <span class="mt-2 text-sm leading-relaxed text-muted-foreground">{card.description}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <>
+      <p>{copy.intro}</p>
+      {groups.map((group) => (
+        <section>
+          <h2>{group.title}</h2>
+          <p>{group.intro}</p>
+          {group.features.map((feature) => (
+            <div>
+              <h3>{feature.title}</h3>
+              <p>{feature.text}</p>
+              {feature.href && feature.linkLabel && (
+                <p>
+                  <a href={feature.href}>{feature.linkLabel}</a>
+                </p>
+              )}
+            </div>
+          ))}
+        </section>
+      ))}
+    </>
+  )}
+</GuideLayout>

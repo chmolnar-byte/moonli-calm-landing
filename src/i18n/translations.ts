@@ -24,6 +24,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.themeDark": "Dunkelmodus",
     "nav.themeLight": "Hellmodus",
     "nav.features": "Funktionen",
+    "nav.guides": "Ratgeber",
     "nav.pricing": "Preise",
     "nav.feedback": "Feedback",
 
@@ -45,6 +46,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.subheadline": "Schlaf, Windeln und Phasen im Blick. Tracking bleibt kostenlos.",
     "hero.ctaDownload": "Kostenlos laden",
     "hero.ctaFeatures": "Funktionen ansehen",
+    "hero.ctaGuides": "Ratgeber lesen",
 
     // Email Confirmed
     "emailConfirmed.title": "Registrierung erfolgreich! ✅",
@@ -594,6 +596,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.themeDark": "Dark mode",
     "nav.themeLight": "Light mode",
     "nav.features": "Features",
+    "nav.guides": "Guides",
     "nav.pricing": "Pricing",
     "nav.feedback": "Feedback",
 
@@ -615,6 +618,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.subheadline": "Sleep, diapers and phases at a glance. Tracking stays free.",
     "hero.ctaDownload": "Get it free",
     "hero.ctaFeatures": "See features",
+    "hero.ctaGuides": "Read the guides",
 
     "emailConfirmed.title": "Registration Successful! ✅",
     "emailConfirmed.text": "You’ve successfully registered and confirmed your email. Your Moonli ID is now active – you can return to the app and log in.",
@@ -1167,6 +1171,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.themeDark": "Modo oscuro",
     "nav.themeLight": "Modo claro",
     "nav.features": "Funciones",
+    "nav.guides": "Guías",
     "nav.pricing": "Precios",
     "nav.feedback": "Opiniones",
 
@@ -1188,6 +1193,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.subheadline": "Sueño, pañales y fases de un vistazo. El seguimiento sigue gratis.",
     "hero.ctaDownload": "Descargar gratis",
     "hero.ctaFeatures": "Ver funciones",
+    "hero.ctaGuides": "Leer las guías",
 
     "emailConfirmed.title": "¡Registro exitoso! ✅",
     "emailConfirmed.text": "Te has registrado correctamente y has confirmado tu correo. Tu Moonli-ID ya está activa: puedes iniciar sesión en la app y empezar de inmediato.",
@@ -1741,6 +1747,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.themeDark": "Mode sombre",
     "nav.themeLight": "Mode clair",
     "nav.features": "Fonctions",
+    "nav.guides": "Guides",
     "nav.pricing": "Tarifs",
     "nav.feedback": "Avis",
 
@@ -1762,6 +1769,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.subheadline": "Sommeil, couches et phases d’un coup d’œil. Le suivi reste gratuit.",
     "hero.ctaDownload": "Télécharger gratuitement",
     "hero.ctaFeatures": "Voir les fonctions",
+    "hero.ctaGuides": "Lire les guides",
 
     "emailConfirmed.title": "Inscription réussie ! ✅",
     "emailConfirmed.text": "Ton inscription est confirmée et ton e-mail est validé. Ton Moonli-ID est maintenant actif – tu peux te connecter dans l’app et commencer tout de suite.",
@@ -2314,6 +2322,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.themeDark": "Тёмная тема",
     "nav.themeLight": "Светлая тема",
     "nav.features": "Функции",
+    "nav.guides": "Справочник",
     "nav.pricing": "Цены",
     "nav.feedback": "Отзывы",
 
@@ -2335,6 +2344,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.subheadline": "Сон, подгузники и фазы одним взглядом. Трекинг остаётся бесплатным.",
     "hero.ctaDownload": "Скачать бесплатно",
     "hero.ctaFeatures": "Смотреть функции",
+    "hero.ctaGuides": "Читать справочник",
 
     "emailConfirmed.title": "Регистрация успешна! ✅",
     "emailConfirmed.text": "Ты успешно зарегистрировался, и твой email подтверждён. Твой Moonli-ID уже активен — можешь войти в приложение и сразу начать.",

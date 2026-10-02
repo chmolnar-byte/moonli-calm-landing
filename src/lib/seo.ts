@@ -28,6 +28,15 @@ export function canonicalUrl(input: string): string {
   return url.href;
 }
 
+const GUIDE_PATH =
+  /^\/(de\/ratgeber|en\/guides|es\/guias|fr\/guides|ru\/gid)(\/[a-z0-9-]+)?$/;
+
+const OVERVIEW_PATH =
+  /^\/(de\/funktionen|en\/features|es\/funciones|fr\/fonctions|ru\/funktsii)$/;
+
 export function isIndexableUrl(url: string): boolean {
-  return INDEXABLE_URLS.has(canonicalUrl(url));
+  const canonical = canonicalUrl(url);
+  if (INDEXABLE_URLS.has(canonical)) return true;
+  const path = new URL(canonical).pathname;
+  return GUIDE_PATH.test(path) || OVERVIEW_PATH.test(path);
 }

@@ -64,21 +64,30 @@ const defaultContext: LanguageContextType = {
   t: createTranslator("de"),
 };
 
-export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguageState] = useState<Language>(readStoredLanguage);
+export const LanguageProvider = ({
+  children,
+  language: pageLanguage,
+}: {
+  children: ReactNode;
+  language?: Language;
+}) => {
+  const locked = pageLanguage !== undefined;
+  const [language, setLanguageState] = useState<Language>(pageLanguage ?? readStoredLanguage);
   const [needsLanguageChoice, setNeedsLanguageChoice] = useState(false);
 
   useEffect(() => {
+    if (locked) return;
     setNeedsLanguageChoice(!readHasLanguageChoice());
-  }, []);
+  }, [locked]);
 
   useEffect(() => {
+    if (locked) return;
     try {
       window.localStorage.setItem(STORAGE_KEY, language);
     } catch {
       // ignore
     }
-  }, [language]);
+  }, [language, locked]);
 
   const markChoice = useCallback(() => {
     try {

@@ -1,5 +1,7 @@
 import { defineCollection, z } from "astro:content";
 
+const guideLang = z.enum(["de", "en", "es", "fr", "ru"]);
+
 const blogBase = {
   title: z.string(),
   description: z.string(),
@@ -56,4 +58,38 @@ const partners = defineCollection({
   }),
 });
 
-export const collections = { news, features, partners };
+const guides = defineCollection({
+  type: "content",
+  schema: z.object({
+    topic: z.string(),
+    lang: guideLang,
+    urlSlug: z.string(),
+    title: z.string(),
+    seoTitle: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
+    author: z.string().default("Christian Molnar"),
+    draft: z.boolean().default(false),
+    related: z.array(z.string()).default([]),
+    primaryFeatures: z.array(z.string()).default([]),
+    sources: z
+      .array(
+        z.object({
+          name: z.string(),
+          url: z.string().url(),
+        }),
+      )
+      .default([]),
+    faq: z
+      .array(
+        z.object({
+          q: z.string(),
+          a: z.string(),
+        }),
+      )
+      .min(3),
+  }),
+});
+
+export const collections = { news, features, partners, guides };

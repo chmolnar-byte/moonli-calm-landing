@@ -11,6 +11,7 @@ import PhoneDemoVideo from "@/components/PhoneDemoVideo";
 import { assetUrl } from "@/lib/assetUrl";
 import { easeOut, motionInitial } from "@/lib/motion";
 import { useState } from "react";
+import GuidePointer from "@/components/GuidePointer";
 
 const trackingScreenshotUrl = assetUrl(trackingScreenshot);
 const weeklyReportScreenshotUrl = assetUrl(weeklyReportScreenshot);
@@ -54,6 +55,7 @@ const FeaturesSection = () => {
           className="mb-12 max-w-[36ch]"
         >
           <h2 className="text-display-md text-foreground">{t("features.title")}</h2>
+          <GuidePointer topic="features" />
         </motion.div>
 
         <motion.div
@@ -73,6 +75,7 @@ const FeaturesSection = () => {
             <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-[48ch]">
               {t("features.tracking.desc")}
             </p>
+            <GuidePointer topic="wake-windows" />
             <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-foreground/75">
               {trackingItems.map((item) => (
                 <span key={item}>{item}</span>
@@ -176,6 +179,7 @@ const FeaturesSection = () => {
             <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-[42ch]">
               {t("features.groups.knowledge.desc")}
             </p>
+            <GuidePointer topic="sleep-routines" />
           </div>
         </motion.div>
 
@@ -214,6 +218,7 @@ const FeaturesSection = () => {
             <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-[42ch]">
               {t("features.groups.entertainment.desc")}
             </p>
+            <GuidePointer topic="calm-screen" />
           </div>
           <div className="relative mx-auto w-full max-w-[420px] overflow-visible px-5 sm:px-8 lg:order-1">
             <div className="absolute inset-[12%] rounded-full bg-primary/12 blur-[70px] pointer-events-none" />
@@ -275,6 +280,7 @@ const FeaturesSection = () => {
             <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-[42ch]">
               {t("features.groups.parent.desc")}
             </p>
+            <GuidePointer topic="night-exhaustion" />
           </div>
           <PhoneDemoVideo
             label={t("features.groups.parent.title")}

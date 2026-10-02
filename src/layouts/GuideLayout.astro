@@ -1,0 +1,338 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import GuideChrome from "@/components/react/GuideChrome";
+import sleepShot from "@/assets/hero-sleep.png";
+import weeklyShot from "@/assets/hero-wochenbericht.png";
+import { assetUrl } from "@/lib/assetUrl";
+import { SITE_ORIGIN, canonicalUrl } from "@/lib/seo";
+import { guideVisual } from "@/lib/guideVisuals";
+import {
+  APP_STORE_URL,
+  OG_LOCALE,
+  GUIDE_LOCALE,
+  playStoreUrl,
+  type GuideLang,
+} from "@/lib/guidePaths";
+import { GUIDE_UI } from "@/lib/guideUi";
+
+interface LinkItem {
+  href: string;
+  label: string;
+}
+
+interface FeatureLink {
+  href: string;
+  title: string;
+  text: string;
+}
+
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface SourceItem {
+  name: string;
+  url: string;
+}
+
+interface Alternate {
+  hreflang: string;
+  href: string;
+  path: string;
+}
+
+interface Props {
+  lang: GuideLang;
+  seoTitle: string;
+  description: string;
+  h1: string;
+  kind?: "article" | "overview";
+  pubDate?: Date;
+  updatedDate?: Date;
+  faq?: FaqItem[];
+  sources?: SourceItem[];
+  related?: LinkItem[];
+  moreFeatures?: FeatureLink[];
+  alternates: Alternate[];
+  guideId: string;
+  breadcrumbName: string;
+  wide?: boolean;
+}
+
+const {
+  lang,
+  seoTitle,
+  description,
+  h1,
+  kind = "article",
+  pubDate,
+  updatedDate,
+  faq = [],
+  sources = [],
+  related = [],
+  moreFeatures = [],
+  alternates,
+  guideId,
+  breadcrumbName,
+  wide = false,
+} = Astro.props;
+
+const ui = GUIDE_UI[lang];
+const sleepShotUrl = assetUrl(sleepShot);
+const weeklyShotUrl = assetUrl(weeklyShot);
+const visual = guideVisual(guideId, lang);
+const languageHrefs = Object.fromEntries(
+  alternates
+    .filter((alt) => alt.hreflang !== "x-default")
+    .map((alt) => [alt.hreflang, alt.path]),
+);
+const canonical = canonicalUrl(Astro.url.pathname);
+const modified = updatedDate ?? pubDate;
+const showArticleMeta = Boolean(pubDate && modified);
+
+const dateLabel = (date: Date) =>
+  date.toLocaleDateString(GUIDE_LOCALE[lang], {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+const graph: Record<string, unknown>[] = [];
+
+if (pubDate && modified) {
+  graph.push({
+    "@type": "Article",
+    headline: h1,
+    description,
+    datePublished: pubDate.toISOString(),
+    dateModified: modified.toISOString(),
+    inLanguage: lang,
+    author: { "@type": "Person", name: "Christian Molnar" },
+    publisher: {
+      "@type": "Organization",
+      name: "Moonli",
+      logo: { "@type": "ImageObject", url: `${SITE_ORIGIN}/og-image.png` },
+    },
+    image: `${SITE_ORIGIN}/og-image.png`,
+    mainEntityOfPage: canonical,
+  });
+} else {
+  graph.push({
+    "@type": "WebPage",
+    name: h1,
+    description,
+    inLanguage: lang,
+    url: canonical,
+  });
+}
+
+graph.push({
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: ui.home, item: `${SITE_ORIGIN}/` },
+    { "@type": "ListItem", position: 2, name: breadcrumbName, item: canonical },
+  ],
+});
+
+if (faq.length > 0) {
+  graph.push({
+    "@type": "FAQPage",
+    mainEntity: faq.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  });
+}
+
+const jsonLd = { "@context": "https://schema.org", "@graph": graph };
+---
+
+<BaseLayout
+  title={seoTitle}
+  description={description}
+  canonical={canonical}
+  ogType={kind === "article" ? "article" : "website"}
+  lang={lang}
+  ogLocale={OG_LOCALE[lang]}
+  jsonLd={jsonLd}
+>
+  <Fragment slot="head">
+    {alternates.map((alt) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
+  </Fragment>
+
+  <div class="guide-root linen relative min-h-screen bg-gradient-page text-foreground">
+    <div class="night-sky-stars fixed inset-0 z-0 pointer-events-none" aria-hidden="true"></div>
+    <GuideChrome client:load language={lang} languageHrefs={languageHrefs} />
+
+    <main class:list={["relative z-10 container px-4 pb-16 pt-36 lg:pt-28", wide ? "max-w-5xl" : "max-w-3xl"]}>
+      <nav class="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
+        <ol class="flex flex-wrap items-center gap-2">
+          <li><a href="/" class="hover:text-foreground">{ui.home}</a></li>
+          <li aria-hidden="true">/</li>
+          <li>{breadcrumbName}</li>
+        </ol>
+      </nav>
+
+      <p class="mb-3 text-sm font-semibold text-primary">{ui.kicker}</p>
+      <h1 class="text-display-md text-foreground">{h1}</h1>
+      <p class="mt-4 text-lg text-muted-foreground">{description}</p>
+
+      {showArticleMeta && modified && (
+        <p class="mt-4 text-sm text-muted-foreground">
+          {ui.authorLine}
+          <span aria-hidden="true"> · </span>
+          <span>{ui.updated} </span>
+          <time datetime={modified.toISOString().slice(0, 10)}>{dateLabel(modified)}</time>
+        </p>
+      )}
+
+      {visual && (
+        <figure class="mt-8 overflow-hidden rounded-[2rem] border border-border/70 bg-card">
+          <img src={visual.src} alt={visual.alt} class="aspect-[16/9] w-full object-cover" />
+          <figcaption class="px-4 py-2 text-center text-xs text-muted-foreground">{ui.imageCredit}</figcaption>
+        </figure>
+      )}
+
+      <div class="guide-prose prose mt-10 max-w-none">
+        <slot />
+      </div>
+
+      <aside class="mt-12 overflow-hidden rounded-[2rem] border border-border bg-card text-card-foreground">
+        <div class="flex flex-col items-center gap-6 p-6 sm:flex-row sm:items-center sm:gap-8 sm:p-8">
+          <div class="relative flex h-44 w-40 shrink-0 items-end justify-center">
+            <img
+              src={weeklyShotUrl}
+              alt={ui.storeWeeklyAlt}
+              class="absolute bottom-0 left-0 w-[46%] -rotate-6"
+            />
+            <img
+              src={sleepShotUrl}
+              alt={ui.storeSleepAlt}
+              class="relative z-10 w-[52%]"
+            />
+          </div>
+          <div class="min-w-0 text-center sm:text-left">
+            <p class="text-xl font-extrabold tracking-tight">{ui.storeTitle}</p>
+            <p class="mt-2 text-muted-foreground">{ui.storeLead}</p>
+            <div class="mt-5 flex flex-wrap justify-center gap-3 sm:justify-start">
+              <a
+                href={APP_STORE_URL}
+                class="pressable inline-flex items-center gap-2 rounded-full bg-foreground px-5 py-3 text-sm font-bold text-background"
+                data-store="app_store"
+                data-lang={lang}
+                data-guide={guideId}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
+                  <path d="M16.37 12.72c-.03-2.4 1.96-3.55 2.05-3.61-1.12-1.64-2.86-1.86-3.48-1.89-1.48-.15-2.89.87-3.64.87-.75 0-1.91-.85-3.14-.83-1.62.02-3.11.94-3.95 2.39-1.68 2.92-.43 7.24 1.21 9.61.8 1.16 1.76 2.46 3.01 2.41 1.21-.05 1.66-.78 3.12-.78 1.46 0 1.87.78 3.14.75 1.3-.02 2.12-1.18 2.91-2.34.92-1.34 1.3-2.64 1.32-2.71-.03-.01-2.53-.97-2.55-3.87zM14.2 6.3c.66-.8 1.11-1.92.99-3.03-0.95.04-2.1.63-2.78 1.43-.61.71-1.15 1.84-1 2.93 1.06.08 2.14-.54 2.79-1.33z"></path>
+                </svg>
+                {ui.appStore}
+              </a>
+              <a
+                href={playStoreUrl(lang)}
+                class="pressable inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-bold text-primary-foreground"
+                data-store="play_store"
+                data-lang={lang}
+                data-guide={guideId}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg viewBox="0 0 24 24" class="h-4 w-4 fill-current" aria-hidden="true">
+                  <path d="M3.6 2.4c-.3.3-.5.8-.5 1.4v16.4c0 .6.2 1.1.5 1.4l.1.1 9.2-9.2v-.2L3.7 2.3l-.1.1zm10.4 9.3 2.6-2.6-7.4-4.3 4.8 6.9zm3.4-1.9 2.3 1.3c.7.4.7 1 .0 1.4l-2.3 1.3-2.8-2 2.8-2zm-8.2 6.5 4.8-2.8-2.6-2.6-2.2 5.4z"></path>
+                </svg>
+                {ui.playStore}
+              </a>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      {faq.length > 0 && (
+        <section class="mt-12">
+          <h2 class="text-title-lg text-foreground">{ui.faqHeading}</h2>
+          <div class="mt-4 space-y-6">
+            {faq.map((item) => (
+              <div>
+                <h3 class="text-lg font-bold text-foreground">{item.q}</h3>
+                <p class="mt-2 text-foreground/90">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {related.length > 0 && (
+        <section class="mt-12">
+          <h2 class="text-title-lg text-foreground">{ui.relatedHeading}</h2>
+          <ul class="mt-4 space-y-2">
+            {related.map((item) => (
+              <li>
+                <a href={item.href} class="font-semibold text-primary hover:underline">{item.label}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {moreFeatures.length > 0 && (
+        <section class="mt-12">
+          <h2 class="text-title-lg text-foreground">{ui.moreHeading}</h2>
+          <p class="mt-3 text-muted-foreground">{ui.moreIntro}</p>
+          <div class="mt-6 space-y-5">
+            {moreFeatures.map((feature) => (
+              <div>
+                <h3 class="text-lg font-bold text-foreground">
+                  <a href={feature.href} class="hover:text-primary">{feature.title}</a>
+                </h3>
+                <p class="mt-1 text-foreground/90">{feature.text}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {sources.length > 0 && (
+        <section class="mt-12">
+          <h2 class="text-title-lg text-foreground">{ui.sources}</h2>
+          <ul class="mt-4 list-disc space-y-2 pl-5">
+            {sources.map((source) => (
+              <li>
+                <a href={source.url} class="text-primary hover:underline" rel="noopener noreferrer" target="_blank">
+                  {source.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <p class="mt-10 text-sm text-muted-foreground">{ui.disclaimer}</p>
+    </main>
+  </div>
+
+  <script>
+    import { trackEvent } from "@/lib/analytics";
+
+    function bindStoreClicks(): void {
+      document.querySelectorAll<HTMLElement>("[data-store]").forEach((node) => {
+        if (node.dataset.bound === "1") return;
+        node.dataset.bound = "1";
+        node.addEventListener("click", () => {
+          trackEvent("store_click", {
+            language: node.dataset.lang,
+            guide: node.dataset.guide,
+            store: node.dataset.store,
+          });
+        });
+      });
+    }
+
+    bindStoreClicks();
+    document.addEventListener("astro:page-load", bindStoreClicks);
+  </script>
+</BaseLayout>

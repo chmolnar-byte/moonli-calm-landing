@@ -7,24 +7,31 @@ import { useTheme } from "@/theme/ThemeContext";
 import { useState, useRef, useEffect, type MouseEvent as ReactMouseEvent } from "react";
 import MagneticCta from "@/components/MagneticCta";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
+import { guidesIndexPath } from "@/lib/guidePaths";
 import { isHomePath, scrollToSection } from "@/lib/scrollToSection";
 
 const NAV_TABS = [
-  { labelKey: "nav.features", href: "funktionen" },
-  { labelKey: "nav.feedback", href: "feedback" },
-  { labelKey: "nav.pricing", href: "preise" },
+  { labelKey: "nav.features", href: "funktionen", kind: "section" },
+  { labelKey: "nav.guides", href: "guides", kind: "guides" },
+  { labelKey: "nav.feedback", href: "feedback", kind: "section" },
+  { labelKey: "nav.pricing", href: "preise", kind: "section" },
 ] as const;
 
 const tabClassName =
-  "px-4 py-2 rounded-full text-base font-semibold text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-colors duration-200";
+  "px-3 py-2 rounded-full text-base font-semibold text-foreground/70 hover:text-foreground hover:bg-foreground/5 transition-colors duration-200";
 
 const mobileTabClassName =
-  "flex-1 max-w-[140px] py-2 rounded-full text-sm font-semibold text-foreground/65 hover:text-foreground hover:bg-foreground/5 transition-colors duration-200 text-center pointer-events-auto";
+  "flex-1 px-1 py-2 rounded-full text-[13px] font-semibold text-foreground/65 hover:text-foreground hover:bg-foreground/5 transition-colors duration-200 text-center pointer-events-auto";
 
 const languages: Language[] = ["de", "en", "es", "fr", "ru"];
 
-const Navbar = () => {
+type NavbarProps = {
+  languageHrefs?: Partial<Record<Language, string>>;
+};
+
+const Navbar = ({ languageHrefs }: NavbarProps) => {
   const { language, setLanguage, t } = useLanguage();
+  const guidesHref = guidesIndexPath(language);
   const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -47,16 +54,26 @@ const Navbar = () => {
     }
   };
 
-  const renderNavTab = (tab: (typeof NAV_TABS)[number], className: string) => (
-    <a
-      key={tab.href}
-      href={`/#${tab.href}`}
-      className={className}
-      onClick={(event) => handleSectionNav(event, tab.href)}
-    >
-      {t(tab.labelKey)}
-    </a>
-  );
+  const renderNavTab = (tab: (typeof NAV_TABS)[number], className: string) => {
+    if (tab.kind === "guides") {
+      return (
+        <a key={tab.href} href={guidesHref} className={className}>
+          {t(tab.labelKey)}
+        </a>
+      );
+    }
+
+    return (
+      <a
+        key={tab.href}
+        href={`/#${tab.href}`}
+        className={className}
+        onClick={(event) => handleSectionNav(event, tab.href)}
+      >
+        {t(tab.labelKey)}
+      </a>
+    );
+  };
 
   const storeFaceClassName =
     "h-9 w-9 px-0 py-0 gap-0 xl:h-11 xl:w-auto xl:px-3.5 xl:py-2 xl:gap-2";
@@ -114,7 +131,15 @@ const Navbar = () => {
                 {languages.map((lang) => (
                   <button
                     key={lang}
-                    onClick={() => { setLanguage(lang); setOpen(false); }}
+                    onClick={() => {
+                      const href = languageHrefs?.[lang];
+                      setOpen(false);
+                      if (href && href !== window.location.pathname) {
+                        window.location.assign(href);
+                        return;
+                      }
+                      setLanguage(lang);
+                    }}
                     className={`w-full flex items-center gap-2.5 px-4 py-2 text-sm hover:bg-muted transition-colors text-foreground ${lang === language ? "font-bold" : ""}`}
                   >
                     <span>{languageFlags[lang]}</span>
