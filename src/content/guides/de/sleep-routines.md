@@ -2,11 +2,11 @@
 topic: sleep-routines
 lang: de
 urlSlug: babyschlaf-routinen
-title: "Schlafroutinen fürs Baby, ohne starren Plan"
-seoTitle: "Schlafroutine Baby: Ablauf, der trägt | Moonli"
-description: "Kurze Abendrituale, altersgerechte Wachfenster und ein ruhiges Schlafumfeld. Was Familien wirklich durchhalten, ohne Perfektion."
+title: "Babyschlaf: eine Routine ohne starren Plan"
+seoTitle: "Babyschlaf: Routine ohne starren Plan | Moonli"
+description: "Babyschlaf ohne Stundenplan. Drei Schritte, die auch nach einer kurzen Nacht noch gehen, und der Tag im Blick, bevor das Ritual startet."
 pubDate: 2026-10-02
-updatedDate: 2026-10-02
+updatedDate: 2026-10-06
 draft: false
 related:
   - wake-windows
@@ -37,7 +37,7 @@ faq:
 
 ## Die kurze Antwort
 
-Ein Abend mit Baby wird oft lang, weil alle müde sind und niemand mehr weiß, was als Nächstes dran ist. Eine Schlafroutine ist dann kein Stundenplan. Sie ist eine kleine, wiederkehrende Reihenfolge, an der das Baby merkt: jetzt wird es dunkler, leiser, näher am Schlaf. Drei Schritte, die ihr wirklich durchhaltet, sind mehr wert als ein Ritual aus zwölf Punkten, das nur an guten Tagen klappt.
+Beim Babyschlaf wird der Abend oft lang, weil alle müde sind und niemand mehr weiß, was als Nächstes dran ist. Eine Schlafroutine ist dann kein Stundenplan. Sie ist eine kleine, wiederkehrende Reihenfolge, an der das Baby merkt: jetzt wird es dunkler, leiser, näher am Schlaf. Drei Schritte, die ihr wirklich durchhaltet, sind mehr wert als ein Ritual aus zwölf Punkten, das nur an guten Tagen klappt.
 
 Der NHS beschreibt einfache Hilfen: ein ruhiger, abgedunkelter Raum, eine vertraute Reihenfolge, Geduld. Nichts davon verspricht, dass ein Baby durchschläft. Es macht den Übergang weniger abrupt. Das allein kann einen Abend schon freundlicher machen.
 

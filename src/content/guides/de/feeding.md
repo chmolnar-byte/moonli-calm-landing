@@ -2,11 +2,11 @@
 topic: feeding
 lang: de
 urlSlug: stillen-flaschchen-tracken
-title: "Stillen und Fläschchen im Blick behalten"
-seoTitle: "Stillen tracken: Seite, Dauer, Menge | Moonli"
-description: "Welche Angaben beim Stillen und bei der Flasche wirklich helfen, und wie beide Eltern denselben Stand sehen. Ohne Zettel in der Nacht."
+title: "Stillprotokoll: Stillen und Fläschchen tracken"
+seoTitle: "Stillprotokoll: Still-App für die Nacht | Moonli"
+description: "Ein Stillprotokoll für die Nacht: Seite, Dauer oder Menge. Die Still-App zeigt beiden Eltern am Morgen denselben Stand, ohne die Nacht noch einmal zu erzählen."
 pubDate: 2026-10-02
-updatedDate: 2026-10-02
+updatedDate: 2026-10-06
 draft: false
 related:
   - wake-windows
@@ -36,7 +36,7 @@ faq:
 
 ## Die kurze Antwort
 
-Um drei Uhr will niemand ein Formular ausfüllen. Du willst wissen, welche Seite dran war, oder wie viel in der Flasche wirklich weg ist, und du willst das morgen noch wissen, ohne die Nacht im Kopf zu rekonstruieren. Beim Stillen reichen meist Seite und ungefähre Dauer. Bei der Flasche reichen Menge und Uhrzeit. Mehr macht die Nacht schwerer, ohne dass der Morgen klüger wird.
+Um drei Uhr will niemand ein Formular ausfüllen. Ein Stillprotokoll in der Still-App soll dann klein bleiben. Du willst wissen, welche Seite dran war, oder wie viel in der Flasche wirklich weg ist, und du willst das morgen noch wissen, ohne die Nacht im Kopf zu rekonstruieren. Beim Stillen reichen meist Seite und ungefähre Dauer. Bei der Flasche reichen Menge und Uhrzeit. Mehr macht die Nacht schwerer, ohne dass der Morgen klüger wird.
 
 Die WHO und der NHS beschreiben Stillen als Bedarf des Babys. Häufiges Anlegen in den ersten Wochen ist normal. Eine App, die daraus ein Soll baut, macht den Tag enger, als er schon ist.
 
@@ -86,3 +86,5 @@ Ein Hinweis auf die nächste Mahlzeit ist möglich. Er bleibt aus, bis ihr ihn e
 Trag nur ein, was du mit einer Hand schaffst: Seite oder Menge, und die Zeit, die sowieso gerade ist. Am Morgen siehst du die Abstände als Reihe. Cluster am Abend erkennst du daran, dass mehrere kurze Einträge dicht beieinander liegen, nicht daran, dass du dich schlecht fühlst.
 
 Wenn du der Person, die geschlafen hat, den Morgen erklären müsstest, ist der Eintrag schon da. Die Frage am Frühstückstisch wird kürzer. Übrig bleibt, wie es euch ging. Welche Seite um 2 Uhr 40 dran war, muss niemand mehr aus dem Gedächtnis heben.
+
+Wenn Monate später der Löffel dazukommt, liegt die Beikost neben der Milch. Dann trackst du die Mahlzeit, füllst den Teller für BLW und schreibst Rezepte auf, die ihr in die Community geben könnt. Bis dahin trägt dieses Stillprotokoll die Nächte.

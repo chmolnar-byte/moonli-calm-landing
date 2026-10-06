@@ -100,7 +100,7 @@ const de: OverviewCopy = {
     },
     solids: {
       title: "Beikost",
-      text: "Den Teller aus über 100 Lebensmitteln füllen und merken, was drauf war. Ein Protokoll, kein Ernährungsplan.",
+      text: "Mahlzeiten tracken, den Teller für BLW aus über 100 Zutaten plus eigenen füllen, und Rezepte selbst aufschreiben und in die Community geben.",
     },
     growth: {
       title: "WHO-Kurven",

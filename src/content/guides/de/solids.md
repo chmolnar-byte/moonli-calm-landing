@@ -2,11 +2,11 @@
 topic: solids
 lang: de
 urlSlug: beikost-starten
-title: "Beikost starten: was du wirklich notieren kannst"
-seoTitle: "Beikost starten: was sich zu notieren lohnt | Moonli"
-description: "Erstes Essen ohne Ernährungsplan. Welche Notiz bei neuer Beikost hilft und wann eine Reaktion zur Kinderärztin gehört."
+title: "Beikost starten: tracken, Teller, eigene Rezepte"
+seoTitle: "Beikost starten: tracken, BLW, Rezepte | Moonli"
+description: "Beikost starten ohne Ernährungsplan. Mahlzeiten tracken, BLW mit über 100 Zutaten plus eigenen, und Rezepte aufschreiben und in die Community geben."
 pubDate: 2026-10-02
-updatedDate: 2026-10-02
+updatedDate: 2026-10-06
 draft: false
 related:
   - feeding
@@ -27,7 +27,7 @@ faq:
   - q: "Ab wann kommt Beikost infrage?"
     a: "Viele Fachstellen nennen die Zeit um den sechsten Monat, neben der Milch. Ob dein Baby so weit ist, siehst du mit Kinderärztin oder Hebamme. Ein Datum in einer App kennt euer Kind nicht."
   - q: "Was notiere ich beim ersten Löffel?"
-    a: "Das Lebensmittel, ungefähr wie viel ankam, und ob danach etwas auffiel. Eine Speisekarte für die ganze Woche brauchst du nicht. Der erste Brei darf unspektakulär bleiben."
+    a: "Das Lebensmittel, ungefähr wie viel ankam, und ob danach etwas auffiel. Eine Speisekarte für die ganze Woche brauchst du nicht. Später kannst du daraus ein eigenes Rezept machen und es, wenn du willst, in die Community geben."
   - q: "Was ist ein Grund, nicht weiterzutesten?"
     a: "Atemnot, eine Schwellung, wiederholtes Erbrechen oder ein Ausschlag, der dich beunruhigt, gehören sofort zu einer medizinischen Stelle. Die Notiz hilft dir später zu sagen, was es war. Sie ersetzt den Anruf nicht."
   - q: "Bleibt die Milch trotzdem das Wichtigste?"
@@ -75,7 +75,11 @@ Du hältst fest, was neu war und wie es vertragen wurde. Moonli baut dir daraus 
 
 ### Der Teller, auch für BLW
 
-Wenn ihr breifrei anfangt, oder einfach sehen wollt, was an diesem Tag auf dem Teller lag, füllst du ihn in Moonli. Über 100 Lebensmittel stehen bereit: Gemüse, Obst, Getreide, Protein. Antippen, auf den Teller, fertig. Danach ist nachvollziehbar, was drauf war, auch für die Person, die das nächste Mal füttert. Der Teller ist eine Erinnerung. Er ist kein Urteil darüber, ob genug oder das Richtige darauf lag.
+Wenn ihr breifrei anfangt, oder einfach sehen wollt, was an diesem Tag auf dem Teller lag, füllst du ihn in Moonli. Über 100 Zutaten stehen bereit: Gemüse, Obst, Getreide, Protein. Was fehlt, ergänzt du selbst. Antippen, auf den Teller, fertig. Danach ist nachvollziehbar, was drauf war, auch für die Person, die das nächste Mal füttert. Der Teller ist eine Erinnerung. Er ist kein Urteil darüber, ob genug oder das Richtige darauf lag.
+
+### Rezepte, die ihr selbst schreibt
+
+Ein Rezept in Moonli ist das, was ihr gekocht habt: was drin war und wie ihr es gemacht habt. Niemand legt euch eine Karte vor. Wenn ihr wollt, gebt ihr das Rezept in die Community weiter, damit eine andere Familie denselben Brei nicht noch einmal erfinden muss. Es bleibt eures. Ihr entscheidet, ob es bei euch bleibt oder weitergegeben wird.
 
 ### Neben Milch, Schlaf und Wachstum
 

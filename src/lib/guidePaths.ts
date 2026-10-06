@@ -118,14 +118,14 @@ export const TOPIC_ANCHOR: Record<TopicId, Record<GuideLang, string>> = {
     ru: "Окна бодрствования по возрасту",
   },
   "sleep-routines": {
-    de: "Schlafroutinen fürs Baby",
+    de: "Babyschlaf",
     en: "Baby sleep routines",
     es: "Rutinas de sueño del bebé",
     fr: "Routines de sommeil de bébé",
     ru: "Режим сна малыша",
   },
   feeding: {
-    de: "Stillen und Fläschchen im Blick",
+    de: "Stillprotokoll",
     en: "Track breastfeeding and bottles",
     es: "Seguimiento de lactancia y biberón",
     fr: "Suivi allaitement et biberon",
