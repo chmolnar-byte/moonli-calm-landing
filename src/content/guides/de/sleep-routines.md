@@ -6,7 +6,7 @@ title: "Babyschlaf: eine Routine ohne starren Plan"
 seoTitle: "Babyschlaf: Routine ohne starren Plan | Moonli"
 description: "Babyschlaf ohne Stundenplan. Drei Schritte, die auch nach einer kurzen Nacht noch gehen, und der Tag im Blick, bevor das Ritual startet."
 pubDate: 2026-10-02
-updatedDate: 2026-10-06
+updatedDate: 2026-10-09
 draft: false
 related:
   - wake-windows
@@ -25,7 +25,7 @@ sources:
   - name: WHO – Early childhood development
     url: https://www.who.int/teams/maternal-newborn-child-adolescent-health-and-ageing/child-health/early-childhood-development
 faq:
-  - q: "Ab wann lohnt sich eine Schlafroutine?"
+  - q: "Ab wann lohnt sich eine Babyschlaf-Routine?"
     a: "Ab etwa sechs bis acht Wochen reichen kleine, wiederkehrende Signale. Dasselbe leise Lied vor dem nächtlichen Stillen kann schon eines sein. Festere Abläufe werden für viele Familien ab etwa vier Monaten leichter, weil der Abend dann überhaupt einen Rand hat."
   - q: "Wie lange dauert es, bis eine Routine wirkt?"
     a: "Rechne mit ein bis drei Wochen, in denen ihr denselben kleinen Ablauf wiederholt. Zähne, Schübe und ein Infekt werfen das wieder um. Das heißt nicht, dass ihr es falsch gemacht habt. Es heißt, dass ein Baby kein Programm ist."
@@ -41,7 +41,7 @@ Beim Babyschlaf wird der Abend oft lang, weil alle müde sind und niemand mehr w
 
 Der NHS beschreibt einfache Hilfen: ein ruhiger, abgedunkelter Raum, eine vertraute Reihenfolge, Geduld. Nichts davon verspricht, dass ein Baby durchschläft. Es macht den Übergang weniger abrupt. Das allein kann einen Abend schon freundlicher machen.
 
-## Was eine Routine leisten kann
+## Was eine Babyschlaf-Routine leisten kann
 
 Sie sagt dem Körper, dass der Tag eine Kante bekommt. Licht runter, Stimme runter, derselbe Ablauf. Für ein kleines Baby ist das ein Anker in einem Tag, der sich sonst nur wie eine Folge von Milch, Windel und Wachsein anfühlt.
 
@@ -67,7 +67,7 @@ Zähne, Beikost, neue Bewegungen: der Abend wird unruhiger, obwohl ihr den Ablau
 
 Der Ablauf kann ein bisschen länger werden, eine Geschichte mehr, ein kurzes Aufräumen zusammen. Die Uhrzeit darf an Wochentagen und am Wochenende nah beieinander liegen, muss aber nicht heilig sein. Ein später Nachmittag mit Besuch wirft einen Abend um. Am nächsten Tag kehrt ihr zur gewohnten Kante zurück, ohne den gestrigen Abend noch einmal zu verhandeln.
 
-## Ein Ablauf in fünf Schritten
+## Schlafroutine in fünf Schritten
 
 1. Den Tag ansehen, bevor ihr anfangt. Wann war der letzte Schlaf? Wirkt das Baby schon übermüdet?
 2. Licht und Geräusch runter. Der Raum darf langweilig werden.
@@ -75,7 +75,7 @@ Der Ablauf kann ein bisschen länger werden, eine Geschichte mehr, ein kurzes Au
 4. Hinlegen, solange das Baby noch mitkommt. Wach genug, um den Ort zu kennen, müde genug, um loszulassen.
 5. Wenn es schiefgeht: kürzer machen, nicht länger. Ein zweites Programm am selben Abend hilft selten.
 
-Der fünfte Punkt ist der, den man sich am schwersten glaubt. Wenn das Schreien schon da ist, will man mehr tun. Mehr Lied, mehr Herumtragen, mehr Licht an und wieder aus. Oft braucht der Abend das Gegenteil: einen kleineren Kreis, und morgen einen früheren Start.
+Der fünfte Punkt ist der, den man sich am schwersten glaubt. Wenn das Baby abends nicht einschläft, ist der erste Blick der Tag davor, nicht ein längeres Ritual. Wenn das Schreien schon da ist, will man mehr tun. Mehr Lied, mehr Herumtragen, mehr Licht an und wieder aus. Oft braucht der Abend das Gegenteil: einen kleineren Kreis, und morgen einen früheren Start.
 
 ## So hält Moonli den Abend leicht
 
