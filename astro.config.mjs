@@ -10,6 +10,7 @@ const githubPagesBase = "/moonli-calm-landing/";
 
 export default defineConfig({
   site: SITE_ORIGIN,
+  trailingSlash: "always",
   base: process.env.GITHUB_PAGES === "true" ? githubPagesBase : "/",
   integrations: [
     react(),

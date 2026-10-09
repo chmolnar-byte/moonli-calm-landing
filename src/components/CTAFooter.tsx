@@ -58,11 +58,11 @@ const CTAFooter = () => {
               <span>© {new Date().getFullYear()}</span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 text-sm text-muted-foreground sm:justify-end">
-              <a href="/cookies" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.cookies")}</a>
-              <a href="/terms" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.terms")}</a>
-              <a href="/privacy" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.privacy")}</a>
-              <a href="/data-deletion" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.dataDeletion")}</a>
-              <a href="/imprint" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.imprint")}</a>
+              <a href="/cookies/" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.cookies")}</a>
+              <a href="/terms/" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.terms")}</a>
+              <a href="/privacy/" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.privacy")}</a>
+              <a href="/data-deletion/" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.dataDeletion")}</a>
+              <a href="/imprint/" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.imprint")}</a>
               <a href="mailto:hello@moonli.net" className="hover:text-foreground transition-colors whitespace-nowrap">hello@moonli.net</a>
             </div>
           </div>

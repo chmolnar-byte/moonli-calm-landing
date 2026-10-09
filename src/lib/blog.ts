@@ -14,9 +14,9 @@ const CATEGORY_LABELS: Record<BlogCollection, string> = {
 };
 
 const CATEGORY_PATHS: Record<BlogCollection, string> = {
-  news: "/blog/news",
-  features: "/blog/features",
-  partners: "/blog/partner",
+  news: "/blog/news/",
+  features: "/blog/features/",
+  partners: "/blog/partner/",
 };
 
 export function getCategoryLabel(collection: BlogCollection): string {
@@ -28,7 +28,7 @@ export function getCategoryPath(collection: BlogCollection): string {
 }
 
 export function getArticlePath(entry: BlogEntry): string {
-  return `${CATEGORY_PATHS[entry.collection]}/${entry.slug}`;
+  return `${CATEGORY_PATHS[entry.collection]}${entry.slug}/`;
 }
 
 export async function getPublishedPosts(

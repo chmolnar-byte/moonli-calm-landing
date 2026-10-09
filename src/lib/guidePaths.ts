@@ -176,8 +176,13 @@ export function isTopicId(value: string): value is TopicId {
   return (TOPIC_IDS as readonly string[]).includes(value);
 }
 
+function withSlash(path: string): string {
+  if (path === "/") return "/";
+  return path.endsWith("/") ? path : `${path}/`;
+}
+
 export function guidePath(lang: GuideLang, slug: string): string {
-  return `/${lang}/${GUIDE_SECTION[lang]}/${slug}`;
+  return withSlash(`/${lang}/${GUIDE_SECTION[lang]}/${slug}`);
 }
 
 export function topicPath(lang: GuideLang, topic: TopicId): string {
@@ -185,11 +190,11 @@ export function topicPath(lang: GuideLang, topic: TopicId): string {
 }
 
 export function featuresPath(lang: GuideLang): string {
-  return `/${lang}/${FEATURES_SLUG[lang]}`;
+  return withSlash(`/${lang}/${FEATURES_SLUG[lang]}`);
 }
 
 export function guidesIndexPath(lang: GuideLang): string {
-  return `/${lang}/${GUIDE_SECTION[lang]}`;
+  return withSlash(`/${lang}/${GUIDE_SECTION[lang]}`);
 }
 
 export function publishedTopicPath(lang: GuideLang, topic: TopicId): string | null {

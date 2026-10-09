@@ -6,7 +6,6 @@ import {
   FEATURES_SLUG,
   GUIDE_LANGS,
   GUIDE_SECTION,
-  guidesIndexPath,
   type GuideLang,
   isGuideLang,
 } from "./guidePaths";
@@ -71,7 +70,7 @@ function index(): Map<string, string> {
   }
   for (const lang of GUIDE_LANGS) {
     cache.set(`/${lang}/${FEATURES_SLUG[lang]}`, "2026-10-02");
-    cache.set(guidesIndexPath(lang), "2026-10-02");
+    cache.set(`/${lang}/${GUIDE_SECTION[lang]}`, "2026-10-02");
   }
   return cache;
 }

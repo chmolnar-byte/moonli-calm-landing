@@ -24,15 +24,16 @@ export function canonicalUrl(input: string): string {
   url.hostname = "moonli.net";
   url.port = "";
   url.pathname = url.pathname.replace(/\/+$/, "") || "/";
+  if (url.pathname !== "/") url.pathname += "/";
 
   return url.href;
 }
 
 const GUIDE_PATH =
-  /^\/(de\/ratgeber|en\/guides|es\/guias|fr\/guides|ru\/gid)(\/[a-z0-9-]+)?$/;
+  /^\/(de\/ratgeber|en\/guides|es\/guias|fr\/guides|ru\/gid)(\/[a-z0-9-]+)?\/$/;
 
 const OVERVIEW_PATH =
-  /^\/(de\/funktionen|en\/features|es\/funciones|fr\/fonctions|ru\/funktsii)$/;
+  /^\/(de\/funktionen|en\/features|es\/funciones|fr\/fonctions|ru\/funktsii)\/$/;
 
 export function isIndexableUrl(url: string): boolean {
   const canonical = canonicalUrl(url);

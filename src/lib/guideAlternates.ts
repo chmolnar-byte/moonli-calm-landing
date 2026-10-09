@@ -1,6 +1,5 @@
 import { SITE_ORIGIN } from "./seo";
 import {
-  FEATURES_SLUG,
   GUIDE_LANGS,
   type TopicId,
   featuresPath,
@@ -34,7 +33,7 @@ export function featureAlternates(): Alternate[] {
     const path = featuresPath(lang);
     return { hreflang: lang, href: absolute(path), path };
   });
-  return withDefault(items, `/${"en"}/${FEATURES_SLUG.en}`);
+  return withDefault(items, featuresPath("en"));
 }
 
 export function indexAlternates(): Alternate[] {

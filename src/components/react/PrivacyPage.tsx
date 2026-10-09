@@ -191,7 +191,7 @@ const PrivacyPage = () => {
               <p className="mb-2">{t("privacy.retention.text1")}</p>
               <p className="mb-2">
                 {t("privacy.retention.text3")}{" "}
-                <a href="/data-deletion" className="text-primary underline underline-offset-2 hover:text-foreground">
+                <a href="/data-deletion/" className="text-primary underline underline-offset-2 hover:text-foreground">
                   {t("privacy.retention.deletionLink")}
                 </a>
               </p>
