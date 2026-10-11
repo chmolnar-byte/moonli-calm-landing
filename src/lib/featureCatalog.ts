@@ -57,16 +57,16 @@ export type OverviewCopy = {
 };
 
 const de: OverviewCopy = {
-  seoTitle: "Alle Moonli Funktionen im Überblick | Moonli",
+  seoTitle: "Funktionen für Schlaf, Stillen und Beikost | Moonli",
   description:
-    "Schlaftracking, Wachfenster, Stillen, WHO-Kurven und Parent-Sync. Welche Moonli-Funktion den Alltag trägt und was dauerhaft kostenlos bleibt.",
+    "Schlaf, Stillen, Wachfenster und Beikost. Welche Funktion den Alltag trägt, und was dauerhaft kostenlos bleibt.",
   h1: "Alle Funktionen von Moonli",
   intro:
-    "Moonli bündelt den Babyalltag an einem Ort: Schlaf, Mahlzeiten, Windeln, Wachstum und die Menschen, die das Kind gemeinsam tragen. Tracking bleibt kostenlos. Die Übersicht zeigt, welche Funktion welche Frage löst.",
+    "Moonli bündelt den Babyalltag an einem Ort: Schlaf, Mahlzeiten, Windeln, Wachstum und die Menschen, die das Kind gemeinsam tragen. Der Überblick bleibt kostenlos. Die Übersicht zeigt, welche Funktion welche Frage löst.",
   groups: {
     day: {
       title: "Schlaf, Essen und Wachstum",
-      intro: "Der Tag wird sichtbar, ohne Tabelle und ohne Abo fürs Tracking.",
+      intro: "Der Tag wird sichtbar, ohne Tabelle und ohne Abo.",
     },
     together: {
       title: "Beide Eltern, ein Stand",
@@ -83,7 +83,7 @@ const de: OverviewCopy = {
   },
   features: {
     "sleep-tracking": {
-      title: "Schlaftracking",
+      title: "Schlaf",
       text: "Schlafbeginn und -ende mit einem Tipp. Am Abend siehst du, wann das letzte Schläfchen war.",
     },
     "wake-windows": {
