@@ -3,14 +3,18 @@ import { pointerFor, type TopicId } from "@/lib/guidePaths";
 
 type GuidePointerProps = {
   topic: TopicId | "features";
+  grouped?: boolean;
 };
 
-const GuidePointer = ({ topic }: GuidePointerProps) => {
+const GuidePointer = ({ topic, grouped = false }: GuidePointerProps) => {
   const { language } = useLanguage();
   const link = pointerFor(language, topic);
 
   return (
-    <a href={link.href} className="mt-4 inline-flex text-sm font-semibold text-primary hover:underline">
+    <a
+      href={link.href}
+      className={`${grouped ? "" : "mt-4 "}inline-flex text-sm font-semibold text-primary hover:underline`}
+    >
       {link.label}
     </a>
   );

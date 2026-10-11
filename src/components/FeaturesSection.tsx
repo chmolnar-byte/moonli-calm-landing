@@ -75,7 +75,11 @@ const FeaturesSection = () => {
             <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-[48ch]">
               {t("features.tracking.desc")}
             </p>
-            <GuidePointer topic="wake-windows" />
+            <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+              <GuidePointer topic="wake-windows" grouped />
+              <GuidePointer topic="feeding" grouped />
+              <GuidePointer topic="solids" grouped />
+            </div>
             <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-foreground/75">
               {trackingItems.map((item) => (
                 <span key={item}>{item}</span>
