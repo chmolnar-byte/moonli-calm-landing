@@ -3,6 +3,9 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import LandingPage from "@/components/react/LandingPage";
 import { SITE_ORIGIN, canonicalUrl } from "@/lib/seo";
 
+const description =
+  "Schlaf und Stillen ab der Geburt. Beikost, wenn der Löffel kommt. Wachfenster nach Alter, und beide Eltern sehen denselben Stand.";
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -10,8 +13,7 @@ const jsonLd = {
   alternateName: "Moonli Baby/Parent Assistant",
   applicationCategory: "HealthApplication",
   operatingSystem: "iOS, Android",
-  description:
-    "Kostenloses Schlaftracking, Wachfenster nach Alter und ein gemeinsamer Überblick für beide Eltern. Stillen, Windeln und Wachstum an einem Ort.",
+  description,
   url: `${SITE_ORIGIN}/`,
   image: `${SITE_ORIGIN}/og-image.png`,
   author: { "@type": "Person", name: "Christian Molnar" },
@@ -24,8 +26,8 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title="Moonli: Baby-App für Schlaf, Wachfenster und Tracking"
-  description="Kostenloses Schlaftracking, Wachfenster nach Alter und ein gemeinsamer Überblick für beide Eltern. Stillen, Windeln und Wachstum an einem Ort."
+  title="Eltern-App für Babyschlaf, Stillen und Beikost | Moonli"
+  description={description}
   canonical={canonicalUrl("/")}
   jsonLd={jsonLd}
 >
