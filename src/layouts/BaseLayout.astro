@@ -99,6 +99,27 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-497RKXKY2W";
     <slot name="head" />
   </head>
   <body>
-    <slot />
+    <slot /><script is:inline>
+(function () {
+  var key = "moonli_web_visitor";
+  var id = localStorage.getItem(key);
+  if (!id) {
+    id = Math.random().toString(36).slice(2) + Date.now().toString(36);
+    localStorage.setItem(key, id);
+  }
+  var params = new URLSearchParams(location.search);
+  fetch("https://app.moonli.net/api/insights/beacon", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      secret: "E6Sd4HB^7pC5GFK4GNzkp^@Wt",
+      path: location.pathname || "/",
+      source: params.get("utm_source") || "",
+      referrer: document.referrer || "",
+      visitorId: id
+    })
+  }).catch(function () {});
+})();
+</script>
   </body>
 </html>
