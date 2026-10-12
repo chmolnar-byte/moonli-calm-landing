@@ -101,11 +101,10 @@ const Navbar = ({ languageHrefs }: NavbarProps) => {
         </a>
 
         <div className="hidden items-center justify-center gap-1 lg:flex">
-          {renderNavTab(NAV_TABS[0], tabClassName)}
+          {NAV_TABS.map((tab) => renderNavTab(tab, tabClassName))}
           <a href={guidesIndexPath(language)} className={tabClassName}>
             {t("nav.guides")}
           </a>
-          {NAV_TABS.slice(1).map((tab) => renderNavTab(tab, tabClassName))}
         </div>
 
         <div className="relative z-40 ml-auto flex shrink-0 items-center justify-end gap-1 sm:gap-2 lg:ml-0 lg:flex-1">
@@ -186,11 +185,10 @@ const Navbar = ({ languageHrefs }: NavbarProps) => {
       </div>
 
       <div className="relative z-30 flex items-center justify-center gap-1 border-t border-border px-3 py-1.5 lg:hidden">
-        {renderNavTab(NAV_TABS[0], mobileTabClassName)}
+        {NAV_TABS.map((tab) => renderNavTab(tab, mobileTabClassName))}
         <a href={guidesIndexPath(language)} className={mobileTabClassName}>
           {t("nav.guides")}
         </a>
-        {NAV_TABS.slice(1).map((tab) => renderNavTab(tab, mobileTabClassName))}
       </div>
     </nav>
   );
