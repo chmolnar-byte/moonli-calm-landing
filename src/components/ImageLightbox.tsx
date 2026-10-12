@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { X } from "lucide-react";
-import { useEffect } from "react";
+import { Play, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 type LightboxVideo = {
@@ -18,6 +18,8 @@ interface ImageLightboxProps {
 }
 
 const ImageLightbox = ({ src, video, alt, onClose }: ImageLightboxProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -63,7 +65,7 @@ const ImageLightbox = ({ src, video, alt, onClose }: ImageLightboxProps) => {
       >
         {video ? (
           <motion.div
-            className={`demo-phone ${video.maskClass ?? ""} pointer-events-auto mx-auto w-[min(92vw,280px)] sm:w-[min(92vw,320px)] max-h-[calc(100dvh-8rem)] shrink-0 cursor-default`}
+            className={`demo-phone ${video.maskClass ?? ""} relative pointer-events-auto mx-auto w-[min(92vw,280px)] sm:w-[min(92vw,320px)] max-h-[calc(100dvh-8rem)] shrink-0 cursor-default`}
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.96 }}
@@ -71,17 +73,45 @@ const ImageLightbox = ({ src, video, alt, onClose }: ImageLightboxProps) => {
             onClick={(event) => event.stopPropagation()}
           >
             <video
-              className="select-none max-h-[calc(100dvh-8rem)]"
+              ref={videoRef}
+              className="pointer-events-none select-none max-h-[calc(100dvh-8rem)]"
               poster={video.poster}
-              autoPlay
               muted
               loop
               playsInline
-              aria-label={alt}
+              preload="metadata"
+              aria-label={playing ? alt : undefined}
+              aria-hidden={playing ? undefined : true}
             >
               <source src={video.webm} type="video/webm" />
               <source src={video.mp4} type="video/mp4" />
             </video>
+            {!playing ? (
+              <button
+                type="button"
+                className="demo-play"
+                aria-label={`Video abspielen: ${alt}`}
+                onClick={() => {
+                  setPlaying(true);
+                  void videoRef.current?.play().catch(() => setPlaying(false));
+                }}
+              >
+                <span className="demo-play-mark">
+                  <Play className="h-3.5 w-3.5 fill-current" aria-hidden />
+                  Play
+                </span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="demo-play demo-play--pause"
+                aria-label={`Video pausieren: ${alt}`}
+                onClick={() => {
+                  videoRef.current?.pause();
+                  setPlaying(false);
+                }}
+              />
+            )}
           </motion.div>
         ) : (
           <motion.img

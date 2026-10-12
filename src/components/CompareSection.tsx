@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useState } from "react";
+import StatsCounter from "@/components/StatsCounter";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { easeOut, motionInitial } from "@/lib/motion";
 import { cn } from "@/lib/utils";
@@ -121,8 +122,9 @@ const CompareSection = () => {
   const [lit, setLit] = useState<number | null>(null);
 
   return (
-    <section className="py-24 md:py-32">
+    <section className="pb-24 pt-16 md:pb-32 md:pt-20">
       <div className="container relative z-10">
+        <StatsCounter />
         <motion.div
           initial={motionInitial}
           whileInView={{ opacity: 1 }}

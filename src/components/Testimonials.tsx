@@ -1,8 +1,4 @@
-import { motion } from "framer-motion";
-import { Star } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
-import LeafAccent from "@/components/LeafAccent";
-import { easeOut, motionInitial } from "@/lib/motion";
 
 const testimonials = [
   { nameKey: "testimonials.1.name", quoteKey: "testimonials.1.quote", roleKey: "testimonials.1.role" },
@@ -17,43 +13,27 @@ const Testimonials = () => {
   const { t } = useLanguage();
 
   return (
-    <section className="relative overflow-x-clip py-20 md:py-24">
-      <LeafAccent
-        src="/leaves/sprigs-right.png"
-        className="page-leaf -right-4 top-0 z-0 w-[170px] sm:w-[210px]"
-      />
+    <section className="relative overflow-x-clip py-16 md:py-24">
       <div className="container relative z-10">
-        <motion.div
-          initial={motionInitial}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: easeOut }}
-          className="mb-12 max-w-[28ch]"
-        >
-          <h2 className="text-display-md text-foreground">
-            {t("testimonials.title")}
-          </h2>
-        </motion.div>
+        <h2 className="mb-6 max-w-[14ch] text-display-md text-balance text-foreground md:mb-8">
+          {t("testimonials.title")}
+        </h2>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <ul className="grid gap-3 md:grid-cols-2 md:gap-4">
           {testimonials.map((item) => (
-            <article
-              key={item.quoteKey}
-              className="rounded-[1.5rem] border border-border bg-card p-6 sm:p-7"
-            >
-              <div className="flex gap-0.5 mb-4">
-                {Array.from({ length: 5 }).map((_, j) => (
-                  <Star key={j} className="w-3.5 h-3.5 fill-primary text-primary" />
-                ))}
-              </div>
-              <p className="text-base text-foreground leading-relaxed mb-5">
-                {t(item.quoteKey)}
-              </p>
-              <p className="text-sm font-bold text-foreground">{t(item.nameKey)}</p>
-              <p className="text-sm text-muted-foreground">{t(item.roleKey)}</p>
-            </article>
+            <li key={item.quoteKey} className="flex">
+              <figure className="quote-card flex w-full flex-1 flex-col rounded-[1.5rem] border border-border bg-card px-6 py-6 sm:px-7 sm:py-7">
+                <blockquote className="text-[1.28rem] font-medium leading-[1.3] tracking-[-0.022em] text-foreground sm:text-[1.4rem]">
+                  {t(item.quoteKey)}
+                </blockquote>
+                <figcaption className="mt-auto pt-7">
+                  <p className="text-[0.95rem] font-semibold text-foreground">{t(item.nameKey)}</p>
+                  <p className="text-sm font-medium text-[hsl(14_46%_36%)] dark:text-[hsl(165_28%_74%)]">{t(item.roleKey)}</p>
+                </figcaption>
+              </figure>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

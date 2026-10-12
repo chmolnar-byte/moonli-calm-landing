@@ -1,322 +1,174 @@
-import { motion, AnimatePresence } from "framer-motion";
-import ImageLightbox from "@/components/ImageLightbox";
-import { useLanguage } from "@/i18n/LanguageContext";
-import trackingScreenshot from "@/assets/tracking-tagesplan.png";
-import weeklyReportScreenshot from "@/assets/hero-wochenbericht.png";
-import soundsScreenshot from "@/assets/app-sounds.png";
-import complimentsScreenshot from "@/assets/app-compliments.png";
-import ParentSyncSection from "@/components/ParentSyncSection";
-import LeafAccent from "@/components/LeafAccent";
 import PhoneDemoVideo from "@/components/PhoneDemoVideo";
-import { assetUrl } from "@/lib/assetUrl";
-import { easeOut, motionInitial } from "@/lib/motion";
+import { useLanguage } from "@/i18n/LanguageContext";
+import { cn } from "@/lib/utils";
 import { useState } from "react";
-import GuidePointer from "@/components/GuidePointer";
 
-const trackingScreenshotUrl = assetUrl(trackingScreenshot);
-const weeklyReportScreenshotUrl = assetUrl(weeklyReportScreenshot);
-const soundsScreenshotUrl = assetUrl(soundsScreenshot);
-const complimentsScreenshotUrl = assetUrl(complimentsScreenshot);
+type StageVideo = {
+  poster: string;
+  webm: string;
+  mp4: string;
+  maskClass: string;
+};
 
-const splitItems = (raw: string) =>
-  raw
-    .split("|")
-    .map((item) => item.trim())
-    .filter(Boolean);
-
-type LightboxMedia = {
-  alt: string;
-  src?: string;
-  video?: {
-    poster: string;
-    webm: string;
-    mp4: string;
-    maskClass: string;
-  };
+type Stage = {
+  id: string;
+  title: string;
+  kicker: string;
+  desc: string;
+  notes?: string[];
+  video: StageVideo;
 };
 
 const FeaturesSection = () => {
   const { t } = useLanguage();
-  const [lightbox, setLightbox] = useState<LightboxMedia | null>(null);
-  const trackingItems = splitItems(t("features.tracking.items"));
+  const [active, setActive] = useState(0);
+
+  const notes = t("features.tracking.items")
+    .split("|")
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  const stages: Stage[] = [
+    {
+      id: "tracking",
+      title: t("features.tracking.title"),
+      kicker: t("features.tracking.focus"),
+      desc: t("features.tracking.desc"),
+      notes,
+      video: {
+        poster: "/videos/tracking-poster.webp",
+        webm: "/videos/tracking-loop.webm",
+        mp4: "/videos/tracking-loop.mp4",
+        maskClass: "demo-phone--tracking",
+      },
+    },
+    {
+      id: "knowledge",
+      title: t("features.groups.knowledge.title"),
+      kicker: t("features.groups.knowledge.subtitle"),
+      desc: t("features.groups.knowledge.desc"),
+      video: {
+        poster: "/videos/knowledge-poster.webp",
+        webm: "/videos/knowledge-loop.webm",
+        mp4: "/videos/knowledge-loop.mp4",
+        maskClass: "demo-phone--knowledge",
+      },
+    },
+    {
+      id: "sync",
+      title: t("features.sync.title"),
+      kicker: t("features.sync.focus"),
+      desc: t("features.sync.desc"),
+      video: {
+        poster: "/videos/partner-poster.webp",
+        webm: "/videos/partner-loop.webm",
+        mp4: "/videos/partner-loop.mp4",
+        maskClass: "demo-phone--partner",
+      },
+    },
+    {
+      id: "media",
+      title: t("features.groups.entertainment.title"),
+      kicker: t("features.groups.entertainment.subtitle"),
+      desc: t("features.groups.entertainment.desc"),
+      video: {
+        poster: "/videos/media-poster.webp",
+        webm: "/videos/media-loop.webm",
+        mp4: "/videos/media-loop.mp4",
+        maskClass: "demo-phone--media",
+      },
+    },
+    {
+      id: "parent",
+      title: t("features.groups.parent.title"),
+      kicker: t("features.groups.parent.subtitle"),
+      desc: t("features.groups.parent.desc"),
+      video: {
+        poster: "/videos/parent-poster.webp",
+        webm: "/videos/parent-loop.webm",
+        mp4: "/videos/parent-loop.mp4",
+        maskClass: "demo-phone--parent",
+      },
+    },
+  ];
+
+  const current = stages[active];
 
   return (
-    <section className="py-20 md:py-24 relative overflow-visible">
-      <LeafAccent
-        src="/leaves/sprigs-left.png"
-        className="page-leaf top-8 -left-6 z-0 w-[150px] sm:w-[190px]"
-      />
-      <div className="container relative z-10">
-        <motion.div
-          initial={motionInitial}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: easeOut }}
-          className="mb-12 max-w-[36ch]"
-        >
-          <h2 className="text-display-md text-foreground">{t("features.title")}</h2>
-          <GuidePointer topic="features" />
-        </motion.div>
+    <section className="relative py-14 md:py-20">
+      <div className="container">
+        <h2 className="mb-6 text-display-md text-foreground md:mb-8">{t("features.title")}</h2>
 
-        <motion.div
-          initial={motionInitial}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{ duration: 0.5, ease: easeOut }}
-          className="grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-10 lg:gap-14 items-center"
-        >
-          <div>
-            <p className="mb-3 text-sm font-semibold text-primary">
-              {t("features.tracking.focus")}
-            </p>
-            <h3 className="text-title-lg text-foreground">
-              {t("features.tracking.title")}
-            </h3>
-            <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-[48ch]">
-              {t("features.tracking.desc")}
-            </p>
-            <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
-              <GuidePointer topic="wake-windows" grouped />
-              <GuidePointer topic="feeding" grouped />
-              <GuidePointer topic="solids" grouped />
-            </div>
-            <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-foreground/75">
-              {trackingItems.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16 xl:gap-24">
+          <div className="order-2 lg:order-1" role="tablist" aria-label={t("features.title")}>
+            {stages.map((stage, index) => {
+              const selected = index === active;
+              return (
+                <button
+                  key={stage.id}
+                  type="button"
+                  role="tab"
+                  id={`feature-tab-${stage.id}`}
+                  aria-selected={selected}
+                  aria-controls="feature-stage"
+                  onClick={() => setActive(index)}
+                  className={cn(
+                    "feature-topic group block w-full border-t border-border py-3.5 text-left sm:py-4",
+                    index === stages.length - 1 && "border-b",
+                    selected && "feature-topic--active border-foreground",
+                  )}
+                >
+                  <span
+                    className={cn(
+                      "feature-topic-title block font-semibold tracking-[-0.035em]",
+                      selected
+                        ? "text-[1.7rem] leading-[1.05] text-foreground sm:text-[2.15rem]"
+                        : "text-xl text-foreground/40 sm:text-2xl",
+                    )}
+                  >
+                    {stage.title}
+                  </span>
+                  {selected && (
+                    <span className="mt-3 block max-w-[46ch]">
+                      <span className="block text-sm font-semibold text-primary">{stage.kicker}</span>
+                      <span className="mt-1.5 block text-[15px] leading-relaxed text-muted-foreground">
+                        {stage.desc}
+                      </span>
+                      {stage.notes && (
+                        <span className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm font-semibold text-foreground/75">
+                          {stage.notes.map((note) => (
+                            <span key={note}>{note}</span>
+                          ))}
+                        </span>
+                      )}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
           </div>
 
-          <div className="relative mx-auto w-full max-w-[520px] overflow-visible px-5 sm:px-8">
-            <div className="absolute inset-[12%] rounded-full bg-primary/12 blur-[70px] pointer-events-none" />
-            <div className="relative flex items-end justify-center pt-3">
-              <button
-                type="button"
-                onClick={() =>
-                  setLightbox({
-                    src: trackingScreenshotUrl,
-                    alt: t("features.tracking.scheduleAlt"),
-                  })
-                }
-                className="feature-shot relative z-[1] w-[36%] shrink-0 -mr-[6%] translate-y-3 cursor-zoom-in -rotate-[8deg]"
-                aria-label={t("features.tracking.scheduleAlt")}
-              >
-                <img
-                  src={trackingScreenshotUrl}
-                  alt={t("features.tracking.scheduleAlt")}
-                  className="shot-crisp block w-full h-auto select-none pointer-events-none"
-                  loading="lazy"
-                />
-              </button>
-              <PhoneDemoVideo
-                label={t("features.tracking.title")}
-                poster="/videos/tracking-poster.webp"
-                webm="/videos/tracking-loop.webm"
-                mp4="/videos/tracking-loop.mp4"
-                className="demo-phone demo-phone--tracking relative z-[3] w-[38%] shrink-0"
-                onOpen={() =>
-                  setLightbox({
-                    alt: t("features.tracking.title"),
-                    video: {
-                      poster: "/videos/tracking-poster.webp",
-                      webm: "/videos/tracking-loop.webm",
-                      mp4: "/videos/tracking-loop.mp4",
-                      maskClass: "demo-phone--tracking",
-                    },
-                  })
-                }
+          <div
+            id="feature-stage"
+            role="tabpanel"
+            aria-labelledby={`feature-tab-${current.id}`}
+            className="order-1 flex justify-center lg:order-2"
+          >
+            <div key={current.id} className="feature-swap relative">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[108%] w-[108%] -translate-x-1/2 -translate-y-1/2 opacity-70 [background-image:radial-gradient(hsl(var(--foreground)/0.18)_0.7px,transparent_0.7px)] [background-size:14px_14px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_72%)]"
               />
-              <button
-                type="button"
-                onClick={() =>
-                  setLightbox({
-                    src: weeklyReportScreenshotUrl,
-                    alt: t("features.tracking.weeklyAlt"),
-                  })
-                }
-                className="feature-shot relative z-[1] w-[36%] shrink-0 -ml-[6%] translate-y-3 cursor-zoom-in rotate-[7deg]"
-                aria-label={t("features.tracking.weeklyAlt")}
-              >
-                <img
-                  src={weeklyReportScreenshotUrl}
-                  alt={t("features.tracking.weeklyAlt")}
-                  className="shot-crisp block w-full h-auto select-none pointer-events-none"
-                  loading="lazy"
-                />
-              </button>
+              <PhoneDemoVideo
+                label={current.title}
+                poster={current.video.poster}
+                webm={current.video.webm}
+                mp4={current.video.mp4}
+                className={cn("demo-phone feature-stage-phone relative", current.video.maskClass)}
+              />
             </div>
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={motionInitial}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-30px" }}
-          transition={{ duration: 0.45, ease: easeOut }}
-          className="mt-20 md:mt-24 grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-10 lg:gap-14 items-center"
-        >
-          <PhoneDemoVideo
-            label={t("features.groups.knowledge.title")}
-            poster="/videos/knowledge-poster.webp"
-            webm="/videos/knowledge-loop.webm"
-            mp4="/videos/knowledge-loop.mp4"
-            className="demo-phone demo-phone--knowledge mx-auto w-[176px] md:w-[196px] max-w-full lg:order-1"
-            onOpen={() =>
-              setLightbox({
-                alt: t("features.groups.knowledge.title"),
-                video: {
-                  poster: "/videos/knowledge-poster.webp",
-                  webm: "/videos/knowledge-loop.webm",
-                  mp4: "/videos/knowledge-loop.mp4",
-                  maskClass: "demo-phone--knowledge",
-                },
-              })
-            }
-          />
-          <div className="lg:order-2">
-            <p className="mb-3 text-sm font-semibold text-primary">
-              {t("features.groups.knowledge.subtitle")}
-            </p>
-            <h3 className="text-title-lg text-foreground">
-              {t("features.groups.knowledge.title")}
-            </h3>
-            <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-[42ch]">
-              {t("features.groups.knowledge.desc")}
-            </p>
-            <GuidePointer topic="sleep-routines" />
-          </div>
-        </motion.div>
-
-        <div className="mt-20 md:mt-24">
-          <ParentSyncSection
-            imageSrc={complimentsScreenshotUrl}
-            onOpenImage={(src, alt) => setLightbox({ src, alt })}
-            onOpenVideo={() =>
-              setLightbox({
-                alt: t("features.sync.title"),
-                video: {
-                  poster: "/videos/partner-poster.webp",
-                  webm: "/videos/partner-loop.webm",
-                  mp4: "/videos/partner-loop.mp4",
-                  maskClass: "demo-phone--partner",
-                },
-              })
-            }
-          />
         </div>
-
-        <motion.div
-          initial={motionInitial}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-30px" }}
-          transition={{ duration: 0.45, ease: easeOut }}
-          className="mt-20 md:mt-24 grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] gap-10 lg:gap-14 items-center"
-        >
-          <div className="lg:order-2">
-            <p className="mb-3 text-sm font-semibold text-primary">
-              {t("features.groups.entertainment.subtitle")}
-            </p>
-            <h3 className="text-title-lg text-foreground">
-              {t("features.groups.entertainment.title")}
-            </h3>
-            <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-[42ch]">
-              {t("features.groups.entertainment.desc")}
-            </p>
-            <GuidePointer topic="calm-screen" />
-          </div>
-          <div className="relative mx-auto w-full max-w-[420px] overflow-visible px-5 sm:px-8 lg:order-1">
-            <div className="absolute inset-[12%] rounded-full bg-primary/12 blur-[70px] pointer-events-none" />
-            <div className="relative flex items-end justify-center pt-3">
-              <button
-                type="button"
-                onClick={() =>
-                  setLightbox({
-                    src: soundsScreenshotUrl,
-                    alt: t("features.groups.entertainment.title"),
-                  })
-                }
-                className="feature-shot relative z-[1] w-[36%] shrink-0 -mr-[8%] translate-y-3 cursor-zoom-in -rotate-[8deg]"
-                aria-label={t("features.groups.entertainment.title")}
-              >
-                <img
-                  src={soundsScreenshotUrl}
-                  alt={t("features.groups.entertainment.title")}
-                  className="shot-crisp block w-full h-auto select-none pointer-events-none"
-                  loading="lazy"
-                />
-              </button>
-              <PhoneDemoVideo
-                label={t("features.groups.entertainment.title")}
-                poster="/videos/media-poster.webp"
-                webm="/videos/media-loop.webm"
-                mp4="/videos/media-loop.mp4"
-                className="demo-phone demo-phone--media relative z-[3] w-[38%] shrink-0"
-                onOpen={() =>
-                  setLightbox({
-                    alt: t("features.groups.entertainment.title"),
-                    video: {
-                      poster: "/videos/media-poster.webp",
-                      webm: "/videos/media-loop.webm",
-                      mp4: "/videos/media-loop.mp4",
-                      maskClass: "demo-phone--media",
-                    },
-                  })
-                }
-              />
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={motionInitial}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: "-30px" }}
-          transition={{ duration: 0.45, ease: easeOut }}
-          className="mt-20 md:mt-24 grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] gap-10 lg:gap-14 items-center"
-        >
-          <div>
-            <p className="mb-3 text-sm font-semibold text-primary">
-              {t("features.groups.parent.subtitle")}
-            </p>
-            <h3 className="text-title-lg text-foreground">
-              {t("features.groups.parent.title")}
-            </h3>
-            <p className="mt-3 text-base text-muted-foreground leading-relaxed max-w-[42ch]">
-              {t("features.groups.parent.desc")}
-            </p>
-            <GuidePointer topic="night-exhaustion" />
-          </div>
-          <PhoneDemoVideo
-            label={t("features.groups.parent.title")}
-            poster="/videos/parent-poster.webp"
-            webm="/videos/parent-loop.webm"
-            mp4="/videos/parent-loop.mp4"
-            className="demo-phone demo-phone--parent mx-auto w-[176px] md:w-[196px] max-w-full"
-            onOpen={() =>
-              setLightbox({
-                alt: t("features.groups.parent.title"),
-                video: {
-                  poster: "/videos/parent-poster.webp",
-                  webm: "/videos/parent-loop.webm",
-                  mp4: "/videos/parent-loop.mp4",
-                  maskClass: "demo-phone--parent",
-                },
-              })
-            }
-          />
-        </motion.div>
-
-        <AnimatePresence>
-          {lightbox && (
-            <ImageLightbox
-              key={lightbox.video?.webm ?? lightbox.src}
-              src={lightbox.src}
-              video={lightbox.video}
-              alt={lightbox.alt}
-              onClose={() => setLightbox(null)}
-            />
-          )}
-        </AnimatePresence>
       </div>
     </section>
   );

@@ -18,7 +18,6 @@ import dashboardWeekly from "@/assets/hero-wochenbericht.png";
 import dashboardGrowth from "@/assets/hero-entwicklung.png";
 import dashboardHome from "@/assets/hero-sleep.png";
 import { assetUrl } from "@/lib/assetUrl";
-import { guidesIndexPath } from "@/lib/guidePaths";
 import { easeOut, motionInitial, scrollSpring } from "@/lib/motion";
 
 const dashboardWeeklyUrl = assetUrl(dashboardWeekly);
@@ -85,10 +84,6 @@ const PhoneMockup = ({ progress }: { progress: MotionValue<number> }) => {
         className="relative"
         style={reduceMotion ? undefined : { transform: clusterTransform, opacity: clusterOpacity }}
       >
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="h-[48%] w-[48%] rounded-full bg-primary/8 blur-[70px] translate-y-6" />
-      </div>
-
       <motion.div
         className="relative mx-auto w-full min-h-[300px] sm:min-h-[min(460px,46dvh)] px-9 py-4 sm:px-12"
         style={{ x: groupX, y: groupY }}
@@ -206,27 +201,18 @@ const PhoneMockup = ({ progress }: { progress: MotionValue<number> }) => {
 
 const HeroSection = () => {
   const { t, language } = useLanguage();
-  const reduceMotion = useReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
   const progress = useSpring(scrollYProgress, scrollSpring);
-  const glowOpacity = useTransform(progress, [0, 0.7], [1, 0]);
 
   return (
     <section
       ref={sectionRef}
       className="relative flex flex-1 flex-col justify-center overflow-visible pb-3 pt-[8.5rem] lg:pt-24"
     >
-      <motion.div
-        className="absolute inset-0 pointer-events-none overflow-hidden"
-        style={reduceMotion ? undefined : { opacity: glowOpacity }}
-      >
-        <div className="absolute -top-40 -right-40 w-[560px] h-[560px] rounded-full bg-primary/15 blur-[100px]" />
-        <div className="absolute -bottom-40 -left-40 w-[420px] h-[420px] rounded-full bg-pastel-peach/25 blur-[100px]" />
-      </motion.div>
       <LeafAccent
         src="/leaves/hanging.png"
         className="page-leaf page-leaf-fade-top -left-12 top-8 z-0 hidden w-[200px] sm:block sm:w-[240px]"
@@ -240,15 +226,13 @@ const HeroSection = () => {
             transition={{ duration: 0.55, ease: easeOut }}
             className="text-left max-w-xl"
           >
-            <h1 className="text-display-lg mb-3 text-foreground">
+            <h1 className="text-display-lg mb-4 text-balance text-foreground">
               {t("hero.headline1")}
               <br />
-              {t("hero.headline2")}
-              <br />
-              {t("hero.headline3")}
+              <span className="text-primary">{t("hero.headline2")}</span>
             </h1>
 
-            <p className="mb-8 text-lg font-semibold leading-snug text-foreground sm:text-xl">
+            <p className="mb-8 max-w-[42ch] text-base leading-relaxed text-muted-foreground sm:text-lg">
               {t("hero.tagline")}
             </p>
 
@@ -258,7 +242,7 @@ const HeroSection = () => {
               </p>
             )}
 
-            <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+            <div className="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <MagneticCta
                 href="/#download"
                 variant="primary"
@@ -275,18 +259,14 @@ const HeroSection = () => {
               >
                 {t("hero.ctaFeatures")}
               </MagneticCta>
-              <MagneticCta
-                href={guidesIndexPath(language)}
-                variant="ghost"
-                trackEventName="cta_click"
-                trackParams={{ cta: "guides", location: "hero" }}
-              >
-                {t("hero.ctaGuides")}
-              </MagneticCta>
             </div>
           </motion.div>
 
           <div className="relative z-10 w-full max-w-[380px] sm:max-w-[580px] lg:ml-auto overflow-visible">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-1/2 h-[115%] w-[115%] -translate-x-1/2 -translate-y-1/2 opacity-80 [background-image:radial-gradient(hsl(var(--foreground)/0.2)_0.7px,transparent_0.7px)] [background-size:15px_15px] [mask-image:radial-gradient(ellipse_at_center,black_18%,transparent_70%)]"
+            />
             <PhoneMockup progress={progress} />
           </div>
         </div>

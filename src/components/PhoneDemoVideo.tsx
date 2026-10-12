@@ -1,5 +1,5 @@
-import { useReducedMotion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { Play } from "lucide-react";
+import { useRef, useState } from "react";
 
 type PhoneDemoVideoProps = {
   label: string;
@@ -7,7 +7,6 @@ type PhoneDemoVideoProps = {
   webm: string;
   mp4: string;
   className?: string;
-  onOpen?: () => void;
 };
 
 const PhoneDemoVideo = ({
@@ -16,68 +15,50 @@ const PhoneDemoVideo = ({
   webm,
   mp4,
   className = "",
-  onOpen,
 }: PhoneDemoVideoProps) => {
-  const reduceMotion = useReducedMotion();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
 
-  useEffect(() => {
+  const start = () => {
     const video = videoRef.current;
     if (!video) return;
+    setPlaying(true);
+    void video.play().catch(() => setPlaying(false));
+  };
 
-    if (reduceMotion) {
-      video.pause();
-      return;
-    }
+  const pause = () => {
+    videoRef.current?.pause();
+    setPlaying(false);
+  };
 
-    const play = () => {
-      void video.play().catch(() => undefined);
-    };
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) play();
-        else video.pause();
-      },
-      { threshold: 0.35 }
-    );
-
-    observer.observe(video);
-    return () => observer.disconnect();
-  }, [reduceMotion]);
-
-  const video = (
-    <video
-      ref={videoRef}
-      className="select-none pointer-events-none"
-      poster={poster}
-      autoPlay={!reduceMotion}
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      aria-hidden={onOpen ? true : undefined}
-      aria-label={onOpen ? undefined : label}
-    >
-      <source src={webm} type="video/webm" />
-      <source src={mp4} type="video/mp4" />
-    </video>
-  );
-
-  if (onOpen) {
-    return (
-      <button
-        type="button"
-        onClick={onOpen}
-        className={`${className} cursor-zoom-in bg-transparent p-0 text-left`}
-        aria-label={label}
+  return (
+    <div className={className}>
+      <video
+        ref={videoRef}
+        className="pointer-events-none select-none"
+        poster={poster}
+        muted
+        loop
+        playsInline
+        preload="none"
+        aria-hidden={playing ? undefined : true}
+        aria-label={playing ? label : undefined}
       >
-        {video}
-      </button>
-    );
-  }
-
-  return <div className={className}>{video}</div>;
+        <source src={webm} type="video/webm" />
+        <source src={mp4} type="video/mp4" />
+      </video>
+      {!playing ? (
+        <button type="button" className="demo-play" onClick={start} aria-label={`Video abspielen: ${label}`}>
+          <span className="demo-play-mark">
+            <Play className="h-3.5 w-3.5 fill-current" aria-hidden />
+            Play
+          </span>
+        </button>
+      ) : (
+        <button type="button" className="demo-play demo-play--pause" onClick={pause} aria-label={`Video pausieren: ${label}`} />
+      )}
+    </div>
+  );
 };
 
 export default PhoneDemoVideo;

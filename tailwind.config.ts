@@ -96,9 +96,9 @@ export default {
         glow: "0 0 40px rgba(112, 151, 138, 0.15)",
       },
       fontSize: {
-        "display-lg": ["clamp(2.4rem, 7vw, 4.6rem)", { lineHeight: "1.03", letterSpacing: "-0.02em", fontWeight: "800" }],
-        "display-md": ["clamp(2rem, 5vw, 3.4rem)", { lineHeight: "1.08", letterSpacing: "-0.018em", fontWeight: "800" }],
-        "title-lg": ["clamp(1.5rem, 3.2vw, 2.25rem)", { lineHeight: "1.15", letterSpacing: "-0.015em", fontWeight: "700" }],
+        "display-lg": ["clamp(2.45rem, 5.2vw, 4.15rem)", { lineHeight: "0.96", letterSpacing: "-0.042em", fontWeight: "700" }],
+        "display-md": ["clamp(1.9rem, 4vw, 3.05rem)", { lineHeight: "1.02", letterSpacing: "-0.036em", fontWeight: "700" }],
+        "title-lg": ["clamp(1.45rem, 2.6vw, 2.05rem)", { lineHeight: "1.12", letterSpacing: "-0.028em", fontWeight: "600" }],
         "body-lg": ["1.125rem", { lineHeight: "1.75rem" }],
       },
       keyframes: {

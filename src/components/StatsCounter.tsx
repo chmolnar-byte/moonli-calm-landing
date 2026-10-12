@@ -1,38 +1,27 @@
-import { motion } from "framer-motion";
-import { Shield, Heart, Sparkles } from "lucide-react";
+import { NoiseTexture } from "@/components/magic/NoiseTexture";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { easeOut, motionInitial } from "@/lib/motion";
+
+const STAT_KEYS = ["promise.stat1", "promise.stat2", "promise.stat3"] as const;
 
 const StatsCounter = () => {
   const { t } = useLanguage();
 
-  const stats = [
-    { icon: Heart, labelKey: "promise.stat1" },
-    { icon: Sparkles, labelKey: "promise.stat2" },
-    { icon: Shield, labelKey: "promise.stat3" },
-  ];
-
   return (
-    <section className="py-8 md:py-10">
-      <div className="container">
-        <motion.div
-          initial={motionInitial}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: easeOut }}
-          className="grid sm:grid-cols-3 gap-6 border-y border-border py-6"
-        >
-          {stats.map((stat) => (
-            <div key={stat.labelKey} className="flex items-start gap-3">
-              <stat.icon className="mt-0.5 h-5 w-5 shrink-0 text-primary" aria-hidden />
-              <p className="text-sm font-semibold leading-snug text-foreground">
-                {t(stat.labelKey)}
+    <div className="promise-band mb-12 md:mb-16">
+      <div className="promise-band-surface">
+        <NoiseTexture className="opacity-[0.16] mix-blend-multiply dark:opacity-25 dark:mix-blend-soft-light" />
+        <ul className="container relative grid gap-8 py-8 md:grid-cols-3 md:gap-10 md:py-10">
+          {STAT_KEYS.map((key) => (
+            <li key={key}>
+              <span className="promise-mark" aria-hidden />
+              <p className="text-balance text-[clamp(1.2rem,1.7vw,1.45rem)] font-semibold leading-[1.2] tracking-[-0.024em] text-foreground">
+                {t(key)}
               </p>
-            </div>
+            </li>
           ))}
-        </motion.div>
+        </ul>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -9,7 +9,7 @@ const ScrollProgress = () => {
       className="fixed top-0 left-0 right-0 h-[3px] z-[60] origin-left"
       style={{
         scaleX,
-        background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--pastel-lavender-strong)), hsl(var(--pastel-pink-strong)))",
+        background: "hsl(var(--primary))",
       }}
     />
   );

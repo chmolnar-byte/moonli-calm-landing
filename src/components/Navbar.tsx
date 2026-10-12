@@ -11,10 +11,9 @@ import { guidesIndexPath } from "@/lib/guidePaths";
 import { isHomePath, scrollToSection } from "@/lib/scrollToSection";
 
 const NAV_TABS = [
-  { labelKey: "nav.features", href: "funktionen", kind: "section" },
-  { labelKey: "nav.guides", href: "guides", kind: "guides" },
-  { labelKey: "nav.feedback", href: "feedback", kind: "section" },
-  { labelKey: "nav.pricing", href: "preise", kind: "section" },
+  { labelKey: "nav.features", href: "funktionen" },
+  { labelKey: "nav.feedback", href: "feedback" },
+  { labelKey: "nav.pricing", href: "preise" },
 ] as const;
 
 const tabClassName =
@@ -31,7 +30,6 @@ type NavbarProps = {
 
 const Navbar = ({ languageHrefs }: NavbarProps) => {
   const { language, setLanguage, t } = useLanguage();
-  const guidesHref = guidesIndexPath(language);
   const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -55,14 +53,6 @@ const Navbar = ({ languageHrefs }: NavbarProps) => {
   };
 
   const renderNavTab = (tab: (typeof NAV_TABS)[number], className: string) => {
-    if (tab.kind === "guides") {
-      return (
-        <a key={tab.href} href={guidesHref} className={className}>
-          {t(tab.labelKey)}
-        </a>
-      );
-    }
-
     return (
       <a
         key={tab.href}
@@ -111,7 +101,11 @@ const Navbar = ({ languageHrefs }: NavbarProps) => {
         </a>
 
         <div className="hidden items-center justify-center gap-1 lg:flex">
-          {NAV_TABS.map((tab) => renderNavTab(tab, tabClassName))}
+          {renderNavTab(NAV_TABS[0], tabClassName)}
+          <a href={guidesIndexPath(language)} className={tabClassName}>
+            {t("nav.guides")}
+          </a>
+          {NAV_TABS.slice(1).map((tab) => renderNavTab(tab, tabClassName))}
         </div>
 
         <div className="relative z-40 ml-auto flex shrink-0 items-center justify-end gap-1 sm:gap-2 lg:ml-0 lg:flex-1">
@@ -192,7 +186,11 @@ const Navbar = ({ languageHrefs }: NavbarProps) => {
       </div>
 
       <div className="relative z-30 flex items-center justify-center gap-1 border-t border-border px-3 py-1.5 lg:hidden">
-        {NAV_TABS.map((tab) => renderNavTab(tab, mobileTabClassName))}
+        {renderNavTab(NAV_TABS[0], mobileTabClassName)}
+        <a href={guidesIndexPath(language)} className={mobileTabClassName}>
+          {t("nav.guides")}
+        </a>
+        {NAV_TABS.slice(1).map((tab) => renderNavTab(tab, mobileTabClassName))}
       </div>
     </nav>
   );

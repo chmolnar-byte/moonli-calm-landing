@@ -1,8 +1,6 @@
-import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
-import LeafAccent from "@/components/LeafAccent";
+import { MagicCard } from "@/components/magic/MagicCard";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { easeOut, motionInitial } from "@/lib/motion";
 
 const PricingFeatureRow = ({ featureKey }: { featureKey: string }) => {
   const { t } = useLanguage();
@@ -47,29 +45,14 @@ const PricingSection = () => {
   return (
     <section className="py-20 md:py-24">
       <div className="container">
-        <motion.div
-          initial={motionInitial}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, ease: easeOut }}
-          className="mb-12 max-w-xl"
-        >
-          <h2 className="text-display-md mb-3 text-foreground">{t("pricing.title")}</h2>
+        <div className="mb-12 max-w-xl">
+          <h2 className="text-display-md mb-3 text-balance text-foreground">{t("pricing.title")}</h2>
           <p className="text-base text-muted-foreground max-w-[52ch]">{t("pricing.subtitle")}</p>
-        </motion.div>
+        </div>
 
-        <div className="grid lg:grid-cols-2 gap-5 items-start">
-          <motion.div
-            initial={motionInitial}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, ease: easeOut }}
-            className="relative isolate overflow-hidden rounded-[1.5rem] border border-border bg-card p-7 sm:p-8"
-          >
-            <LeafAccent src="/leaves/hanging.png" className="card-leaf -top-8 right-0 w-[180px] sm:w-[210px]" />
-            <LeafAccent src="/leaves/sprigs-left.png" className="card-leaf -bottom-6 -left-6 w-[170px] sm:w-[200px]" />
-
-            <div className="relative z-10">
+        <div className="grid items-stretch gap-5 lg:grid-cols-2">
+          <MagicCard className="h-full">
+            <div className="p-7 sm:p-8">
               <p className="text-sm font-semibold text-muted-foreground">{t("pricing.free.label")}</p>
               <h3 className="mt-3 text-[30px] font-semibold leading-tight tracking-tight text-foreground">Moonli Free</h3>
               <div className="mt-2 flex items-end gap-1">
@@ -83,35 +66,17 @@ const PricingSection = () => {
                 ))}
               </ul>
             </div>
-          </motion.div>
+          </MagicCard>
 
-          <motion.div
-            initial={motionInitial}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: 0.08, ease: easeOut }}
-            className="relative isolate overflow-hidden rounded-[1.5rem] border-2 border-primary bg-card p-7 sm:p-8"
-          >
-            <LeafAccent src="/leaves/frond.png" className="card-leaf -bottom-8 -left-8 w-[200px] sm:w-[240px]" />
-            <LeafAccent src="/leaves/sprigs-right.png" className="card-leaf -bottom-6 -right-8 w-[170px] sm:w-[200px]" />
-
-            <div
-              className="pricing-flag"
-              role="note"
-              aria-label={`${t("pricing.premium.trialLine1")} ${t("pricing.premium.trialLine2")} ${t("pricing.premium.trialLine3")}`}
-            >
-              <div className="pricing-flag__body">
-                <div>{t("pricing.premium.trialLine1")}</div>
-                <div>{t("pricing.premium.trialLine2")}</div>
-                <div>{t("pricing.premium.trialLine3")}</div>
-              </div>
-              <div className="pricing-flag__notch" aria-hidden="true" />
-            </div>
-
-            <div className="relative z-10">
-              <div className="pr-[7.5rem] sm:pr-[9.25rem]">
-                <p className="text-sm font-semibold text-primary">{t("pricing.premium.mostSelected")}</p>
-                <h3 className="mt-3 text-[30px] font-semibold leading-tight tracking-tight text-foreground">Moonli Premium</h3>
+          <div className="relative h-full">
+            <p className="pricing-flag">
+              <span className="pricing-flag-body">{t("pricing.premium.trialLead")}</span>
+            </p>
+            <MagicCard beam className="h-full">
+            <div className="p-7 sm:p-8">
+              <div>
+                <p className="pr-36 text-sm font-semibold lowercase text-primary first-letter:uppercase sm:pr-40">{t("pricing.premium.mostSelected")}</p>
+                <h3 className="mt-4 text-[30px] font-semibold leading-tight tracking-tight text-foreground">Moonli Premium</h3>
                 <div className="mt-2 flex items-end gap-1">
                   <span className="text-[46px] leading-none font-semibold text-foreground">5 €</span>
                   <span className="text-muted-foreground text-lg font-semibold">/{t("pricing.month")}*</span>
@@ -125,7 +90,8 @@ const PricingSection = () => {
                 ))}
               </ul>
             </div>
-          </motion.div>
+            </MagicCard>
+          </div>
         </div>
       </div>
     </section>
