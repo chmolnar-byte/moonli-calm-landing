@@ -16,10 +16,8 @@ export const TOPIC_IDS = [
 
 export type TopicId = (typeof TOPIC_IDS)[number];
 
-/** Local topics ship only in selected languages (no full five-language set). */
-export const LOCAL_TOPIC_LANGS: Partial<Record<TopicId, readonly GuideLang[]>> = {
-  "vienna-baby-leisure": ["de"],
-};
+/** Optional: limit a topic to fewer than all guide languages. Empty = all five. */
+export const LOCAL_TOPIC_LANGS: Partial<Record<TopicId, readonly GuideLang[]>> = {};
 
 export const PUBLISHED_TOPICS = new Set<TopicId>(TOPIC_IDS);
 
@@ -185,10 +183,10 @@ export const TOPIC_ANCHOR: Record<TopicId, Record<GuideLang, string>> = {
   },
   "vienna-baby-leisure": {
     de: "Aktivitäten im Herbst mit Baby in Wien",
-    en: "Things to do with a baby in Vienna",
-    es: "Ocio con bebé en Viena",
-    fr: "Loisirs avec bébé à Vienne",
-    ru: "Досуг с малышом в Вене",
+    en: "Autumn activities with a baby in Vienna",
+    es: "Actividades de otoño con bebé en Viena",
+    fr: "Activités d'automne avec bébé à Vienne",
+    ru: "Осенние занятия с малышом в Вене",
   },
 };
 
