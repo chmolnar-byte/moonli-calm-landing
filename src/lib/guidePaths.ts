@@ -3,6 +3,7 @@ export const GUIDE_LANGS = ["de", "en", "es", "fr", "ru"] as const;
 export type GuideLang = (typeof GUIDE_LANGS)[number];
 
 export const TOPIC_IDS = [
+  "vienna-baby-leisure",
   "wake-windows",
   "sleep-routines",
   "feeding",
@@ -15,7 +16,16 @@ export const TOPIC_IDS = [
 
 export type TopicId = (typeof TOPIC_IDS)[number];
 
+/** Local topics ship only in selected languages (no full five-language set). */
+export const LOCAL_TOPIC_LANGS: Partial<Record<TopicId, readonly GuideLang[]>> = {
+  "vienna-baby-leisure": ["de"],
+};
+
 export const PUBLISHED_TOPICS = new Set<TopicId>(TOPIC_IDS);
+
+export function topicLangs(topic: TopicId): readonly GuideLang[] {
+  return LOCAL_TOPIC_LANGS[topic] ?? GUIDE_LANGS;
+}
 
 export const GUIDE_SECTION: Record<GuideLang, string> = {
   de: "ratgeber",
@@ -106,6 +116,13 @@ export const TOPIC_SLUGS: Record<TopicId, Record<GuideLang, string>> = {
     fr: "apaiser-sans-ecran",
     ru: "uspokoit-bez-ekrana",
   },
+  "vienna-baby-leisure": {
+    de: "freizeit-baby-kleinkind-wien",
+    en: "things-to-do-with-a-baby-vienna",
+    es: "ocio-con-bebe-viena",
+    fr: "loisirs-bebe-vienne",
+    ru: "dosug-s-mladentsem-vena",
+  },
 };
 
 /** Anchor text. Matches the search phrase in the target H1. */
@@ -165,6 +182,13 @@ export const TOPIC_ANCHOR: Record<TopicId, Record<GuideLang, string>> = {
     es: "Calmar sin pantalla",
     fr: "Apaiser sans écran",
     ru: "Успокоить без экрана",
+  },
+  "vienna-baby-leisure": {
+    de: "Aktivitäten im Herbst mit Baby in Wien",
+    en: "Things to do with a baby in Vienna",
+    es: "Ocio con bebé en Viena",
+    fr: "Loisirs avec bébé à Vienne",
+    ru: "Досуг с малышом в Вене",
   },
 };
 

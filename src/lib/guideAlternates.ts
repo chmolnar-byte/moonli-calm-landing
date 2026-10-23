@@ -1,6 +1,7 @@
 import { SITE_ORIGIN } from "./seo";
 import {
   GUIDE_LANGS,
+  topicLangs,
   type TopicId,
   featuresPath,
   guidesIndexPath,
@@ -21,11 +22,15 @@ function withDefault(items: Alternate[], fallbackPath: string): Alternate[] {
 }
 
 export function topicAlternates(topic: TopicId): Alternate[] {
-  const items = GUIDE_LANGS.map((lang) => {
+  const langs = topicLangs(topic);
+  const items = langs.map((lang) => {
     const path = topicPath(lang, topic);
     return { hreflang: lang, href: absolute(path), path };
   });
-  return withDefault(items, topicPath("en", topic));
+  const fallback = langs.includes("en")
+    ? topicPath("en", topic)
+    : topicPath(langs[0] ?? "de", topic);
+  return withDefault(items, fallback);
 }
 
 export function featureAlternates(): Alternate[] {

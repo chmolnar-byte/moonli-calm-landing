@@ -67,6 +67,13 @@ const SCENES: Record<string, Scene> = {
     fr: "Parent capybara montre un livre d'images au bébé",
     ru: "Взрослая капибара показывает малышу книжку с картинками",
   }),
+  "vienna-baby-leisure": scene("vienna-baby-leisure", {
+    de: "Herbstliche Straße in Wien mit Bäumen und Straßenbahn",
+    en: "Autumn street in Vienna with trees and a tram",
+    es: "Calle otoñal en Viena con árboles y un tranvía",
+    fr: "Rue d'automne à Vienne avec arbres et tramway",
+    ru: "Осенняя улица в Вене с деревьями и трамваем",
+  }),
   features: scene("care-work", {
     de: "Zwei Capybara-Eltern teilen sich den Alltag mit dem Baby",
     en: "Two capybara parents sharing the day with the baby",

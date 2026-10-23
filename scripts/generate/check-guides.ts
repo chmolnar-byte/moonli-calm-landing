@@ -15,6 +15,7 @@ import {
   TOPIC_SLUGS,
   isGuideLang,
   isTopicId,
+  topicLangs,
   type GuideLang,
   type TopicId,
 } from "../../src/lib/guidePaths.ts";
@@ -159,11 +160,11 @@ function main(): void {
 
   for (const topic of TOPIC_IDS) {
     const langs = seen.get(topic) ?? new Set<GuideLang>();
-    for (const lang of GUIDE_LANGS) {
+    for (const lang of topicLangs(topic)) {
       if (!langs.has(lang)) {
         issues.push({
           file: `src/content/guides/${lang}/${topic}.md`,
-          message: "Sprachversion fehlt. Jedes Thema braucht de, en, es, fr und ru.",
+          message: `Sprachversion fehlt. Dieses Thema braucht: ${topicLangs(topic).join(", ")}.`,
         });
       }
     }
