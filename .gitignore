@@ -25,3 +25,8 @@ src/assets/*-transparent.png
 *.njsproj
 *.sln
 *.sw?
+
+# Local video tooling (not part of Moonli landing)
+/hyperframes
+/moonli-hyperframes-beikost
+/moonli-hyperframes-*
