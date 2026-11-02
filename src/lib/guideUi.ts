@@ -47,9 +47,9 @@ export const GUIDE_UI: Record<GuideLang, GuideUi> = {
       "Dieser Text ersetzt keine Beratung durch Kinderärztin, Kinderarzt oder Hebamme. Bei Atemproblemen, kaum Trinken, ungewöhnlichem Schreien oder wenn du dir Sorgen machst, hol dir medizinische Hilfe.",
     sources: "Quellen",
     languages: "Sprachen",
-    indexSeoTitle: "Ratgeber für Eltern: Schlaf und Alltag | Moonli",
+    indexSeoTitle: "Ratgeber: Babyschlaf, Stillprotokoll, Beikost | Moonli",
     indexDescription:
-      "Wachfenster, Schlafroutinen und was den Tag leichter macht. Kurze Antworten, in Moonli kostenlos umsetzbar.",
+      "Babyschlaf, Stillprotokoll und Beikost starten – kurze Ratgeber für den Alltag. Kostenlos umsetzbar in der Moonli App.",
     indexTitle: "Ratgeber für den Babyalltag",
   },
   en: {

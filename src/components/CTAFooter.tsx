@@ -7,6 +7,7 @@ import { assetUrl } from "@/lib/assetUrl";
 import { useLanguage } from "@/i18n/LanguageContext";
 import MagneticCta from "@/components/MagneticCta";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
+import { guidesIndexPath } from "@/lib/guidePaths";
 
 const bandGhost =
   "!border-white/25 !bg-transparent !text-[hsl(36_28%_94%)] !shadow-none hover:!bg-white/8";
@@ -17,7 +18,7 @@ const growthUrl = assetUrl(dashboardGrowth);
 const homeUrl = assetUrl(dashboardHome);
 
 const CTAFooter = () => {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
 
   return (
     <footer>
@@ -104,6 +105,7 @@ const CTAFooter = () => {
               <span>© {new Date().getFullYear()}</span>
             </div>
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 text-sm text-muted-foreground sm:justify-end">
+              <a href={guidesIndexPath(language)} className="hover:text-foreground transition-colors whitespace-nowrap">{t("nav.guides")}</a>
               <a href="/cookies/" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.cookies")}</a>
               <a href="/terms/" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.terms")}</a>
               <a href="/privacy/" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.privacy")}</a>

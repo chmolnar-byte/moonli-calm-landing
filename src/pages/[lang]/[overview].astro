@@ -74,9 +74,25 @@ const cards = published.flatMap((entry) => {
       description: entry.data.description,
       image: visual?.src ?? "",
       alt: visual?.alt ?? entry.data.title,
+      topic: entry.data.topic,
     },
   ];
 });
+
+const PRIORITY_TOPICS = ["sleep-routines", "feeding", "solids"] as const;
+const priorityCards = cards.filter((card) =>
+  (PRIORITY_TOPICS as readonly string[]).includes(card.topic),
+);
+const priorityLabel =
+  lang === "de"
+    ? "Zuerst lesen"
+    : lang === "en"
+      ? "Start here"
+      : lang === "es"
+        ? "Empieza aquí"
+        : lang === "fr"
+          ? "Commencer ici"
+          : "Начните здесь";
 ---
 
 <GuideLayout
@@ -93,22 +109,49 @@ const cards = published.flatMap((entry) => {
   wide={isIndex}
 >
   {isIndex ? (
-    <p class="not-prose mb-6 text-sm text-muted-foreground">{ui.imageCredit}</p>
-    <ul class="not-prose grid gap-6 sm:grid-cols-2">
-      {cards.map((card) => (
-        <li>
-          <a href={card.href} class="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card text-card-foreground">
-            {card.image && (
-              <img src={card.image} alt={card.alt} class="aspect-[16/9] w-full object-cover" />
-            )}
-            <span class="flex flex-1 flex-col p-5">
-              <h2 class="text-lg font-bold text-foreground">{card.title}</h2>
-              <span class="mt-2 text-sm leading-relaxed text-muted-foreground">{card.description}</span>
-            </span>
+    <>
+      <p class="not-prose mb-6 text-sm text-muted-foreground">{ui.imageCredit}</p>
+      {priorityCards.length > 0 && (
+        <nav class="not-prose mb-10 rounded-3xl border border-border bg-card/60 p-5 sm:p-6" aria-label={priorityLabel}>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-primary">{priorityLabel}</p>
+          <ul class="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-6 sm:gap-y-2">
+            {priorityCards.map((card) => (
+              <li>
+                <a href={card.href} class="text-base font-semibold text-foreground underline-offset-4 hover:underline">
+                  {card.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+      {lang === "de" && (
+        <p class="not-prose mb-10 text-sm leading-relaxed text-muted-foreground">
+          Napper oder Huckleberry im Blick?{" "}
+          <a
+            href="/de/vergleich/napper-huckleberry/"
+            class="font-semibold text-foreground underline-offset-4 hover:underline"
+          >
+            Kosten &amp; Funktionen transparent vergleichen
           </a>
-        </li>
-      ))}
-    </ul>
+        </p>
+      )}
+      <ul class="not-prose grid gap-6 sm:grid-cols-2">
+        {cards.map((card) => (
+          <li>
+            <a href={card.href} class="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card text-card-foreground">
+              {card.image && (
+                <img src={card.image} alt={card.alt} class="aspect-[16/9] w-full object-cover" />
+              )}
+              <span class="flex flex-1 flex-col p-5">
+                <h2 class="text-lg font-bold text-foreground">{card.title}</h2>
+                <span class="mt-2 text-sm leading-relaxed text-muted-foreground">{card.description}</span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </>
   ) : (
     <>
       <p>{copy.intro}</p>

@@ -1,0 +1,300 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import GuideChrome from "@/components/react/GuideChrome";
+import { SITE_ORIGIN, canonicalUrl } from "@/lib/seo";
+
+const canonical = canonicalUrl("/de/vergleich/napper-huckleberry/");
+const title = "Moonli vs Napper vs Huckleberry: Kosten & Funktionen";
+const description =
+  "Transparenter Vergleich: Was kostet Napper, Huckleberry und Moonli – und welche Features bleiben bei Moonli dauerhaft kostenlos? Stand November 2026.";
+const checkedAt = "2026-11-02";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      name: title,
+      description,
+      url: canonical,
+      dateModified: `${checkedAt}T12:00:00+01:00`,
+      inLanguage: "de-AT",
+      isPartOf: { "@type": "WebSite", name: "Moonli", url: SITE_ORIGIN },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Was kostet eine Napper-Alternative?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Moonli Tracking (Schlaf, Stillen, Windeln, Wachstum) bleibt dauerhaft kostenlos. Premium kostet 5 € pro Monat im Jahresabo oder 7 € monatlich kündbar, mit einem Monat Test.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Ist Moonli eine Alternative zu Napper und Huckleberry?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Ja, für Familien, die Schlaf, Stillen und Beikost tracken und den Stand zu zweit brauchen. Napper und Huckleberry sind stärker auf Schlafpläne und Vorhersagen ausgerichtet; Moonli legt den Fokus auf kostenloses Tracking, Parent-Sync und Beikost/BLW.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Was kostet Napper Unlimited?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Laut Napper-Preisseite liegt Unlimited bei etwa 69,99 USD pro Jahr. Die Basisfunktionen haben eine Free-Stufe. Preise können sich ändern – bitte auf napper.app prüfen.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Was kostet Huckleberry Plus?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Laut Huckleberry-Preisseite liegt Plus bei etwa 11,99 USD pro Monat. Es gibt Free, Plus und Premium. Preise können sich ändern – bitte auf huckleberrycare.com prüfen.",
+          },
+        },
+      ],
+    },
+  ],
+};
+---
+
+<BaseLayout {title} {description} {canonical} jsonLd={jsonLd}>
+  <GuideChrome client:load language="de" languageHrefs={{ de: "/de/vergleich/napper-huckleberry/" }} />
+  <main class="container max-w-3xl py-28 md:py-32 px-4">
+    <nav class="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a href="/" class="hover:text-foreground transition-colors">Start</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/de/ratgeber/" class="hover:text-foreground transition-colors">Ratgeber</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-foreground">Vergleich</li>
+      </ol>
+    </nav>
+
+    <p class="mb-3 text-sm font-semibold text-primary">Vergleich</p>
+    <h1 class="text-display-md text-foreground text-balance">
+      Moonli vs Napper vs Huckleberry
+    </h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed">
+      Du suchst eine <strong class="text-foreground font-semibold">Napper-Alternative</strong> oder
+      vergleichst Huckleberry? Hier stehen Kosten und Funktionen nebeneinander – ohne Marketing-Nebel.
+      Stand der Konkurrenzpreise: {checkedAt} (Quellen verlinkt; Beträge können sich ändern).
+    </p>
+
+    <section class="mt-12" aria-labelledby="kosten">
+      <h2 id="kosten" class="text-2xl font-bold text-foreground">Kosten im Überblick</h2>
+      <p class="mt-3 text-muted-foreground leading-relaxed">
+        Der größte Unterschied: Bei Moonli bleibt das Kern-Tracking dauerhaft gratis. Bei Napper und
+        Huckleberry sitzen Schlafplan, Vorhersagen und viele Statistiken hinter dem Abo.
+      </p>
+
+      <div class="mt-6 overflow-x-auto rounded-3xl border border-border">
+        <table class="w-full min-w-[36rem] text-left text-sm">
+          <thead class="bg-card">
+            <tr class="border-b border-border">
+              <th scope="col" class="px-4 py-3 font-semibold text-foreground">Preis</th>
+              <th scope="col" class="px-4 py-3 font-semibold text-primary">Moonli</th>
+              <th scope="col" class="px-4 py-3 font-semibold text-foreground">Napper</th>
+              <th scope="col" class="px-4 py-3 font-semibold text-foreground">Huckleberry</th>
+            </tr>
+          </thead>
+          <tbody class="text-muted-foreground">
+            <tr class="border-b border-border">
+              <th scope="row" class="px-4 py-3 font-medium text-foreground">Free</th>
+              <td class="px-4 py-3 text-foreground">
+                <strong>0 €</strong> für immer – Schlaf, Stillen/Flasche, Windeln, Wachstum, Info-Hub,
+                White Noise, Auswahl Geschichten
+              </td>
+              <td class="px-4 py-3">Free-Stufe mit Basis-Tracking und altersbasiertem Schlafplan</td>
+              <td class="px-4 py-3">Free: Basis-Logging und einfache Reports</td>
+            </tr>
+            <tr class="border-b border-border">
+              <th scope="row" class="px-4 py-3 font-medium text-foreground">Bezahlt</th>
+              <td class="px-4 py-3 text-foreground">
+                <strong>5 € / Monat</strong> im Jahresabo<br />
+                <span class="text-xs">oder 7 € / Monat monatlich kündbar · 1 Monat testen</span>
+              </td>
+              <td class="px-4 py-3">
+                Unlimited ca. <strong>69,99 USD / Jahr</strong>
+                <span class="block text-xs mt-1">
+                  Quelle: <a class="underline hover:text-foreground" href="https://napper.app/en/pricing/" target="_blank" rel="noopener noreferrer">napper.app/pricing</a>
+                </span>
+              </td>
+              <td class="px-4 py-3">
+                Plus ca. <strong>11,99 USD / Monat</strong> · Premium darüber
+                <span class="block text-xs mt-1">
+                  Quelle: <a class="underline hover:text-foreground" href="https://huckleberrycare.com/pricing" target="_blank" rel="noopener noreferrer">huckleberrycare.com/pricing</a>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row" class="px-4 py-3 font-medium text-foreground">Grobrechnung / Jahr</th>
+              <td class="px-4 py-3 text-foreground"><strong>~60 €</strong> (Premium Jahresabo) oder 0 €</td>
+              <td class="px-4 py-3">~70 USD Unlimited</td>
+              <td class="px-4 py-3">~144 USD Plus (12×11,99)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-muted-foreground">
+        USD-Preise der Konkurrenz ohne Umrechnung und ohne Store-Steuern. Moonli-Preise wie auf
+        <a href="/#preise" class="underline hover:text-foreground">moonli.net/#preise</a>.
+      </p>
+    </section>
+
+    <section class="mt-14" aria-labelledby="features">
+      <h2 id="features" class="text-2xl font-bold text-foreground">Funktionen: worauf es ankommt</h2>
+      <p class="mt-3 text-muted-foreground leading-relaxed">
+        Napper und Huckleberry sind stark bei Schlafplänen und Vorhersagen. Moonli ist stark, wenn ihr
+        den Tag zu zweit trackt, Stillen und später Beikost braucht – und nicht für jedes Statistik-Feature
+        zahlen wollt.
+      </p>
+
+      <div class="mt-6 overflow-x-auto rounded-3xl border border-border">
+        <table class="w-full min-w-[40rem] text-left text-sm">
+          <thead class="bg-card">
+            <tr class="border-b border-border">
+              <th scope="col" class="px-4 py-3 font-semibold text-foreground">Thema</th>
+              <th scope="col" class="px-4 py-3 font-semibold text-primary">Moonli</th>
+              <th scope="col" class="px-4 py-3 font-semibold text-foreground">Napper</th>
+              <th scope="col" class="px-4 py-3 font-semibold text-foreground">Huckleberry</th>
+            </tr>
+          </thead>
+          <tbody class="text-muted-foreground">
+            <tr class="border-b border-border">
+              <th scope="row" class="px-4 py-3 font-medium text-foreground">Schlaf tracken</th>
+              <td class="px-4 py-3 text-foreground">Ja · kostenlos</td>
+              <td class="px-4 py-3">Ja · Fokus der App</td>
+              <td class="px-4 py-3">Ja · Fokus der App</td>
+            </tr>
+            <tr class="border-b border-border">
+              <th scope="row" class="px-4 py-3 font-medium text-foreground">Schlafplan / Vorhersage</th>
+              <td class="px-4 py-3">Wachfenster-Orientierung &amp; Tagesplan (Premium)</td>
+              <td class="px-4 py-3">Stärke: altersbasierter Plan &amp; Personalisierung</td>
+              <td class="px-4 py-3">Stärke: SweetSpot® &amp; Schedule Creator (Plus/Premium)</td>
+            </tr>
+            <tr class="border-b border-border">
+              <th scope="row" class="px-4 py-3 font-medium text-foreground">Stillen &amp; Flasche</th>
+              <td class="px-4 py-3 text-foreground">Stillprotokoll · kostenlos</td>
+              <td class="px-4 py-3">Tracking möglich</td>
+              <td class="px-4 py-3">Tracking möglich</td>
+            </tr>
+            <tr class="border-b border-border">
+              <th scope="row" class="px-4 py-3 font-medium text-foreground">Beikost / BLW</th>
+              <td class="px-4 py-3 text-foreground">Teller, 100+ Zutaten, eigene Rezepte</td>
+              <td class="px-4 py-3">Eher Nebenrolle</td>
+              <td class="px-4 py-3">Logging möglich, kein BLW-Fokus wie Moonli</td>
+            </tr>
+            <tr class="border-b border-border">
+              <th scope="row" class="px-4 py-3 font-medium text-foreground">Beide Eltern / Sync</th>
+              <td class="px-4 py-3 text-foreground">Parent-Sync in Echtzeit (Premium: Partner hinzufügen)</td>
+              <td class="px-4 py-3">Teilen möglich (je nach Plan)</td>
+              <td class="px-4 py-3">Mehrere Geräte auf demselben Account</td>
+            </tr>
+            <tr class="border-b border-border">
+              <th scope="row" class="px-4 py-3 font-medium text-foreground">Care-Arbeit spielerisch</th>
+              <td class="px-4 py-3 text-foreground">Punkte, Ehren-Rad, Komplimente (Premium)</td>
+              <td class="px-4 py-3">—</td>
+              <td class="px-4 py-3">—</td>
+            </tr>
+            <tr class="border-b border-border">
+              <th scope="row" class="px-4 py-3 font-medium text-foreground">White Noise &amp; Geschichten</th>
+              <td class="px-4 py-3 text-foreground">Ja · große Auswahl schon in Free</td>
+              <td class="px-4 py-3">Schlafgeräusche (Unlimited)</td>
+              <td class="px-4 py-3">Kein vergleichbarer Fokus</td>
+            </tr>
+            <tr class="border-b border-border">
+              <th scope="row" class="px-4 py-3 font-medium text-foreground">Werbefrei</th>
+              <td class="px-4 py-3 text-foreground">Premium 100 % werbefrei</td>
+              <td class="px-4 py-3">Abo-Modell</td>
+              <td class="px-4 py-3">Abo-Modell</td>
+            </tr>
+            <tr>
+              <th scope="row" class="px-4 py-3 font-medium text-foreground">Made for DACH</th>
+              <td class="px-4 py-3 text-foreground">Ja · Wien, DE/AT-Ratgeber</td>
+              <td class="px-4 py-3">Intl. · starke DE-Inhalte</td>
+              <td class="px-4 py-3">Vor allem EN / US</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-14" aria-labelledby="fuer-wen">
+      <h2 id="fuer-wen" class="text-2xl font-bold text-foreground">Für wen welche App?</h2>
+      <ul class="mt-4 space-y-4 text-muted-foreground leading-relaxed">
+        <li>
+          <strong class="text-foreground">Napper</strong>, wenn ihr vor allem einen festen Schlafplan und
+          Vorhersagen wollt und dafür ein Jahresabo akzeptiert.
+        </li>
+        <li>
+          <strong class="text-foreground">Huckleberry</strong>, wenn ihr SweetSpot®, Insights und ggf.
+          Expert-Pläne sucht und den monatlichen US-Preis mitgeht.
+        </li>
+        <li>
+          <strong class="text-foreground">Moonli</strong>, wenn Tracking dauerhaft kostenlos bleiben soll,
+          beide Eltern denselben Stand brauchen und Stillen sowie später Beikost/BLW genauso zählen wie Schlaf.
+        </li>
+      </ul>
+    </section>
+
+    <section class="mt-14" aria-labelledby="weiter">
+      <h2 id="weiter" class="text-2xl font-bold text-foreground">Weiterlesen &amp; ausprobieren</h2>
+      <ul class="mt-4 space-y-2 text-muted-foreground">
+        <li>
+          <a class="font-semibold text-foreground underline-offset-4 hover:underline" href="/de/ratgeber/babyschlaf-routinen/">Babyschlaf: Abendroutine</a>
+        </li>
+        <li>
+          <a class="font-semibold text-foreground underline-offset-4 hover:underline" href="/de/ratgeber/stillen-flaschchen-tracken/">Stillprotokoll &amp; Still-App</a>
+        </li>
+        <li>
+          <a class="font-semibold text-foreground underline-offset-4 hover:underline" href="/de/ratgeber/beikost-starten/">Beikost starten</a>
+        </li>
+        <li>
+          <a class="font-semibold text-foreground underline-offset-4 hover:underline" href="/de/ratgeber/wachfenster-baby/">Wachfenster nach Alter</a>
+        </li>
+        <li>
+          <a class="font-semibold text-foreground underline-offset-4 hover:underline" href="/#preise">Moonli Preise</a>
+          {" · "}
+          <a class="font-semibold text-foreground underline-offset-4 hover:underline" href="/#download">Kostenlos laden</a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="mt-14 rounded-3xl border border-border bg-card p-6 sm:p-8" aria-labelledby="faq">
+      <h2 id="faq" class="text-2xl font-bold text-foreground">Häufige Fragen</h2>
+      <dl class="mt-6 space-y-6">
+        <div>
+          <dt class="font-semibold text-foreground">Ist Moonli eine Napper-Alternative?</dt>
+          <dd class="mt-2 text-muted-foreground leading-relaxed">
+            Ja – besonders wenn euch Kosten und gemeinsames Tracking wichtiger sind als ein starrer Schlafplan.
+            Napper bleibt stark bei Vorhersage und Schlafkurs; Moonli bei Free-Tracking, Stillprotokoll und Beikost.
+          </dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-foreground">Kann ich Huckleberry ersetzen?</dt>
+          <dd class="mt-2 text-muted-foreground leading-relaxed">
+            Für Logging von Schlaf und Mahlzeiten ja. Wenn ihr auf SweetSpot® und Expert-Pläne angewiesen seid,
+            bleibt Huckleberry Plus/Premium die speziellere Lösung – zu einem höheren Monatspreis.
+          </dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-foreground">Ändern sich die Preise?</dt>
+          <dd class="mt-2 text-muted-foreground leading-relaxed">
+            Konkurrenzpreise haben wir am {checkedAt} von den verlinkten Seiten übernommen. Vor dem Kauf immer
+            die aktuellen Store- und Website-Preise prüfen. Moonli-Preise stehen live unter /#preise.
+          </dd>
+        </div>
+      </dl>
+    </section>
+
+    <p class="mt-10 text-xs text-muted-foreground leading-relaxed">
+      Keine bezahlte Kooperation. Vergleich auf Basis öffentlich einsehbarer Preisseiten und unserer eigenen
+      Produktfunktionen. Napper® und Huckleberry® sind Marken der jeweiligen Anbieter.
+    </p>
+  </main>
+</BaseLayout>

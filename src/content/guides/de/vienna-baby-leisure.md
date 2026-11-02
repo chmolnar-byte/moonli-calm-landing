@@ -6,12 +6,12 @@ title: "Aktivitäten im Herbst mit Baby in Wien"
 seoTitle: "Aktivitäten im Herbst mit Baby in Wien | Moonli"
 description: "Herbst-Aktivitäten mit Baby und Kleinkind in Wien: Parks zum Spazieren, Plattformen und Partner ANKERZEIT in der Seestadt Aspern."
 pubDate: 2026-10-23
-updatedDate: 2026-10-23
+updatedDate: 2026-11-02
 draft: false
 related:
-  - wake-windows
   - sleep-routines
-  - calm-screen
+  - wake-windows
+  - feeding
 primaryFeatures:
   - sleep-tracking
   - info-hub
@@ -96,4 +96,4 @@ Mehr Infos und Anmeldung: **[ankerzeit.wien](https://www.ankerzeit.wien)** · ha
 4. **Beide Eltern denselben Stand** – wer wann wach war und wann die letzte Mahlzeit war.
 5. **Reizarm ist erlaubt** – ein ruhiger Nachmittag zählt genauso wie ein „besonderes“ Programm.
 
-Moonli bleibt eure App für Schlaf, Stillen, Beikost und den gemeinsamen Überblick. ANKERZEIT ist der Partner für Freizeit und Entlastung vor Ort in Wien. Beides ergänzt sich: der Tag zu Hause und der Nachmittag draußen. Wenn der Plan umkippt, ist das kein Fehler – dann war der Tag zu voll, und morgen reicht oft schon ein kürzerer Weg zum nächsten guten Fenster.
+Moonli bleibt eure App für Schlaf, Stillen, Beikost und den gemeinsamen Überblick – etwa mit [Babyschlaf](/de/ratgeber/babyschlaf-routinen/), [Stillprotokoll](/de/ratgeber/stillen-flaschchen-tracken/) und [Beikost starten](/de/ratgeber/beikost-starten/). ANKERZEIT ist der Partner für Freizeit und Entlastung vor Ort in Wien. Beides ergänzt sich: der Tag zu Hause und der Nachmittag draußen. Wenn der Plan umkippt, ist das kein Fehler – dann war der Tag zu voll, und morgen reicht oft schon ein kürzerer Weg zum nächsten guten Fenster.

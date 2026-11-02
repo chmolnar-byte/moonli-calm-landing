@@ -3,11 +3,11 @@ export const GUIDE_LANGS = ["de", "en", "es", "fr", "ru"] as const;
 export type GuideLang = (typeof GUIDE_LANGS)[number];
 
 export const TOPIC_IDS = [
-  "vienna-baby-leisure",
-  "wake-windows",
   "sleep-routines",
   "feeding",
   "solids",
+  "wake-windows",
+  "vienna-baby-leisure",
   "growth",
   "care-work",
   "night-exhaustion",
@@ -133,14 +133,14 @@ export const TOPIC_ANCHOR: Record<TopicId, Record<GuideLang, string>> = {
     ru: "Окна бодрствования по возрасту",
   },
   "sleep-routines": {
-    de: "Babyschlaf",
+    de: "Babyschlaf: Abendroutine",
     en: "Baby sleep routines",
     es: "Rutinas de sueño del bebé",
     fr: "Routines de sommeil de bébé",
     ru: "Режим сна малыша",
   },
   feeding: {
-    de: "Stillprotokoll",
+    de: "Stillprotokoll & Still-App",
     en: "Track breastfeeding and bottles",
     es: "Seguimiento de lactancia y biberón",
     fr: "Suivi allaitement et biberon",

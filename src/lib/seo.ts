@@ -35,9 +35,11 @@ const GUIDE_PATH =
 const OVERVIEW_PATH =
   /^\/(de\/funktionen|en\/features|es\/funciones|fr\/fonctions|ru\/funktsii)\/$/;
 
+const COMPARE_PATH = /^\/de\/vergleich\/[a-z0-9-]+\/$/;
+
 export function isIndexableUrl(url: string): boolean {
   const canonical = canonicalUrl(url);
   if (INDEXABLE_URLS.has(canonical)) return true;
   const path = new URL(canonical).pathname;
-  return GUIDE_PATH.test(path) || OVERVIEW_PATH.test(path);
+  return GUIDE_PATH.test(path) || OVERVIEW_PATH.test(path) || COMPARE_PATH.test(path);
 }

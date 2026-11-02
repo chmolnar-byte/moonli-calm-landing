@@ -2,16 +2,16 @@
 topic: sleep-routines
 lang: de
 urlSlug: babyschlaf-routinen
-title: "Babyschlaf: eine Routine ohne starren Plan"
-seoTitle: "Babyschlaf: Routine ohne starren Plan | Moonli"
-description: "Babyschlaf ohne Stundenplan. Drei Schritte, die auch nach einer kurzen Nacht noch gehen, und der Tag im Blick, bevor das Ritual startet."
+title: "Babyschlaf: Abendroutine ohne starren Plan"
+seoTitle: "Babyschlaf: Abendroutine ohne Druck | Moonli"
+description: "Babyschlaf ohne Stundenplan: drei Schritte für den Abend, Wachfenster im Blick und eine Routine, die auch nach kurzen Nächten noch geht."
 pubDate: 2026-10-02
-updatedDate: 2026-10-09
+updatedDate: 2026-11-02
 draft: false
 related:
   - wake-windows
-  - calm-screen
-  - night-exhaustion
+  - feeding
+  - solids
 primaryFeatures:
   - sleep-tracking
   - info-hub
@@ -96,3 +96,7 @@ Eine kurze Geschichte oder ein gleichmäßiger Klang kann der letzte Schritt sei
 Lass den perfekten Ablauf. Such dir drei Schritte, die auch an einem schlechten Tag noch gehen, und wiederholt sie eine Woche lang. Schreib den Schlaf mit, damit du am Abend siehst, ob das Fenster schon zu war.
 
 Wenn eine Nacht völlig aus dem Ruder läuft, ist der nächste Abend trotzdem wieder einer mit denselben drei Schritten. Eine Routine wächst an den gewöhnlichen Tagen. Die außergewöhnlichen darfst du einfach überstehen.
+
+Zum Tag davor gehört oft auch, wann die letzte Mahlzeit war: mehr dazu im [Stillprotokoll](/de/ratgeber/stillen-flaschchen-tracken/) und später beim [Beikost starten](/de/ratgeber/beikost-starten/). Die [Wachfenster nach Alter](/de/ratgeber/wachfenster-baby/) helfen, bevor das Abendritual überhaupt beginnt.
+
+Wenn du Napper oder Huckleberry gegen Moonli abwägst: [Kosten und Funktionen transparent vergleichen](/de/vergleich/napper-huckleberry/).

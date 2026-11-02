@@ -2,16 +2,16 @@
 topic: solids
 lang: de
 urlSlug: beikost-starten
-title: "Beikost starten: tracken, Teller, eigene Rezepte"
+title: "Beikost starten: erster Löffel ohne Plan"
 seoTitle: "Beikost starten: tracken, BLW, Rezepte | Moonli"
-description: "Beikost starten ohne Ernährungsplan. Mahlzeiten tracken, BLW mit über 100 Zutaten plus eigenen, und Rezepte aufschreiben und in die Community geben."
+description: "Beikost starten ab wann und wie: Mahlzeiten tracken, BLW mit über 100 Zutaten plus eigenen, Rezepte aufschreiben und in die Community geben."
 pubDate: 2026-10-02
-updatedDate: 2026-10-06
+updatedDate: 2026-11-02
 draft: false
 related:
   - feeding
+  - sleep-routines
   - growth
-  - wake-windows
 primaryFeatures:
   - solids
   - feeding
@@ -93,4 +93,6 @@ Wenn der andere Elternteil, die Oma oder die Tagesbetreuung den nächsten Löffe
 
 Such ein Lebensmittel, das ihr mit der Kinderärztin oder Hebamme für passend haltet. Biete es an, ohne den Teller leer bekommen zu müssen. Notier den Namen, einen Satz zur Menge, und ob danach etwas war.
 
-Am Ende der Woche hast du eine kurze Liste statt eines schlechten Gewissens. Milch bleibt das Fundament. Der Löffel ist der Anfang von etwas, das Monate dauert. Ihr müsst es nicht in sieben Tagen können.
+Am Ende der Woche hast du eine kurze Liste statt eines schlechten Gewissens. Milch bleibt das Fundament – weiter im [Stillprotokoll](/de/ratgeber/stillen-flaschchen-tracken/). Der Löffel ist der Anfang von etwas, das Monate dauert. Ihr müsst es nicht in sieben Tagen können.
+
+Wenn der Abend nach Beikost unruhig wird, hilft oft der Blick auf [Babyschlaf und Abendroutine](/de/ratgeber/babyschlaf-routinen/) und die [Wachfenster nach Alter](/de/ratgeber/wachfenster-baby/).

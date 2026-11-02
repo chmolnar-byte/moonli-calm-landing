@@ -2,16 +2,16 @@
 topic: feeding
 lang: de
 urlSlug: stillen-flaschchen-tracken
-title: "Stillprotokoll: Stillen und Fläschchen tracken"
-seoTitle: "Stillprotokoll: Still-App für die Nacht | Moonli"
-description: "Ein Stillprotokoll für die Nacht: Seite, Dauer oder Menge. Die Still-App zeigt beiden Eltern am Morgen denselben Stand, ohne die Nacht noch einmal zu erzählen."
+title: "Stillprotokoll: Stillen und Fläschchen in der Still-App"
+seoTitle: "Stillprotokoll & Still-App kostenlos | Moonli"
+description: "Stillprotokoll in der Still-App: Seite, Dauer oder Menge nachts erfassen. Beide Eltern sehen am Morgen denselben Stand – ohne die Nacht nachzuerzählen."
 pubDate: 2026-10-02
-updatedDate: 2026-10-09
+updatedDate: 2026-11-02
 draft: false
 related:
-  - wake-windows
+  - sleep-routines
   - solids
-  - care-work
+  - wake-windows
 primaryFeatures:
   - feeding
   - quick-buttons
@@ -87,4 +87,6 @@ Trag nur ein, was du mit einer Hand schaffst: Seite oder Menge, und die Zeit, di
 
 Wenn du der Person, die geschlafen hat, den Morgen erklären müsstest, ist der Eintrag schon da. Die Frage am Frühstückstisch wird kürzer. Übrig bleibt, wie es euch ging. Welche Seite um 2 Uhr 40 dran war, muss niemand mehr aus dem Gedächtnis heben.
 
-Wenn Monate später der Löffel dazukommt, liegt die Beikost neben der Milch. Dann trackst du die Mahlzeit, füllst den Teller für BLW und schreibst Rezepte auf, die ihr in die Community geben könnt. Bis dahin trägt dieses Stillprotokoll die Nächte.
+Wenn Monate später der Löffel dazukommt, liegt die Beikost neben der Milch. Dann trackst du die Mahlzeit, füllst den Teller für BLW und schreibst Rezepte auf, die ihr in die Community geben könnt – Schritt für Schritt im Ratgeber [Beikost starten](/de/ratgeber/beikost-starten/). Bis dahin trägt dieses Stillprotokoll die Nächte.
+
+Für den Abendablauf nach der letzten Mahlzeit: [Babyschlaf und Abendroutine](/de/ratgeber/babyschlaf-routinen/). Für die Abstände dazwischen: [Wachfenster nach Alter](/de/ratgeber/wachfenster-baby/).
