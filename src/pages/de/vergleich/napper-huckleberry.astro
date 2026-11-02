@@ -56,6 +56,14 @@ const jsonLd = {
             text: "Laut Huckleberry-Preisseite liegt Plus bei etwa 11,99 USD pro Monat. Es gibt Free, Plus und Premium. Preise können sich ändern – bitte auf huckleberrycare.com prüfen.",
           },
         },
+        {
+          "@type": "Question",
+          name: "Wo werden Moonli-Daten gespeichert?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Moonli hostet die App-Daten in der EU.",
+          },
+        },
       ],
     },
   ],
@@ -92,50 +100,58 @@ const jsonLd = {
         Huckleberry sitzen Schlafplan, Vorhersagen und viele Statistiken hinter dem Abo.
       </p>
 
-      <div class="mt-6 overflow-x-auto rounded-3xl border border-border">
-        <table class="w-full min-w-[36rem] text-left text-sm">
-          <thead class="bg-card">
-            <tr class="border-b border-border">
-              <th scope="col" class="px-4 py-3 font-semibold text-foreground">Preis</th>
-              <th scope="col" class="px-4 py-3 font-semibold text-primary">Moonli</th>
-              <th scope="col" class="px-4 py-3 font-semibold text-foreground">Napper</th>
-              <th scope="col" class="px-4 py-3 font-semibold text-foreground">Huckleberry</th>
+      <div class="mt-6 overflow-x-auto rounded-[1.75rem] border border-border bg-card shadow-sm">
+        <table class="w-full min-w-[40rem] border-separate border-spacing-0 text-left text-sm">
+          <thead>
+            <tr>
+              <th scope="col" class="sticky left-0 z-10 bg-card px-4 py-4 font-semibold text-foreground sm:px-5">Preis</th>
+              <th scope="col" class="px-4 py-4 font-semibold text-muted-foreground sm:px-5">Napper</th>
+              <th scope="col" class="px-4 py-4 font-semibold text-muted-foreground sm:px-5">Huckleberry</th>
+              <th scope="col" class="border-x border-t border-primary/35 bg-primary/[0.08] px-4 py-4 sm:px-5">
+                <span class="flex flex-col gap-1.5">
+                  <span class="w-fit rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-primary-foreground">
+                    Empfohlen
+                  </span>
+                  <span class="text-base font-bold text-foreground">Moonli</span>
+                </span>
+              </th>
             </tr>
           </thead>
-          <tbody class="text-muted-foreground">
-            <tr class="border-b border-border">
-              <th scope="row" class="px-4 py-3 font-medium text-foreground">Free</th>
-              <td class="px-4 py-3 text-foreground">
-                <strong>0 €</strong> für immer – Schlaf, Stillen/Flasche, Windeln, Wachstum, Info-Hub,
-                White Noise, Auswahl Geschichten
+          <tbody>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-4 font-medium text-foreground sm:px-5">Free</th>
+              <td class="border-t border-border px-4 py-4 text-muted-foreground sm:px-5">Free-Stufe mit Basis-Tracking und altersbasiertem Schlafplan</td>
+              <td class="border-t border-border px-4 py-4 text-muted-foreground sm:px-5">Free: Basis-Logging und einfache Reports</td>
+              <td class="border-x border-primary/35 bg-primary/[0.08] px-4 py-4 text-foreground sm:px-5">
+                <strong>0 €</strong> für immer – Schlaf, Stillen/Flasche, Windeln, Wachstum, Info-Hub, White Noise, Auswahl Geschichten
               </td>
-              <td class="px-4 py-3">Free-Stufe mit Basis-Tracking und altersbasiertem Schlafplan</td>
-              <td class="px-4 py-3">Free: Basis-Logging und einfache Reports</td>
             </tr>
-            <tr class="border-b border-border">
-              <th scope="row" class="px-4 py-3 font-medium text-foreground">Bezahlt</th>
-              <td class="px-4 py-3 text-foreground">
-                <strong>5 € / Monat</strong> im Jahresabo<br />
-                <span class="text-xs">oder 7 € / Monat monatlich kündbar · 1 Monat testen</span>
-              </td>
-              <td class="px-4 py-3">
-                Unlimited ca. <strong>69,99 USD / Jahr</strong>
-                <span class="block text-xs mt-1">
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-4 font-medium text-foreground sm:px-5">Bezahlt</th>
+              <td class="border-t border-border px-4 py-4 text-muted-foreground sm:px-5">
+                Unlimited ca. <strong class="text-foreground">69,99 USD / Jahr</strong>
+                <span class="mt-1 block text-xs">
                   Quelle: <a class="underline hover:text-foreground" href="https://napper.app/en/pricing/" target="_blank" rel="noopener noreferrer">napper.app/pricing</a>
                 </span>
               </td>
-              <td class="px-4 py-3">
-                Plus ca. <strong>11,99 USD / Monat</strong> · Premium darüber
-                <span class="block text-xs mt-1">
+              <td class="border-t border-border px-4 py-4 text-muted-foreground sm:px-5">
+                Plus ca. <strong class="text-foreground">11,99 USD / Monat</strong> · Premium darüber
+                <span class="mt-1 block text-xs">
                   Quelle: <a class="underline hover:text-foreground" href="https://huckleberrycare.com/pricing" target="_blank" rel="noopener noreferrer">huckleberrycare.com/pricing</a>
                 </span>
               </td>
+              <td class="border-x border-primary/35 bg-primary/[0.08] px-4 py-4 text-foreground sm:px-5">
+                <strong>5 € / Monat</strong> im Jahresabo
+                <span class="mt-1 block text-xs text-muted-foreground">oder 7 € / Monat monatlich kündbar · 1 Monat testen</span>
+              </td>
             </tr>
-            <tr>
-              <th scope="row" class="px-4 py-3 font-medium text-foreground">Grobrechnung / Jahr</th>
-              <td class="px-4 py-3 text-foreground"><strong>~60 €</strong> (Premium Jahresabo) oder 0 €</td>
-              <td class="px-4 py-3">~70 USD Unlimited</td>
-              <td class="px-4 py-3">~144 USD Plus (12×11,99)</td>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-4 font-medium text-foreground sm:px-5">Grobrechnung / Jahr</th>
+              <td class="border-t border-border px-4 py-4 text-muted-foreground sm:px-5">~70 USD Unlimited</td>
+              <td class="border-t border-border px-4 py-4 text-muted-foreground sm:px-5">~144 USD Plus (12×11,99)</td>
+              <td class="border-x border-b border-primary/35 bg-primary/[0.08] px-4 py-4 text-foreground sm:px-5">
+                <strong>~60 €</strong> Premium Jahresabo – oder <strong>0 €</strong>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -154,70 +170,83 @@ const jsonLd = {
         zahlen wollt.
       </p>
 
-      <div class="mt-6 overflow-x-auto rounded-3xl border border-border">
-        <table class="w-full min-w-[40rem] text-left text-sm">
-          <thead class="bg-card">
-            <tr class="border-b border-border">
-              <th scope="col" class="px-4 py-3 font-semibold text-foreground">Thema</th>
-              <th scope="col" class="px-4 py-3 font-semibold text-primary">Moonli</th>
-              <th scope="col" class="px-4 py-3 font-semibold text-foreground">Napper</th>
-              <th scope="col" class="px-4 py-3 font-semibold text-foreground">Huckleberry</th>
+      <div class="mt-6 overflow-x-auto rounded-[1.75rem] border border-border bg-card shadow-sm">
+        <table class="w-full min-w-[44rem] border-separate border-spacing-0 text-left text-sm">
+          <thead>
+            <tr>
+              <th scope="col" class="sticky left-0 z-10 bg-card px-4 py-4 font-semibold text-foreground sm:px-5">Thema</th>
+              <th scope="col" class="px-4 py-4 font-semibold text-muted-foreground sm:px-5">Napper</th>
+              <th scope="col" class="px-4 py-4 font-semibold text-muted-foreground sm:px-5">Huckleberry</th>
+              <th scope="col" class="border-x border-t border-primary/35 bg-primary/[0.08] px-4 py-4 sm:px-5">
+                <span class="flex flex-col gap-1.5">
+                  <span class="w-fit rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-primary-foreground">
+                    Empfohlen
+                  </span>
+                  <span class="text-base font-bold text-foreground">Moonli</span>
+                </span>
+              </th>
             </tr>
           </thead>
-          <tbody class="text-muted-foreground">
-            <tr class="border-b border-border">
-              <th scope="row" class="px-4 py-3 font-medium text-foreground">Schlaf tracken</th>
-              <td class="px-4 py-3 text-foreground">Ja · kostenlos</td>
-              <td class="px-4 py-3">Ja · Fokus der App</td>
-              <td class="px-4 py-3">Ja · Fokus der App</td>
+          <tbody>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-3.5 font-medium text-foreground sm:px-5">Schlaf tracken</th>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Ja · Fokus der App</td>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Ja · Fokus der App</td>
+              <td class="border-x border-primary/35 bg-primary/[0.08] px-4 py-3.5 font-medium text-foreground sm:px-5">Ja · kostenlos</td>
             </tr>
-            <tr class="border-b border-border">
-              <th scope="row" class="px-4 py-3 font-medium text-foreground">Schlafplan / Vorhersage</th>
-              <td class="px-4 py-3">Wachfenster-Orientierung &amp; Tagesplan (Premium)</td>
-              <td class="px-4 py-3">Stärke: altersbasierter Plan &amp; Personalisierung</td>
-              <td class="px-4 py-3">Stärke: SweetSpot® &amp; Schedule Creator (Plus/Premium)</td>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-3.5 font-medium text-foreground sm:px-5">Schlafplan / Vorhersage</th>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Stärke: altersbasierter Plan &amp; Personalisierung</td>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Stärke: SweetSpot® &amp; Schedule Creator (Plus/Premium)</td>
+              <td class="border-x border-primary/35 bg-primary/[0.08] px-4 py-3.5 text-foreground sm:px-5">Wachfenster-Orientierung &amp; Tagesplan (Premium)</td>
             </tr>
-            <tr class="border-b border-border">
-              <th scope="row" class="px-4 py-3 font-medium text-foreground">Stillen &amp; Flasche</th>
-              <td class="px-4 py-3 text-foreground">Stillprotokoll · kostenlos</td>
-              <td class="px-4 py-3">Tracking möglich</td>
-              <td class="px-4 py-3">Tracking möglich</td>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-3.5 font-medium text-foreground sm:px-5">Stillen &amp; Flasche</th>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Tracking möglich</td>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Tracking möglich</td>
+              <td class="border-x border-primary/35 bg-primary/[0.08] px-4 py-3.5 font-medium text-foreground sm:px-5">Stillprotokoll · kostenlos</td>
             </tr>
-            <tr class="border-b border-border">
-              <th scope="row" class="px-4 py-3 font-medium text-foreground">Beikost / BLW</th>
-              <td class="px-4 py-3 text-foreground">Teller, 100+ Zutaten, eigene Rezepte</td>
-              <td class="px-4 py-3">Eher Nebenrolle</td>
-              <td class="px-4 py-3">Logging möglich, kein BLW-Fokus wie Moonli</td>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-3.5 font-medium text-foreground sm:px-5">Beikost / BLW</th>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Eher Nebenrolle</td>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Logging möglich, kein BLW-Fokus</td>
+              <td class="border-x border-primary/35 bg-primary/[0.08] px-4 py-3.5 font-medium text-foreground sm:px-5">Teller, 100+ Zutaten, eigene Rezepte</td>
             </tr>
-            <tr class="border-b border-border">
-              <th scope="row" class="px-4 py-3 font-medium text-foreground">Beide Eltern / Sync</th>
-              <td class="px-4 py-3 text-foreground">Parent-Sync in Echtzeit (Premium: Partner hinzufügen)</td>
-              <td class="px-4 py-3">Teilen möglich (je nach Plan)</td>
-              <td class="px-4 py-3">Mehrere Geräte auf demselben Account</td>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-3.5 font-medium text-foreground sm:px-5">Beide Eltern / Sync</th>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Teilen möglich (je nach Plan)</td>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Mehrere Geräte auf demselben Account</td>
+              <td class="border-x border-primary/35 bg-primary/[0.08] px-4 py-3.5 font-medium text-foreground sm:px-5">Parent-Sync in Echtzeit (Premium)</td>
             </tr>
-            <tr class="border-b border-border">
-              <th scope="row" class="px-4 py-3 font-medium text-foreground">Care-Arbeit spielerisch</th>
-              <td class="px-4 py-3 text-foreground">Punkte, Ehren-Rad, Komplimente (Premium)</td>
-              <td class="px-4 py-3">—</td>
-              <td class="px-4 py-3">—</td>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-3.5 font-medium text-foreground sm:px-5">Care-Arbeit spielerisch</th>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">—</td>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">—</td>
+              <td class="border-x border-primary/35 bg-primary/[0.08] px-4 py-3.5 font-medium text-foreground sm:px-5">Punkte, Ehren-Rad, Komplimente (Premium)</td>
             </tr>
-            <tr class="border-b border-border">
-              <th scope="row" class="px-4 py-3 font-medium text-foreground">White Noise &amp; Geschichten</th>
-              <td class="px-4 py-3 text-foreground">Ja · große Auswahl schon in Free</td>
-              <td class="px-4 py-3">Schlafgeräusche (Unlimited)</td>
-              <td class="px-4 py-3">Kein vergleichbarer Fokus</td>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-3.5 font-medium text-foreground sm:px-5">White Noise &amp; Geschichten</th>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Schlafgeräusche (Unlimited)</td>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Kein vergleichbarer Fokus</td>
+              <td class="border-x border-primary/35 bg-primary/[0.08] px-4 py-3.5 font-medium text-foreground sm:px-5">Ja · große Auswahl schon in Free</td>
             </tr>
-            <tr class="border-b border-border">
-              <th scope="row" class="px-4 py-3 font-medium text-foreground">Werbefrei</th>
-              <td class="px-4 py-3 text-foreground">Premium 100 % werbefrei</td>
-              <td class="px-4 py-3">Abo-Modell</td>
-              <td class="px-4 py-3">Abo-Modell</td>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-3.5 font-medium text-foreground sm:px-5">Werbefrei</th>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Abo-Modell</td>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Abo-Modell</td>
+              <td class="border-x border-primary/35 bg-primary/[0.08] px-4 py-3.5 font-medium text-foreground sm:px-5">Premium 100 % werbefrei</td>
             </tr>
-            <tr>
-              <th scope="row" class="px-4 py-3 font-medium text-foreground">Made for DACH</th>
-              <td class="px-4 py-3 text-foreground">Ja · Wien, DE/AT-Ratgeber</td>
-              <td class="px-4 py-3">Intl. · starke DE-Inhalte</td>
-              <td class="px-4 py-3">Vor allem EN / US</td>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-3.5 font-medium text-foreground sm:px-5">Datenspeicherung</th>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Je nach Anbieter / Region</td>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Je nach Anbieter / Region</td>
+              <td class="border-x border-primary/35 bg-primary/[0.08] px-4 py-3.5 font-medium text-foreground sm:px-5">Daten in der EU gehostet</td>
+            </tr>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-3.5 font-medium text-foreground sm:px-5">Made for DACH</th>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Intl. · starke DE-Inhalte</td>
+              <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">Vor allem EN / US</td>
+              <td class="border-x border-b border-primary/35 bg-primary/[0.08] px-4 py-3.5 font-medium text-foreground sm:px-5">Ja · Wien, DE/AT-Ratgeber</td>
             </tr>
           </tbody>
         </table>
@@ -237,7 +266,8 @@ const jsonLd = {
         </li>
         <li>
           <strong class="text-foreground">Moonli</strong>, wenn Tracking dauerhaft kostenlos bleiben soll,
-          beide Eltern denselben Stand brauchen und Stillen sowie später Beikost/BLW genauso zählen wie Schlaf.
+          beide Eltern denselben Stand brauchen, Stillen sowie später Beikost/BLW genauso zählen wie Schlaf –
+          und die Daten in der EU liegen sollen.
         </li>
       </ul>
     </section>
@@ -280,6 +310,13 @@ const jsonLd = {
           <dd class="mt-2 text-muted-foreground leading-relaxed">
             Für Logging von Schlaf und Mahlzeiten ja. Wenn ihr auf SweetSpot® und Expert-Pläne angewiesen seid,
             bleibt Huckleberry Plus/Premium die speziellere Lösung – zu einem höheren Monatspreis.
+          </dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-foreground">Wo werden die Daten gespeichert?</dt>
+          <dd class="mt-2 text-muted-foreground leading-relaxed">
+            Bei Moonli werden die App-Daten in der EU gehostet. Bei Napper und Huckleberry hängt die
+            Speicherung vom jeweiligen Anbieter und der Region ab – bitte in deren Datenschutzhinweisen prüfen.
           </dd>
         </div>
         <div>
