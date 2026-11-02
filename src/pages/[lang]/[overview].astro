@@ -17,6 +17,8 @@ import {
   type GuideLang,
 } from "@/lib/guidePaths";
 import { GUIDE_UI } from "@/lib/guideUi";
+import { comparePath } from "@/lib/comparePaths";
+import { COMPARE_HUB_TEASER } from "@/lib/compareNapperHuckleberry";
 
 export function getStaticPaths() {
   const features = GUIDE_LANGS.map((lang) => ({
@@ -125,14 +127,14 @@ const priorityLabel =
           </ul>
         </nav>
       )}
-      {lang === "de" && (
+      {isIndex && (
         <p class="not-prose mb-10 text-sm leading-relaxed text-muted-foreground">
-          Napper oder Huckleberry im Blick?{" "}
+          {COMPARE_HUB_TEASER[lang].before}{" "}
           <a
-            href="/de/vergleich/napper-huckleberry/"
+            href={comparePath(lang)}
             class="font-semibold text-foreground underline-offset-4 hover:underline"
           >
-            Kosten &amp; Funktionen transparent vergleichen
+            {COMPARE_HUB_TEASER[lang].link}
           </a>
         </p>
       )}

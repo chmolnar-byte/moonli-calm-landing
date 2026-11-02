@@ -1,0 +1,237 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import GuideChrome from "@/components/react/GuideChrome";
+import {
+  COMPARE_CHECKED_AT,
+  getCompareCopy,
+} from "@/lib/compareNapperHuckleberry";
+import {
+  compareAlternates,
+  compareHtmlLang,
+  compareLanguageHrefs,
+  compareOgLocale,
+  comparePath,
+  compareGuidesIndex,
+  SITE_ORIGIN,
+} from "@/lib/comparePaths";
+import { canonicalUrl } from "@/lib/seo";
+import type { GuideLang } from "@/lib/guidePaths";
+
+interface Props {
+  lang: GuideLang;
+}
+
+const { lang } = Astro.props;
+const c = getCompareCopy(lang);
+const path = comparePath(lang);
+const canonical = canonicalUrl(path);
+const alternates = compareAlternates();
+const languageHrefs = compareLanguageHrefs();
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      name: c.seoTitle,
+      description: c.description,
+      url: canonical,
+      dateModified: `${COMPARE_CHECKED_AT}T12:00:00+01:00`,
+      inLanguage: compareHtmlLang(lang),
+      isPartOf: { "@type": "WebSite", name: "Moonli", url: SITE_ORIGIN },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: c.faq.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    },
+  ],
+};
+
+const moonliHead =
+  "border-x border-t border-primary/35 bg-primary/[0.08] px-4 py-4 sm:px-5";
+const moonliCell =
+  "border-x border-primary/35 bg-primary/[0.08] px-4 py-3.5 text-foreground sm:px-5";
+const moonliCellLast =
+  "border-x border-b border-primary/35 bg-primary/[0.08] px-4 py-3.5 text-foreground sm:px-5";
+---
+
+<BaseLayout
+  title={c.seoTitle}
+  description={c.description}
+  canonical={canonical}
+  lang={compareHtmlLang(lang)}
+  ogLocale={compareOgLocale(lang)}
+  jsonLd={jsonLd}
+>
+  <Fragment slot="head">
+    {alternates.map((alt) => (
+      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+    ))}
+  </Fragment>
+
+  <GuideChrome client:load language={lang} languageHrefs={languageHrefs} />
+  <main class="container max-w-3xl py-28 md:py-32 px-4">
+    <nav class="mb-6 text-sm text-muted-foreground" aria-label="Breadcrumb">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a href="/" class="hover:text-foreground transition-colors">{c.breadcrumbHome}</a></li>
+        <li aria-hidden="true">/</li>
+        <li>
+          <a href={compareGuidesIndex(lang)} class="hover:text-foreground transition-colors">
+            {c.breadcrumbGuides}
+          </a>
+        </li>
+        <li aria-hidden="true">/</li>
+        <li class="text-foreground">{c.breadcrumbCompare}</li>
+      </ol>
+    </nav>
+
+    <p class="mb-3 text-sm font-semibold text-primary">{c.kicker}</p>
+    <h1 class="text-display-md text-foreground text-balance">{c.h1}</h1>
+    <p class="mt-4 text-lg text-muted-foreground leading-relaxed" set:html={c.introHtml} />
+
+    <section class="mt-12" aria-labelledby="kosten">
+      <h2 id="kosten" class="text-2xl font-bold text-foreground">{c.costsTitle}</h2>
+      <p class="mt-3 text-muted-foreground leading-relaxed">{c.costsLead}</p>
+
+      <div class="mt-6 overflow-x-auto rounded-[1.75rem] border border-border bg-card shadow-sm">
+        <table class="w-full min-w-[40rem] border-separate border-spacing-0 text-left text-sm">
+          <thead>
+            <tr>
+              <th scope="col" class="sticky left-0 z-10 bg-card px-4 py-4 font-semibold text-foreground sm:px-5">{c.priceCol}</th>
+              <th scope="col" class="px-4 py-4 font-semibold text-muted-foreground sm:px-5">Napper</th>
+              <th scope="col" class="px-4 py-4 font-semibold text-muted-foreground sm:px-5">Huckleberry</th>
+              <th scope="col" class={moonliHead}>
+                <span class="flex flex-col gap-1.5">
+                  <span class="w-fit rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-primary-foreground">
+                    {c.recommended}
+                  </span>
+                  <span class="text-base font-bold text-foreground">Moonli</span>
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-4 font-medium text-foreground sm:px-5">{c.freeRow}</th>
+              <td class="border-t border-border px-4 py-4 text-muted-foreground sm:px-5">{c.costs.napper}</td>
+              <td class="border-t border-border px-4 py-4 text-muted-foreground sm:px-5">{c.costs.huckleberry}</td>
+              <td class={moonliCell} set:html={c.costs.moonli} />
+            </tr>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-4 font-medium text-foreground sm:px-5">{c.paidRow}</th>
+              <td class="border-t border-border px-4 py-4 text-muted-foreground sm:px-5">
+                <Fragment set:html={c.paid.napper} />
+                <span class="mt-1 block text-xs">
+                  {c.sourceLabel}:{" "}
+                  <a class="underline hover:text-foreground" href="https://napper.app/en/pricing/" target="_blank" rel="noopener noreferrer">napper.app/pricing</a>
+                </span>
+              </td>
+              <td class="border-t border-border px-4 py-4 text-muted-foreground sm:px-5">
+                <Fragment set:html={c.paid.huckleberry} />
+                <span class="mt-1 block text-xs">
+                  {c.sourceLabel}:{" "}
+                  <a class="underline hover:text-foreground" href="https://huckleberrycare.com/pricing" target="_blank" rel="noopener noreferrer">huckleberrycare.com/pricing</a>
+                </span>
+              </td>
+              <td class={moonliCell} set:html={c.paid.moonli} />
+            </tr>
+            <tr class="align-top">
+              <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-4 font-medium text-foreground sm:px-5">{c.yearlyRow}</th>
+              <td class="border-t border-border px-4 py-4 text-muted-foreground sm:px-5">{c.yearly.napper}</td>
+              <td class="border-t border-border px-4 py-4 text-muted-foreground sm:px-5">{c.yearly.huckleberry}</td>
+              <td class={moonliCellLast} set:html={c.yearly.moonli} />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-3 text-xs text-muted-foreground" set:html={c.costsNoteHtml} />
+    </section>
+
+    <section class="mt-14" aria-labelledby="features">
+      <h2 id="features" class="text-2xl font-bold text-foreground">{c.featuresTitle}</h2>
+      <p class="mt-3 text-muted-foreground leading-relaxed">{c.featuresLead}</p>
+
+      <div class="mt-6 overflow-x-auto rounded-[1.75rem] border border-border bg-card shadow-sm">
+        <table class="w-full min-w-[44rem] border-separate border-spacing-0 text-left text-sm">
+          <thead>
+            <tr>
+              <th scope="col" class="sticky left-0 z-10 bg-card px-4 py-4 font-semibold text-foreground sm:px-5">{c.topicCol}</th>
+              <th scope="col" class="px-4 py-4 font-semibold text-muted-foreground sm:px-5">Napper</th>
+              <th scope="col" class="px-4 py-4 font-semibold text-muted-foreground sm:px-5">Huckleberry</th>
+              <th scope="col" class={moonliHead}>
+                <span class="flex flex-col gap-1.5">
+                  <span class="w-fit rounded-full bg-primary px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-primary-foreground">
+                    {c.recommended}
+                  </span>
+                  <span class="text-base font-bold text-foreground">Moonli</span>
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {c.featureRows.map((row, i) => {
+              const isLast = i === c.featureRows.length - 1;
+              return (
+                <tr class="align-top">
+                  <th scope="row" class="sticky left-0 z-10 border-t border-border bg-card px-4 py-3.5 font-medium text-foreground sm:px-5">
+                    {row.label}
+                  </th>
+                  <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">{row.napper}</td>
+                  <td class="border-t border-border px-4 py-3.5 text-muted-foreground sm:px-5">{row.huckleberry}</td>
+                  <td class:list={[isLast ? moonliCellLast : moonliCell, "font-medium"]}>{row.moonli}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="mt-14" aria-labelledby="fuer-wen">
+      <h2 id="fuer-wen" class="text-2xl font-bold text-foreground">{c.forWhomTitle}</h2>
+      <ul class="mt-4 space-y-4 text-muted-foreground leading-relaxed">
+        {c.forWhom.map((item) => (
+          <li>
+            <strong class="text-foreground">{item.name}</strong>{item.text}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="mt-14" aria-labelledby="weiter">
+      <h2 id="weiter" class="text-2xl font-bold text-foreground">{c.nextTitle}</h2>
+      <ul class="mt-4 space-y-2 text-muted-foreground">
+        {c.nextLinks.map((link) => (
+          <li>
+            <a class="font-semibold text-foreground underline-offset-4 hover:underline" href={link.href}>
+              {link.label}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a class="font-semibold text-foreground underline-offset-4 hover:underline" href="/#preise">{c.pricesLabel}</a>
+          {" · "}
+          <a class="font-semibold text-foreground underline-offset-4 hover:underline" href="/#download">{c.downloadLabel}</a>
+        </li>
+      </ul>
+    </section>
+
+    <section class="mt-14 rounded-3xl border border-border bg-card p-6 sm:p-8" aria-labelledby="faq">
+      <h2 id="faq" class="text-2xl font-bold text-foreground">{c.faqTitle}</h2>
+      <dl class="mt-6 space-y-6">
+        {c.faq.map((item) => (
+          <div>
+            <dt class="font-semibold text-foreground">{item.q}</dt>
+            <dd class="mt-2 text-muted-foreground leading-relaxed">{item.a}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+
+    <p class="mt-10 text-xs text-muted-foreground leading-relaxed">{c.disclaimer}</p>
+  </main>
+</BaseLayout>

@@ -35,7 +35,8 @@ const GUIDE_PATH =
 const OVERVIEW_PATH =
   /^\/(de\/funktionen|en\/features|es\/funciones|fr\/fonctions|ru\/funktsii)\/$/;
 
-const COMPARE_PATH = /^\/de\/vergleich\/[a-z0-9-]+\/$/;
+const COMPARE_PATH =
+  /^\/(de\/vergleich|en\/compare|es\/comparacion|fr\/comparaison|ru\/sravnenie)\/[a-z0-9-]+\/$/;
 
 export function isIndexableUrl(url: string): boolean {
   const canonical = canonicalUrl(url);
