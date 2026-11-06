@@ -1,21 +1,22 @@
 import { Apple, Play } from "lucide-react";
 import logo from "@/assets/logo.webp";
-import dashboardWeekly from "@/assets/hero-wochenbericht.png";
-import dashboardGrowth from "@/assets/hero-entwicklung.png";
-import dashboardHome from "@/assets/hero-sleep.png";
+import shotRecipes from "@/assets/shot-recipes.webp";
+import shotWakeWindow from "@/assets/shot-wake-window.webp";
+import shotBlw from "@/assets/shot-blw.webp";
 import { assetUrl } from "@/lib/assetUrl";
 import { useLanguage } from "@/i18n/LanguageContext";
 import MagneticCta from "@/components/MagneticCta";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
 import { guidesIndexPath } from "@/lib/guidePaths";
+import { OPEN_COOKIE_SETTINGS_EVENT } from "@/lib/cookieConsent";
 
 const bandGhost =
   "!border-white/25 !bg-transparent !text-[hsl(36_28%_94%)] !shadow-none hover:!bg-white/8";
 const bandPrimary = "!bg-primary !text-primary-foreground !shadow-none";
 
-const weeklyUrl = assetUrl(dashboardWeekly);
-const growthUrl = assetUrl(dashboardGrowth);
-const homeUrl = assetUrl(dashboardHome);
+const recipesUrl = assetUrl(shotRecipes);
+const wakeWindowUrl = assetUrl(shotWakeWindow);
+const blwUrl = assetUrl(shotBlw);
 
 const CTAFooter = () => {
   const { language, t } = useLanguage();
@@ -62,28 +63,28 @@ const CTAFooter = () => {
                 className="pointer-events-none absolute inset-0 opacity-70 [background-image:radial-gradient(hsl(36_28%_96%/0.22)_0.7px,transparent_0.7px)] [background-size:14px_14px] [mask-image:radial-gradient(ellipse_at_center,black_12%,transparent_70%)]"
               />
               <img
-                src={weeklyUrl}
+                src={recipesUrl}
                 alt=""
-                width={447}
-                height={921}
+                width={480}
+                height={995}
                 className="absolute bottom-[-18%] left-[7%] w-[36%] -rotate-[7deg] select-none"
                 loading="lazy"
                 decoding="async"
               />
               <img
-                src={growthUrl}
+                src={blwUrl}
                 alt=""
-                width={447}
-                height={921}
+                width={480}
+                height={995}
                 className="absolute bottom-[-18%] right-[7%] w-[36%] rotate-[7deg] select-none"
                 loading="lazy"
                 decoding="async"
               />
               <img
-                src={homeUrl}
+                src={wakeWindowUrl}
                 alt="Moonli Smart Sleep"
-                width={447}
-                height={921}
+                width={480}
+                height={995}
                 className="absolute bottom-[-10%] left-1/2 w-[42%] -translate-x-1/2 select-none"
                 loading="lazy"
                 decoding="async"
@@ -107,6 +108,13 @@ const CTAFooter = () => {
             <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 text-sm text-muted-foreground sm:justify-end">
               <a href={guidesIndexPath(language)} className="hover:text-foreground transition-colors whitespace-nowrap">{t("nav.guides")}</a>
               <a href="/cookies/" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.cookies")}</a>
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new CustomEvent(OPEN_COOKIE_SETTINGS_EVENT))}
+                className="hover:text-foreground transition-colors whitespace-nowrap"
+              >
+                {t("footer.cookieSettings")}
+              </button>
               <a href="/terms/" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.terms")}</a>
               <a href="/privacy/" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.privacy")}</a>
               <a href="/data-deletion/" className="hover:text-foreground transition-colors whitespace-nowrap">{t("footer.dataDeletion")}</a>

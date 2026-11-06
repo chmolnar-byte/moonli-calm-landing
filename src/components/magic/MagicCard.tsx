@@ -59,7 +59,7 @@ export function MagicCard({
       style={reduce ? undefined : { background: border }}
     >
       {beam ? <BorderBeam /> : null}
-      <div className="relative z-10 min-h-full flex-1 overflow-hidden rounded-[calc(1.5rem-1px)] bg-card">
+      <div className="relative z-10 flex min-h-full flex-1 flex-col overflow-hidden rounded-[calc(1.5rem-1px)] bg-card">
         {!reduce && (
           <motion.div
             aria-hidden
@@ -67,7 +67,7 @@ export function MagicCard({
             style={{ background: fill }}
           />
         )}
-        <div className="relative">{children}</div>
+        <div className="relative flex flex-1 flex-col">{children}</div>
       </div>
     </motion.div>
   );

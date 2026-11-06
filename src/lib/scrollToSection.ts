@@ -9,9 +9,16 @@ export function scrollToSection(id: string): void {
   window.scrollTo({ top, behavior: "smooth" });
 }
 
+export function sectionHashPath(id: string): string {
+  const path = window.location.pathname.endsWith("/")
+    ? window.location.pathname
+    : `${window.location.pathname}/`;
+  return `${path}#${id}`;
+}
+
 export function isHomePath(pathname: string): boolean {
   const path = pathname.replace(/\/$/, "") || "/";
-  return path === "/" || path.endsWith("/index.html");
+  return path === "/" || path === "/v2" || path.endsWith("/index.html");
 }
 
 export function scrollToHashFromUrl(): void {

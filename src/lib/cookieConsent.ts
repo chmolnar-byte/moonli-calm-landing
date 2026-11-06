@@ -1,5 +1,8 @@
 export const COOKIE_KEY = "moonli_cookie_consent_v2";
 
+/** Fired by the footer link so the consent bar can be reopened to change or withdraw consent. */
+export const OPEN_COOKIE_SETTINGS_EVENT = "moonli-open-cookie-settings";
+
 export type CookieConsent = {
   analytics: boolean;
 };

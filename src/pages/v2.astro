@@ -1,0 +1,16 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import LandingV2 from "@/components/v2/LandingV2";
+
+const description =
+  "Schlaf und Stillen ab der Geburt. Beikost, wenn der Löffel kommt. Wachfenster nach Alter, und beide Eltern sehen denselben Stand.";
+---
+
+<BaseLayout
+  title="Es ist 4:40. Du musst dir nichts merken. | Moonli"
+  description={description}
+  canonical="/v2/"
+  noindex={true}
+>
+  <LandingV2 client:load />
+</BaseLayout>

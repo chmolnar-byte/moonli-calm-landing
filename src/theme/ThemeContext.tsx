@@ -15,12 +15,21 @@ interface ThemeContextType {
   toggleTheme: () => void;
 }
 
-const STORAGE_KEY = "moonli_theme_v1";
+/** A manual choice is stored as "<chosen>:<phase it was made in>" and only holds until day turns to night or back. */
+const CHOICE_KEY = "moonli_theme_choice_v2";
+
+const NIGHT_FROM_HOUR = 19;
+const NIGHT_UNTIL_HOUR = 7;
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-const isTheme = (value: string | null): value is Theme =>
+const isTheme = (value: string | null | undefined): value is Theme =>
   value === "light" || value === "dark";
+
+export const themeForTime = (date: Date = new Date()): Theme => {
+  const hour = date.getHours();
+  return hour >= NIGHT_FROM_HOUR || hour < NIGHT_UNTIL_HOUR ? "dark" : "light";
+};
 
 const applyThemeClass = (theme: Theme) => {
   if (typeof document === "undefined") return;
@@ -33,15 +42,28 @@ const applyThemeClass = (theme: Theme) => {
   }
 };
 
-export const readStoredTheme = (): Theme => {
-  if (typeof window === "undefined") return "light";
+const readChoice = (phase: Theme): Theme | null => {
   try {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (isTheme(stored)) return stored;
+    const [chosen, madeIn] = (window.localStorage.getItem(CHOICE_KEY) ?? "").split(":");
+    if (isTheme(chosen) && madeIn === phase) return chosen;
   } catch {
     // ignore
   }
-  return "light";
+  return null;
+};
+
+const writeChoice = (chosen: Theme) => {
+  try {
+    window.localStorage.setItem(CHOICE_KEY, `${chosen}:${themeForTime()}`);
+  } catch {
+    // ignore
+  }
+};
+
+export const readStoredTheme = (): Theme => {
+  if (typeof window === "undefined") return "light";
+  const phase = themeForTime();
+  return readChoice(phase) ?? phase;
 };
 
 const defaultContext: ThemeContextType = {
@@ -55,19 +77,27 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     applyThemeClass(theme);
-    try {
-      window.localStorage.setItem(STORAGE_KEY, theme);
-    } catch {
-      // ignore
-    }
   }, [theme]);
 
+  // Follow the clock while the page stays open: re-evaluate every minute.
+  useEffect(() => {
+    const id = window.setInterval(() => {
+      setThemeState(readStoredTheme());
+    }, 60_000);
+    return () => window.clearInterval(id);
+  }, []);
+
   const setTheme = useCallback((next: Theme) => {
+    writeChoice(next);
     setThemeState(next);
   }, []);
 
   const toggleTheme = useCallback(() => {
-    setThemeState((current) => (current === "dark" ? "light" : "dark"));
+    setThemeState((current) => {
+      const next = current === "dark" ? "light" : "dark";
+      writeChoice(next);
+      return next;
+    });
   }, []);
 
   return (

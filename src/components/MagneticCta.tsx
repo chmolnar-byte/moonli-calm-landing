@@ -2,7 +2,7 @@ import { motion, useMotionTemplate, useMotionValue, useReducedMotion, useSpring 
 import { useEffect, useRef, type MouseEvent, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { magneticSpring } from "@/lib/motion";
-import { scrollToSection } from "@/lib/scrollToSection";
+import { scrollToSection, sectionHashPath } from "@/lib/scrollToSection";
 import { trackEvent, type AnalyticsParams } from "@/lib/analytics";
 
 type Variant = "primary" | "ghost";
@@ -75,7 +75,7 @@ const MagneticCta = ({
     const id = href.replace(/^\/?#/, "");
     if (!id) return;
     scrollToSection(id);
-    window.history.replaceState(null, "", `/#${id}`);
+    window.history.replaceState(null, "", sectionHashPath(id));
   };
 
   const onMove = (event: MouseEvent<HTMLAnchorElement>) => {

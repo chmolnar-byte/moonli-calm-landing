@@ -8,7 +8,7 @@ import { useState, useRef, useEffect, type MouseEvent as ReactMouseEvent } from 
 import MagneticCta from "@/components/MagneticCta";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
 import { guidesIndexPath } from "@/lib/guidePaths";
-import { isHomePath, scrollToSection } from "@/lib/scrollToSection";
+import { isHomePath, scrollToSection, sectionHashPath } from "@/lib/scrollToSection";
 
 const NAV_TABS = [
   { labelKey: "nav.features", href: "funktionen" },
@@ -48,7 +48,7 @@ const Navbar = ({ languageHrefs }: NavbarProps) => {
     if (isHomePath(window.location.pathname)) {
       event.preventDefault();
       scrollToSection(sectionId);
-      window.history.replaceState(null, "", `/#${sectionId}`);
+      window.history.replaceState(null, "", sectionHashPath(sectionId));
     }
   };
 

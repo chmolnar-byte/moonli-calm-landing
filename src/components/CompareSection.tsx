@@ -1,5 +1,6 @@
-import { motion, useReducedMotion } from "framer-motion";
-import { useState } from "react";
+import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
+import { CloudRain, Sun } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import StatsCounter from "@/components/StatsCounter";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { easeOut, motionInitial } from "@/lib/motion";
@@ -7,145 +8,130 @@ import { cn } from "@/lib/utils";
 
 const ROWS = [1, 2, 3, 4, 5] as const;
 
-const STORM = { src: "/clouds/storm.png", w: 1316, h: 1454 };
-const CLEAR = { src: "/clouds/clear.png", w: 1629, h: 1632 };
-
-const CLOUDS = [
-  {
-    storm: STORM,
-    clear: CLEAR,
-    layout: "md:col-start-1 md:col-span-6 md:-translate-y-2",
-  },
-  {
-    storm: STORM,
-    clear: CLEAR,
-    layout: "md:col-start-7 md:col-span-6 md:translate-y-8",
-  },
-  {
-    storm: STORM,
-    clear: CLEAR,
-    layout: "md:col-start-3 md:col-span-7 md:translate-y-2",
-  },
-  {
-    storm: STORM,
-    clear: CLEAR,
-    layout: "md:col-start-1 md:col-span-5 md:translate-y-6",
-  },
-  {
-    storm: STORM,
-    clear: CLEAR,
-    layout: "md:col-start-7 md:col-span-6 md:-translate-y-1",
-  },
-] as const;
-
-const CompareCloud = ({
-  row,
-  index,
-  pressed,
-  onToggle,
-}: {
-  row: (typeof ROWS)[number];
-  index: number;
-  pressed: boolean;
-  onToggle: () => void;
-}) => {
-  const { t } = useLanguage();
-  const reduceMotion = useReducedMotion();
-  const cloud = CLOUDS[index];
-  const area = t(`compare.row${row}.area`);
-  const before = t(`compare.row${row}.before`);
-  const after = t(`compare.row${row}.after`);
-
-  return (
-    <motion.button
-      type="button"
-      initial={motionInitial}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true, margin: "-24px" }}
-      transition={{ duration: 0.5, delay: index * 0.05, ease: easeOut }}
-      aria-pressed={pressed}
-      aria-label={`${area}. ${t("compare.col.without")}: ${before}. ${t("compare.col.after")}: ${after}.`}
-      onClick={onToggle}
-      className={cn(
-        "compare-cloud group relative w-full max-w-[15rem] justify-self-center md:max-w-[16.5rem]",
-        cloud.layout,
-      )}
-    >
-      <span className="compare-cloud__inner">
-        <span
-          className={cn("compare-cloud__art", !reduceMotion && "compare-cloud__art--drift")}
-          style={{ animationDelay: `${index * -1.4}s` }}
-        >
-          <span className="compare-cloud__glow" aria-hidden />
-          <img
-            src={cloud.storm.src}
-            alt=""
-            width={cloud.storm.w}
-            height={cloud.storm.h}
-            className="compare-cloud__shape compare-cloud__shape--storm"
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-          />
-          <img
-            src={cloud.clear.src}
-            alt=""
-            width={cloud.clear.w}
-            height={cloud.clear.h}
-            className="compare-cloud__shape compare-cloud__shape--clear"
-            loading="lazy"
-            decoding="async"
-            draggable={false}
-          />
-        </span>
-
-        <span className="compare-cloud__copy">
-          <span className="compare-cloud__area">{area}</span>
-          <span className="compare-cloud__swap">
-            <span className="compare-cloud__state compare-cloud__state--before">
-              <span className="compare-cloud__label">{t("compare.col.without")}</span>
-              <span className="compare-cloud__text">{before}</span>
-            </span>
-            <span className="compare-cloud__state compare-cloud__state--after">
-              <span className="compare-cloud__label">{t("compare.col.after")}</span>
-              <span className="compare-cloud__text">{after}</span>
-            </span>
-          </span>
-        </span>
-      </span>
-    </motion.button>
-  );
-};
+const STORM = { src: "/clouds/storm.webp", w: 640, h: 707 };
+const CLEAR = { src: "/clouds/clear.webp", w: 640, h: 641 };
 
 const CompareSection = () => {
   const { t } = useLanguage();
-  const [lit, setLit] = useState<number | null>(null);
+  const reduceMotion = useReducedMotion();
+  const stageRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(stageRef, { once: true, margin: "0px 0px -30% 0px" });
+  const [after, setAfter] = useState(false);
+  const touched = useRef(false);
+
+  // First time it scrolls into view the sky clears up on its own; any tap on the switch takes over.
+  useEffect(() => {
+    if (!inView || touched.current) return;
+    const id = window.setTimeout(() => {
+      if (!touched.current) setAfter(true);
+    }, reduceMotion ? 0 : 1500);
+    return () => window.clearTimeout(id);
+  }, [inView, reduceMotion]);
+
+  const choose = (value: boolean) => {
+    touched.current = true;
+    setAfter(value);
+  };
+
+  const options = [
+    { value: false, label: t("compare.col.without"), Icon: CloudRain },
+    { value: true, label: t("compare.col.after"), Icon: Sun },
+  ];
 
   return (
-    <section className="pb-24 pt-16 md:pb-32 md:pt-20">
+    <section className="pb-20 pt-16 md:pb-28 md:pt-20">
       <div className="container relative z-10">
         <StatsCounter />
-        <motion.div
+        <motion.h2
           initial={motionInitial}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, ease: easeOut }}
-          className="mb-12 max-w-[36ch] md:mb-16"
+          className="mb-10 max-w-[20ch] text-display-md text-foreground md:mb-14"
         >
-          <h2 className="text-display-md text-foreground">{t("compare.title")}</h2>
-          <p className="mt-3 text-base text-muted-foreground">{t("compare.hint")}</p>
-        </motion.div>
+          {t("compare.title")}
+        </motion.h2>
 
-        <div className="compare-sky">
-          {ROWS.map((row, index) => (
-            <CompareCloud
-              key={row}
-              row={row}
-              index={index}
-              pressed={lit === row}
-              onToggle={() => setLit((current) => (current === row ? null : row))}
-            />
-          ))}
+        <div ref={stageRef} className="grid items-start gap-8 md:grid-cols-[minmax(0,300px)_minmax(0,1fr)] md:gap-14">
+          <div className="md:sticky md:top-28">
+            <div className="relative mx-auto aspect-square w-44 max-w-full md:w-full md:max-w-[300px]">
+              <div
+                aria-hidden
+                className={cn(
+                  "absolute inset-[-10%] rounded-full blur-3xl transition-colors duration-700",
+                  after ? "bg-[hsl(42_95%_65%/0.4)]" : "bg-[hsl(215_35%_55%/0.28)]",
+                )}
+              />
+              <img
+                src={STORM.src}
+                alt=""
+                width={STORM.w}
+                height={STORM.h}
+                className={cn(
+                  "absolute inset-0 h-full w-full object-contain transition-all duration-700 ease-out",
+                  after ? "scale-90 opacity-0" : "scale-100 opacity-100",
+                  !reduceMotion && !after && "animate-pulse [animation-duration:4s]",
+                )}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+              />
+              <img
+                src={CLEAR.src}
+                alt=""
+                width={CLEAR.w}
+                height={CLEAR.h}
+                className={cn(
+                  "absolute inset-0 h-full w-full object-contain transition-all duration-700 ease-out",
+                  after ? "scale-100 opacity-100" : "scale-75 opacity-0",
+                )}
+                loading="lazy"
+                decoding="async"
+                draggable={false}
+              />
+            </div>
+
+            <div role="group" className="mx-auto mt-6 flex w-full max-w-[340px] rounded-full bg-foreground/[0.07] p-1">
+              {options.map(({ value, label, Icon }) => (
+                <button
+                  key={label}
+                  type="button"
+                  aria-pressed={after === value}
+                  onClick={() => choose(value)}
+                  className={cn(
+                    "flex flex-1 items-center justify-center gap-2 rounded-full px-3 py-2.5 text-sm font-semibold transition-all duration-300",
+                    after === value ? "bg-card text-foreground shadow-sm" : "text-foreground/55",
+                  )}
+                >
+                  <Icon className="h-4 w-4 shrink-0" aria-hidden />
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <ul className="grid gap-3" aria-live="polite">
+            {ROWS.map((row) => (
+              <li key={row} className="rounded-[1.5rem] border border-border bg-card px-5 py-4 sm:px-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.1em] text-primary">{t(`compare.row${row}.area`)}</p>
+                <AnimatePresence mode="wait" initial={false}>
+                  <motion.p
+                    key={after ? "after" : "before"}
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.2 }}
+                    className={cn(
+                      "mt-1.5 text-[1.0625rem] leading-snug",
+                      after ? "font-medium text-foreground" : "text-muted-foreground",
+                    )}
+                  >
+                    {t(after ? `compare.row${row}.after` : `compare.row${row}.before`)}
+                  </motion.p>
+                </AnimatePresence>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

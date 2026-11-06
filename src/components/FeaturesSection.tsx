@@ -99,7 +99,60 @@ const FeaturesSection = () => {
       <div className="container">
         <h2 className="mb-6 text-display-md text-foreground md:mb-8">{t("features.title")}</h2>
 
-        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16 xl:gap-24">
+        <div className="lg:hidden">
+          <div role="tablist" aria-label={t("features.title")} className="flex flex-wrap gap-2">
+            {stages.map((stage, index) => (
+              <button
+                key={stage.id}
+                type="button"
+                role="tab"
+                aria-selected={index === active}
+                onClick={() => setActive(index)}
+                className={cn(
+                  "rounded-full border px-4 py-2 text-left text-[13px] font-semibold leading-tight transition-colors",
+                  index === active
+                    ? "border-foreground bg-foreground text-background"
+                    : "border-border bg-card text-foreground/70",
+                )}
+              >
+                {stage.title}
+              </button>
+            ))}
+          </div>
+
+          <div key={current.id} className="feature-swap">
+            <div className="relative mt-8 flex justify-center">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[108%] w-[108%] -translate-x-1/2 -translate-y-1/2 opacity-70 [background-image:radial-gradient(hsl(var(--foreground)/0.18)_0.7px,transparent_0.7px)] [background-size:14px_14px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_72%)]"
+              />
+              <PhoneDemoVideo
+                label={current.title}
+                poster={current.video.poster}
+                webm={current.video.webm}
+                mp4={current.video.mp4}
+                className={cn("demo-phone feature-stage-phone relative", current.video.maskClass)}
+              />
+            </div>
+
+            <div className="mt-8 rounded-[1.75rem] border border-border bg-card p-6">
+              <h3 className="text-[1.75rem] font-semibold leading-[1.1] tracking-[-0.03em] text-foreground">{current.title}</h3>
+              <p className="mt-3 text-[15px] font-semibold text-primary">{current.kicker}</p>
+              <p className="mt-2 text-base leading-relaxed text-muted-foreground">{current.desc}</p>
+              {current.notes && (
+                <ul className="mt-4 flex flex-wrap gap-2">
+                  {current.notes.map((note) => (
+                    <li key={note} className="rounded-full bg-foreground/[0.06] px-3 py-1.5 text-sm font-semibold text-foreground/80">
+                      {note}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="hidden items-center gap-8 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:gap-16 xl:gap-24">
           <div className="order-2 lg:order-1" role="tablist" aria-label={t("features.title")}>
             {stages.map((stage, index) => {
               const selected = index === active;

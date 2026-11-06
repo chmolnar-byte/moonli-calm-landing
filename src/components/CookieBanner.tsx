@@ -1,87 +1,59 @@
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { applyAnalyticsConsent, trackPageView } from "@/lib/analytics";
-import { getStoredConsent, saveConsent } from "@/lib/cookieConsent";
+import { getStoredConsent, OPEN_COOKIE_SETTINGS_EVENT, saveConsent } from "@/lib/cookieConsent";
 
+/** Small bar at the bottom: it never blocks the page, and analytics stays off unless allowed. */
 const CookieBanner = () => {
-  const { t, needsLanguageChoice } = useLanguage();
+  const { t } = useLanguage();
   const [visible, setVisible] = useState(false);
-  const [analytics, setAnalytics] = useState(true);
 
   useEffect(() => {
-    if (needsLanguageChoice) {
-      setVisible(false);
-      return;
-    }
-    const stored = getStoredConsent();
-    if (stored) {
-      setAnalytics(stored.analytics);
-      setVisible(false);
-    } else {
-      setVisible(true);
-    }
-  }, [needsLanguageChoice]);
+    setVisible(!getStoredConsent());
+    const reopen = () => setVisible(true);
+    window.addEventListener(OPEN_COOKIE_SETTINGS_EVENT, reopen);
+    return () => window.removeEventListener(OPEN_COOKIE_SETTINGS_EVENT, reopen);
+  }, []);
 
-  const save = (value: boolean) => {
-    saveConsent({ analytics: value });
-    applyAnalyticsConsent(value);
-    if (value) {
+  const save = (analytics: boolean) => {
+    saveConsent({ analytics });
+    applyAnalyticsConsent(analytics);
+    if (analytics) {
       trackPageView(window.location.pathname + window.location.search);
     }
     setVisible(false);
   };
 
-  if (!visible || needsLanguageChoice) return null;
+  if (!visible) return null;
 
   return (
-    <div className="overlay-enter fixed inset-0 z-[60] flex items-end sm:items-center justify-center bg-background/70 backdrop-blur-sm px-4 py-6">
-      <div className="sheet-enter glass-card-premium max-w-xl w-full p-5 sm:p-6 shadow-soft-xl border border-border/60">
-        <h2 className="text-base sm:text-lg font-extrabold mb-2">
-          {t("cookies.title")}
-        </h2>
-        <p className="text-xs sm:text-sm text-muted-foreground mb-4">
-          {t("cookies.banner.text")}
-        </p>
-
-        <div className="mb-4 rounded-2xl border border-border/60 bg-background/60 px-3 sm:px-4 py-3 flex items-start gap-3">
-          <input
-            id="analytics-cookies"
-            type="checkbox"
-            checked={analytics}
-            onChange={(e) => setAnalytics(e.target.checked)}
-            className="mt-1 h-4 w-4 rounded border-border text-primary focus:ring-primary"
-          />
-          <div>
-            <label
-              htmlFor="analytics-cookies"
-              className="text-xs sm:text-sm font-semibold text-foreground"
-            >
-              {t("cookies.banner.analyticsLabel")}
-            </label>
-            <p className="text-[11px] sm:text-xs text-muted-foreground mt-0.5">
-              {t("cookies.banner.analyticsDesc")}
-            </p>
-          </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-3 mt-2">
-          <button
-            type="button"
-            onClick={() => save(analytics)}
-            className="pressable inline-flex items-center justify-center px-4 py-2 rounded-full border border-border/70 bg-background text-xs sm:text-sm font-semibold text-foreground hover:bg-foreground/5"
-          >
-            {t("cookies.banner.save")}
-          </button>
-          <button
-            type="button"
-            onClick={() => save(true)}
-            className="pressable inline-flex items-center justify-center px-4 py-2 rounded-full bg-primary text-primary-foreground font-semibold text-xs sm:text-sm shadow-soft-lg"
-          >
-            {t("cookies.banner.allowAll")}
-          </button>
-        </div>
+    <section
+      aria-label={t("cookies.title")}
+      className="sheet-enter fixed inset-x-3 bottom-3 z-[60] mx-auto max-w-3xl rounded-2xl border border-border/60 bg-card/95 p-4 shadow-soft-xl backdrop-blur sm:bottom-4 sm:flex sm:items-center sm:gap-5"
+    >
+      <p className="text-xs leading-relaxed text-muted-foreground sm:flex-1 sm:text-sm">
+        {t("cookies.banner.text")}{" "}
+        <a href="/cookies/" className="font-semibold text-foreground underline underline-offset-2">
+          {t("footer.cookies")}
+        </a>
+      </p>
+      <div className="mt-3 flex gap-2 sm:mt-0 sm:shrink-0">
+        <button
+          type="button"
+          onClick={() => save(false)}
+          className="pressable inline-flex flex-1 items-center justify-center rounded-full border border-border/70 bg-background px-4 py-2 text-xs font-semibold text-foreground hover:bg-foreground/5 sm:flex-none sm:text-sm"
+        >
+          {t("cookies.banner.necessaryOnly")}
+        </button>
+        <button
+          type="button"
+          onClick={() => save(true)}
+          className="pressable inline-flex flex-1 items-center justify-center rounded-full bg-primary px-4 py-2 text-xs font-semibold text-primary-foreground shadow-soft-lg sm:flex-none sm:text-sm"
+        >
+          {t("cookies.banner.allowAll")}
+        </button>
       </div>
-    </div>
+    </section>
   );
 };
 

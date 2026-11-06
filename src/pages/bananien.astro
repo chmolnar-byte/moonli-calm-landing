@@ -1,0 +1,171 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { SITE_ORIGIN, canonicalUrl } from "@/lib/seo";
+
+const title = "Sturm über Bananien – Buch & Ausgaben";
+const description =
+  "Eine Kindergeschichte von Denise Kanfer-Steinhauer. Jetzt in Österreich bei Morawa bestellen.";
+const orderUrl =
+  "https://www.morawa.at/detail/ISBN-9783991526131/Kanfer-Steinhauer-Denise/Sturm-%C3%BCber-Bananien?bpmctrl=bpmrownr.1%7Cforeign.500791-43-0-512423%3A512613%3A293473";
+
+const editions = [
+  {
+    href: orderUrl,
+    label: "🇦🇹 Jetzt bestellen (Österreich / Morawa)",
+    featured: true,
+    live: true,
+  },
+  { href: "#", label: "🇩🇪 Deutsche Ausgabe (Amazon / Buchhandel)", featured: false, live: false },
+  { href: "#", label: "🇫🇷 Version française (Französisch)", featured: false, live: false },
+  { href: "#", label: "🇷🇺 Русское издание (Russisch)", featured: false, live: false },
+  { href: "#", label: "🇮🇱 מהדורה בעברית (Hebräisch)", featured: false, live: false },
+  { href: "#", label: "🇬🇧 English Edition (Englisch)", featured: false, live: false },
+  { href: "#", label: "🇪🇸 Edición en español (Spanisch)", featured: false, live: false },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Book",
+  name: "Sturm über Bananien",
+  author: { "@type": "Person", name: "Denise Kanfer-Steinhauer" },
+  inLanguage: "de",
+  url: `${SITE_ORIGIN}/bananien/`,
+  offers: {
+    "@type": "Offer",
+    url: orderUrl,
+    availability: "https://schema.org/InStock",
+    areaServed: "AT",
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonicalUrl("/bananien")}
+  author="Denise Kanfer-Steinhauer"
+  jsonLd={jsonLd}
+>
+  <main class="bananien-page">
+    <div class="bananien-icon" aria-hidden="true">🍌</div>
+    <h1>Sturm über Bananien</h1>
+    <p class="bananien-sub">Eine Kindergeschichte von Denise Kanfer-Steinhauer</p>
+
+    <div class="bananien-list">
+      {
+        editions.map((edition) =>
+          edition.live ? (
+            <a
+              class:list={["bananien-btn", edition.featured && "is-featured"]}
+              href={edition.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>{edition.label}</span>
+              <span class="bananien-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          ) : (
+            <span class:list={["bananien-btn", "is-soon"]}>
+              <span>{edition.label}</span>
+              <span class="bananien-arrow">folgt</span>
+            </span>
+          ),
+        )
+      }
+    </div>
+
+    <p class="bananien-foot">© Sturm über Bananien. Alle Rechte vorbehalten.</p>
+  </main>
+</BaseLayout>
+
+<style>
+  :global(body:has(.bananien-page)) {
+    background: #fdfaf3;
+    color: #2c3e50;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .bananien-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+    padding: 24px 16px;
+    text-align: center;
+  }
+
+  .bananien-icon {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 6px;
+    color: #2c3e50;
+  }
+
+  .bananien-sub {
+    font-size: 0.95rem;
+    color: #7f8c8d;
+    margin: 0 0 28px;
+  }
+
+  .bananien-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .bananien-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 20px;
+    background: #fff;
+    color: #2c3e50;
+    text-decoration: none;
+    border: 1px solid #f0e6d2;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: left;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+
+  a.bananien-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    border-color: #f5b041;
+  }
+
+  .bananien-btn.is-featured {
+    background: linear-gradient(135deg, #fff9e6 0%, #ffffff 100%);
+    border: 2px solid #f5b041;
+  }
+
+  .bananien-btn.is-soon {
+    color: #7f8c8d;
+  }
+
+  .bananien-arrow {
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+  }
+
+  .bananien-foot {
+    margin-top: 32px;
+    font-size: 0.8rem;
+    color: #7f8c8d;
+  }
+</style>

@@ -38,15 +38,44 @@ function emitConsent(granted: boolean): void {
   );
 }
 
-/** Nach Cookie-Einwilligung: Consent freigeben und Pageview senden. */
+/** Loads the Google tag once. Only ever called after the visitor agreed to analytics. */
+function loadGoogleTag(): void {
+  if (document.querySelector('script[data-moonli-gtag]')) return;
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
+  script.dataset.moonliGtag = "1";
+  document.head.appendChild(script);
+  gtag("js", new Date());
+}
+
+/** Removes the Google Analytics cookies (_ga, _ga_*) that an earlier consent may have set. */
+function deleteGoogleCookies(): void {
+  const host = window.location.hostname;
+  const domains = ["", `; domain=${host}`, `; domain=.${host}`, `; domain=.${host.split(".").slice(-2).join(".")}`];
+  for (const part of document.cookie.split(";")) {
+    const name = part.split("=")[0].trim();
+    if (!name.startsWith("_ga")) continue;
+    for (const domain of domains) {
+      document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/${domain}`;
+    }
+  }
+}
+
+/** Nach Cookie-Einwilligung: Consent freigeben, Google-Tag laden, Pageview senden. */
 export function applyAnalyticsConsent(granted: boolean): void {
   ensureGtag();
+  if (!granted) deleteGoogleCookies();
+
+  // Withdrawing consent also switches off a tag that was loaded earlier in this session.
+  (window as unknown as Record<string, boolean>)[`ga-disable-${MEASUREMENT_ID}`] = !granted;
 
   gtag("consent", "update", {
     analytics_storage: granted ? "granted" : "denied",
   });
 
   if (granted) {
+    loadGoogleTag();
     gtag("config", MEASUREMENT_ID, {
       anonymize_ip: true,
       send_page_view: true,

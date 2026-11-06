@@ -12,6 +12,7 @@ interface Props {
   lang?: string;
   ogLocale?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  author?: string;
 }
 
 const {
@@ -24,16 +25,19 @@ const {
   lang = "de",
   ogLocale = "de_AT",
   jsonLd,
+  author = "Christian Molnar",
 } = Astro.props;
 
 const canonicalUrl = toCanonical(canonical ?? Astro.url.pathname);
-const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-497RKXKY2W";
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
-    <!-- Google tag (gtag.js) + Consent Mode v2 – Standardformat für GA-Tag-Erkennung -->
+    <!--
+      Consent Mode v2: everything denied by default. The Google tag itself (gtag.js) is NOT loaded here.
+      It is only injected by src/lib/analytics.ts after the visitor has agreed to analytics cookies.
+    -->
     <script is:inline set:html={`
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -42,23 +46,18 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-497RKXKY2W";
         'ad_storage': 'denied',
         'ad_user_data': 'denied',
         'ad_personalization': 'denied',
-        'analytics_storage': 'denied',
-        'wait_for_update': 500
-      });
-    `} />
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-    <script is:inline set:html={`
-      gtag('js', new Date());
-      gtag('config', '${gaId}', {
-        anonymize_ip: true,
-        send_page_view: false
+        'analytics_storage': 'denied'
       });
     `} />
 
     <script is:inline>
       (function () {
         try {
-          var theme = localStorage.getItem("moonli_theme_v1");
+          var h = new Date().getHours();
+          var phase = h >= 19 || h < 7 ? "dark" : "light";
+          var theme = phase;
+          var parts = (localStorage.getItem("moonli_theme_choice_v2") || "").split(":");
+          if ((parts[0] === "dark" || parts[0] === "light") && parts[1] === phase) theme = parts[0];
           if (theme === "dark") document.documentElement.classList.add("dark");
         } catch (e) {}
       })();
@@ -67,7 +66,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "G-497RKXKY2W";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="author" content="Christian Molnar" />
+    <meta name="author" content={author} />
     <meta name="theme-color" content="#EFE4D4" />
     <meta name="application-name" content="Moonli" />
     <meta name="apple-itunes-app" content="app-id=6762447948" />

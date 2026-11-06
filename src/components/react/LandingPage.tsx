@@ -4,6 +4,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import HeroSection from "@/components/HeroSection";
 import Marquee from "@/components/Marquee";
 import FeaturesSection from "@/components/FeaturesSection";
+import StoryScenes from "@/components/story/StoryScenes";
 import CompareSection from "@/components/CompareSection";
 import Testimonials from "@/components/Testimonials";
 import PricingSection from "@/components/PricingSection";
@@ -36,6 +37,7 @@ const LandingSurface = () => {
           <HeroSection />
           <Marquee />
         </div>
+        <StoryScenes />
         <div id="funktionen"><FeaturesSection /></div>
         <div id="vergleich"><CompareSection /></div>
         <div id="feedback"><Testimonials /></div>

@@ -149,7 +149,19 @@ const PrivacyPage = () => {
               <p>{t("privacy.nightglobe.text2")}</p>
             </section>
 
-            {/* 8. Dienstleister (Auftragsverarbeiter) */}
+            {/* 8. Website-Analyse (Google Analytics, nur mit Einwilligung) */}
+            <section>
+              <h2 className="font-semibold text-foreground mb-1">
+                {t("privacy.analytics.title")}
+              </h2>
+              <p className="mb-2">{t("privacy.analytics.text1")}</p>
+              <p className="mb-2">{t("privacy.analytics.text2")}</p>
+              <p className="mb-2">{t("privacy.analytics.text3")}</p>
+              <p className="mb-2">{t("privacy.analytics.text4")}</p>
+              <p>{t("privacy.analytics.text5")}</p>
+            </section>
+
+            {/* 9. Dienstleister (Auftragsverarbeiter) */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.processors.title")}
@@ -159,6 +171,7 @@ const PrivacyPage = () => {
                 <li>{t("privacy.processors.supabase")}</li>
                 <li>{t("privacy.processors.render")}</li>
                 <li>{t("privacy.processors.netlify")}</li>
+                <li>{t("privacy.processors.googleAnalytics")}</li>
                 <li>{t("privacy.processors.revenuecat")}</li>
                 <li>{t("privacy.processors.googlePlay")}</li>
                 <li>{t("privacy.processors.admob")}</li>
@@ -168,7 +181,7 @@ const PrivacyPage = () => {
               <p>{t("privacy.processors.transfers")}</p>
             </section>
 
-            {/* 9. Rechtsgrundlagen */}
+            {/* 10. Rechtsgrundlagen */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.legal.title")}
@@ -180,10 +193,11 @@ const PrivacyPage = () => {
                 <li>{t("privacy.legal.li3")}</li>
                 <li>{t("privacy.legal.li4")}</li>
                 <li>{t("privacy.legal.li5")}</li>
+                <li>{t("privacy.legal.li6")}</li>
               </ul>
             </section>
 
-            {/* 10. Speicherdauer & Sicherheit */}
+            {/* 11. Speicherdauer & Sicherheit */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.retention.title")}
@@ -198,7 +212,7 @@ const PrivacyPage = () => {
               <p>{t("privacy.retention.text2")}</p>
             </section>
 
-            {/* 11. Internationale Datenübermittlungen */}
+            {/* 12. Internationale Datenübermittlungen */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.transfers.title")}
@@ -206,7 +220,7 @@ const PrivacyPage = () => {
               <p>{t("privacy.transfers.text1")}</p>
             </section>
 
-            {/* 12. Deine Rechte */}
+            {/* 13. Deine Rechte */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.rights.title")}
@@ -221,7 +235,7 @@ const PrivacyPage = () => {
               </ul>
             </section>
 
-            {/* 13. Änderungen der Datenschutzerklärung */}
+            {/* 14. Änderungen der Datenschutzerklärung */}
             <section>
               <h2 className="font-semibold text-foreground mb-1">
                 {t("privacy.changes.title")}

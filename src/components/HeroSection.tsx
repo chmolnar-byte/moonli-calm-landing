@@ -10,16 +10,18 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { useLanguage } from "@/i18n/LanguageContext";
-import { type MouseEvent, useRef, useState } from "react";
+import { type MouseEvent, useEffect, useRef, useState } from "react";
 import ImageLightbox from "@/components/ImageLightbox";
 import MagneticCta from "@/components/MagneticCta";
 import LeafAccent from "@/components/LeafAccent";
+import Hero3D from "@/components/hero3d/Hero3D";
 import dashboardWeekly from "@/assets/hero-wochenbericht.png";
 import dashboardGrowth from "@/assets/hero-entwicklung.png";
 import dashboardHome from "@/assets/hero-sleep.png";
 import { assetUrl } from "@/lib/assetUrl";
 import { easeOut, motionInitial, scrollSpring } from "@/lib/motion";
 import { guidesIndexPath } from "@/lib/guidePaths";
+import { detectStoreTarget, PAGE_STORE_TARGET, type StoreTarget } from "@/lib/storeLink";
 
 const dashboardWeeklyUrl = assetUrl(dashboardWeekly);
 const dashboardGrowthUrl = assetUrl(dashboardGrowth);
@@ -203,6 +205,12 @@ const PhoneMockup = ({ progress }: { progress: MotionValue<number> }) => {
 const HeroSection = () => {
   const { t, language } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
+  const [storeTarget, setStoreTarget] = useState<StoreTarget>(PAGE_STORE_TARGET);
+
+  useEffect(() => {
+    setStoreTarget(detectStoreTarget());
+  }, []);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -243,18 +251,23 @@ const HeroSection = () => {
               </p>
             )}
 
-            <div className="flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+            <div className="flex flex-row flex-wrap items-center gap-3">
               <MagneticCta
-                href="/#download"
+                href={storeTarget.href}
                 variant="primary"
-                trackEventName="cta_click"
-                trackParams={{ cta: "download", location: "hero" }}
+                trackEventName={storeTarget.store === "page" ? "cta_click" : "store_click"}
+                trackParams={
+                  storeTarget.store === "page"
+                    ? { cta: "download", location: "hero" }
+                    : { store: storeTarget.store, location: "hero" }
+                }
               >
                 {t("hero.ctaDownload")}
               </MagneticCta>
               <MagneticCta
                 href="/#funktionen"
                 variant="ghost"
+                faceClassName="!px-4 !py-2.5 !text-sm sm:!px-7 sm:!py-3.5 sm:!text-base"
                 trackEventName="cta_click"
                 trackParams={{ cta: "features", location: "hero" }}
               >
@@ -263,6 +276,7 @@ const HeroSection = () => {
               <MagneticCta
                 href={guidesIndexPath(language)}
                 variant="ghost"
+                className="hidden sm:inline-flex"
                 trackEventName="cta_click"
                 trackParams={{ cta: "guides", location: "hero" }}
               >
@@ -276,7 +290,7 @@ const HeroSection = () => {
               aria-hidden
               className="pointer-events-none absolute left-1/2 top-1/2 h-[115%] w-[115%] -translate-x-1/2 -translate-y-1/2 opacity-80 [background-image:radial-gradient(hsl(var(--foreground)/0.2)_0.7px,transparent_0.7px)] [background-size:15px_15px] [mask-image:radial-gradient(ellipse_at_center,black_18%,transparent_70%)]"
             />
-            <PhoneMockup progress={progress} />
+            <Hero3D progress={progress} fallback={<PhoneMockup progress={progress} />} />
           </div>
         </div>
       </div>

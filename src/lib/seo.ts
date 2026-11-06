@@ -7,6 +7,7 @@ const INDEXABLE_PATHS = [
   "/imprint",
   "/cookies",
   "/data-deletion",
+  "/bananien",
 ] as const;
 
 export const INDEXABLE_URLS = new Set(
