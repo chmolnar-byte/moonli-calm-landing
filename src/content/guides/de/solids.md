@@ -4,11 +4,12 @@ lang: de
 urlSlug: beikost-starten
 title: "Beikost starten: erster Löffel ohne Plan"
 seoTitle: "Beikost starten: tracken, BLW, Rezepte | Moonli"
-description: "Beikost starten ab wann und wie: Mahlzeiten tracken, BLW mit über 100 Zutaten plus eigenen, Rezepte aufschreiben und in die Community geben."
+description: "Beikost starten ab wann und wie: Mahlzeiten tracken, BLW-Zutatenliste ausfüllen, Rezepte separat nachkochen. Klar getrennt in Moonli."
 pubDate: 2026-10-02
-updatedDate: 2026-11-02
+updatedDate: 2026-11-08
 draft: false
 related:
+  - blw
   - feeding
   - sleep-routines
   - growth
@@ -73,13 +74,13 @@ Ein einmaliges Würgen beim neuen Stück, ein Gesicht, das den Geschmack offensi
 
 Du hältst fest, was neu war und wie es vertragen wurde. Moonli baut dir daraus keinen Speiseplan und sagt dir nicht, was morgen „dran“ ist. Die Entscheidung bleibt bei euch und bei der Person, die euer Kind kennt.
 
-### Der Teller, auch für BLW
+### BLW: die Zutatenliste
 
-Wenn ihr breifrei anfangt, oder einfach sehen wollt, was an diesem Tag auf dem Teller lag, füllst du ihn in Moonli. Über 100 Zutaten stehen bereit: Gemüse, Obst, Getreide, Protein. Was fehlt, ergänzt du selbst. Antippen, auf den Teller, fertig. Danach ist nachvollziehbar, was drauf war, auch für die Person, die das nächste Mal füttert. Der Teller ist eine Erinnerung. Er ist kein Urteil darüber, ob genug oder das Richtige darauf lag.
+Wenn ihr breifrei anfangt oder festhalten wollt, welche Lebensmittel schon vorkamen, ist das in Moonli die **BLW-Liste**: über 100 Zutaten plus eigene, antippen, abhaken. Mehr dazu unter [BLW starten](/de/ratgeber/blw-starten/). Die Liste ist Erinnerung, kein Speiseplan und kein Urteil.
 
-### Rezepte, die ihr selbst schreibt
+### Rezepte: eigene Kategorie
 
-Ein Rezept in Moonli ist das, was ihr gekocht habt: was drin war und wie ihr es gemacht habt. Niemand legt euch eine Karte vor. Wenn ihr wollt, gebt ihr das Rezept in die Community weiter, damit eine andere Familie denselben Brei nicht noch einmal erfinden muss. Es bleibt eures. Ihr entscheidet, ob es bei euch bleibt oder weitergegeben wird.
+**Rezepte** sind in Moonli getrennt von BLW. Dort kocht ihr nach oder schreibt auf, was ihr zubereitet habt – optional für die Community. BLW = Liste der erkundeten Lebensmittel. Rezepte = Kochbuch. Beides ergänzt sich, vermischt sich aber nicht in einer Funktion.
 
 ### Neben Milch, Schlaf und Wachstum
 
@@ -95,4 +96,4 @@ Such ein Lebensmittel, das ihr mit der Kinderärztin oder Hebamme für passend h
 
 Am Ende der Woche hast du eine kurze Liste statt eines schlechten Gewissens. Milch bleibt das Fundament – weiter im [Stillprotokoll](/de/ratgeber/stillen-flaschchen-tracken/). Der Löffel ist der Anfang von etwas, das Monate dauert. Ihr müsst es nicht in sieben Tagen können.
 
-Wenn der Abend nach Beikost unruhig wird, hilft oft der Blick auf [Babyschlaf und Abendroutine](/de/ratgeber/babyschlaf-routinen/) und die [Wachfenster nach Alter](/de/ratgeber/wachfenster-baby/).
+Wenn ihr vor allem Fingerfood und die Zutatenliste meint: [BLW starten](/de/ratgeber/blw-starten/). Wenn der Abend nach Beikost unruhig wird: [Babyschlaf und Abendroutine](/de/ratgeber/babyschlaf-routinen/) und [Wachfenster nach Alter](/de/ratgeber/wachfenster-baby/).

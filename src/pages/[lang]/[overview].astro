@@ -81,7 +81,7 @@ const cards = published.flatMap((entry) => {
   ];
 });
 
-const PRIORITY_TOPICS = ["sleep-routines", "sleep-regression", "sleep-regression-4-months", "feeding", "solids"] as const;
+const PRIORITY_TOPICS = ["sleep-routines", "sleep-regression", "sleep-regression-4-months", "feeding", "solids", "blw"] as const;
 const priorityCards = cards.filter((card) =>
   (PRIORITY_TOPICS as readonly string[]).includes(card.topic),
 );

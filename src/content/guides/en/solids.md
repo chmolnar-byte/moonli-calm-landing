@@ -75,7 +75,7 @@ You keep what was new and how it was tolerated. Moonli does not build you a meal
 
 ### The plate, including for baby-led weaning
 
-If you are starting baby-led weaning, or you simply want to see what was on the plate that day, you fill it in Moonli. More than 100 foods are there: vegetables, fruit, grains, protein. Tap, onto the plate, done. Afterwards it is clear what was on it, for you and for the person who offers the next meal. The plate is a memory. It is not a verdict on whether enough, or the right things, were on it.
+If you are starting baby-led weaning, or you simply want to see what was on the plate that day, you fill it in Moonli. More than 100 foods are there: vegetables, fruit, grains, protein. Tap, onto the plate, done. Afterwards it is clear what was on it, for you and for the person who offers the next meal. The plate is a memory. It is not a verdict on whether enough, or the right things, were on it. In Moonli, baby-led weaning is this ingredient list. Recipes are a separate category for cooking along and sharing, not a replacement for the list. More in the [baby-led weaning guide](/en/guides/baby-led-weaning/).
 
 ### Next to milk, sleep and growth
 

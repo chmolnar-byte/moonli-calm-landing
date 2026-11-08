@@ -53,6 +53,13 @@ const SCENES: Record<string, Scene> = {
     fr: "Bébé capybara dans une chaise haute, un parent à côté",
     ru: "Малыш-капибара в стульчике, рядом взрослый",
   }),
+  blw: scene("solids", {
+    de: "Baby-Capybara greift nach Fingerfood auf dem Teller",
+    en: "Baby capybara reaching for finger food on a plate",
+    es: "Bebé capybara alcanzando finger food en el plato",
+    fr: "Bébé capybara qui attrape des morceaux dans l'assiette",
+    ru: "Малыш-капибара тянется к еде руками с тарелки",
+  }),
   growth: scene("growth", {
     de: "Baby-Capybara steht und hält die Pfote eines Elternteils",
     en: "Baby capybara standing and holding a parent's paw",

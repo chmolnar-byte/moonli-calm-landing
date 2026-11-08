@@ -8,6 +8,7 @@ export const TOPIC_IDS = [
   "sleep-regression-4-months",
   "feeding",
   "solids",
+  "blw",
   "wake-windows",
   "vienna-baby-leisure",
   "growth",
@@ -102,6 +103,13 @@ export const TOPIC_SLUGS: Record<TopicId, Record<GuideLang, string>> = {
     fr: "diversification-alimentaire",
     ru: "prikorm",
   },
+  blw: {
+    de: "blw-starten",
+    en: "baby-led-weaning",
+    es: "blw-empezar",
+    fr: "blw-demarrer",
+    ru: "blw-nachalo",
+  },
   growth: {
     de: "who-perzentile-baby",
     en: "who-baby-growth-percentiles",
@@ -182,6 +190,13 @@ export const TOPIC_ANCHOR: Record<TopicId, Record<GuideLang, string>> = {
     es: "Empezar la alimentación complementaria",
     fr: "Commencer la diversification",
     ru: "Начало прикорма",
+  },
+  blw: {
+    de: "BLW starten",
+    en: "Baby-led weaning",
+    es: "Empezar con BLW",
+    fr: "Démarrer le BLW",
+    ru: "Начать BLW",
   },
   growth: {
     de: "WHO-Perzentile verstehen",
