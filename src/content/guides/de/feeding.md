@@ -2,14 +2,15 @@
 topic: feeding
 lang: de
 urlSlug: stillen-flaschchen-tracken
-title: "Stillprotokoll: Stillen und Fläschchen in der Still-App"
-seoTitle: "Stillprotokoll & Still-App kostenlos | Moonli"
-description: "Stillprotokoll in der Still-App: Seite, Dauer oder Menge nachts erfassen. Beide Eltern sehen am Morgen denselben Stand – ohne die Nacht nachzuerzählen."
+title: "Still-App & Stillprotokoll: Stillen und Fläschchen tracken"
+seoTitle: "Still-App kostenlos: Stillprotokoll tracken | Moonli"
+description: "Still-App kostenlos: Stillprotokoll mit Seite, Dauer oder Menge – auch nachts mit einer Hand. Beide Eltern sehen denselben Stand, ohne die Nacht nachzuerzählen."
 pubDate: 2026-10-02
-updatedDate: 2026-11-02
+updatedDate: 2026-11-08
 draft: false
 related:
   - sleep-routines
+  - sleep-regression
   - solids
   - wake-windows
 primaryFeatures:
@@ -32,6 +33,8 @@ faq:
     a: "Ja. In Moonli sieht der andere denselben Stand. Du musst die Nacht am Morgen nicht noch einmal erzählen, während du eigentlich weiterschlafen willst."
   - q: "Ersetzt ein Stillprotokoll die Stillberatung?"
     a: "Nein. Schmerzen, wenig Gewicht oder das Gefühl, dass die Menge nicht stimmt, gehören zu einer Fachperson. Die Notiz zeigt nur, was war. Sie bewertet dich nicht."
+  - q: "Welche Still-App lohnt sich?"
+    a: "Eine, die nachts mit einer Hand geht, das Protokoll klein hält und denselben Stand für beide Eltern zeigt. Moonli Tracking bleibt dauerhaft kostenlos; Premium ergänzt Sync und Tiefe, ersetzt aber keine Stillberatung."
 ---
 
 ## Die kurze Antwort
@@ -89,4 +92,4 @@ Wenn du der Person, die geschlafen hat, den Morgen erklären müsstest, ist der 
 
 Wenn Monate später der Löffel dazukommt, liegt die Beikost neben der Milch. Dann trackst du die Mahlzeit, füllst den Teller für BLW und schreibst Rezepte auf, die ihr in die Community geben könnt – Schritt für Schritt im Ratgeber [Beikost starten](/de/ratgeber/beikost-starten/). Bis dahin trägt dieses Stillprotokoll die Nächte.
 
-Für den Abendablauf nach der letzten Mahlzeit: [Babyschlaf und Abendroutine](/de/ratgeber/babyschlaf-routinen/). Für die Abstände dazwischen: [Wachfenster nach Alter](/de/ratgeber/wachfenster-baby/).
+Für den Abendablauf nach der letzten Mahlzeit: [Babyschlaf und Abendroutine](/de/ratgeber/babyschlaf-routinen/). Für die Abstände dazwischen: [Wachfenster nach Alter](/de/ratgeber/wachfenster-baby/). Wenn die Nächte plötzlich unruhiger werden: [Schlafregression beim Baby](/de/ratgeber/schlafregression-baby/).

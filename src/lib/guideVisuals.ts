@@ -25,6 +25,20 @@ const SCENES: Record<string, Scene> = {
     fr: "Parent capybara et bébé endormi le soir",
     ru: "Взрослая капибара и спящий малыш вечером",
   }),
+  "sleep-regression": scene("sleep-routines", {
+    de: "Capybara-Elternteil und Baby in einer unruhigen Nacht",
+    en: "Capybara parent and baby on a restless night",
+    es: "Capybara adulta y bebé en una noche inquieta",
+    fr: "Parent capybara et bébé pendant une nuit agitée",
+    ru: "Взрослая капибара и малыш в беспокойную ночь",
+  }),
+  "sleep-regression-4-months": scene("sleep-routines", {
+    de: "Capybara-Elternteil beruhigt das Baby gegen Mitternacht",
+    en: "Capybara parent soothing the baby near midnight",
+    es: "Capybara adulta calmando al bebé cerca de medianoche",
+    fr: "Parent capybara qui apaise le bébé vers minuit",
+    ru: "Взрослая капибара успокаивает малыша около полуночи",
+  }),
   feeding: scene("feeding", {
     de: "Capybara-Elternteil füttert das Baby mit dem Fläschchen",
     en: "Capybara parent feeding the baby a bottle",

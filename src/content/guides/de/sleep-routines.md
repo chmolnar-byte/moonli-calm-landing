@@ -10,6 +10,8 @@ updatedDate: 2026-11-02
 draft: false
 related:
   - wake-windows
+  - sleep-regression
+  - sleep-regression-4-months
   - feeding
   - solids
 primaryFeatures:
@@ -98,5 +100,7 @@ Lass den perfekten Ablauf. Such dir drei Schritte, die auch an einem schlechten 
 Wenn eine Nacht völlig aus dem Ruder läuft, ist der nächste Abend trotzdem wieder einer mit denselben drei Schritten. Eine Routine wächst an den gewöhnlichen Tagen. Die außergewöhnlichen darfst du einfach überstehen.
 
 Zum Tag davor gehört oft auch, wann die letzte Mahlzeit war: mehr dazu im [Stillprotokoll](/de/ratgeber/stillen-flaschchen-tracken/) und später beim [Beikost starten](/de/ratgeber/beikost-starten/). Die [Wachfenster nach Alter](/de/ratgeber/wachfenster-baby/) helfen, bevor das Abendritual überhaupt beginnt.
+
+Wenn die Nächte plötzlich unruhiger werden: [Schlafregression beim Baby](/de/ratgeber/schlafregression-baby/) und die [4-Monats-Schlafregression](/de/ratgeber/schlafregression-4-monate/).
 
 Wenn du Napper oder Huckleberry gegen Moonli abwägst: [Kosten und Funktionen transparent vergleichen](/de/vergleich/napper-huckleberry/).

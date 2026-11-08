@@ -4,6 +4,8 @@ export type GuideLang = (typeof GUIDE_LANGS)[number];
 
 export const TOPIC_IDS = [
   "sleep-routines",
+  "sleep-regression",
+  "sleep-regression-4-months",
   "feeding",
   "solids",
   "wake-windows",
@@ -72,6 +74,20 @@ export const TOPIC_SLUGS: Record<TopicId, Record<GuideLang, string>> = {
     fr: "routine-sommeil-bebe",
     ru: "rezhim-sna-malysha",
   },
+  "sleep-regression": {
+    de: "schlafregression-baby",
+    en: "baby-sleep-regression",
+    es: "regresion-sueno-bebe",
+    fr: "regression-sommeil-bebe",
+    ru: "regressiya-sna-malysha",
+  },
+  "sleep-regression-4-months": {
+    de: "schlafregression-4-monate",
+    en: "4-month-sleep-regression",
+    es: "regresion-sueno-4-meses",
+    fr: "regression-sommeil-4-mois",
+    ru: "regressiya-sna-4-mesyatsa",
+  },
   feeding: {
     de: "stillen-flaschchen-tracken",
     en: "track-breastfeeding-bottles",
@@ -138,6 +154,20 @@ export const TOPIC_ANCHOR: Record<TopicId, Record<GuideLang, string>> = {
     es: "Rutinas de sueño del bebé",
     fr: "Routines de sommeil de bébé",
     ru: "Режим сна малыша",
+  },
+  "sleep-regression": {
+    de: "Schlafregression beim Baby",
+    en: "Baby sleep regression",
+    es: "Regresión del sueño del bebé",
+    fr: "Régression de sommeil du bébé",
+    ru: "Регрессия сна у малыша",
+  },
+  "sleep-regression-4-months": {
+    de: "4-Monats-Schlafregression",
+    en: "4-month sleep regression",
+    es: "Regresión del sueño a los 4 meses",
+    fr: "Régression de sommeil à 4 mois",
+    ru: "Регрессия сна в 4 месяца",
   },
   feeding: {
     de: "Stillprotokoll & Still-App",
