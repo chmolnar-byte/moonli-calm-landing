@@ -18,9 +18,8 @@ const CookieBanner = () => {
   const save = (analytics: boolean) => {
     saveConsent({ analytics });
     applyAnalyticsConsent(analytics);
-    if (analytics) {
-      trackPageView(window.location.pathname + window.location.search);
-    }
+    // trackPageView merges stored UTMs/fbclid so Meta traffic is not lost as Direct
+    if (analytics) trackPageView();
     setVisible(false);
   };
 

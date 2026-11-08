@@ -4,6 +4,7 @@ import {
   initAnalyticsFromStoredConsent,
   setAnalyticsLanguage,
 } from "@/lib/analytics";
+import { captureCampaignParams } from "@/lib/campaignParams";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { getStoredConsent } from "@/lib/cookieConsent";
 
@@ -11,6 +12,7 @@ const AnalyticsPageView = () => {
   const { language } = useLanguage();
 
   useEffect(() => {
+    captureCampaignParams();
     initAnalyticsFromStoredConsent();
   }, []);
 

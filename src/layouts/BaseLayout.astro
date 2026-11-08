@@ -46,7 +46,8 @@ const canonicalUrl = toCanonical(canonical ?? Astro.url.pathname);
         'ad_storage': 'denied',
         'ad_user_data': 'denied',
         'ad_personalization': 'denied',
-        'analytics_storage': 'denied'
+        'analytics_storage': 'denied',
+        'wait_for_update': 500
       });
     `} />
 
@@ -100,20 +101,43 @@ const canonicalUrl = toCanonical(canonical ?? Astro.url.pathname);
   <body>
     <slot /><script is:inline>
 (function () {
-  var key = "moonli_web_visitor";
-  var id = localStorage.getItem(key);
+  var STORAGE_KEY = "moonli_campaign_params_v1";
+  var PARAM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id", "fbclid", "gclid"];
+  var params = new URLSearchParams(location.search);
+  var fromUrl = {};
+  for (var i = 0; i < PARAM_KEYS.length; i++) {
+    var key = PARAM_KEYS[i];
+    var value = params.get(key);
+    if (value) fromUrl[key] = value;
+  }
+  if (fromUrl.fbclid && !fromUrl.utm_source) {
+    fromUrl.utm_source = "meta";
+    fromUrl.utm_medium = fromUrl.utm_medium || "paid";
+  }
+  var stored = {};
+  try { stored = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "{}") || {}; } catch (e) {}
+  var campaign = Object.assign({}, stored, fromUrl);
+  if (Object.keys(fromUrl).length) {
+    try { sessionStorage.setItem(STORAGE_KEY, JSON.stringify(campaign)); } catch (e) {}
+  }
+
+  var visitorKey = "moonli_web_visitor";
+  var id = localStorage.getItem(visitorKey);
   if (!id) {
     id = Math.random().toString(36).slice(2) + Date.now().toString(36);
-    localStorage.setItem(key, id);
+    localStorage.setItem(visitorKey, id);
   }
-  var params = new URLSearchParams(location.search);
   fetch("https://app.moonli.net/api/insights/beacon", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       secret: "E6Sd4HB^7pC5GFK4GNzkp^@Wt",
       path: location.pathname || "/",
-      source: params.get("utm_source") || "",
+      source: campaign.utm_source || "",
+      medium: campaign.utm_medium || "",
+      campaign: campaign.utm_campaign || "",
+      content: campaign.utm_content || "",
+      fbclid: campaign.fbclid ? "1" : "",
       referrer: document.referrer || "",
       visitorId: id
     })

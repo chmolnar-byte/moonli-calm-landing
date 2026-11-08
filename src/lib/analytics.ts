@@ -1,3 +1,8 @@
+import {
+  buildLocationWithCampaign,
+  campaignForGtag,
+  captureCampaignParams,
+} from "@/lib/campaignParams";
 import { getStoredConsent } from "@/lib/cookieConsent";
 
 /** GA4 Measurement ID – PUBLIC_ (Astro) oder VITE_ (Legacy), sonst Fallback. */
@@ -38,6 +43,10 @@ function emitConsent(granted: boolean): void {
   );
 }
 
+function pageLocationWithCampaign(): string {
+  return `${window.location.origin}${buildLocationWithCampaign()}`;
+}
+
 /** Loads the Google tag once. Only ever called after the visitor agreed to analytics. */
 function loadGoogleTag(): void {
   if (document.querySelector('script[data-moonli-gtag]')) return;
@@ -65,6 +74,7 @@ function deleteGoogleCookies(): void {
 /** Nach Cookie-Einwilligung: Consent freigeben, Google-Tag laden, Pageview senden. */
 export function applyAnalyticsConsent(granted: boolean): void {
   ensureGtag();
+  captureCampaignParams();
   if (!granted) deleteGoogleCookies();
 
   // Withdrawing consent also switches off a tag that was loaded earlier in this session.
@@ -76,24 +86,30 @@ export function applyAnalyticsConsent(granted: boolean): void {
 
   if (granted) {
     loadGoogleTag();
+    const pagePath = buildLocationWithCampaign();
+    const campaign = campaignForGtag();
     gtag("config", MEASUREMENT_ID, {
       anonymize_ip: true,
       send_page_view: true,
-      page_path: window.location.pathname + window.location.search,
+      page_path: pagePath,
+      page_location: pageLocationWithCampaign(),
       page_title: document.title,
+      ...(campaign ? { campaign } : {}),
     });
   }
 
   emitConsent(granted);
 }
 
-export function trackPageView(path: string): void {
+export function trackPageView(path?: string): void {
   if (!hasAnalyticsConsent()) return;
   ensureGtag();
+  captureCampaignParams();
 
+  const pagePath = path || buildLocationWithCampaign();
   gtag("event", "page_view", {
-    page_path: path,
-    page_location: window.location.href,
+    page_path: pagePath,
+    page_location: pageLocationWithCampaign(),
     page_title: document.title,
     send_to: MEASUREMENT_ID,
   });
@@ -117,12 +133,13 @@ export function setAnalyticsLanguage(language: string): void {
 
 export function initAnalyticsFromStoredConsent(): void {
   ensureGtag();
+  captureCampaignParams();
 
   const consent = getStoredConsent();
   if (consent === null) return;
 
   applyAnalyticsConsent(consent.analytics);
   if (consent.analytics) {
-    trackPageView(window.location.pathname + window.location.search);
+    trackPageView();
   }
 }
