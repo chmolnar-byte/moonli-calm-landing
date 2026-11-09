@@ -27,6 +27,23 @@
   [headers.values]
     Content-Type = "text/plain; charset=utf-8"
     X-Content-Type-Options = "nosniff"
+    # Short cache so Google picks up robots changes quickly (was 4h CDN default)
+    Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
+  for = "/blog"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
+  for = "/blog/"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
+
+[[headers]]
+  for = "/blog/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
 
 [[headers]]
   for = "/app-ads.txt"

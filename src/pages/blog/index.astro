@@ -1,0 +1,32 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { canonicalUrl } from "@/lib/seo";
+
+/**
+ * Old /blog/ URLs were indexed while robots.txt blocked them.
+ * Google must receive HTTP 200 + noindex (not a 301) to drop them from the index.
+ */
+---
+
+<BaseLayout
+  title="Blog eingestellt | Moonli"
+  description="Der frühere Moonli-Blog ist nicht mehr verfügbar. Aktuelle Ratgeber findest du auf der Startseite."
+  canonical={canonicalUrl("/")}
+  noindex={true}
+>
+  <main class="mx-auto flex min-h-[60vh] max-w-xl flex-col items-start justify-center gap-4 px-6 py-16">
+    <h1 class="text-2xl font-semibold tracking-tight text-foreground">Dieser Blog ist nicht mehr aktiv</h1>
+    <p class="text-sm leading-relaxed text-muted-foreground">
+      Inhalte findest du jetzt in den Moonli-Ratgebern und auf der Startseite.
+    </p>
+    <a
+      href="/"
+      class="inline-flex items-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
+    >
+      Zur Startseite
+    </a>
+    <a href="/de/ratgeber/" class="text-sm font-medium text-foreground underline underline-offset-2">
+      Zu den Ratgebern
+    </a>
+  </main>
+</BaseLayout>

@@ -3,9 +3,11 @@ https://www.moonli.net/*  https://moonli.net/:splat  301!
 /datenschutzerklärung  /privacy  301
 /impressum-%2F-kontakt  /imprint  301
 /impressum  /imprint  301
-/blog  /  301
-/blog/*  /  301
+# Old blog: serve 200 noindex pages (see src/pages/blog/*). Do NOT 301 — Google rejects
+# "request indexing" on redirects and cannot clear "indexed though blocked by robots.txt".
+/blog/*  /blog/  200
 /sitemap.xml  /sitemap-index.xml  200
+
 
 # Soften common 404 patterns (lang hubs & old marketing paths)
 /de   /de/ratgeber/  301
