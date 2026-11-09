@@ -3,22 +3,13 @@ import { SITE_ORIGIN } from "@/lib/seo";
 
 export const GET: APIRoute = ({ site }) => {
   const origin = (site?.origin ?? SITE_ORIGIN).replace(/\/$/, "");
+  // /blog/ must NOT be Disallow'd: old blog URLs were indexed, then redirected to /.
+  // Blocking crawl prevented Google from seeing the 301 → "Indexed though blocked by robots.txt".
   const body = [
     "User-agent: *",
     "Allow: /",
-    "Allow: /de/ratgeber/",
-    "Allow: /en/guides/",
-    "Allow: /es/guias/",
-    "Allow: /fr/guides/",
-    "Allow: /ru/gid/",
-    "Allow: /de/funktionen/",
-    "Allow: /en/features/",
-    "Allow: /es/funciones/",
-    "Allow: /fr/fonctions/",
-    "Allow: /ru/funktsii/",
     "",
     "Disallow: /admin/",
-    "Disallow: /blog/",
     "Disallow: /redaktion",
     "Disallow: /email-confirmed",
     "",

@@ -6,3 +6,34 @@ https://www.moonli.net/*  https://moonli.net/:splat  301!
 /blog  /  301
 /blog/*  /  301
 /sitemap.xml  /sitemap-index.xml  200
+
+# Soften common 404 patterns (lang hubs & old marketing paths)
+/de   /de/ratgeber/  301
+/de/  /de/ratgeber/  301
+/en   /en/guides/  301
+/en/  /en/guides/  301
+/es   /es/guias/  301
+/es/  /es/guias/  301
+/fr   /fr/guides/  301
+/fr/  /fr/guides/  301
+/ru   /ru/gid/  301
+/ru/  /ru/gid/  301
+/ratgeber  /de/ratgeber/  301
+/ratgeber/  /de/ratgeber/  301
+/guides  /en/guides/  301
+/guides/  /en/guides/  301
+/funktionen  /de/funktionen/  301
+/funktionen/  /de/funktionen/  301
+/features  /en/features/  301
+/features/  /en/features/  301
+/vergleich/*  /de/vergleich/:splat  301
+/compare/*  /en/compare/:splat  301
+/app  /  301
+/app/  /  301
+/download  /  301
+/download/  /  301
+/pricing  /  301
+/pricing/  /  301
+/de/blog  /de/ratgeber/  301
+/de/blog/  /de/ratgeber/  301
+/de/blog/*  /de/ratgeber/  301
