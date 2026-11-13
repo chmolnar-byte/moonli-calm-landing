@@ -39,5 +39,10 @@ export default defineConfig({
   output: "static",
   redirects: {
     "/redaktion": "/admin/index.html",
+    // Unicode privacy URL — static HTML redirect so Cloudflare/Netlify encoding can't miss it
+    "/datenschutzerklärung": "/privacy/",
+    "/datenschutzerklärung/": "/privacy/",
+    "/impressum": "/imprint/",
+    "/impressum/": "/imprint/",
   },
 });
