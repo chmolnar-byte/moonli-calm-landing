@@ -4,15 +4,22 @@ import { SITE_ORIGIN, canonicalUrl } from "@/lib/seo";
 
 const title = "Sturm über Bananien – Buch & Ausgaben";
 const description =
-  "Eine Kindergeschichte von Denise Kanfer-Steinhauer. Jetzt in Österreich bei Morawa bestellen.";
+  "Eine Kindergeschichte von Denise Kanfer-Steinhauer. Website und Bestellung in Österreich.";
+const siteUrl = "https://bananien.com/";
 const orderUrl =
   "https://www.morawa.at/detail/ISBN-9783991526131/Kanfer-Steinhauer-Denise/Sturm-%C3%BCber-Bananien?bpmctrl=bpmrownr.1%7Cforeign.500791-43-0-512423%3A512613%3A293473";
 
 const editions = [
   {
+    href: siteUrl,
+    label: "🌐 Website bananien.com",
+    featured: true,
+    live: true,
+  },
+  {
     href: orderUrl,
     label: "🇦🇹 Jetzt bestellen (Österreich / Morawa)",
-    featured: true,
+    featured: false,
     live: true,
   },
   { href: "#", label: "🇩🇪 Deutsche Ausgabe (Amazon / Buchhandel)", featured: false, live: false },
