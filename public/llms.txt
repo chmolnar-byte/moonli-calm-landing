@@ -1,0 +1,30 @@
+# Moonli
+
+> Moonli ist eine kostenlose Eltern-App für Babyschlaf, Stillen, Fläschchen, Windeln, Wachstum und Beikost. Beide Eltern sehen denselben Stand. Verfügbar für iOS und Android. Nicht zu verwechseln mit anderen Apps ähnlichen Namens.
+
+Moonli gibt es unter https://moonli.net/. Die Ratgeber unten sind redaktionell geschrieben, nennen Quellen (AAP, NHS, WHO) und ersetzen keine ärztliche Beratung.
+
+## Ratgeber (Deutsch)
+
+- [Wachfenster beim Baby nach Alter](https://moonli.net/de/ratgeber/wachfenster-baby/): Richtwerte von 0 bis 12 Monaten, Müdigkeitssignale
+- [Babyschlaf-Routinen](https://moonli.net/de/ratgeber/babyschlaf-routinen/)
+- [Schlafregression beim Baby](https://moonli.net/de/ratgeber/schlafregression-baby/)
+- [Schlafregression mit 4 Monaten](https://moonli.net/de/ratgeber/schlafregression-4-monate/)
+- [Beikost starten](https://moonli.net/de/ratgeber/beikost-starten/)
+- [Baby-led Weaning starten](https://moonli.net/de/ratgeber/blw-starten/)
+- [WHO-Perzentile beim Baby](https://moonli.net/de/ratgeber/who-perzentile-baby/)
+- [Stillen und Fläschchen tracken](https://moonli.net/de/ratgeber/stillen-flaschchen-tracken/)
+- [Care-Arbeit teilen](https://moonli.net/de/ratgeber/care-arbeit-teilen/)
+- [Beruhigen ohne Handy](https://moonli.net/de/ratgeber/beruhigen-ohne-handy/)
+- [Freizeit mit Baby und Kleinkind in Wien](https://moonli.net/de/ratgeber/freizeit-baby-kleinkind-wien/)
+
+## Weitere Seiten
+
+- [Funktionen](https://moonli.net/de/funktionen/)
+- [Englische Ratgeber](https://moonli.net/en/guides/)
+- [Moonli im Vergleich: Napper und Huckleberry](https://moonli.net/de/vergleich/napper-huckleberry/)
+
+## Apps
+
+- [App Store](https://apps.apple.com/us/app/moonli-baby-parent-assistant/id6762447948)
+- [Google Play](https://play.google.com/store/apps/details?id=com.christian.moonli)

@@ -42,15 +42,19 @@ const readHasLanguageChoice = (): boolean => {
   }
 };
 
+// Die Startseite ist deutsch (Title, Description, Schema). Die Sprache wechselt
+// nur nach einer ausdrücklichen Wahl, nie automatisch per Browsersprache.
+// Sonst sähen Crawler (en-US) eine andere Sprache als in den Meta-Daten steht.
 const readStoredLanguage = (): Language => {
   if (typeof window === "undefined") return "de";
   try {
+    if (window.localStorage.getItem(CHOICE_KEY) !== "1") return "de";
     const stored = window.localStorage.getItem(STORAGE_KEY);
     if (isLanguage(stored)) return stored;
   } catch {
     // ignore
   }
-  return detectBrowserLanguage();
+  return "de";
 };
 
 const createTranslator = (language: Language) => (key: string) =>
@@ -77,20 +81,13 @@ export const LanguageProvider = ({
 
   useEffect(() => {
     if (locked) return;
-    setNeedsLanguageChoice(!readHasLanguageChoice());
+    // Nur Besuchern mit nicht-deutscher Browsersprache einen Hinweis zeigen.
+    setNeedsLanguageChoice(!readHasLanguageChoice() && detectBrowserLanguage() !== "de");
   }, [locked]);
 
-  useEffect(() => {
-    if (locked) return;
+  const markChoice = useCallback((lang: Language) => {
     try {
-      window.localStorage.setItem(STORAGE_KEY, language);
-    } catch {
-      // ignore
-    }
-  }, [language, locked]);
-
-  const markChoice = useCallback(() => {
-    try {
+      window.localStorage.setItem(STORAGE_KEY, lang);
       window.localStorage.setItem(CHOICE_KEY, "1");
     } catch {
       // ignore
@@ -101,7 +98,7 @@ export const LanguageProvider = ({
   const setLanguage = useCallback(
     (lang: Language) => {
       setLanguageState(lang);
-      markChoice();
+      markChoice(lang);
     },
     [markChoice],
   );
@@ -109,7 +106,7 @@ export const LanguageProvider = ({
   const confirmLanguageChoice = useCallback(
     (lang: Language) => {
       setLanguageState(lang);
-      markChoice();
+      markChoice(lang);
     },
     [markChoice],
   );

@@ -6,7 +6,7 @@ title: "Wachfenster beim Baby: Richtwerte nach Alter"
 seoTitle: "Wachfenster Baby nach Alter: Tabelle | Moonli"
 description: "Richtwerte von 0 bis 12 Monaten, Müdigkeitssignale und wie du Schläfchen ohne Zettel im Blick behältst. Kostenlos in Moonli."
 pubDate: 2026-10-02
-updatedDate: 2026-10-02
+updatedDate: 2026-11-19
 draft: false
 related:
   - sleep-routines
@@ -35,6 +35,8 @@ faq:
 ---
 
 ## Die kurze Antwort
+
+Ein Wachfenster ist die Zeit, die ein Baby zwischen zwei Schläfchen wach sein kann, ohne überreizt zu werden. Sie wächst mit dem Alter: etwa 45–60 Minuten in den ersten sechs Wochen, 90–120 Minuten mit 4–6 Monaten und 3–4 Stunden mit 10–12 Monaten. Die Werte sind Richtwerte. Das Baby zeigt dir mit Gähnen und Wegsehen, wann es wirklich müde ist.
 
 Du kennst die Stelle. Gerade war das Baby noch bei dir, hat geguckt, getrunken, die Faust an der Wange. Zehn Minuten später ist alles zu viel: das Licht, deine Stimme, der eigene Körper. Ein Wachfenster ist die Spanne dazwischen. Nach dem Aufwachen trägt das Baby eine Weile die Welt. Dann wird es müde genug für den nächsten Schlaf. Wartet ihr länger, kippt Müdigkeit oft in Überreiz, und das Hinlegen wird schwerer, obwohl alle müde sind.
 
