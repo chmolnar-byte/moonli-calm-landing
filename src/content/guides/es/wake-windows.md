@@ -82,6 +82,17 @@ El lugar de dormir se queda simple y seguro al lado de todo esto. La American Ac
 
 Sin una nota, a las ocho y media se borra todo. ¿La última siesta fue antes de la compra o después? En casa basta un papel. Fuera, de noche o con un segundo hijo, el papel se vuelve ilegible, y entonces discutes en la cabeza con una hora de la que ya nadie está seguro.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-sleep-times.webp" alt="Pantalla de inicio de Moonli: tarjeta de sueño con «Asleep since 03:31 PM» y botón para despertar" width="738" height="835" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">La tarjeta de sueño muestra desde cuándo duerme el bebé.</figcaption>
+  </figure>
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-day-plan.webp" alt="Plan del día en Moonli con siestas 1/2, hora de acostarse 07:00 PM y estado «On schedule»" width="738" height="585" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">El plan del día muestra siestas y hora de acostarse de un vistazo.</figcaption>
+  </figure>
+</div>
+
 ### Anotar el sueño con un toque
 
 Empiezas el sueño cuando de verdad empieza, y lo paras cuando los ojos vuelven a estar abiertos. Pecho, biberón, pañales y crecimiento están al lado. El día se vuelve una imagen que puedes mirar por la tarde, en vez de cinco listas en la cabeza.

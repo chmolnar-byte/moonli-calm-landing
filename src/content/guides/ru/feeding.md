@@ -73,6 +73,17 @@ faq:
 
 Сторона, длительность или объём стоят рядом со сном и подгузниками. Вы видите день как последовательность. Сначала кормление, потом сон, потом снова голод. Три бумажки на столе рассказывают ту же историю хуже, как только одной не хватает.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-feeding-timer.webp" alt="Таймер кормления Moonli: левая грудь 00:47, выбор грудь или бутылочка" width="738" height="1210" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Кормление с таймером: коснитесь, чтобы начать, и ещё раз, чтобы сохранить.</figcaption>
+  </figure>
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-milk-stock.webp" alt="Запас молока в Moonli: 80 мл в холодильнике и 130 мл в морозилке" width="738" height="1200" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Запас сцеженного молока: холодильник и морозилка отдельно.</figcaption>
+  </figure>
+</div>
+
 ### Быстрые кнопки для одной руки
 
 Вы решаете, что записывает одно касание. Если ночью вам почти нужна только сторона, это и есть кнопка. Полоса следует вашей ночи, а не шаблону, собранному для другой семьи.

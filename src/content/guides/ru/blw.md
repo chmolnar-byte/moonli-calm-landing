@@ -63,6 +63,13 @@ BLW — это один из способов вводить прикорм: fin
 
 Готово более 100 продуктов: овощи, фрукты, крупы, белок и другое. Чего нет, вы добавляете сами. Нажать, на тарелку, готово. Позже видно, что уже было, в том числе для того, кто будет кормить в следующий раз.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-food-picker.webp" alt="Список BLW в Moonli: овощи, например брокколи, морковь и тыква" width="738" height="1455" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Больше 100 продуктов, можно добавить свои.</figcaption>
+  </figure>
+</div>
+
 Список — это память, а не оценка. День с двумя мягкими кусочками и большим количеством еды на слюнявчике — полноценный день.
 
 ### Чего список не делает

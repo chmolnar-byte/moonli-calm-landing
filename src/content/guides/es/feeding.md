@@ -73,6 +73,17 @@ Si das el pecho y no sabes si llega «suficiente», la respuesta honesta suele s
 
 Lado, duración o cantidad están junto al sueño y los pañales. Ves el día como una secuencia. Primero la toma, luego la siesta, luego otra vez el hambre. Tres papeles en la encimera cuentan la misma historia peor en cuanto falta uno.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-feeding-timer.webp" alt="Temporizador de lactancia de Moonli con el lado izquierdo en 00:47 y opciones de pecho o biberón" width="738" height="1210" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Lactancia con temporizador: toca para empezar, toca de nuevo para guardar.</figcaption>
+  </figure>
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-milk-stock.webp" alt="Reserva de leche de Moonli con 80 ml en la nevera y 130 ml en el congelador" width="738" height="1200" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Reserva de leche extraída: nevera y congelador por separado.</figcaption>
+  </figure>
+</div>
+
 ### Botones rápidos para una mano
 
 Tú decides qué registra un toque. Si de noche casi solo necesitas el lado, ese es el botón. La barra sigue vuestra noche, no una plantilla hecha para otra familia.

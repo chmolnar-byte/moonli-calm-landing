@@ -77,6 +77,13 @@ Tu notes ce qui était nouveau et comment c'était supporté. Moonli ne t'en con
 
 Si vous commencez la diversification menée par l'enfant, ou si vous voulez simplement voir ce qu'il y avait dans l'assiette ce jour-là, tu la remplis dans Moonli. Plus de 100 aliments sont là : légumes, fruits, céréales, protéines. Un geste, dans l'assiette, c'est fait. Ensuite on voit ce qu'il y avait, y compris la personne qui proposera le repas suivant. L'assiette est un souvenir. Ce n'est pas un jugement sur le fait qu'il y en avait assez, ou les bons aliments.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-food-picker.webp" alt="Sélection d'aliments Moonli avec légumes comme brocoli, carotte et potiron" width="738" height="1455" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">La liste d'ingrédients : touche un aliment pour le poser dans l'assiette.</figcaption>
+  </figure>
+</div>
+
 ### À côté du lait, du sommeil et de la croissance
 
 La diversification est à côté des tétées, du sommeil et de la courbe de croissance. Tu vois si l'appétit a bougé sans ouvrir trois endroits. Si le poids vous occupe, la courbe est près, pas dans un tableau à part que vous devez tenir.

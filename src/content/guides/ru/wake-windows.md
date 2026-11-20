@@ -82,6 +82,17 @@ faq:
 
 Без записи к половине девятого всё стирается. Последний сон был до магазина или после? Дома хватает бумажки. На улице, ночью или со вторым ребёнком бумажка становится нечитаемой, и вы спорите в голове со временем, в котором уже никто не уверен.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-sleep-times.webp" alt="Главный экран Moonli: карточка сна «Asleep since 03:31 PM» и кнопка пробуждения" width="738" height="835" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Карточка сна показывает, с какого времени спит малыш.</figcaption>
+  </figure>
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-day-plan.webp" alt="План дня в Moonli: дневные сны 1/2, время отхода ко сну 07:00 PM, статус «On schedule»" width="738" height="585" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">План дня показывает дневные сны и время отхода ко сну с первого взгляда.</figcaption>
+  </figure>
+</div>
+
 ### Сон одним касанием
 
 Вы начинаете сон, когда он правда начинается, и останавливаете, когда глаза снова открыты. Грудь, бутылочка, подгузники и рост лежат рядом. День становится картинкой, на которую можно посмотреть вечером, а не пятью списками в голове.

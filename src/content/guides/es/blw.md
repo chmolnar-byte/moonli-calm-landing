@@ -63,6 +63,13 @@ A algunas familias les va bien el BLW porque al bebé le encanta agarrar. A otra
 
 Hay más de 100 ingredientes listos: verdura, fruta, cereales, proteína y más. Lo que falte, lo creas tú. Tocar, al plato, listo. Después ves lo que ya ha pasado por el plato, también para la persona que dé de comer la próxima vez.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-food-picker.webp" alt="Lista BLW de Moonli con verduras como brócoli, zanahoria y calabaza" width="738" height="1455" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Más de 100 ingredientes para tocar; puedes añadir los tuyos.</figcaption>
+  </figure>
+</div>
+
 La lista es un recuerdo, no un juicio. Un día con dos trocitos blandos y mucho en el babero es un día completo.
 
 ### Qué no hace la lista

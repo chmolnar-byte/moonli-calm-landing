@@ -73,6 +73,17 @@ Si tu allaites et que tu ne sais pas si « assez » arrive, la réponse honnête
 
 Côté, durée ou quantité sont à côté du sommeil et des couches. Tu vois la journée comme une suite. D'abord le repas, puis la sieste, puis de nouveau la faim. Trois papiers sur le plan de travail racontent la même histoire plus mal dès qu'il en manque un.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-feeding-timer.webp" alt="Minuteur d'allaitement Moonli avec le côté gauche à 00:47 et choix sein ou biberon" width="738" height="1210" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Allaitement avec minuteur : touche pour démarrer, touche encore pour enregistrer.</figcaption>
+  </figure>
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-milk-stock.webp" alt="Stock de lait Moonli avec 80 ml au réfrigérateur et 130 ml au congélateur" width="738" height="1200" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Stock de lait tiré : réfrigérateur et congélateur séparés.</figcaption>
+  </figure>
+</div>
+
 ### Boutons rapides pour une seule main
 
 Tu décides ce qu'un geste enregistre. Si la nuit tu n'as presque besoin que du côté, c'est ce bouton-là. La barre suit votre nuit, pas un modèle construit pour une autre famille.

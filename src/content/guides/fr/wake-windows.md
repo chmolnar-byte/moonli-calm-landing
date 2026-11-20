@@ -82,6 +82,17 @@ Le lieu de sommeil reste simple et sûr à côté de tout ça. L'American Academ
 
 Sans note, à huit heures et demie tout s'efface. La dernière sieste, c'était avant les courses ou après ? À la maison, un bout de papier suffit. Dehors, la nuit, ou avec un deuxième enfant, le papier devient illisible, et tu discutes dans ta tête avec une heure dont plus personne n'est sûr.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-sleep-times.webp" alt="Écran d'accueil Moonli : carte de sommeil avec « Asleep since 03:31 PM » et bouton de réveil" width="738" height="835" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">La carte de sommeil montre depuis quand bébé dort.</figcaption>
+  </figure>
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-day-plan.webp" alt="Plan de la journée Moonli avec siestes 1/2, coucher 07:00 PM et statut « On schedule »" width="738" height="585" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Le plan de la journée montre siestes et coucher en un coup d'œil.</figcaption>
+  </figure>
+</div>
+
 ### Noter le sommeil d'un geste
 
 Tu lances le sommeil quand il commence vraiment, et tu l'arrêtes quand les yeux sont de nouveau ouverts. Sein, biberon, couches et croissance sont à côté. La journée devient une image que tu peux regarder le soir, au lieu de cinq listes dans la tête.

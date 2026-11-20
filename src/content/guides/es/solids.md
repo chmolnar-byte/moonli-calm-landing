@@ -77,6 +77,13 @@ Anotas qué fue nuevo y cómo se toleró. Moonli no te arma un menú con eso, y 
 
 Si empezáis con baby-led weaning, o solo queréis ver qué hubo ese día en el plato, lo rellenas en Moonli. Hay más de 100 alimentos: verdura, fruta, cereales, proteína. Un toque, al plato, listo. Después se puede ver qué había, también para quien da la siguiente comida. El plato es un recuerdo. No es un juicio sobre si había suficiente, o lo correcto.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-food-picker.webp" alt="Selector de alimentos de Moonli con verduras como brócoli, zanahoria y calabaza" width="738" height="1455" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">La lista de ingredientes: toca un alimento y ponlo en el plato.</figcaption>
+  </figure>
+</div>
+
 ### Junto a la leche, el sueño y el crecimiento
 
 La comida está al lado de las tomas de leche, el sueño y la curva de crecimiento. Ves si el apetito cambió sin abrir tres sitios. Si el peso os ocupa, la curva está cerca, no en una tabla aparte que tengáis que mantener.
