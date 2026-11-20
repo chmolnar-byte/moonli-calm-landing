@@ -77,6 +77,13 @@ You keep what was new and how it was tolerated. Moonli does not build you a meal
 
 If you are starting baby-led weaning, or you simply want to see what was on the plate that day, you fill it in Moonli. More than 100 foods are there: vegetables, fruit, grains, protein. Tap, onto the plate, done. Afterwards it is clear what was on it, for you and for the person who offers the next meal. The plate is a memory. It is not a verdict on whether enough, or the right things, were on it. In Moonli, baby-led weaning is this ingredient list. Recipes are a separate category for cooking along and sharing, not a replacement for the list. More in the [baby-led weaning guide](/en/guides/baby-led-weaning/).
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-food-picker.webp" alt="Moonli food picker showing vegetables such as broccoli, carrot and pumpkin to tap" width="738" height="1455" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">The ingredient list: tap foods to put them on the plate.</figcaption>
+  </figure>
+</div>
+
 ### Next to milk, sleep and growth
 
 Solids sit beside milk feeds, sleep and the growth curve. You can see whether appetite has shifted without opening three places. If weight is on your mind, the curve is nearby, not in a separate table you have to maintain on the side.

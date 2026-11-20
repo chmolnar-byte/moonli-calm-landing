@@ -78,9 +78,23 @@ Du hältst fest, was neu war und wie es vertragen wurde. Moonli baut dir daraus 
 
 Wenn ihr breifrei anfangt oder festhalten wollt, welche Lebensmittel schon vorkamen, ist das in Moonli die **BLW-Liste**: über 100 Zutaten plus eigene, antippen, abhaken. Mehr dazu unter [BLW starten](/de/ratgeber/blw-starten/). Die Liste ist Erinnerung, kein Speiseplan und kein Urteil.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-food-picker.webp" alt="Moonli Lebensmittelauswahl mit Gemüse wie Brokkoli, Karotte und Kürbis zum Antippen" width="738" height="1455" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Die Zutatenliste: Lebensmittel antippen und auf den Teller legen.</figcaption>
+  </figure>
+</div>
+
 ### Rezepte: eigene Kategorie
 
 **Rezepte** sind in Moonli getrennt von BLW. Dort kocht ihr nach oder schreibt auf, was ihr zubereitet habt – optional für die Community. BLW = Liste der erkundeten Lebensmittel. Rezepte = Kochbuch. Beides ergänzt sich, vermischt sich aber nicht in einer Funktion.
+
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-recipe.webp" alt="Moonli-Rezept Erbsen-Kartoffel-Püree ab 6 Monaten mit Zutatenliste" width="738" height="1315" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Rezepte in Moonli, hier ein Erbsen-Kartoffel-Püree für die erste Beikost.</figcaption>
+  </figure>
+</div>
 
 ### Neben Milch, Schlaf und Wachstum
 

@@ -82,6 +82,17 @@ The sleep space stays plain and safe beside all of this. The American Academy of
 
 Without a note, half past eight erases everything. Was the last nap before the shop or after? At home a scrap of paper is enough. Out, at night, or with a second child, the scrap becomes unreadable, and then you are arguing in your head with a time nobody is sure of anymore.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-sleep-times.webp" alt="Moonli home screen: sleep card showing asleep since 03:31 PM with a wake up button" width="738" height="835" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">The sleep card shows when your baby fell asleep.</figcaption>
+  </figure>
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-day-plan.webp" alt="Moonli day plan with naps 1/2, bedtime 07:00 PM and status on schedule" width="738" height="585" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">The day plan shows naps and bedtime at a glance.</figcaption>
+  </figure>
+</div>
+
 ### Log sleep with one tap
 
 You start the sleep when it really begins, and you stop it when the eyes are open again. Breast, bottle, diapers and growth sit beside it. The day becomes a picture you can look at in the evening, instead of five lists you have to hold in your head.

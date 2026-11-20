@@ -63,6 +63,13 @@ For some families BLW fits because the baby loves to grab. For others the spoon 
 
 More than 100 ingredients are ready: vegetables, fruit, grains, protein and more. If something is missing, you add it yourself. Tap, onto the plate, done. Later you can see what has already been through, including for the person who feeds next time.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-food-picker.webp" alt="Moonli BLW ingredient list showing vegetables such as broccoli, carrot and pumpkin" width="738" height="1455" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">More than 100 ingredients to tap, and you can add your own.</figcaption>
+  </figure>
+</div>
+
 The list is a memory, not a verdict. A day with two soft pieces and plenty on the bib is a complete day.
 
 ### What the list does not do

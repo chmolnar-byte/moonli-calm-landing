@@ -63,6 +63,13 @@ Manchen Familien liegt BLW, weil das Baby gerne greift. Manchen liegt der Löffe
 
 Über 100 Zutaten stehen bereit: Gemüse, Obst, Getreide, Protein und mehr. Was fehlt, legst du selbst an. Antippen, auf den Teller, fertig. Später siehst du, was schon „durch“ war – auch für die Person, die das nächste Mal füttert.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-food-picker.webp" alt="Moonli BLW-Zutatenliste mit Gemüse wie Brokkoli, Karotte und Kürbis" width="738" height="1455" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Über 100 Zutaten zum Antippen, eigene kannst du ergänzen.</figcaption>
+  </figure>
+</div>
+
 Die Liste ist Erinnerung, kein Urteil. Ein Tag mit zwei weichen Stücken und viel auf dem Lätzchen ist ein vollgültiger Tag.
 
 ### Was die Liste nicht tut

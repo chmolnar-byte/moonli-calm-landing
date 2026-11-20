@@ -76,6 +76,17 @@ Wenn du stillst und unsicher bist, ob „genug“ ankommt, ist die ehrliche Antw
 
 Seite, Dauer oder Menge stehen neben Schlaf und Windeln. Du siehst den Tag als Folge. Erst die Mahlzeit, dann das Schläfchen, dann wieder Hunger. Drei Zettel auf der Anrichte erzählen dieselbe Geschichte schlechter, sobald einer fehlt.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-feeding-timer.webp" alt="Moonli Stillen-Timer mit linker Seite bei 00:47 und Auswahl Brust oder Flasche" width="738" height="1210" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Stillen mit Timer: antippen zum Starten, nochmal antippen zum Speichern.</figcaption>
+  </figure>
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-milk-stock.webp" alt="Moonli Milchvorrat mit 80 ml im Kühlschrank und 130 ml im Gefrierfach" width="738" height="1200" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Milchvorrat für abgepumpte Milch: Kühlschrank und Gefrierfach getrennt.</figcaption>
+  </figure>
+</div>
+
 ### Quick-Buttons für die eine Hand
 
 Du legst fest, was ein Tipp erfasst. Wenn ihr nachts fast nur die Seite braucht, ist genau das der Knopf. Die Leiste folgt eurem Ablauf, nicht einer Vorlage, die für eine andere Familie gebaut wurde.

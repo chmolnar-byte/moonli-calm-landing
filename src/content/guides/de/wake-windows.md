@@ -84,6 +84,17 @@ Die Schlafumgebung bleibt dabei schlicht und sicher. Die American Academy of Ped
 
 Ohne Notiz ist um halb neun alles weg. Wann war das letzte Schläfchen? Vor dem Einkaufen oder danach? Zu Hause reicht ein Zettel. Unterwegs, nachts oder mit einem zweiten Kind wird er unlesbar, und dann streitet ihr im Kopf mit einer Uhrzeit, die niemand mehr sicher hat.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-sleep-times.webp" alt="Moonli-Startseite: Schlafkarte mit „Asleep since 03:31 PM“ und Button zum Aufwecken" width="738" height="835" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Die Schlafkarte zeigt, seit wann das Baby schläft.</figcaption>
+  </figure>
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-day-plan.webp" alt="Moonli-Tagesplan mit Schläfchen 1/2, Schlafenszeit 19:00 Uhr und Status „On schedule“" width="738" height="585" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Der Tagesplan zeigt Schläfchen und Schlafenszeit auf einen Blick.</figcaption>
+  </figure>
+</div>
+
 ### Schlaf mit einem Tipp erfassen
 
 Du startest den Schlaf, wenn er wirklich beginnt, und stoppst ihn, wenn die Augen wieder offen sind. Stillen, Fläschchen, Windeln und Wachstum liegen daneben. Der Tag wird ein Bild, das du abends ansehen kannst, statt fünf Listen im Kopf zu halten.

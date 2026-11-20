@@ -73,6 +73,17 @@ If you are breastfeeding and unsure whether "enough" is arriving, the honest ans
 
 Side, length or amount sit next to sleep and diapers. You see the day as a sequence. First the feed, then the nap, then hunger again. Three scraps of paper on the counter tell the same story worse, the moment one of them is missing.
 
+<div class="not-prose my-8 flex flex-wrap items-start justify-center gap-6">
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-feeding-timer.webp" alt="Moonli breastfeeding timer showing the left side at 00:47 with breast and bottle options" width="738" height="1210" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Feeding with a timer: tap to start, tap again to save.</figcaption>
+  </figure>
+  <figure class="w-full max-w-[17rem]">
+    <img src="/images/guides/app-milk-stock.webp" alt="Moonli milk stock showing 80 ml in the fridge and 130 ml in the freezer" width="738" height="1200" class="h-auto w-full rounded-2xl border border-border/70 shadow-sm" loading="lazy" decoding="async" />
+    <figcaption class="mt-2 text-center text-xs text-muted-foreground">Milk stock for pumped milk, fridge and freezer tracked separately.</figcaption>
+  </figure>
+</div>
+
 ### Quick buttons for one hand
 
 You decide what one tap records. If at night you almost only need the side, that is the button. The bar follows your night, not a template built for a different family.
