@@ -7,7 +7,16 @@ import { assetUrl } from "@/lib/assetUrl";
 import { useLanguage } from "@/i18n/LanguageContext";
 import MagneticCta from "@/components/MagneticCta";
 import { APP_STORE_URL, GOOGLE_PLAY_URL } from "@/constants/storeUrls";
-import { guidesIndexPath } from "@/lib/guidePaths";
+import { guidesIndexPath, topicPath, TOPIC_ANCHOR, featuresPath, type TopicId } from "@/lib/guidePaths";
+
+const FOOTER_TOPICS: TopicId[] = [
+  "wake-windows",
+  "sleep-regression",
+  "sleep-routines",
+  "solids",
+  "blw",
+  "growth",
+];
 import { OPEN_COOKIE_SETTINGS_EVENT } from "@/lib/cookieConsent";
 
 const bandGhost =
@@ -93,6 +102,31 @@ const CTAFooter = () => {
           </div>
         </div>
       </section>
+
+      <nav aria-label={t("nav.guides")} className="border-t border-border py-8">
+        <div className="container">
+          <p className="mb-3 text-sm font-semibold text-foreground">{t("nav.guides")}</p>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
+            {FOOTER_TOPICS.map((topic) => (
+              <li key={topic}>
+                <a href={topicPath(language, topic)} className="hover:text-foreground transition-colors">
+                  {TOPIC_ANCHOR[topic][language]}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a href={featuresPath(language)} className="hover:text-foreground transition-colors">
+                {t("nav.features")}
+              </a>
+            </li>
+            <li>
+              <a href={guidesIndexPath(language)} className="hover:text-foreground transition-colors">
+                {t("nav.guides")} →
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
       <div className="border-t border-border py-8">
         <div className="container">

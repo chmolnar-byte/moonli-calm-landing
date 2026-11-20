@@ -41,7 +41,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.badge": "Moonli 2.0",
     "hero.headline1": "Weniger Chaos im Kopf.",
     "hero.headline2": "Mehr Zeit fürs Baby.",
-    "hero.tagline": "Schlaf, Stillen und Windeln intuitiv im Blick behalten – gemeinsam als Familie, ganz ohne Stress.",
+    "hero.tagline": "Die Baby-App für Schlaf, Stillen, Windeln und Beikost – mit Wachfenstern nach Alter. Beide Eltern sehen denselben Stand.",
     "hero.subheadline": "Schlaf und Stillen ab der Geburt. Beikost, wenn der Löffel kommt. Tracking bleibt kostenlos.",
     "hero.ctaDownload": "Kostenlos laden",
     "hero.ctaFeatures": "Funktionen ansehen",
