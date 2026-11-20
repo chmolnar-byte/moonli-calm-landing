@@ -3,10 +3,10 @@ topic: wake-windows
 lang: en
 urlSlug: baby-wake-windows
 title: "Baby wake windows: ranges by age"
-seoTitle: "Baby wake windows by age: a chart | Moonli"
-description: "Ranges from 0 to 12 months, tiredness signs, and how to keep naps in view without a scrap of paper. Free in Moonli."
+seoTitle: "Baby wake windows by age: chart 0–24 months | Moonli"
+description: "Wake windows by month from 0 to 24 months in a chart, tiredness signs, and how to keep naps in view without a scrap of paper. Free in Moonli."
 pubDate: 2026-10-02
-updatedDate: 2026-10-02
+updatedDate: 2026-11-20
 draft: false
 related:
   - sleep-routines
@@ -24,6 +24,10 @@ sources:
   - name: WHO – Early childhood development
     url: https://www.who.int/teams/maternal-newborn-child-adolescent-health-and-ageing/child-health/early-childhood-development
 faq:
+  - q: "How long is the wake window at 4 months?"
+    a: "Usually 90 to 120 minutes. At 5 months it is about 105 to 135 minutes, and at 6 months roughly two to two and a half hours. These are guides, and a baby after a poor night often tips over sooner."
+  - q: "What are wake windows at 14 months?"
+    a: "Usually three to five hours, depending on whether your toddler still takes two naps or has moved to one. The move to one nap often happens between 12 and 18 months."
   - q: "When do wake windows start to matter?"
     a: "From the first weeks, as a rough guide. At 0 to 6 weeks the window is often only 45 to 60 minutes. You are not building a timetable. You are learning the stretch your baby can actually hold."
   - q: "What if my baby looks tired sooner?"
@@ -47,10 +51,19 @@ In the first year a baby does not yet have a reliable day-and-night rhythm. They
 | Age | Wake window, a guide |
 | --- | --- |
 | 0–6 weeks | 45–60 minutes |
-| 2–3 months | 75–90 minutes |
-| 4–6 months | 90–120 minutes |
-| 7–9 months | 2–3 hours |
-| 10–12 months | 3–4 hours |
+| 2 months | 60–90 minutes |
+| 3 months | 75–105 minutes |
+| 4 months | 90–120 minutes |
+| 5 months | 105–135 minutes |
+| 6 months | 2–2.5 hours |
+| 7–8 months | 2–3 hours |
+| 9–10 months | 2.5–3.5 hours |
+| 11–12 months | 3–4 hours |
+| 12–15 months | 3–5 hours |
+| 15–18 months | 4–6 hours (often the move to one nap) |
+| 18–24 months | 5–6 hours |
+
+These are guides drawn from what many families see. Sources give slightly different ranges, and every baby is different.
 
 Read every row as a span. A four-month-old can be happily awake for a hundred minutes on a bright morning and tip over after eighty on the day after a short night. Once you have seen that, the table gets kinder. It takes the guessing out of the evening, when nobody can quite remember when the last nap actually was.
 
@@ -62,13 +75,19 @@ Sleep still comes in pieces, and that is all right. A window can be shorter than
 
 This is where many parents breathe out, because something repeats. A clear awake stretch after a feed, then a yawn, then the fuss. The table turns into a day you recognise. It stays a tender day. One rough morning knocks it over, and tomorrow it is back.
 
-### 4 to 6 months
+### 4 to 6 months: wake windows at 4, 5 and 6 months
+
+At 4 months the window is usually 90–120 minutes, at 5 months about 105–135 minutes, and at 6 months roughly two to two and a half hours. Sleep often shifts noticeably around the fourth month. More in the [4-month sleep regression guide](/en/guides/4-month-sleep-regression/).
 
 Awake time gets easier to picture, which is exactly why overtiredness hurts so much. Bedtime often escalates because the window was already closed, not because a ritual was missing. A longer song rarely repairs that. An earlier try at putting them down sometimes does.
 
 ### 7 to 12 months
 
 Teeth, first foods, the work of rolling, sitting, crawling: the day gets fuller, the span gets longer, and the outliers do too. A baby who is practising standing can be wide awake at half past four and completely done at half past five. The table holds the frame. Your eyes hold the single day.
+
+### 12 to 24 months
+
+After the first birthday the window grows a lot, and many toddlers move from two naps to one. That usually happens between 12 and 18 months. Before it, three to four hours awake at a stretch is often normal, afterwards five to six hours with a longer midday nap. The switch wobbles: one nap drops, the next comes too late, and the evening tips over. That is normal and not a step backwards. If you are in the middle of the switch, a look at the last few days helps more than a table.
 
 ## How you can tell the window has closed
 

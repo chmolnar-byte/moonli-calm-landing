@@ -3,10 +3,10 @@ topic: wake-windows
 lang: de
 urlSlug: wachfenster-baby
 title: "Wachfenster beim Baby: Richtwerte nach Alter"
-seoTitle: "Wachfenster Baby nach Alter: Tabelle | Moonli"
-description: "Richtwerte von 0 bis 12 Monaten, Müdigkeitssignale und wie du Schläfchen ohne Zettel im Blick behältst. Kostenlos in Moonli."
+seoTitle: "Wachfenster Baby nach Alter: Tabelle 0–24 Monate | Moonli"
+description: "Wachfenster (Wachphasen) pro Monat von 0 bis 24 Monaten als Tabelle, Müdigkeitssignale und wie du Schläfchen ohne Zettel im Blick behältst. Kostenlos in Moonli."
 pubDate: 2026-10-02
-updatedDate: 2026-11-19
+updatedDate: 2026-11-20
 draft: false
 related:
   - sleep-routines
@@ -28,6 +28,12 @@ faq:
     a: "Als grobe Orientierung schon in den ersten Wochen. Da ist das Fenster oft nur 45 bis 60 Minuten, und das fühlt sich absurd kurz an. Ein fester Plan hilft in der Zeit selten. Ein wiederkehrendes Muster schon."
   - q: "Was ist, wenn mein Baby früher müde wirkt?"
     a: "Dann glaub dem Baby. Gähnen, Wegsehen, plötzlich fahrige Arme sind ehrlicher als die Zeile in der Tabelle. Die Zahlen sind ein Rahmen für den Tag, kein Termin, den ihr verpasst habt."
+  - q: "Wie lang ist das Wachfenster mit 4 Monaten?"
+    a: "Meist 90 bis 120 Minuten. Mit 5 Monaten sind es etwa 105 bis 135 Minuten, mit 6 Monaten rund zwei bis zweieinhalb Stunden. Das sind Richtwerte, und ein Baby nach einer schlechten Nacht kippt oft früher."
+  - q: "Was ist der Unterschied zwischen Wachfenster und Wachphase?"
+    a: "Keiner. Beide Wörter meinen die Zeit zwischen dem Aufwachen und dem nächsten Einschlafen. Manche sagen auch Wachzeit oder Wachintervall."
+  - q: "Wie lang sind die Wachfenster mit 14 Monaten?"
+    a: "Meist drei bis fünf Stunden, je nachdem, ob das Kind noch zwei Schläfchen macht oder schon auf eines gewechselt hat. Der Wechsel auf ein Schläfchen passiert häufig zwischen 12 und 18 Monaten."
   - q: "Kostet das Schlaftracking in Moonli etwas?"
     a: "Nein. Schlaf, Mahlzeiten, Windeln, Wachstum und die Orientierung zu den Wachfenstern bleiben kostenlos. Eine Erinnerung schaltest du nur ein, wenn sie euch wirklich entlastet."
   - q: "Ersetzt eine App die Hebamme oder den Kinderarzt?"
@@ -36,7 +42,7 @@ faq:
 
 ## Die kurze Antwort
 
-Ein Wachfenster ist die Zeit, die ein Baby zwischen zwei Schläfchen wach sein kann, ohne überreizt zu werden. Sie wächst mit dem Alter: etwa 45–60 Minuten in den ersten sechs Wochen, 90–120 Minuten mit 4–6 Monaten und 3–4 Stunden mit 10–12 Monaten. Die Werte sind Richtwerte. Das Baby zeigt dir mit Gähnen und Wegsehen, wann es wirklich müde ist.
+Ein Wachfenster (auch Wachphase genannt) ist die Zeit, die ein Baby zwischen zwei Schläfchen wach sein kann, ohne überreizt zu werden. Sie wächst mit dem Alter: etwa 45–60 Minuten in den ersten sechs Wochen, 90–120 Minuten mit 4 Monaten, 2–3 Stunden mit 7–8 Monaten, 3–4 Stunden mit einem Jahr und 5–6 Stunden mit knapp zwei Jahren. Die Werte sind Richtwerte. Das Baby zeigt dir mit Gähnen und Wegsehen, wann es wirklich müde ist.
 
 Du kennst die Stelle. Gerade war das Baby noch bei dir, hat geguckt, getrunken, die Faust an der Wange. Zehn Minuten später ist alles zu viel: das Licht, deine Stimme, der eigene Körper. Ein Wachfenster ist die Spanne dazwischen. Nach dem Aufwachen trägt das Baby eine Weile die Welt. Dann wird es müde genug für den nächsten Schlaf. Wartet ihr länger, kippt Müdigkeit oft in Überreiz, und das Hinlegen wird schwerer, obwohl alle müde sind.
 
@@ -49,10 +55,19 @@ Im ersten Jahr hat ein Baby noch keinen verlässlichen Tag-Nacht-Rhythmus. Es wi
 | Alter | Wachfenster, Richtwert |
 | --- | --- |
 | 0–6 Wochen | 45–60 Minuten |
-| 2–3 Monate | 75–90 Minuten |
-| 4–6 Monate | 90–120 Minuten |
-| 7–9 Monate | 2–3 Stunden |
-| 10–12 Monate | 3–4 Stunden |
+| 2 Monate | 60–90 Minuten |
+| 3 Monate | 75–105 Minuten |
+| 4 Monate | 90–120 Minuten |
+| 5 Monate | 105–135 Minuten |
+| 6 Monate | 2–2,5 Stunden |
+| 7–8 Monate | 2–3 Stunden |
+| 9–10 Monate | 2,5–3,5 Stunden |
+| 11–12 Monate | 3–4 Stunden |
+| 12–15 Monate | 3–5 Stunden |
+| 15–18 Monate | 4–6 Stunden (oft Wechsel auf ein Schläfchen) |
+| 18–24 Monate | 5–6 Stunden |
+
+Die Werte sind Orientierung aus dem, was viele Familien erleben. Quellen nennen leicht andere Spannen, und jedes Baby ist anders.
 
 Lies jede Zeile als Spanne. Ein Baby mit vier Monaten kann an einem hellen Vormittag hundert Minuten wach und zufrieden sein und nach einer kurzen Nacht schon nach achtzig Minuten überkippen. Wenn du das einmal gesehen hast, wird die Tabelle freundlicher. Sie nimmt dir das Rätselraten am Abend, wenn niemand mehr weiß, wann das letzte Schläfchen eigentlich war.
 
@@ -64,13 +79,19 @@ Der Schlaf ist noch in Stücke zerlegt, und das ist in Ordnung. Ein Fenster kann
 
 Hier atmen viele zum ersten Mal auf, weil sich etwas wiederholt. Nach dem Trinken eine klare, wache Phase, dann das Gähnen, dann die Unruhe. Aus der Tabelle wird ein Alltag, den du wiedererkennst. Es bleibt ein zarter Alltag. Ein schlechter Vormittag wirft ihn um, und morgen ist er wieder da.
 
-### 4 bis 6 Monate
+### 4 bis 6 Monate: Wachfenster mit 4, 5 und 6 Monaten
+
+Mit 4 Monaten liegt das Fenster meist bei 90–120 Minuten, mit 5 Monaten bei etwa 105–135 Minuten und mit 6 Monaten bei rund zwei bis zweieinhalb Stunden. Rund um den vierten Monat verändert sich der Schlaf oft spürbar. Mehr dazu in [Schlafregression mit 4 Monaten](/de/ratgeber/schlafregression-4-monate/).
 
 Die wache Zeit wird planbarer, und genau deshalb tut Übermüdung so weh. Das Hinlegen eskaliert oft, weil das Fenster schon zu war, nicht weil euch ein Ritual fehlt. Ein längeres Lied repariert das selten. Ein früherer Versuch, hinzulegen, manchmal schon.
 
 ### 7 bis 12 Monate
 
 Zähne, Beikost, das Üben von Drehen, Sitzen, Robben: der Tag wird voller, die Spanne länger, die Ausreißer auch. Ein Baby, das gerade stehen übt, ist um halb fünf manchmal hellwach und um halb sechs völlig durch. Die Tabelle hält den Rahmen. Dein Blick hält den einzelnen Tag.
+
+### 12 bis 24 Monate
+
+Nach dem ersten Geburtstag wird das Fenster deutlich länger, und viele Kinder wechseln von zwei auf ein Schläfchen am Tag. Das passiert meist zwischen 12 und 18 Monaten. Davor sind drei bis vier Stunden wach am Stück oft normal, danach fünf bis sechs Stunden mit einem längeren Mittagsschlaf. Der Übergang wackelt: Ein Schläfchen fällt aus, das nächste wird zu spät, und der Abend kippt. Das ist normal und kein Rückschritt. Wenn ihr mitten im Wechsel steckt, hilft ein Blick auf die letzten Tage mehr als eine Tabelle.
 
 ## Woran du merkst, dass das Fenster zu ist
 
