@@ -46,30 +46,112 @@ Ein Wachfenster (auch Wachphase genannt) ist die Zeit, die ein Baby zwischen zwe
 
 Du kennst die Stelle. Gerade war das Baby noch bei dir, hat geguckt, getrunken, die Faust an der Wange. Zehn Minuten später ist alles zu viel: das Licht, deine Stimme, der eigene Körper. Ein Wachfenster ist die Spanne dazwischen. Nach dem Aufwachen trägt das Baby eine Weile die Welt. Dann wird es müde genug für den nächsten Schlaf. Wartet ihr länger, kippt Müdigkeit oft in Überreiz, und das Hinlegen wird schwerer, obwohl alle müde sind.
 
-Die Spannen werden mit den Monaten länger. Die Tabelle weiter unten ist ein Richtwert aus dem, was viele Familien erleben. Sie ist keine Uhr, die dich benotet.
+Die Spannen werden mit den Monaten länger. Das Diagramm weiter unten ist ein Richtwert aus dem, was viele Familien erleben. Sie ist keine Uhr, die dich benotet.
 
 ## Wachfenster nach Alter
 
-Im ersten Jahr hat ein Baby noch keinen verlässlichen Tag-Nacht-Rhythmus. Es wird müde, schläft, wacht auf, wird wieder müde. Wie lang die wache Zeit trägt, hängt vom Alter ab, und genauso von der letzten Nacht, von einem Infekt, von einem Schub, in dem plötzlich alles neu ist. An manchen Tagen ist die Zeile in der Tabelle goldrichtig. An anderen ist sie nur der Anfang vom Hinschauen.
+Im ersten Jahr hat ein Baby noch keinen verlässlichen Tag-Nacht-Rhythmus. Es wird müde, schläft, wacht auf, wird wieder müde. Wie lang die wache Zeit trägt, hängt vom Alter ab, und genauso von der letzten Nacht, von einem Infekt, von einem Schub, in dem plötzlich alles neu ist. An manchen Tagen ist der Balken im Diagramm goldrichtig. An anderen ist sie nur der Anfang vom Hinschauen.
 
-| Alter | Wachfenster, Richtwert |
-| --- | --- |
-| 0–6 Wochen | 45–60 Minuten |
-| 2 Monate | 60–90 Minuten |
-| 3 Monate | 75–105 Minuten |
-| 4 Monate | 90–120 Minuten |
-| 5 Monate | 105–135 Minuten |
-| 6 Monate | 2–2,5 Stunden |
-| 7–8 Monate | 2–3 Stunden |
-| 9–10 Monate | 2,5–3,5 Stunden |
-| 11–12 Monate | 3–4 Stunden |
-| 12–15 Monate | 3–5 Stunden |
-| 15–18 Monate | 4–6 Stunden (oft Wechsel auf ein Schläfchen) |
-| 18–24 Monate | 5–6 Stunden |
+<div class="not-prose my-8 rounded-3xl border border-border/70 bg-card p-4 shadow-sm sm:p-6">
+  <p class="mb-1 text-sm font-semibold text-foreground">Wachfenster nach Alter</p>
+  <p class="mb-5 text-xs text-muted-foreground">Richtwerte. Der Balken zeigt die typische Spanne von 0 bis 6 Stunden.</p>
+  <ul class="space-y-2.5" role="list">
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">0–6 Wochen</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:12.5%;width:4.17%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">45–60 Min.</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">2 Monate</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:16.67%;width:8.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">60–90 Min.</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">3 Monate</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:20.83%;width:8.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">75–105 Min.</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">4 Monate</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:25.0%;width:8.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">90–120 Min.</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">5 Monate</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:29.17%;width:8.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">105–135 Min.</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">6 Monate</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:33.33%;width:8.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">2–2,5 Std.</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">7–8 Monate</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:33.33%;width:16.67%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">2–3 Std.</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">9–10 Monate</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:41.67%;width:16.67%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">2,5–3,5 Std.</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">11–12 Monate</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:50.0%;width:16.67%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">3–4 Std.</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">12–15 Monate</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:50.0%;width:33.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">3–5 Std.</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">15–18 Monate</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:66.67%;width:33.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">4–6 Std.</span>
+      <span class="order-4 col-span-2 text-xs text-muted-foreground sm:col-span-3 sm:pl-[7.75rem]">oft Wechsel auf ein Schläfchen</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">18–24 Monate</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:83.33%;width:16.67%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">5–6 Std.</span>
+    </li>
+  </ul>
+  <div class="mt-3 hidden grid-cols-[7rem_1fr_6.5rem] gap-x-3 text-[11px] text-muted-foreground sm:grid" aria-hidden="true">
+    <span></span>
+    <span class="flex justify-between"><span>0</span><span>1 h</span><span>2 h</span><span>3 h</span><span>4 h</span><span>5 h</span><span>6 h</span></span>
+    <span></span>
+  </div>
+</div>
 
 Die Werte sind Orientierung aus dem, was viele Familien erleben. Quellen nennen leicht andere Spannen, und jedes Baby ist anders.
 
-Lies jede Zeile als Spanne. Ein Baby mit vier Monaten kann an einem hellen Vormittag hundert Minuten wach und zufrieden sein und nach einer kurzen Nacht schon nach achtzig Minuten überkippen. Wenn du das einmal gesehen hast, wird die Tabelle freundlicher. Sie nimmt dir das Rätselraten am Abend, wenn niemand mehr weiß, wann das letzte Schläfchen eigentlich war.
+Lies jeden Balken als Spanne. Ein Baby mit vier Monaten kann an einem hellen Vormittag hundert Minuten wach und zufrieden sein und nach einer kurzen Nacht schon nach achtzig Minuten überkippen. Wenn du das einmal gesehen hast, wird die Tabelle freundlicher. Sie nimmt dir das Rätselraten am Abend, wenn niemand mehr weiß, wann das letzte Schläfchen eigentlich war.
 
 ### 0 bis 6 Wochen
 

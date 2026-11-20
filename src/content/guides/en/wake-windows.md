@@ -42,30 +42,112 @@ faq:
 
 You know the moment. A minute ago the baby was with you, looking, feeding, a fist against a cheek. Ten minutes later everything is too much: the light, your voice, their own body. A wake window is the stretch in between. After waking, a baby can carry the world for a while. Then they are tired enough for the next sleep. Wait past that, and tiredness often tips into overwhelm. Putting them down gets harder, even though everyone in the room is exhausted.
 
-The stretch grows over the months. The table below is a range drawn from what many families see. It is a frame you can lean on. It does not grade you.
+The stretch grows over the months. The chart below is a range drawn from what many families see. It is a frame you can lean on. It does not grade you.
 
 ## Wake windows by age
 
-In the first year a baby does not yet have a reliable day-and-night rhythm. They get tired, sleep, wake, get tired again. How long the awake stretch holds depends on age, and just as much on last night, on a cold, on a leap where suddenly everything is new. On some days the row in the table is exactly right. On others it is only where looking begins.
+In the first year a baby does not yet have a reliable day-and-night rhythm. They get tired, sleep, wake, get tired again. How long the awake stretch holds depends on age, and just as much on last night, on a cold, on a leap where suddenly everything is new. On some days the bar in the chart is exactly right. On others it is only where looking begins.
 
-| Age | Wake window, a guide |
-| --- | --- |
-| 0–6 weeks | 45–60 minutes |
-| 2 months | 60–90 minutes |
-| 3 months | 75–105 minutes |
-| 4 months | 90–120 minutes |
-| 5 months | 105–135 minutes |
-| 6 months | 2–2.5 hours |
-| 7–8 months | 2–3 hours |
-| 9–10 months | 2.5–3.5 hours |
-| 11–12 months | 3–4 hours |
-| 12–15 months | 3–5 hours |
-| 15–18 months | 4–6 hours (often the move to one nap) |
-| 18–24 months | 5–6 hours |
+<div class="not-prose my-8 rounded-3xl border border-border/70 bg-card p-4 shadow-sm sm:p-6">
+  <p class="mb-1 text-sm font-semibold text-foreground">Wake windows by age</p>
+  <p class="mb-5 text-xs text-muted-foreground">Guides. The bar shows the typical span on a scale from 0 to 6 hours.</p>
+  <ul class="space-y-2.5" role="list">
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">0–6 weeks</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:12.5%;width:4.17%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">45–60 min</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">2 months</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:16.67%;width:8.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">60–90 min</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">3 months</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:20.83%;width:8.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">75–105 min</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">4 months</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:25.0%;width:8.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">90–120 min</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">5 months</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:29.17%;width:8.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">105–135 min</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">6 months</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:33.33%;width:8.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">2–2.5 h</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">7–8 months</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:33.33%;width:16.67%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">2–3 h</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">9–10 months</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:41.67%;width:16.67%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">2.5–3.5 h</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">11–12 months</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:50.0%;width:16.67%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">3–4 h</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">12–15 months</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:50.0%;width:33.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">3–5 h</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">15–18 months</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:66.67%;width:33.33%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">4–6 h</span>
+      <span class="order-4 col-span-2 text-xs text-muted-foreground sm:col-span-3 sm:pl-[7.75rem]">often the move to one nap</span>
+    </li>
+    <li class="grid grid-cols-[5.5rem_1fr] items-center gap-x-3 gap-y-0.5 sm:grid-cols-[7rem_1fr_6.5rem]">
+      <span class="text-sm font-medium text-foreground">18–24 months</span>
+      <span class="relative order-3 col-span-2 h-3 overflow-hidden rounded-full bg-muted sm:order-none sm:col-span-1" aria-hidden="true">
+        <span class="absolute inset-y-0 rounded-full bg-primary" style="left:83.33%;width:16.67%"></span>
+      </span>
+      <span class="justify-self-end text-sm tabular-nums text-muted-foreground sm:justify-self-start">5–6 h</span>
+    </li>
+  </ul>
+  <div class="mt-3 hidden grid-cols-[7rem_1fr_6.5rem] gap-x-3 text-[11px] text-muted-foreground sm:grid" aria-hidden="true">
+    <span></span>
+    <span class="flex justify-between"><span>0</span><span>1 h</span><span>2 h</span><span>3 h</span><span>4 h</span><span>5 h</span><span>6 h</span></span>
+    <span></span>
+  </div>
+</div>
 
 These are guides drawn from what many families see. Sources give slightly different ranges, and every baby is different.
 
-Read every row as a span. A four-month-old can be happily awake for a hundred minutes on a bright morning and tip over after eighty on the day after a short night. Once you have seen that, the table gets kinder. It takes the guessing out of the evening, when nobody can quite remember when the last nap actually was.
+Read every bar as a span. A four-month-old can be happily awake for a hundred minutes on a bright morning and tip over after eighty on the day after a short night. Once you have seen that, the table gets kinder. It takes the guessing out of the evening, when nobody can quite remember when the last nap actually was.
 
 ### 0 to 6 weeks
 
